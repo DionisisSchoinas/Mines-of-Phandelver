@@ -5,7 +5,6 @@ using UnityEngine.AI;
 
 public class EnemyAi_V2 : MonoBehaviour
 {
-
     public float lookRadius = 20f;
   
     public float attackRadius = 5f;
@@ -13,7 +12,6 @@ public class EnemyAi_V2 : MonoBehaviour
     [HideInInspector]
     public Transform target;
    
-  
     public bool hasTarget;
 
     //Scripts And GameObjects
@@ -24,7 +22,6 @@ public class EnemyAi_V2 : MonoBehaviour
     Vector3 walkpoint;
     NavMeshAgent agent;
    
-
     private Vector3 spawnpoint;
    
     //State Machine Variables
@@ -46,6 +43,21 @@ public class EnemyAi_V2 : MonoBehaviour
 
         //initialize the ranged Controller 
         rangedController = GetComponent<ProjectileManager>();
+
+        HealthEventSystem.current.onDeath += Dead;
+    }
+
+    private void OnDestroy()
+    {
+        HealthEventSystem.current.onDeath -= Dead;
+    }
+
+    private void Dead(string name)
+    {
+        if (gameObject.name == name)
+        {
+            agent.enabled = false;
+        }
     }
 
 
