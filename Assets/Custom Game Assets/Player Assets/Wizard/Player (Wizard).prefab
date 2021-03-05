@@ -2473,7 +2473,6 @@ GameObject:
   - component: {fileID: 4964402965454966633}
   - component: {fileID: 4964402965454966635}
   - component: {fileID: 4964402965454966634}
-  - component: {fileID: 8004408310699045391}
   - component: {fileID: 1185152694}
   - component: {fileID: 611242018}
   m_Layer: 12
@@ -2638,20 +2637,6 @@ MonoBehaviour:
   leftHandForChannelingSpells: {fileID: 4140181253790957478}
   rightHandForChannelingSpells: {fileID: 4140181253790957560}
   allowStopCasting: 0
---- !u!136 &8004408310699045391
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4964402965454966613}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.6
-  m_Height: 3.8
-  m_Direction: 1
-  m_Center: {x: 0, y: -0.16, z: 0}
 --- !u!114 &1185152694
 MonoBehaviour:
   m_ObjectHideFlags: 0

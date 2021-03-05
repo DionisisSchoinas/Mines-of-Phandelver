@@ -4777,6 +4777,7 @@ GameObject:
   - component: {fileID: 6763762107783076025}
   - component: {fileID: 6763762107783076029}
   - component: {fileID: 6763762107603751828}
+  - component: {fileID: 1087140806205032051}
   m_Layer: 14
   m_Name: Arrow_Piercing
   m_TagString: Untagged
@@ -4888,3 +4889,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+--- !u!114 &1087140806205032051
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6763762107603751831}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fbae1941b41f5bf4cb8547601b3c2521, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxValue: 1
+  resourceBar: {fileID: 0}
+  regenPerSecond: 0
+  deathDelay: 0
+  _invulnerable: 0
+  _respawn: 0

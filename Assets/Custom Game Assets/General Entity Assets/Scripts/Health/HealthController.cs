@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class HealthController : EntityResource
 {
+    public float deathDelay = 30f;
     public List<int> resistances { get; private set; }
     public List<int> immunities { get; private set; }
 
@@ -46,8 +47,9 @@ public class HealthController : EntityResource
                     if (animator != null)
                         animator.SetTrigger("Die");
 
+                    HealthEventSystem.current.Die(gameObject.name);
                     col.enabled = false;
-                    Destroy(gameObject, 30f);
+                    Destroy(gameObject, deathDelay);
                     return;
                 }
             }
