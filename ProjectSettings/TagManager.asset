@@ -3,7 +3,9 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Damageable
+  - Ground
   layers:
   - Default
   - TransparentFX
@@ -13,13 +15,13 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Spells
+  - SpellIgnoreLayer
+  - Shield
+  - Ground
+  - Damageables
+  - Cuttable
+  - Enemies
   - 
   - 
   - 
