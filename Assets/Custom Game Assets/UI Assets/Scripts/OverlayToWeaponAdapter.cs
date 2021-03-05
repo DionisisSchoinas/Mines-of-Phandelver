@@ -18,10 +18,6 @@ public class OverlayToWeaponAdapter : MonoBehaviour
 
     private PlayerMovementScript playerMovementScript;
 
-    private void Awake()
-    {
-    }
-
     // Start is called before the first frame update
     void Start()
     {

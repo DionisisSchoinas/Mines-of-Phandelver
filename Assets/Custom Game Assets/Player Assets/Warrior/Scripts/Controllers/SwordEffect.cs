@@ -77,7 +77,7 @@ public class SwordEffect : BasicSword
         }
     }
 
-    // This function instanitates a cipy of itself and calls the coroutine FROM THE COPY
+    // This function instanitates a copy of itself and calls the coroutine FROM THE COPY
     public SwordEffect InstaCast(PlayerMovementScriptWarrior controls, GameObject swordObject, SkinnedMeshRenderer playerMesh, Renderer swordRenderer, Transform swordTopPoint, Transform swordBasePoint, Transform swordParent)
     {
         SwordEffect current = InstantiateEffect(swordTopPoint, swordBasePoint, swordParent);

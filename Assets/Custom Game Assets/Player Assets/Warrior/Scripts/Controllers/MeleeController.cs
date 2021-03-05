@@ -40,8 +40,7 @@ public class MeleeController : MonoBehaviour
 
     private float currentMana;
 
-
-    void Start()
+    private void Start()
     {
         indicator = GetComponent<AttackIndicator>() as AttackIndicator;
         controls = GetComponent<PlayerMovementScriptWarrior>() as PlayerMovementScriptWarrior;
@@ -70,8 +69,12 @@ public class MeleeController : MonoBehaviour
         canComboHit = false;
 
         skillListUp = false;
-        ManaEventSystem.current.onManaUpdated += ManaUpdate;
+
         UIEventSystem.current.onSkillListUp += SkillListUp;
+        ManaEventSystem.current.onManaUpdated += ManaUpdate;
+
+        // Requests update for mana values
+        ManaEventSystem.current.UseMana(0);
     }
 
     private void OnDestroy()

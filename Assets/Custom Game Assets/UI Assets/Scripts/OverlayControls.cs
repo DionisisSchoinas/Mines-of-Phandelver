@@ -36,6 +36,7 @@ public class OverlayControls : MonoBehaviour
     public static Color selectedButtonColor;
     public static Color unselectedButtonColor;
 
+    private float mana;
 
     private void Start()
     {
@@ -107,12 +108,17 @@ public class OverlayControls : MonoBehaviour
 
         UIEventSystem.current.onDraggingButton += DraggingButton;
         UIEventSystem.current.onApplyResistance += ApplyResistance;
+        ManaEventSystem.current.onManaUpdated += SetCurrentMana;
+
+        // Requests update for mana values
+        ManaEventSystem.current.UseMana(0);
     }
 
     private void OnDestroy()
     {
         UIEventSystem.current.onDraggingButton -= DraggingButton;
         UIEventSystem.current.onApplyResistance -= ApplyResistance;
+        ManaEventSystem.current.onManaUpdated -= SetCurrentMana;
     }
 
     private void Update()
@@ -269,9 +275,16 @@ public class OverlayControls : MonoBehaviour
     {
         if (!skillListUp)
         {
-            selectedQuickbarIndex = selectedQuickbar;
-            // Update Adapter
-            UIEventSystem.current.SkillPicked(quickbarButtonContainers[selectedQuickbar].buttonData.skillIndexInAdapter);
+            if (quickbarButtonContainers[selectedQuickbar].buttonData.skill.manaCost <= mana)
+            {
+                selectedQuickbarIndex = selectedQuickbar;
+                // Update Adapter
+                UIEventSystem.current.SkillPicked(quickbarButtonContainers[selectedQuickbar].buttonData.skillIndexInAdapter);
+            }
+            else
+            {
+                Debug.Log("Not enough mana");
+            }
         }
     }
 
@@ -288,5 +301,10 @@ public class OverlayControls : MonoBehaviour
             Time.timeScale = 0;
         else
             Time.timeScale = 1;
+    }
+
+    private void SetCurrentMana(float mana)
+    {
+        this.mana = mana;
     }
 }

@@ -39,8 +39,6 @@ public class ManaController : EntityResource
     public void ReduceMana(float reduction)
     {
         currentValue = currentValue - reduction;
-
-        ManaEventSystem.current.UpdateMana(currentValue);
     }
 
     // Override Regen since we want to use the new getter for currentValue
