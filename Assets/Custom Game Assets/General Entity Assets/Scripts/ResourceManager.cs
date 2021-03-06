@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
 public class ResourceManager
 {
@@ -85,5 +86,26 @@ public class ResourceManager
         public static GameObject SkillListButton = ((GameObject)Resources.Load(folder + "Skill Button", typeof(GameObject)));
         public static GameObject SkillListColumn = ((GameObject)Resources.Load(folder + "Skill List Column", typeof(GameObject)));
         public static GameObject EffectDisplay = ((GameObject)Resources.Load(folder + "Effect Display", typeof(GameObject)));
+
+        public class Sounds
+        {
+            private static string folder = UI.folder + "Sounds/";
+            public static AudioClip ButtonHoverEnter = (AudioClip)Resources.Load(folder + "Button Hover Enter", typeof(AudioClip));
+        }
+    }
+
+    public class Audio
+    {
+        private static string folder = "Audio/";
+        public static AudioClip CaveBackground = (AudioClip)Resources.Load(folder + "Cave Audio", typeof(AudioClip));
+        public static AudioClip CityBackground = (AudioClip)Resources.Load(folder + "City Audio", typeof(AudioClip));
+        public static AudioClip CombatBackground = (AudioClip)Resources.Load(folder + "Combat Audio", typeof(AudioClip));
+        public static AudioClip ForestBackground = (AudioClip)Resources.Load(folder + "Forest Audio", typeof(AudioClip));
+    }
+
+    public class AudioMixers
+    {
+        private static string folder = "Audio Mixers/";
+        public static AudioMixer MainMixer = (AudioMixer)Resources.Load(folder + "Main Mixer", typeof(AudioMixer));
     }
 }
