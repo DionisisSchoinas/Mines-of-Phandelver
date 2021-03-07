@@ -20,6 +20,6 @@ public class ButtonSoundHover : MonoBehaviour, IPointerEnterHandler
         audioSource.loop = false;
         audioSource.playOnAwake = false;
 
-        audioSource.outputAudioMixerGroup = ResourceManager.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
+        audioSource.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
     }
 }

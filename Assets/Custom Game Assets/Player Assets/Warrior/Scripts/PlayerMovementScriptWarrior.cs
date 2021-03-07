@@ -164,4 +164,10 @@ public class PlayerMovementScriptWarrior : PlayerMovementScript
         yield return new WaitForSeconds(hitBlockAfterDodge);
         allowHitAfterRoll = true;
     }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
+    }
 }

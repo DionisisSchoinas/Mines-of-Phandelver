@@ -24,8 +24,10 @@ public class BackgroundMusicController : MonoBehaviour
 
     private void Start()
     {
-        current.audioSource = GameObject.FindGameObjectWithTag("Player").AddComponent<AudioSource>();
-        current.audioSource.outputAudioMixerGroup = ResourceManager.AudioMixers.MainMixer.FindMatchingGroups("Music")[0];
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+
+        current.audioSource = player.AddComponent<AudioSource>();
+        current.audioSource.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Music")[0];
         current.audioSource.loop = true;
         current.audioSource.playOnAwake = true;
 
@@ -51,19 +53,18 @@ public class BackgroundMusicController : MonoBehaviour
         switch (location)
         {
             case Location.Cave:
-                current.audioSource.clip = ResourceManager.Audio.CaveBackground;
+                current.audioSource.clip = ResourceManager.Audio.Ambient.CaveBackground;
                 break;
             case Location.City:
-                current.audioSource.clip = ResourceManager.Audio.CityBackground;
+                current.audioSource.clip = ResourceManager.Audio.Ambient.CityBackground;
                 break;
             case Location.Combat:
-                current.audioSource.clip = ResourceManager.Audio.CombatBackground;
+                current.audioSource.clip = ResourceManager.Audio.Ambient.CombatBackground;
                 break;
             case Location.Forest:
-                current.audioSource.clip = ResourceManager.Audio.ForestBackground;
+                current.audioSource.clip = ResourceManager.Audio.Ambient.ForestBackground;
                 break;
         }
         current.audioSource.Play();
-        Debug.Log("set");
     }
 }
