@@ -89,29 +89,25 @@ public class AnimationScriptControllerWarrior : MonoBehaviour
         animator.SetLayerWeight(1, 0);
     }
 
-    public void Attack(int limit)
+    public void Attack()
     {
-        if (combonum < 3 && combonum < limit)
+        if (combonum < 3)
         {
-            /*
-            if (combonum != 0)
-                animator.SetBool(combos[combonum-1], false);
-            
+
             animator.SetBool(combos[combonum], true);
-            */
-            animator.SetTrigger(combosTriggers[combonum]);
             combonum++;
+
         }
+        
     }
 
     public void ResetAttack()
     {
-        /*
+      
         for (int cnum = 0; cnum < 3; cnum++)
         {
             animator.SetBool(combos[cnum], false);
         }
-        */
         combonum = 0;
     }
 

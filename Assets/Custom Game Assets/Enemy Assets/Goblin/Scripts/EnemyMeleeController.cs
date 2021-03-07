@@ -34,7 +34,7 @@ public class EnemyMeleeController : MonoBehaviour
             Debug.Log(visibleTarget.name);
 
             HealthEventSystem.current.TakeDamage(visibleTarget.name, 15f, DamageTypesManager.Physical);
-            CameraShake.current.ShakeCamera(0.05f, 0.2f);
+         
 
         }
 

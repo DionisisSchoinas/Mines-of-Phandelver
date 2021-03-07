@@ -57,7 +57,11 @@ public class HealthController : EntityResource
             if (currentValue > 0f)
             {
                 if (animator != null && value < currentValue)
+                { 
                     animator.SetTrigger("Hit");
+                    
+                }
+                  
             }
 
             base.currentValue = value;
@@ -123,6 +127,8 @@ public class HealthController : EntityResource
             if (!invulnerable)
             {
                 currentValue = currentValue - CheckDamageTypes(damage, damageType);
+                CameraShake.current.ShakeCamera(0.05f, 0.2f);
+
             }
         }
     }

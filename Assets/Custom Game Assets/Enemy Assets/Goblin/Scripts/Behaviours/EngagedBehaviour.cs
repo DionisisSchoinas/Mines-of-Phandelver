@@ -37,9 +37,9 @@ public class EngagedBehaviour : StateMachineBehaviour
         }
         else
         {
-            if (timer > Random.Range(2f,4f))
+            if (timer > Random.Range(1f,2f))
             {
-                int behaviourIndex = Random.Range(1, 3);
+                int behaviourIndex = Random.Range(1, 5);
                 if (behaviourIndex == 1) {
                     animator.SetBool("Relocate", true);
                 }
