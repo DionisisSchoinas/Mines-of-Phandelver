@@ -40,7 +40,7 @@ public class SimpleSlash : SwordEffect
         controls.sliding = false;
     }
 
-    public override ParticleSystem GetSource()
+    public override GameObject GetSource()
     {
         return null;
     }

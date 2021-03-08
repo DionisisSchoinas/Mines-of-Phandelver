@@ -105,7 +105,6 @@ public class SwordEffect : BasicSword
         if (GetSource() != null)
         {
             swordParticles = Instantiate(GetSource().gameObject, swordObject.transform);
-            swordParticles.transform.rotation = swordObject.transform.rotation;
         }
 
         swordRenderer.material = attributes.swordMaterial;
@@ -126,7 +125,7 @@ public class SwordEffect : BasicSword
     {
     }
 
-    public override ParticleSystem GetSource()
+    public override GameObject GetSource()
     {
         return null;
     }

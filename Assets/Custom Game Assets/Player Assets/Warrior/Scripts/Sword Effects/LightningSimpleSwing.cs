@@ -9,7 +9,7 @@ public class LightningSimpleSwing : ElementalSlash
         damageType = DamageTypesManager.Lightning;
         condition = ConditionsManager.Electrified;
     }
-    public override ParticleSystem GetSource()
+    public override GameObject GetSource()
     {
         return ResourceManager.Sources.SwordEffects.Lightning;
     }

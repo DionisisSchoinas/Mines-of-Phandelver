@@ -10,7 +10,7 @@ public class EarthSphereWave : SphereBurst
         condition = null;
     }
 
-    public override ParticleSystem GetSource()
+    public override GameObject GetSource()
     {
         return ResourceManager.Sources.SwordEffects.Earth;
     }
