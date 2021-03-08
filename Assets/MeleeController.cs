@@ -151,8 +151,9 @@ public class MeleeController : MonoBehaviour
             comboCurrent = 0f;
         }
 
-        if (comboQueue.Count == 0)
+        if (comboQueue.Count == 0 && isDuringAttack)
         {
+            sword.GetSelectedEffect().StartCooldown();
             isDuringAttack = false;
             animations.ResetAttack();
         }

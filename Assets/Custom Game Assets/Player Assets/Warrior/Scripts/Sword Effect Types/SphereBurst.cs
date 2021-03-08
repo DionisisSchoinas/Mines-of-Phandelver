@@ -36,7 +36,7 @@ public class SphereBurst : SwordEffect
     {
         base.OnDestroy();
 
-        if (particles.gameObject != null)
+        if (particles != null)
             Destroy(particles.gameObject);
     }
 

@@ -41,7 +41,7 @@ public class ConeBurstSlash : SwordEffect
     {
         base.OnDestroy();
 
-        if (particles.gameObject != null)
+        if (particles != null)
             Destroy(particles.gameObject);
     }
 

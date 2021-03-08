@@ -39,6 +39,6 @@ public abstract class BasicSword : Skill
 
     public void StartSwingCooldown()
     {
-        UIEventSystem.current.SkillCast(uniqueOverlayToWeaponAdapterId, 0f);
+        //UIEventSystem.current.SkillCast(uniqueOverlayToWeaponAdapterId, 0f);
     }
 }
