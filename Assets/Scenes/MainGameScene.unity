@@ -5102,6 +5102,12 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!137 &79219396 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 75840352045362960, guid: 617c89358b04efd499155edb484ebe5b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2177212895708492720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &115926835
 GameObject:
   m_ObjectHideFlags: 0
@@ -11510,6 +11516,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1617874859}
   m_PrefabAsset: {fileID: 0}
+--- !u!137 &1788982705 stripped
+SkinnedMeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 72294390432926086, guid: 617c89358b04efd499155edb484ebe5b,
+    type: 3}
+  m_PrefabInstance: {fileID: 2177212895708492720}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1790235069
 GameObject:
   m_ObjectHideFlags: 0
@@ -14296,6 +14308,21 @@ PrefabInstance:
       propertyPath: spellNameDisplay
       value: 
       objectReference: {fileID: 2090502215}
+    - target: {fileID: 2177212894283860025, guid: 617c89358b04efd499155edb484ebe5b,
+        type: 3}
+      propertyPath: playerMeshes.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177212894283860025, guid: 617c89358b04efd499155edb484ebe5b,
+        type: 3}
+      propertyPath: playerMeshes.Array.data[0]
+      value: 
+      objectReference: {fileID: 79219396}
+    - target: {fileID: 2177212894283860025, guid: 617c89358b04efd499155edb484ebe5b,
+        type: 3}
+      propertyPath: playerMeshes.Array.data[1]
+      value: 
+      objectReference: {fileID: 1788982705}
     - target: {fileID: 2177212895260857013, guid: 617c89358b04efd499155edb484ebe5b,
         type: 3}
       propertyPath: m_Name
@@ -14314,7 +14341,7 @@ PrefabInstance:
     - target: {fileID: 2177212895260857014, guid: 617c89358b04efd499155edb484ebe5b,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -51.48
+      value: -51.45
       objectReference: {fileID: 0}
     - target: {fileID: 2177212895260857014, guid: 617c89358b04efd499155edb484ebe5b,
         type: 3}

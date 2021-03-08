@@ -58,8 +58,8 @@ public class HealthEventSystem : MonoBehaviour
         }
     }
     // Applies resistance
-    public event Action<string, SkinnedMeshRenderer, Material, int, float> onResistanceApply;
-    public void ApplyResistance(string name, SkinnedMeshRenderer mesh, Material newMaterial, int resistance, float duration)
+    public event Action<string, List<SkinnedMeshRenderer>, Material, int, float> onResistanceApply;
+    public void ApplyResistance(string name, List<SkinnedMeshRenderer> mesh, Material newMaterial, int resistance, float duration)
     {
         if (onResistanceApply != null)
         {

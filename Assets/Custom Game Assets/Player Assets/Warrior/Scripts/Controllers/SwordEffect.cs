@@ -78,7 +78,7 @@ public class SwordEffect : BasicSword
     }
 
     // This function instanitates a copy of itself and calls the coroutine FROM THE COPY
-    public SwordEffect InstaCast(PlayerMovementScriptWarrior controls, GameObject swordObject, SkinnedMeshRenderer playerMesh, Renderer swordRenderer, Transform swordTopPoint, Transform swordBasePoint, Transform swordParent)
+    public SwordEffect InstaCast(PlayerMovementScriptWarrior controls, GameObject swordObject, List<SkinnedMeshRenderer> playerMesh, Renderer swordRenderer, Transform swordTopPoint, Transform swordBasePoint, Transform swordParent)
     {
         SwordEffect current = InstantiateEffect(swordTopPoint, swordBasePoint, swordParent);
         current.StartCast(controls, swordObject, playerMesh, swordRenderer);
@@ -87,13 +87,13 @@ public class SwordEffect : BasicSword
     }
 
     // Called in the copy of the object
-    public void StartCast(PlayerMovementScriptWarrior controls, GameObject swordObject, SkinnedMeshRenderer playerMesh, Renderer swordRenderer)
+    public void StartCast(PlayerMovementScriptWarrior controls, GameObject swordObject, List<SkinnedMeshRenderer> playerMesh, Renderer swordRenderer)
     {
         if (isActiveAndEnabled)
             StartCoroutine(DelayInstaCast(controls, swordObject, playerMesh, swordRenderer));
     }
 
-    private IEnumerator DelayInstaCast(PlayerMovementScriptWarrior controls, GameObject swordObject, SkinnedMeshRenderer playerMesh, Renderer swordRenderer)
+    private IEnumerator DelayInstaCast(PlayerMovementScriptWarrior controls, GameObject swordObject, List<SkinnedMeshRenderer> playerMesh, Renderer swordRenderer)
     {
         instaCasting = true;
 
@@ -121,7 +121,7 @@ public class SwordEffect : BasicSword
         instaCasting = false;
     }
 
-    public override void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, SkinnedMeshRenderer playerMesh)
+    public override void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, List<SkinnedMeshRenderer> playerMesh)
     {
     }
 

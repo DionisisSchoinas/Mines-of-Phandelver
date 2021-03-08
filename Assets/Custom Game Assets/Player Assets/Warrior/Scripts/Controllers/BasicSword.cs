@@ -34,7 +34,7 @@ public abstract class BasicSword : Skill
         new ComboStage(2, 0.1f, 0.2f, 0.15f)
     };
 
-    public abstract void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, SkinnedMeshRenderer playerMesh);
+    public abstract void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, List<SkinnedMeshRenderer> playerMesh);
     public abstract GameObject GetSource();
 
     public void StartSwingCooldown()

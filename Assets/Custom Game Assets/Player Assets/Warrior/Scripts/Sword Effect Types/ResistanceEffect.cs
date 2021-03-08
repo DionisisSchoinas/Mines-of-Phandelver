@@ -17,12 +17,12 @@ public class ResistanceEffect : SwordEffect
     public override bool instaCast => true;
     public override float manaCost => 20f;
 
-    public override void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, SkinnedMeshRenderer playerMesh)
+    public override void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, List<SkinnedMeshRenderer> playerMesh)
     {
         StartCoroutine(PerformAttack(comboTrailTimings[comboPhase].delayToFireSpell, controls, playerMesh));
     }
 
-    IEnumerator PerformAttack(float attackDelay, PlayerMovementScriptWarrior controls, SkinnedMeshRenderer playerMesh)
+    IEnumerator PerformAttack(float attackDelay, PlayerMovementScriptWarrior controls, List<SkinnedMeshRenderer> playerMesh)
     {
         if (instaCasting)
             yield return null;
