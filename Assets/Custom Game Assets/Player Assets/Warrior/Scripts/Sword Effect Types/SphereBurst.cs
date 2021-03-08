@@ -35,7 +35,9 @@ public class SphereBurst : SwordEffect
     private new void OnDestroy()
     {
         base.OnDestroy();
-        Destroy(particles.gameObject);
+
+        if (particles.gameObject != null)
+            Destroy(particles.gameObject);
     }
 
     public override void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, SkinnedMeshRenderer playerMesh)
@@ -48,7 +50,7 @@ public class SphereBurst : SwordEffect
         // Spawns Indicator
         indicatorController = gameObject.AddComponent<SpellIndicatorController>();
         indicatorController.SelectLocation(controls.transform, sphereRadius * 2f, sphereRadius * 2f, SpellIndicatorController.CircleIndicator);
-        indicatorController.DestroyIndicator(swingCooldowns[comboPhase] * 0.8f);
+        indicatorController.DestroyIndicator(0.5f);
 
         if (instaCasting)
             yield return null;
