@@ -4,19 +4,29 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
+    public float speed = 8f;
+    public float damage = 15f;
+    public float despawnAfter = 30f;
+
     private Collider col;
     private Rigidbody rb;
-    [SerializeField]
-    private float speed = 8f;
-
     private bool stuck;
+
+    private AudioSource flyAudioSource;
+
+    private ParticleSystem particles;
 
     private void Awake()
     {
         rb = gameObject.GetComponent<Rigidbody>();
         col = gameObject.GetComponent<Collider>();
+        particles = gameObject.GetComponentInChildren<ParticleSystem>();
+
+        rb.AddForce(transform.forward * speed, ForceMode.Force);
 
         stuck = false;
+
+        //PlayFlySound();
     }
 
     public void SetCaster(Collider caster)
@@ -35,13 +45,15 @@ public class ProjectileScript : MonoBehaviour
     {
         if (!stuck)
         {
-            transform.RotateAround(transform.position, transform.forward, Time.deltaTime * 180f);
-            rb.AddForce(transform.forward * speed * Time.deltaTime, ForceMode.VelocityChange);
+            transform.RotateAround(transform.position, transform.forward, Time.deltaTime * 720f);
         }
     }
 
     private void OnCollisionEnter(Collision collision)
     {
+        //flyAudioSource.Stop();
+        PlayHitSound();
+
         stuck = true;
         // Stick to target
         int layer = collision.gameObject.layer;
@@ -54,12 +66,35 @@ public class ProjectileScript : MonoBehaviour
         rb.angularVelocity = Vector3.zero;
         // Disable colider
         col.enabled = false;
+        // Disable particles
+        particles.Clear();
         // Move a bit forward
-        transform.position += transform.forward / 3f;
+        transform.position += transform.forward;
 
         // Damage
-        HealthEventSystem.current.TakeDamage(collision.gameObject.name, 15f, DamageTypesManager.Physical);
+        HealthEventSystem.current.TakeDamage(collision.gameObject.name, damage, DamageTypesManager.Physical);
 
-        Destroy(gameObject, 15f);
+        Destroy(gameObject, despawnAfter);
+    }
+
+    private void PlayFlySound()
+    {
+        flyAudioSource = gameObject.AddComponent<AudioSource>();
+        flyAudioSource = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", flyAudioSource, ResourceManager.Audio.AudioSources.Range.Short);
+        flyAudioSource.loop = true;
+        flyAudioSource.clip = ResourceManager.Audio.Arrow.Fly;
+        flyAudioSource.Play();
+    }
+
+    private void PlayHitSound()
+    {
+        GameObject gm = new GameObject();
+        gm.transform.position = gameObject.transform.position;
+        Destroy(gm, 2f);
+        AudioSource hitAudioSource = gm.AddComponent<AudioSource>();
+        hitAudioSource = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", hitAudioSource, ResourceManager.Audio.AudioSources.Range.Short);
+        hitAudioSource.volume = 0.7f;
+        hitAudioSource.clip = ResourceManager.Audio.Arrow.Hit;
+        hitAudioSource.Play();
     }
 }

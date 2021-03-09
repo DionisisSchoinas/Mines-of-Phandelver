@@ -56,7 +56,8 @@ public class EnemyAi_V2 : MonoBehaviour
     {
         if (gameObject.name == name)
         {
-            agent.isStopped = true;
+            agent.enabled = true;
+            EngagementScript.current.Disengage(gameObject.name);
         }
     }
 
@@ -75,11 +76,15 @@ public class EnemyAi_V2 : MonoBehaviour
     public void Stop()
     {
         hasTarget = false;
-        agent.ResetPath();
+        if (agent.enabled)
+            agent.ResetPath();
     }
   
     public void SearchForTarget()
     {
+        if (!agent.enabled)
+            return;
+        
         float randomZ = Random.Range(-lookRadius, lookRadius);
         float randomX = Random.Range(-lookRadius, lookRadius);
 
@@ -90,6 +95,9 @@ public class EnemyAi_V2 : MonoBehaviour
 
     public void SearchForTargetNearPlayer()
     {
+        if (!agent.enabled)
+            return;
+
         //square around player
         float randomZ = Random.Range(-2, 2);
         float randomX = Random.Range(-2, 2);
@@ -120,11 +128,17 @@ public class EnemyAi_V2 : MonoBehaviour
 
     public void Chase()
     {
+        if (!agent.enabled)
+            return;
+
         agent.SetDestination(target.position);
     }
 
     public void Relocate()
     {
+        if (!agent.enabled)
+            return;
+
         if (!hasTarget)
         {
             SearchForTargetNearPlayer();
@@ -159,11 +173,17 @@ public class EnemyAi_V2 : MonoBehaviour
 
     public void Attack()
     {
+        if (!agent.enabled)
+            return;
+
         meleeController.canAttack = true;
     }
 
     public void AttackRanged()
     {
+        if (!agent.enabled)
+            return;
+
         rangedController.canAttack = true;
     }
 }

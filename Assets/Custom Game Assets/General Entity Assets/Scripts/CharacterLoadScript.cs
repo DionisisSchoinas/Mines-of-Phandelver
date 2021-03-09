@@ -9,8 +9,6 @@ public class CharacterLoadScript : MonoBehaviour
         SelectedCharacterScript selectedCharacter = FindObjectOfType<SelectedCharacterScript>();
         if (selectedCharacter != null)
         {
-            Debug.Log(FindObjectOfType<SelectedCharacterScript>().character);
-
             GameObject[] characters = GameObject.FindGameObjectsWithTag("Player");
 
             string character_name = "";

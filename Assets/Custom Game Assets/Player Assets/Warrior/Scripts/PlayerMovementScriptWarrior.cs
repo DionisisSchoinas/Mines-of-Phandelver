@@ -164,6 +164,7 @@ public class PlayerMovementScriptWarrior : PlayerMovementScript
         yield return new WaitForSeconds(hitBlockAfterDodge);
         allowHitAfterRoll = true;
     }
+    
     public IEnumerator stun(float second)
     {
         yield return new WaitForSeconds(second/4);
@@ -171,8 +172,15 @@ public class PlayerMovementScriptWarrior : PlayerMovementScript
         yield return new WaitForSeconds(3*second / 4);
         canMove = true;
     }
+    
     public void LockPlayer(float second) 
     {
         StartCoroutine(stun(second));
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(groundCheck.position, groundDistance);
     }
 }
