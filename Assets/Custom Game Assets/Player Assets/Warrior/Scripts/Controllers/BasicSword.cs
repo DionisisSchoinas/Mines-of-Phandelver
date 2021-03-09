@@ -22,23 +22,23 @@ public abstract class BasicSword : Skill
 
     public float[] swingCooldowns => new float[]
     {
-        1.5f,
-        1.5f,
-        1f
+        0f,
+        0f,
+        0f
     };
 
     public ComboStage[] comboTrailTimings => new ComboStage[]
     {
-        new ComboStage(0, 0.45f, 0.25f, 0.55f),
-        new ComboStage(1, 0.1f, 0.25f, 0.25f),
-        new ComboStage(2, 0f, 0.25f, 0.05f)
+        new ComboStage(0, 0.2f, 0.1f, 0.25f),
+        new ComboStage(1, 0.05f, 0.2f, 0.12f),
+        new ComboStage(2, 0.1f, 0.2f, 0.15f)
     };
 
-    public abstract void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, SkinnedMeshRenderer playerMesh);
-    public abstract ParticleSystem GetSource();
+    public abstract void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, List<SkinnedMeshRenderer> playerMesh);
+    public abstract GameObject GetSource();
 
     public void StartSwingCooldown()
     {
-        UIEventSystem.current.SkillCast(uniqueOverlayToWeaponAdapterId, 0.4f);
+        //UIEventSystem.current.SkillCast(uniqueOverlayToWeaponAdapterId, 0f);
     }
 }

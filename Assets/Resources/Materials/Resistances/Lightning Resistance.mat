@@ -10,7 +10,7 @@ Material:
   m_Name: Lightning Resistance
   m_Shader: {fileID: -6465566751694194690, guid: 549c5cab000e35d448948d63e5a30b18,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _NORMALMAP _SPECULAR_SETUP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -44,12 +44,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ExtraTexture:
+        m_Texture: {fileID: 2800000, guid: 3c1b12c052fa43548970ac6dc58f9ea1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: 47fdd8c7547eb5749ad4cbc84a681b71, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: bbb551d3f2b654042b680962e551ea19, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -62,16 +74,20 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_172F406A: 0
+    - Vector1_4B71AEE3: 0
     - Vector1_542F7FAB: 0.424
-    - Vector1_5EBE93D0: 0.851
+    - Vector1_5EBE93D0: 1
     - Vector1_613B7DC5: 0.925
     - Vector1_8BC80D45: 0
+    - Vector1_B85E3963: 0
     - Vector1_D39D1B61: 8
     - Vector1_D82CA8DC: 4
     - Vector1_E4412480: 1
     - Vector1_E45996E5: 0.185
-    - Vector1_EF070E57: 0.315
+    - Vector1_EF070E57: 0
+    - Vector1_F0170C1D: 10
     - Vector1_F0DEBEC8: 1
+    - Vector1_F51DC899: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -82,6 +98,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HasExtra: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _QueueOffset: 0
@@ -95,12 +112,12 @@ Material:
     - _ZWrite: 1
     m_Colors:
     - Color_105D12B4: {r: 0.36744344, g: 1.2364764, b: 0.89397377, a: 0}
-    - Color_3447E8ED: {r: 2.4505568, g: 3.4415908, b: 0.5766016, a: 1}
+    - Color_3447E8ED: {r: 0.10196076, g: 0.38920754, b: 0.4627451, a: 1}
     - Color_358868B2: {r: 0, g: 0, b: 0, a: 0}
     - Color_5C0837BE: {r: 2.19619, g: 3.61595, b: 4.237095, a: 0}
-    - Color_9B0201B5: {r: 0, g: 0.98833734, b: 0.70891213, a: 1}
+    - Color_9B0201B5: {r: 0.8603976, g: 0.8513882, b: 0.20271148, a: 1}
     - Vector2_3E192D2E: {r: 0, g: 0, b: 0, a: 0}
-    - Vector2_502C812D: {r: 0.1, g: 0.1, b: 0, a: 0}
+    - Vector2_502C812D: {r: 0.5, g: 0.5, b: 0, a: 0}
     - Vector2_B9107C74: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_BD346D02: {r: 0.4, g: 0.4, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}

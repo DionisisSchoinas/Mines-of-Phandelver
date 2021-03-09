@@ -23,7 +23,7 @@ Material:
   m_Name: Ice Resistance
   m_Shader: {fileID: -6465566751694194690, guid: 549c5cab000e35d448948d63e5a30b18,
     type: 3}
-  m_ShaderKeywords: 
+  m_ShaderKeywords: _NORMALMAP _SPECULAR_SETUP
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
@@ -35,6 +35,14 @@ Material:
     m_TexEnvs:
     - Texture2D_4B95EC26:
         m_Texture: {fileID: 2800000, guid: 3c1b12c052fa43548970ac6dc58f9ea1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_573F1FEF:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_6F3931E7:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -49,12 +57,24 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _ExtraTexture:
+        m_Texture: {fileID: 2800000, guid: c0b92c8ff004ed84ea0349e70c18c0a4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MainTex:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _MainTexture:
+        m_Texture: {fileID: 2800000, guid: 47fdd8c7547eb5749ad4cbc84a681b71, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 2800000, guid: bbb551d3f2b654042b680962e551ea19, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -72,13 +92,17 @@ Material:
     m_Floats:
     - Vector1_1A4DC904: 0
     - Vector1_33789146: 6.8
-    - Vector1_5EBE93D0: 0.695
+    - Vector1_4B71AEE3: 0
+    - Vector1_5EBE93D0: 1
     - Vector1_613B7DC5: 0.645
+    - Vector1_B85E3963: 0
     - Vector1_C4F961AA: 4.79
     - Vector1_D82CA8DC: 4
     - Vector1_E4412480: 1
     - Vector1_EF070E57: 0
+    - Vector1_F0170C1D: 10
     - Vector1_F0DEBEC8: 1
+    - Vector1_F51DC899: 0.806
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -89,6 +113,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _HasExtra: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
     - _QueueOffset: 0
@@ -102,10 +127,10 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_3447E8ED: {r: 0, g: 1.2832862, b: 2.7942524, a: 1}
-    - Color_9B0201B5: {r: 2.6082377, g: 2.6082377, b: 2.6082377, a: 1}
+    - Color_3447E8ED: {r: 0.8705506, g: 0.8705506, b: 0.8705506, a: 1}
+    - Color_9B0201B5: {r: 0.18919738, g: 0.31082428, b: 0.41218, a: 1}
     - Vector2_3E192D2E: {r: 0, g: 0, b: 0, a: 0}
-    - Vector2_502C812D: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - Vector2_502C812D: {r: 0.5, g: 0.5, b: 0, a: 0}
     - Vector2_7A0CB5EA: {r: 0.24, g: 0, b: 0, a: 0}
     - Vector2_A7D32E31: {r: 0, g: 0, b: 0, a: 0}
     - Vector2_BD346D02: {r: 0, g: 0, b: 0, a: 0}

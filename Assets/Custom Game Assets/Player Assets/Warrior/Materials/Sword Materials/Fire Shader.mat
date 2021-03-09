@@ -33,8 +33,16 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - Texture2D_3D36E828:
+        m_Texture: {fileID: 2800000, guid: 11b8c330b9ce1934a824fa581cd15530, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - Texture2D_7949DC06:
+        m_Texture: {fileID: 2800000, guid: 632fefe70cec45349baddd87c32ced4e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - Texture2D_B76E8AF7:
-        m_Texture: {fileID: 2800000, guid: 630ae93700a03ba44840c92655035d3e, type: 3}
+        m_Texture: {fileID: 2800000, guid: 708e9f5cf5ec14e47a05b9878e7f199e, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_C4F16BB4:
@@ -71,11 +79,13 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_3BB00B26: 1
-    - Vector1_6576EFA6: 0.5
-    - Vector1_682D615C: -1.3
+    - Vector1_6576EFA6: 0.8
+    - Vector1_682D615C: 0
     - Vector1_6F2DE3C: 2
-    - Vector1_B1E6D330: 0.5
-    - Vector1_B68D7E37: 0
+    - Vector1_8EE85851: 1
+    - Vector1_B1E6D330: 0.6
+    - Vector1_B68D7E37: 0.436
+    - Vector1_BC40D2AF: 18.41
     - Vector1_FE643DC5: 0
     - _AlphaClip: 0
     - _Blend: 0
@@ -99,11 +109,11 @@ Material:
     - _WorkflowMode: 1
     - _ZWrite: 1
     m_Colors:
-    - Color_2D83294F: {r: 178.90817, g: 44.961216, b: 9.36692, a: 0}
-    - Color_6159AC89: {r: 0, g: 0, b: 0, a: 0}
-    - Color_B5441148: {r: 24.236906, g: 15.455419, b: 3.3955085, a: 0}
-    - Vector2_F864C83A: {r: 0.1, g: 0.1, b: 0, a: 0}
-    - Vector2_F9BB94D: {r: 0.2, g: 0.2, b: 0, a: 0}
+    - Color_2D83294F: {r: 95.87451, g: 39.654903, b: 11.545098, a: 0}
+    - Color_6159AC89: {r: 0.08627451, g: 0.039215688, b: 0.019607844, a: 0}
+    - Color_B5441148: {r: 11.984314, g: 4.894118, b: 1.4431373, a: 0}
+    - Vector2_F864C83A: {r: 0.01, g: 0.02, b: 0, a: 0}
+    - Vector2_F9BB94D: {r: 0.3, g: 0.3, b: 0, a: 0}
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}

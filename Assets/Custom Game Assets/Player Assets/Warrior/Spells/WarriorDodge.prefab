@@ -46,4 +46,4 @@ MonoBehaviour:
   uniqueOverlayToWeaponAdapterId: 0
   onCooldown: 1
   cooldownPercentage: 0.5399998
-  dodgeDuration: 0.8
+  dodgeDuration: 0.6

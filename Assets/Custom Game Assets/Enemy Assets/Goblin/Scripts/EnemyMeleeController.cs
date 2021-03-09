@@ -61,7 +61,7 @@ public class EnemyMeleeController : MonoBehaviour
 
             HealthEventSystem.current.TakeDamage(visibleTarget.name, 15f, DamageTypesManager.Physical);
         }
-
+        
         switch (col)
         {
             case 1: // Hit damagable object

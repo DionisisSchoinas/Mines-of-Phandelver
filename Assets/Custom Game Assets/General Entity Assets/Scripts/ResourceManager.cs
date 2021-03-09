@@ -21,10 +21,10 @@ public class ResourceManager
         public class SwordEffects
         {
             private static string folder = Sources.folder + "Sword Skills/";
-            public static ParticleSystem Fire = ((GameObject)Resources.Load(folder + "Fire Source", typeof(GameObject))).GetComponent<ParticleSystem>();
-            public static ParticleSystem Ice = ((GameObject)Resources.Load(folder + "Ice Source", typeof(GameObject))).GetComponent<ParticleSystem>();
-            public static ParticleSystem Lightning = ((GameObject)Resources.Load(folder + "Lightning Source", typeof(GameObject))).GetComponent<ParticleSystem>();
-            public static ParticleSystem Earth = ((GameObject)Resources.Load(folder + "Earth Source", typeof(GameObject))).GetComponent<ParticleSystem>();
+            public static GameObject Fire = ((GameObject)Resources.Load(folder + "Fire Source", typeof(GameObject)));
+            public static GameObject Ice = ((GameObject)Resources.Load(folder + "Ice Source", typeof(GameObject)));
+            public static GameObject Lightning = ((GameObject)Resources.Load(folder + "Lightning Source", typeof(GameObject)));
+            public static GameObject Earth = ((GameObject)Resources.Load(folder + "Earth Source", typeof(GameObject)));
         }
     }
 

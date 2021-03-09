@@ -56,8 +56,7 @@ public class EnemyAi_V2 : MonoBehaviour
     {
         if (gameObject.name == name)
         {
-            agent.enabled = false;
-
+            agent.enabled = true;
             EngagementScript.current.Disengage(gameObject.name);
         }
     }

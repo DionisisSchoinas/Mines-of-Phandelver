@@ -89,11 +89,14 @@ public class OverlayToWeaponAdapter : MonoBehaviour
     {
         // Check if skill is on cooldown
         if (GetSkillFromIndex(skillIndexInAdapter).onCooldown)
+        {
+            Debug.Log("On Colldown");
             return;
+        }
 
         if (skillIndexInAdapter < wandListLength)
         {
-            // Check if the skill coudln't be selected
+            // Check if the skill couldn't be selected
             if (!wand.SetSelectedSpell(skillIndexInAdapter))
             {
                 return;
@@ -101,7 +104,7 @@ public class OverlayToWeaponAdapter : MonoBehaviour
         }
         else
         {
-            // Check if the skill coudln't be selected
+            // Check if the skill couldn't be selected
             if (!sword.SetSelectedSwordEffect(skillIndexInAdapter - wandListLength - 1))
             {
                 return;

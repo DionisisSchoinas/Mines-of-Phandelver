@@ -10,7 +10,7 @@ public class FireConeWave : ConeBurstSlash
         condition = ConditionsManager.Burning;
     }
 
-    public override ParticleSystem GetSource()
+    public override GameObject GetSource()
     {
         return ResourceManager.Sources.SwordEffects.Fire;
     }

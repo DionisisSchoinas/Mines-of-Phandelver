@@ -9,7 +9,7 @@ public class LightningConeWave : ConeBurstSlash
         damageType = DamageTypesManager.Lightning;
         condition = ConditionsManager.Electrified;
     }
-    public override ParticleSystem GetSource()
+    public override GameObject GetSource()
     {
         return ResourceManager.Sources.SwordEffects.Lightning;
     }

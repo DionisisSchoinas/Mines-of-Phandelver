@@ -31,39 +31,59 @@ public class ResistanceHandler : MonoBehaviour
     }
 
     //-------------- Resistance Management --------------
-    public void ApplyResistance(string name, SkinnedMeshRenderer mesh, Material newMaterial, int resistance, float duration)
+    public void ApplyResistance(string name, List<SkinnedMeshRenderer> meshes, Material newMaterial, int resistance, float duration)
     {
         if (gameObject.name != name)
             return;
 
-        RemoveResistance(mesh);
-        AddResistance(mesh, newMaterial, resistance, duration);
+        RemoveResistance(meshes);
+        AddResistance(meshes, newMaterial, resistance, duration);
     }
 
-    private void AddResistance(SkinnedMeshRenderer mesh, Material newMaterial, int resistance, float duration)
+    private void AddResistance(List<SkinnedMeshRenderer> meshes, Material newMaterial, int resistance, float duration)
     {
-        List<Material> mats = mesh.materials.ToList();
-        mats.Add(newMaterial);
-        mesh.materials = mats.ToArray<Material>(); // Adds the resistance material to the mesh
+        foreach (SkinnedMeshRenderer mesh in meshes)
+        {
+            Material[] mats = mesh.materials;
+
+            Material newMat = newMaterial;
+
+            newMat.SetTexture("_MainTexture", mats[0].GetTexture("_MainTexture"));
+            newMat.SetTexture("_NormalMap", mats[0].GetTexture("_NormalMap"));
+            newMat.SetInt("_HasExtra", 1);
+
+            mats[0] = newMat;
+
+            mesh.materials = mats; // Adds the resistance material to the mesh
+        }
 
         damageResistances.Add(resistance); // Add resistance to list
 
         UIEventSystem.current.ApplyResistance(DamageTypesManager.Types[resistance] + " Resistance", duration);
         HealthEventSystem.current.UpdateResistance(gameObject.name, damageResistances);
 
-        resistanceTimer = StartCoroutine(StartDuration(mesh, duration));
+        resistanceTimer = StartCoroutine(StartDuration(meshes, duration));
     }
 
-    private void RemoveResistance(SkinnedMeshRenderer mesh)
+    private void RemoveResistance(List<SkinnedMeshRenderer> meshes)
     {
         if (!countingResistanceDuration)
             return;
 
         StopCoroutine(resistanceTimer); //Stops coroutine counting duration
 
-        List<Material> mats = mesh.materials.ToList();
-        mats.RemoveAt(mats.Count - 1);
-        mesh.materials = mats.ToArray<Material>(); // Takes entire array except the last element
+        foreach (SkinnedMeshRenderer mesh in meshes)
+        {
+            Material[] mats = mesh.materials;
+
+            Material newMat = mats[0];
+
+            newMat.SetInt("_HasExtra", 0);
+
+            mats[0] = newMat;
+
+            mesh.materials = mats; // Adds the resistance material to the mesh
+        }
 
         damageResistances.Clear(); // Empty resistance list ( works since we only have 1 way to add resistances )
 
@@ -71,11 +91,11 @@ public class ResistanceHandler : MonoBehaviour
         HealthEventSystem.current.UpdateResistance(gameObject.name, damageResistances);
     }
 
-    private IEnumerator StartDuration(SkinnedMeshRenderer mesh, float duration)
+    private IEnumerator StartDuration(List<SkinnedMeshRenderer> meshes, float duration)
     {
         countingResistanceDuration = true;
         yield return new WaitForSeconds(duration);
-        RemoveResistance(mesh);
+        RemoveResistance(meshes);
         countingResistanceDuration = false;
     }
 }

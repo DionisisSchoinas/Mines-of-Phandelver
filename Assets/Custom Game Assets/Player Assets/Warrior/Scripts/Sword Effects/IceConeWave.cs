@@ -10,7 +10,7 @@ public class IceConeWave : ConeBurstSlash
         condition = ConditionsManager.Frozen;
     }
 
-    public override ParticleSystem GetSource()
+    public override GameObject GetSource()
     {
         return ResourceManager.Sources.SwordEffects.Ice;
     }

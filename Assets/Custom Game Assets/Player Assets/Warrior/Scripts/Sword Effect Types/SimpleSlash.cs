@@ -13,9 +13,9 @@ public class SimpleSlash : SwordEffect
 
     public override string type => "Simple Slash";
     public override string skillName => "Simple Slash";
-    public override float cooldown => MeleeController.skillComboCooldown * 0.95f;
+   // public override float cooldown => MeleeController.skillComboCooldown * 0.95f;
 
-    public override void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, SkinnedMeshRenderer playerMesh)
+    public override void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, List<SkinnedMeshRenderer> playerMesh)
     {
         StartCoroutine(PerformAttack(comboTrailTimings[comboPhase].delayToFireSpell, controls, indicator));
     }
@@ -40,7 +40,7 @@ public class SimpleSlash : SwordEffect
         controls.sliding = false;
     }
 
-    public override ParticleSystem GetSource()
+    public override GameObject GetSource()
     {
         return null;
     }

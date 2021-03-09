@@ -10,7 +10,7 @@ public class EarthResistance : ResistanceEffect
         resistanceAppearance = ResourceManager.Materials.Resistances.Physical;
     }
 
-    public override ParticleSystem GetSource()
+    public override GameObject GetSource()
     {
         return ResourceManager.Sources.SwordEffects.Earth;
     }

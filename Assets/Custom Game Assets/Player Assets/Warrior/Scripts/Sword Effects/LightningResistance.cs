@@ -9,7 +9,7 @@ public class LightningResistance : ResistanceEffect
         resistance = DamageTypesManager.Lightning;
         resistanceAppearance = ResourceManager.Materials.Resistances.Lightning;
     }
-    public override ParticleSystem GetSource()
+    public override GameObject GetSource()
     {
         return ResourceManager.Sources.SwordEffects.Lightning;
     }

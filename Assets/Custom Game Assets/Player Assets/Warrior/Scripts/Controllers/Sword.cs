@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Sword : MonoBehaviour
 {
-    public SkinnedMeshRenderer playerMesh;
+    public List<SkinnedMeshRenderer> playerMeshes;
     public GameObject swordObject;
     public Transform swordMotionRoot;
     public Transform tipPoint;
@@ -68,10 +68,10 @@ public class Sword : MonoBehaviour
         currentEffect.comboPhase = comboPhase;
         StartSwingTrail();
         currentEffect.StartSwingCooldown();
-        currentEffect.Attack(controls, indicator, playerMesh);
+        currentEffect.Attack(controls, indicator, playerMeshes);
 
         ManaEventSystem.current.UseMana(currentEffect.manaCost);
-        UIEventSystem.current.FreezeAllSkills(currentEffect.uniqueOverlayToWeaponAdapterId, currentEffect.swingCooldowns[currentEffect.comboPhase] * 0.5f);
+        UIEventSystem.current.FreezeAllSkills(currentEffect.uniqueOverlayToWeaponAdapterId, 0.2f);
     }
 
     private void ChangeSwordEffect()
@@ -79,9 +79,9 @@ public class Sword : MonoBehaviour
         if (currentEffect != null) Destroy(currentEffect.gameObject);
 
         if (selectedEffect == -1)
-            currentEffect = defaultSwordEffect.InstaCast(controls, swordObject, playerMesh, swordRenderer, tipPoint, basePoint, swordMotionRoot);
+            currentEffect = defaultSwordEffect.InstaCast(controls, swordObject, playerMeshes, swordRenderer, tipPoint, basePoint, swordMotionRoot);
         else
-            currentEffect = swordEffects[selectedEffect].InstaCast(controls, swordObject, playerMesh, swordRenderer, tipPoint, basePoint, swordMotionRoot);
+            currentEffect = swordEffects[selectedEffect].InstaCast(controls, swordObject, playerMeshes, swordRenderer, tipPoint, basePoint, swordMotionRoot);
 
         currentEffect.transform.position = swordObject.transform.position;
         currentEffect.transform.rotation = swordObject.transform.rotation;
