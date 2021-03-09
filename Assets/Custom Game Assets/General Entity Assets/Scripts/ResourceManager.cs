@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.Audio;
 
 public class ResourceManager
 {
@@ -85,5 +86,98 @@ public class ResourceManager
         public static GameObject SkillListButton = ((GameObject)Resources.Load(folder + "Skill Button", typeof(GameObject)));
         public static GameObject SkillListColumn = ((GameObject)Resources.Load(folder + "Skill List Column", typeof(GameObject)));
         public static GameObject EffectDisplay = ((GameObject)Resources.Load(folder + "Effect Display", typeof(GameObject)));
+
+        public class Sounds
+        {
+            private static string folder = UI.folder + "Sounds/";
+            public static AudioClip ButtonHoverEnter = (AudioClip)Resources.Load(folder + "Button Hover Enter", typeof(AudioClip));
+        }
+    }
+
+    public class Audio
+    {
+        private static string folder = "Audio/";
+
+        public class AudioSources
+        {
+            public enum Range
+            {
+                Short,
+                Mid,
+                Long
+            }
+
+            private static string folder = Audio.folder + "Audio Sources/";
+            public static AudioSource ShortRange = (AudioSource)Resources.Load(folder + "Short Range", typeof(AudioSource));
+            public static AudioSource MidRange = (AudioSource)Resources.Load(folder + "Mid Range", typeof(AudioSource));
+            public static AudioSource LongRange = (AudioSource)Resources.Load(folder + "Long Range", typeof(AudioSource));
+
+            public static AudioSource LoadAudioSource(string mixer, AudioSource audioSource, Range range)
+            {
+                audioSource.playOnAwake = false;
+                audioSource.loop = false;
+                audioSource.outputAudioMixerGroup = AudioMixers.MainMixer.FindMatchingGroups(mixer)[0];
+                audioSource.rolloffMode = AudioRolloffMode.Custom;
+                audioSource.spatialBlend = 1f;
+                switch (range)
+                {
+                    case Range.Mid:
+                        audioSource.maxDistance = MidRange.maxDistance;
+                        audioSource.SetCustomCurve(AudioSourceCurveType.ReverbZoneMix, MidRange.GetCustomCurve(AudioSourceCurveType.ReverbZoneMix));
+                        return audioSource;
+                    case Range.Long:
+                        audioSource.maxDistance = LongRange.maxDistance;
+                        audioSource.SetCustomCurve(AudioSourceCurveType.ReverbZoneMix, LongRange.GetCustomCurve(AudioSourceCurveType.ReverbZoneMix));
+                        return audioSource;
+                    default:
+                        audioSource.maxDistance = ShortRange.maxDistance;
+                        audioSource.SetCustomCurve(AudioSourceCurveType.ReverbZoneMix, ShortRange.GetCustomCurve(AudioSourceCurveType.ReverbZoneMix));
+                        return audioSource;
+                }
+            }
+        }
+
+        public class AudioMixers
+        {
+            private static string folder = Audio.folder + "Audio Mixers/";
+            public static AudioMixer MainMixer = (AudioMixer)Resources.Load(folder + "Main Mixer", typeof(AudioMixer));
+        }
+
+        public class Ambient
+        {
+            private static string folder = Audio.folder + "Ambient/";
+            public static AudioClip CaveBackground = (AudioClip)Resources.Load(folder + "Cave Audio", typeof(AudioClip));
+            public static AudioClip CityBackground = (AudioClip)Resources.Load(folder + "City Audio", typeof(AudioClip));
+            public static AudioClip CombatBackground = (AudioClip)Resources.Load(folder + "Combat Audio", typeof(AudioClip));
+            public static AudioClip ForestBackground = (AudioClip)Resources.Load(folder + "Forest Audio", typeof(AudioClip));
+        }
+
+        public class Footsteps
+        {
+            private static string folder = Audio.folder + "Footsteps/";
+            public static AudioClip WalkGrass = (AudioClip)Resources.Load(folder + "Footstep Walk Grass", typeof(AudioClip));
+        }
+
+        public class Sword
+        {
+            private static string folder = Audio.folder + "Sword/";
+            public static AudioClip Swing1 = (AudioClip)Resources.Load(folder + "Swing1", typeof(AudioClip));
+            public static AudioClip Swing2 = (AudioClip)Resources.Load(folder + "Swing2", typeof(AudioClip));
+            public static AudioClip HitFlesh = (AudioClip)Resources.Load(folder + "Hit Flesh", typeof(AudioClip));
+            public static AudioClip HitObject = (AudioClip)Resources.Load(folder + "Hit Object", typeof(AudioClip));
+        }
+
+        public class Bow
+        {
+            private static string folder = Audio.folder + "Bow/";
+            public static AudioClip ShootArrow = (AudioClip)Resources.Load(folder + "Shoot Arrow", typeof(AudioClip));
+        }
+
+        public class Arrow
+        {
+            private static string folder = Audio.folder + "Arrow/";
+            public static AudioClip Hit = (AudioClip)Resources.Load(folder + "Arrow Hit", typeof(AudioClip));
+            public static AudioClip Fly = (AudioClip)Resources.Load(folder + "Arrow Fly", typeof(AudioClip));
+        }
     }
 }

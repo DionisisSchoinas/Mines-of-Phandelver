@@ -16,6 +16,7 @@ public class ChaseBehaviour : StateMachineBehaviour
         aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
         target = aiScript.target.transform;
 
+        EngagementScript.current.Engage(aiScript.gameObject.name);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -26,8 +27,6 @@ public class ChaseBehaviour : StateMachineBehaviour
         {
             aiScript.Stop();
             animator.SetBool("Engage", true);
-    
-
         }
 
 
