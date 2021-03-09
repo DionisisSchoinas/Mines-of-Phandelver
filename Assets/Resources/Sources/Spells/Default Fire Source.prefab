@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8393465025559046071}
   - component: {fileID: 6558112592143082812}
   - component: {fileID: 6014783670045370662}
+  - component: {fileID: -2899616190799122537}
   m_Layer: 8
   m_Name: Default Fire Source
   m_TagString: Untagged
@@ -4755,6 +4756,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-2899616190799122537
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856657770994966794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0deb8c8cc236d3499e97ff86131be36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 0
 --- !u!1 &6020617056058471291
 GameObject:
   m_ObjectHideFlags: 0

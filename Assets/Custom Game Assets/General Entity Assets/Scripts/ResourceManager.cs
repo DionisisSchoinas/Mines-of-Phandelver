@@ -183,5 +183,21 @@ public class ResourceManager
             public static AudioClip Hit = (AudioClip)Resources.Load(folder + "Arrow Hit", typeof(AudioClip));
             public static AudioClip Fly = (AudioClip)Resources.Load(folder + "Arrow Fly", typeof(AudioClip));
         }
+
+        public class SpellSources
+        {
+            private static string folder = Audio.folder + "Spell Sources/";
+            public static AudioClip Fire = (AudioClip)Resources.Load(folder + "Fire", typeof(AudioClip));
+            public static AudioClip Ice = (AudioClip)Resources.Load(folder + "Ice", typeof(AudioClip));
+            public static AudioClip Earth = (AudioClip)Resources.Load(folder + "Earth", typeof(AudioClip));
+            public static AudioClip Lightning = (AudioClip)Resources.Load(folder + "Lightning", typeof(AudioClip));
+            public static AudioClip Energy = (AudioClip)Resources.Load(folder + "Energy", typeof(AudioClip));
+        }
+
+        public class Spells
+        {
+            private static string folder = Audio.folder + "Spells/";
+            public static AudioClip FireWall = (AudioClip)Resources.Load(folder + "Fire Wall", typeof(AudioClip));
+        }
     }
 }
