@@ -33,8 +33,6 @@ public class MeleeController : MonoBehaviour
     //direction lock
     public bool isDuringAttack;
 
-
-
     public static float skillComboCooldown;
     private bool skillListUp;
     private float currentMana;
@@ -45,6 +43,11 @@ public class MeleeController : MonoBehaviour
     private float lastCooldownDisplayMessage;
     private float lastManaDisplayMessage;
 
+    public float swingSoundDelay = 0.5f;
+    private List<AudioClip> swingSounds;
+    private Coroutine swingSoundCoroutine;
+    private AudioSource swingAudioSource;
+    private AudioSource hitAudioSource;
 
     void Start()
     {
@@ -66,6 +69,17 @@ public class MeleeController : MonoBehaviour
 
         isOnCooldown = false;
         hasEnoughMana = true;
+
+        swingAudioSource = gameObject.AddComponent<AudioSource>();
+        swingAudioSource = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", swingAudioSource, ResourceManager.Audio.AudioSources.Range.Short);
+
+        hitAudioSource = gameObject.AddComponent<AudioSource>();
+        hitAudioSource.volume = 0.5f;
+        hitAudioSource = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", hitAudioSource, ResourceManager.Audio.AudioSources.Range.Short);
+
+        swingSounds = new List<AudioClip>();
+        swingSounds.Add(ResourceManager.Audio.Sword.Swing1);
+        swingSounds.Add(ResourceManager.Audio.Sword.Swing2);
 
         UIEventSystem.current.onSkillListUp += SkillListUp;
         ManaEventSystem.current.onManaUpdated += ManaUpdate;
@@ -186,6 +200,8 @@ public class MeleeController : MonoBehaviour
 
     IEnumerator PerformAttack(float attackDelay)
     {
+        PlaySwordSwingAudio();
+
         animations.Attack();
 
         yield return new WaitForSeconds(attackDelay);
@@ -207,5 +223,22 @@ public class MeleeController : MonoBehaviour
         comboLock = true;
         yield return new WaitForSeconds(comboCooldown);
         comboLock = false;
+    }
+
+    private void PlaySwordSwingAudio()
+    {
+        swingAudioSource.Stop();
+        int randomSwing = Random.Range(0, swingSounds.Count);
+        swingAudioSource.clip = swingSounds[randomSwing];
+
+        if (swingSoundCoroutine != null)
+            StopCoroutine(swingSoundCoroutine);
+        swingSoundCoroutine = StartCoroutine(PlaySound());
+    }
+
+    IEnumerator PlaySound()
+    {
+        yield return new WaitForSeconds(swingSoundDelay);
+        swingAudioSource.Play();
     }
 }

@@ -15,13 +15,22 @@ public class StepDetection : MonoBehaviour
         Backward,
     }
 
+    public enum Size
+    {
+        Light,
+        Heavy,
+    }
+
     public LayerMask groundLayer;
-    public float distanceFromGround = 0.5f;
-    public Direction jointToGroundDirection;
+    public Size stepWeight;
     public List<Transform> groundContactPoints;
+    public List<Direction> jointToGroundDirection;
+    public List<float> distanceFromGround;
 
     private List<bool> grounded;
     private List<AudioSource> audioSources;
+
+    private BackgroundMusicController.Location location;
 
     private void Start()
     {
@@ -37,24 +46,28 @@ public class StepDetection : MonoBehaviour
         {
             audioSources.Add(groundContactPoints[i].gameObject.AddComponent<AudioSource>());
             audioSources[i] = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSources[i], ResourceManager.Audio.AudioSources.Range.Mid);
-            audioSources[i].clip = ResourceManager.Audio.Footsteps.WalkGrass;
         }
+
+        BackgroundMusicController.current.onLocationSet += SetLocation;
+    }
+
+    private void OnDestroy()
+    {
+        BackgroundMusicController.current.onLocationSet -= SetLocation;
     }
 
     private void FixedUpdate()
     {
         for (int i=0; i<groundContactPoints.Count; i++)
         {
-            //bool touch = Physics.CheckSphere(groundContactPoints[i].position, distanceFromGround, groundLayer);
-
-
             RaycastHit hit1;
             RaycastHit hit2;
-            bool touch1 = Physics.Raycast(groundContactPoints[i].position, Vector3.down, out hit1, distanceFromGround, groundLayer);
-            bool touch2 = Physics.Raycast(groundContactPoints[i].position, FindDirection(groundContactPoints[i]), out hit2, distanceFromGround, groundLayer);
+            bool touch1 = Physics.Raycast(groundContactPoints[i].position, Vector3.down, out hit1, distanceFromGround[i], groundLayer);
+            bool touch2 = Physics.Raycast(groundContactPoints[i].position, FindDirection(i), out hit2, distanceFromGround[i], groundLayer);
 
             if (touch1 && touch2 && !grounded[i]) // Collides with ground and is not already grounded
             {
+                audioSources[i].clip = FindAudioClip();
                 audioSources[i].Play();
                 grounded[i] = true;
             }
@@ -65,9 +78,37 @@ public class StepDetection : MonoBehaviour
         }
     }
 
-    private Vector3 FindDirection(Transform transform)
+    private void SetLocation(BackgroundMusicController.Location location)
     {
-        switch (jointToGroundDirection)
+        this.location = location;
+    }
+
+    private AudioClip FindAudioClip()
+    {
+        switch (stepWeight)
+        {
+            case Size.Heavy:
+                switch (location)
+                {
+                    case BackgroundMusicController.Location.Cave:
+                        return ResourceManager.Audio.Footsteps.WalkCaveHeavy;
+                    default:
+                        return ResourceManager.Audio.Footsteps.WalkForestHeavy;
+                }
+            default:
+                switch (location)
+                {
+                    case BackgroundMusicController.Location.Cave:
+                        return ResourceManager.Audio.Footsteps.WalkCaveLight;
+                    default:
+                        return ResourceManager.Audio.Footsteps.WalkForestLight;
+                }
+        }
+    }
+
+    private Vector3 FindDirection(int index)
+    {
+        switch (jointToGroundDirection[index])
         {
             case Direction.Down:
                 return -transform.up;
@@ -94,10 +135,10 @@ public class StepDetection : MonoBehaviour
             if (groundContactPoints[i] != null)
             {
                 Gizmos.color = Color.red;
-                Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + Vector3.down * distanceFromGround);
+                Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + Vector3.down * distanceFromGround[i]);
 
                 Gizmos.color = Color.blue;
-                Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + (FindDirection(groundContactPoints[i]) * distanceFromGround));
+                Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + (FindDirection(i) * distanceFromGround[i]));
 
                 try
                 {

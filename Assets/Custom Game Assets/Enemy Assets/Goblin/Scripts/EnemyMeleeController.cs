@@ -11,9 +11,8 @@ public class EnemyMeleeController : MonoBehaviour
     public float swingSoundDelay = 0.5f;
 
     private List<AudioClip> swingSounds;
-    private AudioSource swingAudioSource;
     private Coroutine swingSoundCoroutine;
-
+    private AudioSource swingAudioSource;
     private AudioSource hitAudioSource;
 
     // Start is called before the first frame update
@@ -80,7 +79,7 @@ public class EnemyMeleeController : MonoBehaviour
     private void PlaySwordSwingAudio()
     {
         swingAudioSource.Stop();
-        int randomSwing = Random.Range(0, swingSounds.Count - 1);
+        int randomSwing = Random.Range(0, swingSounds.Count);
         swingAudioSource.clip = swingSounds[randomSwing];
 
         if (swingSoundCoroutine != null)

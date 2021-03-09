@@ -115,7 +115,7 @@ public class SwordEffect : BasicSword
             
             StartCooldown();
             ManaEventSystem.current.UseMana(manaCost);
-            UIEventSystem.current.FreezeAllSkills(uniqueOverlayToWeaponAdapterId, swingCooldowns[comboPhase] * 0.5f);
+            UIEventSystem.current.FreezeAllSkills(uniqueOverlayToWeaponAdapterId, OverlayControls.skillFreezeAfterCasting);
         }
 
         instaCasting = false;

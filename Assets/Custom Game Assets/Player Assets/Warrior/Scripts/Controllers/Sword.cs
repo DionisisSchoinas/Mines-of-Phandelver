@@ -71,7 +71,7 @@ public class Sword : MonoBehaviour
         currentEffect.Attack(controls, indicator, playerMeshes);
 
         ManaEventSystem.current.UseMana(currentEffect.manaCost);
-        UIEventSystem.current.FreezeAllSkills(currentEffect.uniqueOverlayToWeaponAdapterId, 0.2f);
+        UIEventSystem.current.FreezeAllSkills(currentEffect.uniqueOverlayToWeaponAdapterId, OverlayControls.skillFreezeAfterCasting);
     }
 
     private void ChangeSwordEffect()

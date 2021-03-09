@@ -155,7 +155,11 @@ public class ResourceManager
         public class Footsteps
         {
             private static string folder = Audio.folder + "Footsteps/";
-            public static AudioClip WalkGrass = (AudioClip)Resources.Load(folder + "Footstep Walk Grass", typeof(AudioClip));
+            public static AudioClip WalkForestLight = (AudioClip)Resources.Load(folder + "Light Forest", typeof(AudioClip));
+            public static AudioClip WalkForestHeavy = (AudioClip)Resources.Load(folder + "Heavy Forest", typeof(AudioClip));
+
+            public static AudioClip WalkCaveLight = (AudioClip)Resources.Load(folder + "Light Cave", typeof(AudioClip));
+            public static AudioClip WalkCaveHeavy = (AudioClip)Resources.Load(folder + "Heavy Cave", typeof(AudioClip));
         }
 
         public class Sword
