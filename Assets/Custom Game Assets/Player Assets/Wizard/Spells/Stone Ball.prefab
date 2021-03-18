@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1696102060004402429}
   - component: {fileID: 1696102060004402418}
   - component: {fileID: 1696102060004402416}
+  - component: {fileID: 4478295739574233739}
   m_Layer: 8
   m_Name: Stone Ball
   m_TagString: Untagged
@@ -66,9 +67,21 @@ MonoBehaviour:
   cooldownPercentage: 0
   cancelled: 0
   speed: 10
-  range: 30
   explosion: {fileID: 8289330964062763208, guid: 8818e866a4695ed4e840b6033135c640,
     type: 3}
+--- !u!114 &4478295739574233739
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1696102060004402417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0deb8c8cc236d3499e97ff86131be36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 2
 --- !u!1 &3242222663244510830
 GameObject:
   m_ObjectHideFlags: 0

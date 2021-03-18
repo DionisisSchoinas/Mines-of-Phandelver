@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpellTypeRay : Spell
 {
+    public SpellSourceAudio.Type elementType;
+
     public float damage = 10f;
     public int damageTicksPerSecond = 8;
     [HideInInspector]
@@ -31,6 +33,41 @@ public class SpellTypeRay : Spell
         base.Awake();
         boxSize = (new Vector3(3f, 5f, 18f)) / 2f;
         InvokeRepeating(nameof(Damage), 0f, 1f / damageTicksPerSecond);
+        SpawnAudio();
+    }
+
+    public void SpawnAudio()
+    {
+        AudioSource audioSource1 = gameObject.AddComponent<AudioSource>();
+        audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Short);
+        audioSource1.loop = true;
+
+        AudioSource audioSource2 = gameObject.AddComponent<AudioSource>();
+        audioSource2 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource2, ResourceManager.Audio.AudioSources.Range.Short);
+        audioSource2.loop = true;
+
+        switch (elementType)
+        {
+            case SpellSourceAudio.Type.Earth:
+                audioSource1.clip = ResourceManager.Audio.Spells.Earth.Ray;
+                audioSource2.clip = ResourceManager.Audio.SpellSources.Earth;
+                break;
+            case SpellSourceAudio.Type.Ice:
+                audioSource1.clip = ResourceManager.Audio.Spells.Ice.Ray;
+                audioSource2.clip = ResourceManager.Audio.SpellSources.Ice;
+                break;
+            case SpellSourceAudio.Type.Lightning:
+                audioSource1.clip = ResourceManager.Audio.Spells.Lightning.Ray;
+                audioSource2.clip = ResourceManager.Audio.SpellSources.Lightning;
+                break;
+            default:
+                audioSource1.clip = ResourceManager.Audio.Spells.Fire.Ray;
+                audioSource2.clip = ResourceManager.Audio.SpellSources.Fire;
+                break;
+        }
+
+        audioSource1.Play();
+        audioSource2.Play();
     }
 
     private new void FixedUpdate()

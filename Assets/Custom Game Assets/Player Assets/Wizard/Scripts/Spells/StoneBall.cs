@@ -14,6 +14,12 @@ public class StoneBall : SpellTypeBall
         path.SetActive(false);
         MovePath();
         path.SetActive(true);
+
+        AudioSource audioSource1 = gameObject.AddComponent<AudioSource>();
+        audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Short);
+        audioSource1.loop = true;
+        audioSource1.clip = ResourceManager.Audio.Spells.Earth.BallTrail;
+        audioSource1.Play();
     }
 
     private new void FixedUpdate()

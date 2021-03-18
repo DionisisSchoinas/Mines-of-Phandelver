@@ -9530,6 +9530,7 @@ GameObject:
   - component: {fileID: 2777572981645948766}
   - component: {fileID: 2166230741485534137}
   - component: {fileID: 3707389610335417720}
+  - component: {fileID: -8900599637807308079}
   m_Layer: 8
   m_Name: Ice Bolt
   m_TagString: Untagged
@@ -14309,7 +14310,19 @@ MonoBehaviour:
   cancelled: 0
   damage: 15
   speed: 40
-  range: 50
   explosionParticles: {fileID: 8564859762798733995, guid: 8c1f22899fd486d4da0e08a80f557473,
     type: 3}
   damageType: 0
+--- !u!114 &-8900599637807308079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8347748453192151727}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0deb8c8cc236d3499e97ff86131be36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 1

@@ -9662,8 +9662,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc1d8831339c5094dade929ee1d57d6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosionSize: 1
+  elementType: 1
   damage: 35
   radius: 9
+  damageType: 0
 --- !u!1 &6955678256197671478
 GameObject:
   m_ObjectHideFlags: 0

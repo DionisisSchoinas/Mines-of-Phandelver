@@ -136,9 +136,11 @@ public class StepDetection : MonoBehaviour
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + Vector3.down * distanceFromGround[i]);
+                Gizmos.DrawSphere(groundContactPoints[i].position + Vector3.down * distanceFromGround[i], 0.1f);
 
                 Gizmos.color = Color.blue;
                 Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + (FindDirection(i) * distanceFromGround[i]));
+                Gizmos.DrawSphere(groundContactPoints[i].position + (FindDirection(i) * distanceFromGround[i]), 0.1f);
 
                 try
                 {

@@ -37,6 +37,7 @@ public class LightningWall : SpellTypeWall
                 .BreakPoints(50)
                 .EnabledSparks(false)
                 .ChangeTicksPerSecond(15)
+                .HasAudio(false)
                 .Enable();
         }
     }

@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8426999494454880177}
   - component: {fileID: 4170548096301714673}
   - component: {fileID: 5122289138399116585}
+  - component: {fileID: 5465612318279187148}
   m_Layer: 0
   m_Name: Lightning Explosion Particles
   m_TagString: Untagged
@@ -4812,3 +4813,20 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &5465612318279187148
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5779976989579067745}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 463098b3d3e9f904a855561dcaf55726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionSize: 0
+  elementType: 3
+  damage: 0
+  radius: 0
+  damageType: 0

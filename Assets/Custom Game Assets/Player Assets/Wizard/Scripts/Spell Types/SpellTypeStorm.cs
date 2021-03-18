@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class SpellTypeStorm : Spell
 {
+    public SpellSourceAudio.Type elementType;
+
     public float damage = 5f;
     public int damageTicksPerSecond = 5;
 
@@ -34,6 +36,32 @@ public class SpellTypeStorm : Spell
         base.Awake();
         cancelled = false;
         InvokeRepeating(nameof(Damage), 1f, 1f / damageTicksPerSecond);
+        SpawnAudio();
+    }
+
+    public void SpawnAudio()
+    {
+        AudioSource audioSource1 = gameObject.AddComponent<AudioSource>();
+        audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Mid);
+        audioSource1.loop = true;
+
+        switch (elementType)
+        {
+            case SpellSourceAudio.Type.Earth:
+                audioSource1.clip = ResourceManager.Audio.Spells.Earth.Storm;
+                break;
+            case SpellSourceAudio.Type.Ice:
+                audioSource1.clip = ResourceManager.Audio.Spells.Ice.Storm;
+                break;
+            case SpellSourceAudio.Type.Lightning:
+                audioSource1.clip = ResourceManager.Audio.Spells.Lightning.Storm;
+                break;
+            default:
+                audioSource1.clip = ResourceManager.Audio.Spells.Fire.Storm;
+                break;
+        }
+
+        audioSource1.Play();
     }
 
     private new void FixedUpdate()

@@ -14273,6 +14273,7 @@ GameObject:
   - component: {fileID: 3956823411663701898}
   - component: {fileID: 3956823411663701899}
   - component: {fileID: 5468378603873797052}
+  - component: {fileID: -6611986793164303496}
   m_Layer: 8
   m_Name: Fire Bolt
   m_TagString: Untagged
@@ -14331,7 +14332,19 @@ MonoBehaviour:
   cancelled: 0
   damage: 15
   speed: 40
-  range: 50
   explosionParticles: {fileID: 8289330964062763208, guid: 72cb46b6b72bfa84c8c62d920af76b81,
     type: 3}
   damageType: 0
+--- !u!114 &-6611986793164303496
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3956823411663701910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0deb8c8cc236d3499e97ff86131be36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 0

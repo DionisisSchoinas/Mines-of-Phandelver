@@ -4767,6 +4767,7 @@ GameObject:
   - component: {fileID: 6014783670045370662}
   - component: {fileID: 5459327006205054554}
   - component: {fileID: 7246253167452842863}
+  - component: {fileID: 7663657132935655622}
   m_Layer: 8
   m_Name: Lightning Ball
   m_TagString: Untagged
@@ -9544,6 +9545,18 @@ MonoBehaviour:
   cooldownPercentage: 0.8499995
   cancelled: 0
   speed: 10
-  range: 30
   explosion: {fileID: 5779976989579067745, guid: 95cda1b7a26f57e4f8d419f064c15506,
     type: 3}
+--- !u!114 &7663657132935655622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1856657770994966794}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0deb8c8cc236d3499e97ff86131be36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 3

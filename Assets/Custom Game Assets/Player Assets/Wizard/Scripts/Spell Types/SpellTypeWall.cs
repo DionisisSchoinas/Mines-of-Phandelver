@@ -2,6 +2,8 @@
 
 public class SpellTypeWall : Spell
 {
+    public SpellSourceAudio.Type elementType;
+
     public float damage = 5f;
     public int damageTicksPerSecond = 5;
 
@@ -35,6 +37,32 @@ public class SpellTypeWall : Spell
         base.Awake();
         boxSize = (new Vector3(23f, 10f, 3f)) / 2f;
         InvokeRepeating(nameof(Damage), 0f, 1f / damageTicksPerSecond);
+        SpawnAudio();
+    }
+
+    public void SpawnAudio()
+    {
+        AudioSource audioSource1 = gameObject.AddComponent<AudioSource>();
+        audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Mid);
+        audioSource1.loop = true;
+
+        switch (elementType)
+        {
+            case SpellSourceAudio.Type.Earth:
+                audioSource1.clip = ResourceManager.Audio.Spells.Earth.Wall;
+                break;
+            case SpellSourceAudio.Type.Ice:
+                audioSource1.clip = ResourceManager.Audio.Spells.Ice.Wall;
+                break;
+            case SpellSourceAudio.Type.Lightning:
+                audioSource1.clip = ResourceManager.Audio.Spells.Lightning.Wall;
+                break;
+            default:
+                audioSource1.clip = ResourceManager.Audio.Spells.Fire.Wall;
+                break;
+        }
+
+        audioSource1.Play();
     }
 
     private new void FixedUpdate()
