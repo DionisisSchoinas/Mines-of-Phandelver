@@ -6,8 +6,8 @@ using UnityEngine;
 public class HealthController : EntityResource
 {
     public float deathDelay = 30f;
-    public List<int> resistances { get; private set; }
-    public List<int> immunities { get; private set; }
+    public List<ElementTypes.Type> resistances { get; private set; }
+    public List<ElementTypes.Type> immunities { get; private set; }
 
     private Animator animator;
     private Collider col;
@@ -86,8 +86,10 @@ public class HealthController : EntityResource
         rb = gameObject.GetComponent<Rigidbody>();
         col = gameObject.GetComponent<Collider>();
 
-        resistances = new List<int>();
-        immunities = new List<int>();
+        if (immunities == null)
+            immunities = new List<ElementTypes.Type>();
+        if (resistances == null)
+            resistances = new List<ElementTypes.Type>();
     }
 
     private new void Start()
@@ -118,7 +120,7 @@ public class HealthController : EntityResource
         HealthEventSystem.current.onResistanceUpdate -= UpdateResistances;
     }
 
-    public void TakeDamage(string name, float damage, int damageType)
+    public void TakeDamage(string name, float damage, ElementTypes.Type damageType)
     {
         // If controller matches
         if (gameObject.name == name)
@@ -133,7 +135,7 @@ public class HealthController : EntityResource
         }
     }
 
-    private float CheckDamageTypes(float damage, int damageType)
+    private float CheckDamageTypes(float damage, ElementTypes.Type damageType)
     {
         if (immunities.Contains(damageType))
         {
@@ -155,7 +157,7 @@ public class HealthController : EntityResource
         this.invulnerable = invulnerable;
     }
 
-    private void UpdateResistances(string name, List<int> resistances)
+    private void UpdateResistances(string name, List<ElementTypes.Type> resistances)
     {
         if (gameObject.name == name)
         {
@@ -163,7 +165,7 @@ public class HealthController : EntityResource
         }
     }
 
-    private void UpdateImmunities(string name, List<int> immunities)
+    private void UpdateImmunities(string name, List<ElementTypes.Type> immunities)
     {
         if (gameObject.name == name)
         {

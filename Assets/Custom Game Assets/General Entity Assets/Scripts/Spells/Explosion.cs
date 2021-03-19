@@ -9,12 +9,10 @@ public class Explosion : MonoBehaviour
     }
 
     public Size explosionSize;
-    public SpellSourceAudio.Type elementType;
+    public ElementTypes.Type elementType;
 
     public float damage = 35f;
     public float radius = 9f;
-    [HideInInspector]
-    public int damageType;
     [HideInInspector]
     public Condition condition;
 
@@ -35,13 +33,13 @@ public class Explosion : MonoBehaviour
                 audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Mid);
                 switch (elementType)
                 {
-                    case SpellSourceAudio.Type.Earth:
+                    case ElementTypes.Type.Physical_Earth:
                         audioSource1.clip = ResourceManager.Audio.Spells.Earth.BigExplosion;
                         break;
-                    case SpellSourceAudio.Type.Ice:
+                    case ElementTypes.Type.Cold_Ice:
                         audioSource1.clip = ResourceManager.Audio.Spells.Ice.BigExplosion;
                         break;
-                    case SpellSourceAudio.Type.Lightning:
+                    case ElementTypes.Type.Lightning:
                         audioSource1.clip = ResourceManager.Audio.Spells.Lightning.BigExplosion;
                         break;
                     default:
@@ -53,17 +51,18 @@ public class Explosion : MonoBehaviour
                 audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Short);
                 switch (elementType)
                 {
-                    case SpellSourceAudio.Type.Earth:
+                    case ElementTypes.Type.Physical_Earth:
                         audioSource1.clip = ResourceManager.Audio.Spells.Earth.SmallExplosion;
                         break;
-                    case SpellSourceAudio.Type.Ice:
+                    case ElementTypes.Type.Cold_Ice:
                         audioSource1.clip = ResourceManager.Audio.Spells.Ice.SmallExplosion;
                         break;
-                    case SpellSourceAudio.Type.Lightning:
+                    case ElementTypes.Type.Lightning:
                         audioSource1.clip = ResourceManager.Audio.Spells.Lightning.SmallExplosion;
                         break;
-                    case SpellSourceAudio.Type.Energy:
-                        //audioSource1.clip = ResourceManager.Audio.Spells.Energy.BigExplosion;
+                    case ElementTypes.Type.Energy:
+                        AudioClip[] clips = ResourceManager.Audio.Spells.Energy.Impacts;
+                        audioSource1.clip = clips[Random.Range(0, clips.Length)];
                         break;
                     default:
                         audioSource1.clip = ResourceManager.Audio.Spells.Fire.SmallExplosion;
@@ -94,7 +93,7 @@ public class Explosion : MonoBehaviour
     {
         if (gm == null || gm.name == casterName)  return;
 
-        HealthEventSystem.current.TakeDamage(gm.name, damage, damageType);
+        HealthEventSystem.current.TakeDamage(gm.name, damage, elementType);
         if (condition != null && Random.value <= 0.5f) HealthEventSystem.current.SetCondition(gm.name, condition);
     }
 }

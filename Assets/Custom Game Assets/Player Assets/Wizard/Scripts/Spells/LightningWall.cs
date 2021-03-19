@@ -10,8 +10,6 @@ public class LightningWall : SpellTypeWall
 
     private void Start()
     {
-        doDamage = true;
-        damageType = DamageTypesManager.Lightning;
         condition = ConditionsManager.Electrified;
 
         pillars = GetComponentsInChildren<MeshRenderer>();

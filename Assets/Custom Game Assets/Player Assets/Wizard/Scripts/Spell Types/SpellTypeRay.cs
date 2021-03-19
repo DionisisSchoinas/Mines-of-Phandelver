@@ -4,12 +4,10 @@ using UnityEngine;
 
 public class SpellTypeRay : Spell
 {
-    public SpellSourceAudio.Type elementType;
+    public ElementTypes.Type elementType;
 
     public float damage = 10f;
     public int damageTicksPerSecond = 8;
-    [HideInInspector]
-    public int damageType;
     [HideInInspector]
     public Condition condition;
 
@@ -48,15 +46,15 @@ public class SpellTypeRay : Spell
 
         switch (elementType)
         {
-            case SpellSourceAudio.Type.Earth:
+            case ElementTypes.Type.Physical_Earth:
                 audioSource1.clip = ResourceManager.Audio.Spells.Earth.Ray;
                 audioSource2.clip = ResourceManager.Audio.SpellSources.Earth;
                 break;
-            case SpellSourceAudio.Type.Ice:
+            case ElementTypes.Type.Cold_Ice:
                 audioSource1.clip = ResourceManager.Audio.Spells.Ice.Ray;
                 audioSource2.clip = ResourceManager.Audio.SpellSources.Ice;
                 break;
-            case SpellSourceAudio.Type.Lightning:
+            case ElementTypes.Type.Lightning:
                 audioSource1.clip = ResourceManager.Audio.Spells.Lightning.Ray;
                 audioSource2.clip = ResourceManager.Audio.SpellSources.Lightning;
                 break;
@@ -123,7 +121,7 @@ public class SpellTypeRay : Spell
         {
             if (gm != null)
             {
-                HealthEventSystem.current.TakeDamage(gm.name, damage, damageType);
+                HealthEventSystem.current.TakeDamage(gm.name, damage, elementType);
                 if (condition != null)
                     if (Random.value <= 0.25f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.name, condition);
             }

@@ -6,7 +6,6 @@ public class LightningConeWave : ConeBurstSlash
 
     void Start()
     {
-        damageType = DamageTypesManager.Lightning;
         condition = ConditionsManager.Electrified;
     }
     public override GameObject GetSource()

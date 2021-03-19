@@ -6,7 +6,6 @@ public class Firerain : SpellTypeStorm
 
     private void Start()
     {
-        damageType = DamageTypesManager.Fire;
         condition = ConditionsManager.Burning;
     }
 

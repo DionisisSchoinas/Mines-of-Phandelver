@@ -4,16 +4,7 @@ using UnityEngine;
 
 public class SpellSourceAudio : MonoBehaviour
 {
-    public enum Type
-    {
-        Fire,
-        Ice,
-        Earth,
-        Lightning,
-        Energy
-    }
-
-    public Type elementType;
+    public ElementTypes.Type elementType;
 
     private AudioSource audioSource;
 
@@ -24,16 +15,16 @@ public class SpellSourceAudio : MonoBehaviour
         audioSource.loop = true;
         switch (elementType)
         {
-            case Type.Fire:
+            case ElementTypes.Type.Fire:
                 audioSource.clip = ResourceManager.Audio.SpellSources.Fire;
                 break;
-            case Type.Ice:
+            case ElementTypes.Type.Cold_Ice:
                 audioSource.clip = ResourceManager.Audio.SpellSources.Ice;
                 break;
-            case Type.Earth:
+            case ElementTypes.Type.Physical_Earth:
                 audioSource.clip = ResourceManager.Audio.SpellSources.Earth;
                 break;
-            case Type.Lightning:
+            case ElementTypes.Type.Lightning:
                 audioSource.clip = ResourceManager.Audio.SpellSources.Lightning;
                 break;
             default:

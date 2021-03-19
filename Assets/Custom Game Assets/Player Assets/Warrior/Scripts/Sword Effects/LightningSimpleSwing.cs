@@ -6,7 +6,6 @@ public class LightningSimpleSwing : ElementalSlash
 
     void Start()
     {
-        damageType = DamageTypesManager.Lightning;
         condition = ConditionsManager.Electrified;
     }
     public override GameObject GetSource()

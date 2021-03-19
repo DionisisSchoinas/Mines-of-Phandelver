@@ -17,7 +17,6 @@ public class DefaultSpell : Spell
     public float maxRotation = 1f;
     public float homingRange = 20f;
 
-    private int damageType = DamageTypesManager.Physical;
     private Condition condition = null;
 
     public override bool channel => true;
@@ -43,7 +42,7 @@ public class DefaultSpell : Spell
     {
         foreach (GameObject target in hitTargets)
         {
-            HealthEventSystem.current.TakeDamage(target.name, damage, damageType);
+            HealthEventSystem.current.TakeDamage(target.name, damage, ElementTypes.Type.Physical_Earth);
 
             if (condition != null)
                 if (Random.value <= 0.1f) HealthEventSystem.current.SetCondition(target.name, condition);

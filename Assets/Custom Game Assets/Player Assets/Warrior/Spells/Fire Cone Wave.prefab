@@ -4838,7 +4838,7 @@ GameObject:
   - component: {fileID: 4700739637534068140}
   - component: {fileID: -6289235402279667394}
   m_Layer: 0
-  m_Name: Fire Wave
+  m_Name: Fire Cone Wave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4871,16 +4871,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a0d1b15c54f6ca43955fee6dab4dff5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  uniqueOverlayToWeaponAdapterId: 4
+  onCooldown: 1
+  cooldownPercentage: 0.18
   attributes:
+    elementType: 1
+    swingSoundDelay: 0
     trails:
     - {fileID: 8215892400159611791, guid: 73dce3ee91a19f249af5a865c5cda15d, type: 3}
     swordMaterial: {fileID: 2100000, guid: 6d73a9dc708008c4887583475cdd6e45, type: 2}
-  attackDelay: 0.5
   damage: 50
   coneWidth: 35
   coneLength: 25
   force: 5
-  damageType: 0
 --- !u!1 &5606871902675668589
 GameObject:
   m_ObjectHideFlags: 0

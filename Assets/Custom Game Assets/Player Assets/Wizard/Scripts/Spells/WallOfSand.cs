@@ -8,7 +8,6 @@ public class WallOfSand : SpellTypeWall
 
     private void Start()
     {
-        doDamage = false;
     }
 
     public override ParticleSystem GetSource()

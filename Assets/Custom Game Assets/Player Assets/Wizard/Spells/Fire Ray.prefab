@@ -23790,7 +23790,6 @@ MonoBehaviour:
   onCooldown: 0
   cooldownPercentage: 0
   cancelled: 0
-  elementType: 0
+  elementType: 1
   damage: 5
   damageTicksPerSecond: 8
-  damageType: 0

@@ -8,7 +8,6 @@ public class StoneRay : SpellTypeRay
 
     private void Start()
     {
-        damageType = DamageTypesManager.Physical;
         condition = null;
     }
 

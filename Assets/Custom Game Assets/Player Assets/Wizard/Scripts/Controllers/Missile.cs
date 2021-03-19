@@ -24,6 +24,7 @@ public class Missile : MonoBehaviour
     private float roamTime;
     private Vector3 startPosition;
 
+    private AudioSource audioSource;
 
     private void Start()
     {

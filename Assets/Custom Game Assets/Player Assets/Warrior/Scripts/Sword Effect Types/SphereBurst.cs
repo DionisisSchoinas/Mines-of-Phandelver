@@ -9,8 +9,6 @@ public class SphereBurst : SwordEffect
     public float force = 10f;
 
     [HideInInspector]
-    public int damageType = DamageTypesManager.Physical;
-    [HideInInspector]
     public Condition condition = null;
 
     private SpellIndicatorController indicatorController;
@@ -30,6 +28,27 @@ public class SphereBurst : SwordEffect
         particles = GetComponentInChildren<ParticleSystem>();
         particles.transform.parent = null;
         particles.transform.localScale = Vector3.one;
+
+        SpawnAudio();
+    }
+
+    public void SpawnAudio()
+    {
+        switch (attributes.elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                swingAudioClips = ResourceManager.Audio.Spells.Earth.Swings;
+                break;
+            case ElementTypes.Type.Cold_Ice:
+                swingAudioClips = ResourceManager.Audio.Spells.Ice.Swings;
+                break;
+            case ElementTypes.Type.Lightning:
+                swingAudioClips = ResourceManager.Audio.Spells.Lightning.Swings;
+                break;
+            default:
+                swingAudioClips = ResourceManager.Audio.Spells.Fire.Swings;
+                break;
+        }
     }
 
     private new void OnDestroy()
@@ -57,6 +76,8 @@ public class SphereBurst : SwordEffect
         else
             yield return new WaitForSeconds(attackDelay);
 
+        PlaySwordSwingAudio();
+
         // Spawns copy of particle system
         ParticleSystem parts = Instantiate(particles, controls.transform.position + controls.transform.forward, controls.transform.rotation);
         parts.Play();
@@ -70,7 +91,7 @@ public class SphereBurst : SwordEffect
         {
             if (visibleTarget.name != controls.name)
             {
-                HealthEventSystem.current.TakeDamage(visibleTarget.gameObject.name, damage, damageType);
+                HealthEventSystem.current.TakeDamage(visibleTarget.gameObject.name, damage, attributes.elementType);
                 if (condition != null)
                     if (Random.value <= 0.5f) HealthEventSystem.current.SetCondition(visibleTarget.name, condition);
                 HealthEventSystem.current.ApplyForce(visibleTarget.name, visibleTarget.transform.position - controls.transform.position, force);

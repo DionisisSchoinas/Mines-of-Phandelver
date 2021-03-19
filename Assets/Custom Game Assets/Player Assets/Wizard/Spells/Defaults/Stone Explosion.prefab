@@ -9582,10 +9582,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionSize: 1
-  elementType: 2
+  elementType: 0
   damage: 35
   radius: 9
-  damageType: 0
 --- !u!1 &8289330964096853650
 GameObject:
   m_ObjectHideFlags: 0

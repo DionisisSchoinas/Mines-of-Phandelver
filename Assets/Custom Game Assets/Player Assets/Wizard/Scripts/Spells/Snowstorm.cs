@@ -8,7 +8,6 @@ public class Snowstorm : SpellTypeStorm
 
     private void Start()
     {
-        damageType = DamageTypesManager.Cold;
         condition = ConditionsManager.Frozen;
 
         transform.position += Vector3.down * 40f;

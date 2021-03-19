@@ -6,7 +6,6 @@ public class EarthSimpleSwing : ElementalSlash
 
     void Start()
     {
-        damageType = DamageTypesManager.Physical;
         condition = null;
     }
 

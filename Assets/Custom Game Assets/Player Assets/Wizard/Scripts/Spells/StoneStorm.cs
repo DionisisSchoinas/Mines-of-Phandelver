@@ -10,7 +10,6 @@ public class StoneStorm : SpellTypeStorm
 
     private void Start()
     {
-        damageType = DamageTypesManager.Physical;
         condition = null;
 
         transform.position += Vector3.down * 40f;

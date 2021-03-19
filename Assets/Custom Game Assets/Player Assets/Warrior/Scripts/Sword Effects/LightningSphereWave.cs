@@ -8,7 +8,6 @@ public class LightningSphereWave : SphereBurst
 
     void Start()
     {
-        damageType = DamageTypesManager.Lightning;
         condition = ConditionsManager.Electrified;
     }
 

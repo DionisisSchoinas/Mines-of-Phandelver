@@ -58,11 +58,10 @@ MonoBehaviour:
   onCooldown: 1
   cooldownPercentage: 0.4899998
   cancelled: 0
-  elementType: 1
+  elementType: 3
   damage: 5
   damageTicksPerSecond: 5
-  doDamage: 0
-  damageType: 0
+  doesDamage: 0
 --- !u!1001 &319873707658058024
 PrefabInstance:
   m_ObjectHideFlags: 0

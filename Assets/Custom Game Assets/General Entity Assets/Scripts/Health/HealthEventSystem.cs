@@ -12,8 +12,8 @@ public class HealthEventSystem : MonoBehaviour
     }
 
     // Deals damage
-    public event Action<string, float, int> onTakeDamage;
-    public void TakeDamage(string name, float damage, int damageType)
+    public event Action<string, float, ElementTypes.Type> onTakeDamage;
+    public void TakeDamage(string name, float damage, ElementTypes.Type damageType)
     {
         if (onTakeDamage != null)
         {
@@ -58,8 +58,8 @@ public class HealthEventSystem : MonoBehaviour
         }
     }
     // Applies resistance
-    public event Action<string, List<SkinnedMeshRenderer>, Material, int, float> onResistanceApply;
-    public void ApplyResistance(string name, List<SkinnedMeshRenderer> mesh, Material newMaterial, int resistance, float duration)
+    public event Action<string, List<SkinnedMeshRenderer>, Material, ElementTypes.Type, float> onResistanceApply;
+    public void ApplyResistance(string name, List<SkinnedMeshRenderer> mesh, Material newMaterial, ElementTypes.Type resistance, float duration)
     {
         if (onResistanceApply != null)
         {
@@ -67,8 +67,8 @@ public class HealthEventSystem : MonoBehaviour
         }
     }
     // Sends out current resistances
-    public event Action<string, List<int>> onResistanceUpdate;
-    public void UpdateResistance(string name, List<int> resistances)
+    public event Action<string, List<ElementTypes.Type>> onResistanceUpdate;
+    public void UpdateResistance(string name, List<ElementTypes.Type> resistances)
     {
         if (onResistanceUpdate != null)
         {

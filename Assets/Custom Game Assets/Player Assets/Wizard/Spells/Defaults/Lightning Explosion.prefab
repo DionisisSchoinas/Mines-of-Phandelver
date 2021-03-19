@@ -9639,7 +9639,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosionSize: 1
-  elementType: 3
+  elementType: 2
   damage: 35
   radius: 9
-  damageType: 0

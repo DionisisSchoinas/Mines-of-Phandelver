@@ -4875,13 +4875,14 @@ MonoBehaviour:
   onCooldown: 0
   cooldownPercentage: 0
   attributes:
+    elementType: 1
+    swingSoundDelay: 0
     trails:
     - {fileID: 8215892400159611791, guid: 73dce3ee91a19f249af5a865c5cda15d, type: 3}
     swordMaterial: {fileID: 2100000, guid: 6d73a9dc708008c4887583475cdd6e45, type: 2}
   damage: 20
   sphereRadius: 15
   force: 10
-  damageType: 0
 --- !u!1 &5606871902675668589
 GameObject:
   m_ObjectHideFlags: 0

@@ -2,15 +2,12 @@
 
 public class SpellTypeWall : Spell
 {
-    public SpellSourceAudio.Type elementType;
+    public ElementTypes.Type elementType;
 
     public float damage = 5f;
     public int damageTicksPerSecond = 5;
+    public bool doesDamage = true;
 
-    [HideInInspector]
-    public bool doDamage;
-    [HideInInspector]
-    public int damageType;
     [HideInInspector]
     public Condition condition;
 
@@ -48,13 +45,13 @@ public class SpellTypeWall : Spell
 
         switch (elementType)
         {
-            case SpellSourceAudio.Type.Earth:
+            case ElementTypes.Type.Physical_Earth:
                 audioSource1.clip = ResourceManager.Audio.Spells.Earth.Wall;
                 break;
-            case SpellSourceAudio.Type.Ice:
+            case ElementTypes.Type.Cold_Ice:
                 audioSource1.clip = ResourceManager.Audio.Spells.Ice.Wall;
                 break;
-            case SpellSourceAudio.Type.Lightning:
+            case ElementTypes.Type.Lightning:
                 audioSource1.clip = ResourceManager.Audio.Spells.Lightning.Wall;
                 break;
             default:
@@ -67,7 +64,7 @@ public class SpellTypeWall : Spell
 
     private new void FixedUpdate()
     {
-        if (doDamage)
+        if (doesDamage)
         {
             Collider[] colliders = Physics.OverlapBox(transform.position + Vector3.up * 4f, boxSize, transform.rotation, BasicLayerMasks.DamageableEntities);
             collisions = OverlapDetection.NoObstaclesVertical(colliders, transform.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
@@ -118,13 +115,13 @@ public class SpellTypeWall : Spell
 
     private void Damage()
     {
-        if (collisions == null || !doDamage) return;
+        if (collisions == null || !doesDamage) return;
 
         foreach (GameObject gm in collisions)
         {
             if (gm != null && gm.name != casterName)
             {
-                HealthEventSystem.current.TakeDamage(gm.name, damage, damageType);
+                HealthEventSystem.current.TakeDamage(gm.name, damage, elementType);
                 if (condition != null)
                     if (Random.value <= 0.25f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.name, condition);
             }

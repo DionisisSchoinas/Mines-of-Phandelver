@@ -6,7 +6,6 @@ public class FireSimpleSwing : ElementalSlash
 
     void Start()
     {
-        damageType = DamageTypesManager.Fire;
         condition = ConditionsManager.Burning;
     }
 

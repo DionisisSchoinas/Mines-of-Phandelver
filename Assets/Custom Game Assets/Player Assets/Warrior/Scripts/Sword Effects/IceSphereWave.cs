@@ -6,7 +6,6 @@ public class IceSphereWave : SphereBurst
 
     void Start()
     {
-        damageType = DamageTypesManager.Cold;
         condition = ConditionsManager.Frozen;
     }
 

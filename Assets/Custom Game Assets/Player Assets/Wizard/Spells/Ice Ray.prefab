@@ -23701,10 +23701,9 @@ MonoBehaviour:
   onCooldown: 0
   cooldownPercentage: 0
   cancelled: 0
-  elementType: 1
+  elementType: 3
   damage: 5
   damageTicksPerSecond: 8
-  damageType: 0
 --- !u!1 &2932751742067722417
 GameObject:
   m_ObjectHideFlags: 0

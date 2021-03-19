@@ -14330,11 +14330,11 @@ MonoBehaviour:
   onCooldown: 0
   cooldownPercentage: 0
   cancelled: 0
+  elementType: 1
   damage: 15
   speed: 40
   explosionParticles: {fileID: 8289330964062763208, guid: 72cb46b6b72bfa84c8c62d920af76b81,
     type: 3}
-  damageType: 0
 --- !u!114 &-6611986793164303496
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14347,4 +14347,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0deb8c8cc236d3499e97ff86131be36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementType: 0
+  elementType: 1

@@ -62,9 +62,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 539cc5f9c0883934c983ea5f36025fe5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueOverlayToWeaponAdapterId: 15
-  onCooldown: 0
-  cooldownPercentage: 0
+  uniqueOverlayToWeaponAdapterId: 16
+  onCooldown: 1
+  cooldownPercentage: 0.87999946
   cancelled: 0
   speed: 10
   explosion: {fileID: 8289330964062763208, guid: 8818e866a4695ed4e840b6033135c640,
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0deb8c8cc236d3499e97ff86131be36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  elementType: 2
+  elementType: 0
 --- !u!1 &3242222663244510830
 GameObject:
   m_ObjectHideFlags: 0

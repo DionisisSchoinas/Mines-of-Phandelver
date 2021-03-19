@@ -6,7 +6,6 @@ public class IceConeWave : ConeBurstSlash
 
     void Start()
     {
-        damageType = DamageTypesManager.Cold;
         condition = ConditionsManager.Frozen;
     }
 

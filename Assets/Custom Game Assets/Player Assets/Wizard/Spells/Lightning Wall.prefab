@@ -4803,11 +4803,10 @@ MonoBehaviour:
   onCooldown: 1
   cooldownPercentage: 0.4899998
   cancelled: 0
-  elementType: 3
+  elementType: 2
   damage: 5
   damageTicksPerSecond: 5
-  doDamage: 0
-  damageType: 0
+  doesDamage: 1
 --- !u!1 &5877102613680010158
 GameObject:
   m_ObjectHideFlags: 0

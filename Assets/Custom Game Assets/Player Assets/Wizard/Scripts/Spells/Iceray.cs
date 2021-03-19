@@ -8,7 +8,6 @@ public class Iceray : SpellTypeRay
 
     private void Start()
     {
-        damageType = DamageTypesManager.Cold;
         condition = ConditionsManager.Frozen;
     }
 

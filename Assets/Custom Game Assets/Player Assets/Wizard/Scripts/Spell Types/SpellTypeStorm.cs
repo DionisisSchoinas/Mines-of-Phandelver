@@ -4,13 +4,11 @@ using UnityEngine;
 
 public class SpellTypeStorm : Spell
 {
-    public SpellSourceAudio.Type elementType;
+    public ElementTypes.Type elementType;
 
     public float damage = 5f;
     public int damageTicksPerSecond = 5;
 
-    [HideInInspector]
-    public int damageType;
     [HideInInspector]
     public Condition condition;
 
@@ -47,13 +45,13 @@ public class SpellTypeStorm : Spell
 
         switch (elementType)
         {
-            case SpellSourceAudio.Type.Earth:
+            case ElementTypes.Type.Physical_Earth:
                 audioSource1.clip = ResourceManager.Audio.Spells.Earth.Storm;
                 break;
-            case SpellSourceAudio.Type.Ice:
+            case ElementTypes.Type.Cold_Ice:
                 audioSource1.clip = ResourceManager.Audio.Spells.Ice.Storm;
                 break;
-            case SpellSourceAudio.Type.Lightning:
+            case ElementTypes.Type.Lightning:
                 audioSource1.clip = ResourceManager.Audio.Spells.Lightning.Storm;
                 break;
             default:
@@ -121,7 +119,7 @@ public class SpellTypeStorm : Spell
         {
             if (gm != null && gm.name != casterName)
             {
-                HealthEventSystem.current.TakeDamage(gm.name, damage, damageType);
+                HealthEventSystem.current.TakeDamage(gm.name, damage, elementType);
                 if (condition != null)
                     if (Random.value <= 0.2f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.name, condition);
             }
