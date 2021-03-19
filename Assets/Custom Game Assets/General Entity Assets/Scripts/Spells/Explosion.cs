@@ -28,11 +28,11 @@ public class Explosion : MonoBehaviour
     public void SpawnAudio()
     {
         AudioSource audioSource1 = gameObject.AddComponent<AudioSource>();
-        audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Mid);
 
         switch (explosionSize)
         {
             case Size.Big:
+                audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Mid);
                 switch (elementType)
                 {
                     case SpellSourceAudio.Type.Earth:
@@ -50,6 +50,7 @@ public class Explosion : MonoBehaviour
                 }
                 break;
             default:
+                audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Short);
                 switch (elementType)
                 {
                     case SpellSourceAudio.Type.Earth:

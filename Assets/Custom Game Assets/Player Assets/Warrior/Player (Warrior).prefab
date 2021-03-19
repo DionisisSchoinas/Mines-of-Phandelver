@@ -1819,7 +1819,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &64303742137695264
 Transform:
   m_ObjectHideFlags: 0
@@ -6101,7 +6101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2177212894193938704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.05, z: 0}
+  m_LocalPosition: {x: 0, y: -1.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2177212895260857014}
@@ -6349,13 +6349,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 4.77
+  m_Height: 4.47
   m_Radius: 1.45
   m_SlopeLimit: 90
   m_StepOffset: 0.6
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.54, z: 0}
+  m_Center: {x: 0, y: 0.68, z: 0}
 --- !u!114 &2177212895260857017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6554,10 +6554,10 @@ MonoBehaviour:
   groundContactPoints:
   - {fileID: 1237363842}
   - {fileID: 818568180}
-  jointToGroundDirection: 0100000001000000
+  jointToGroundDirection: 0300000003000000
   distanceFromGround:
-  - 0.7
-  - 0.7
+  - 0.5
+  - 0.5
 --- !u!1 &2177212895714952280
 GameObject:
   m_ObjectHideFlags: 0

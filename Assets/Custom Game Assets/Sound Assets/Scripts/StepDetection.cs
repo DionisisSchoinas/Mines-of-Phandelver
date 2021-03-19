@@ -111,17 +111,17 @@ public class StepDetection : MonoBehaviour
         switch (jointToGroundDirection[index])
         {
             case Direction.Down:
-                return -transform.up;
+                return -groundContactPoints[index].up;
             case Direction.Right:
-                return transform.right;
+                return groundContactPoints[index].right;
             case Direction.Left:
-                return -transform.right;
+                return -groundContactPoints[index].right;
             case Direction.Forward:
-                return transform.forward;
+                return groundContactPoints[index].forward;
             case Direction.Backward:
-                return -transform.forward;
+                return -groundContactPoints[index].forward;
             default:
-                return transform.up;
+                return groundContactPoints[index].up;
         }
     }
 
@@ -148,7 +148,7 @@ public class StepDetection : MonoBehaviour
                         Gizmos.color = Color.red;
                     else
                         Gizmos.color = Color.white;
-                    Gizmos.DrawSphere(groundContactPoints[i].position + Vector3.up, 0.5f);
+                    Gizmos.DrawSphere(groundContactPoints[i].position + Vector3.up, 0.3f);
                 }
                 catch { }
             }

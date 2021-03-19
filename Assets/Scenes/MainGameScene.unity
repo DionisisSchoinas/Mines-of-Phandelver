@@ -5396,9 +5396,9 @@ RectTransform:
   m_Father: {fileID: 1790235070}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 10, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 10, y: -70}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &168693152
@@ -5591,11 +5591,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Goblin Enemy Bow
-      objectReference: {fileID: 0}
-    - target: {fileID: 2098948913335930177, guid: dabfcca376cbd6f4db7b043d7493cbb8,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2098948913335930184, guid: dabfcca376cbd6f4db7b043d7493cbb8,
         type: 3}
@@ -76035,8 +76030,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_AnchoredPosition: {x: 160, y: 0}
+  m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1130109327
 MonoBehaviour:
@@ -77156,7 +77151,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 200, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1472584629
@@ -77946,8 +77941,8 @@ MonoBehaviour:
   columnContentHolder: {fileID: 1670486413}
   dodgeDisplay: {fileID: 7384456461897142333}
   effectsDisplay: {fileID: 168693150}
-  secondsAfterPickingSkill: 0.3
-  secondsAfterCastingSkill: 0.2
+  secondsAfterPickingSkill: 0.1
+  secondsAfterCastingSkill: 0.1
   buttonColorSelected: {r: 0.9427507, g: 1, b: 0, a: 1}
   buttonColorUnselected: {r: 1, g: 1, b: 1, a: 0}
   escapeMenu: {fileID: 1111847974}
@@ -78032,7 +78027,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 215, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1737132136
@@ -80210,15 +80205,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1817844480, guid: 617c89358b04efd499155edb484ebe5b, type: 3}
-      propertyPath: jointToGroundDirection.Array.data[0]
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 66536857101875414, guid: 617c89358b04efd499155edb484ebe5b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 1118363871920610425, guid: 617c89358b04efd499155edb484ebe5b,
         type: 3}
       propertyPath: spellNameDisplay
@@ -86087,7 +86073,7 @@ MonoBehaviour:
   groundContactPoints:
   - {fileID: 2088408529}
   - {fileID: 784587754}
-  jointToGroundDirection: 0100000001000000
+  jointToGroundDirection: 0200000003000000
   distanceFromGround:
   - 0.7
   - 0.7
@@ -87169,7 +87155,7 @@ MonoBehaviour:
   groundContactPoints:
   - {fileID: 692049354}
   - {fileID: 1978116097}
-  jointToGroundDirection: 0100000001000000
+  jointToGroundDirection: 0300000003000000
   distanceFromGround:
   - 0.4
   - 0.4
@@ -87453,8 +87439,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 20}
+  m_AnchoredPosition: {x: 160, y: 0}
+  m_SizeDelta: {x: 300, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &6658074698382950626
 GameObject:

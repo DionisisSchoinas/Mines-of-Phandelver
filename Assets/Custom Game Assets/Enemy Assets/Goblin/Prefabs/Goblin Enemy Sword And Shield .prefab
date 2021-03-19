@@ -1836,7 +1836,7 @@ MonoBehaviour:
   groundContactPoints:
   - {fileID: 220479941}
   - {fileID: 523696796}
-  jointToGroundDirection: 0100000001000000
+  jointToGroundDirection: 0300000003000000
   distanceFromGround:
   - 0.4
   - 0.4
