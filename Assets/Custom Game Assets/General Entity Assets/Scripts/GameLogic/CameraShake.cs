@@ -18,11 +18,15 @@ public class CameraShake : MonoBehaviour
 
 	HitStop hitStop;
 
+	private bool shaking;
+
 	void Awake()
 	{
 		camTransform = Camera.main.transform;
 
 		hitStop = gameObject.AddComponent<HitStop>();
+
+		shaking = false;
 
 		current = this;
 		current.onCameraShake += Shake;
@@ -46,6 +50,11 @@ public class CameraShake : MonoBehaviour
 
 	private void Shake(float duration, float amount)
 	{
+		if (shaking)
+			return;
+
+		shaking = true;
+
 		originalPos = camTransform.localPosition;
 		shakeDuration = duration;
 		shakeAmount = amount;
@@ -66,6 +75,7 @@ public class CameraShake : MonoBehaviour
 			else
 			{
 				shakeDuration = 0f;
+				shaking = false;
 			}
 		}
 	}

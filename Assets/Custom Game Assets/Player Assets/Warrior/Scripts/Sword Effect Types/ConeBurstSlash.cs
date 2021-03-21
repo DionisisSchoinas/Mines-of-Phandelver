@@ -98,7 +98,7 @@ public class ConeBurstSlash : SwordEffect
                 if (condition != null)
                     if (Random.value <= 0.5f) HealthEventSystem.current.SetCondition(visibleTarget.name, condition);
                 HealthEventSystem.current.ApplyForce(visibleTarget.name, controls.transform.forward, force);
-                CameraShake.current.ShakeCamera(1f, 1f);
+                CameraShake.current.ShakeCamera(0.2f, 0.5f);
             }
         }
         yield return new WaitForSeconds(0.1f);

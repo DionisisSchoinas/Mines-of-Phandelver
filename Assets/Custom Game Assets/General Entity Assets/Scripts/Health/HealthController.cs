@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class HealthController : EntityResource
 {
+    [Range(0f, 1f)]
+    public float staggerPercentage = 0.2f;
     public float deathDelay = 30f;
     public List<ElementTypes.Type> resistances { get; private set; }
     public List<ElementTypes.Type> immunities { get; private set; }
@@ -56,12 +58,10 @@ public class HealthController : EntityResource
 
             if (currentValue > 0f)
             {
-                if (animator != null && value < currentValue)
-                { 
+                if (animator != null && ( (staggerPercentage * maxValue) <= (currentValue - value) ) ) // The damage is greater or equal to staggerPercentage of max health
+                {
                     animator.SetTrigger("Hit");
-                    
                 }
-                  
             }
 
             base.currentValue = value;
@@ -129,8 +129,6 @@ public class HealthController : EntityResource
             if (!invulnerable)
             {
                 currentValue = currentValue - CheckDamageTypes(damage, damageType);
-                CameraShake.current.ShakeCamera(0.05f, 0.2f);
-
             }
         }
     }
@@ -150,11 +148,12 @@ public class HealthController : EntityResource
         return damage;
     }
 
-    public void SetValues(float maxValue, float regenPerSecond, ResourceBar resourceBar, Color barColor, bool respawn, bool invulnerable)
+    public void SetValues(float maxValue, float regenPerSecond, ResourceBar resourceBar, Color barColor, bool respawn, bool invulnerable, float stagger)
     {
         SetValues(maxValue, regenPerSecond, resourceBar, barColor);
         this.respawn = respawn;
         this.invulnerable = invulnerable;
+        this.staggerPercentage = stagger;
     }
 
     private void UpdateResistances(string name, List<ElementTypes.Type> resistances)
