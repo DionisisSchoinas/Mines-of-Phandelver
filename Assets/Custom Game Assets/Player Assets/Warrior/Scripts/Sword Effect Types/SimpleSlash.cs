@@ -33,7 +33,7 @@ public class SimpleSlash : SwordEffect
                 if (condition != null)
                     if (Random.value <= 0.2f) HealthEventSystem.current.SetCondition(visibleTarget.name, condition);
                 HealthEventSystem.current.ApplyForce(visibleTarget.name, controls.transform.forward, force);
-                CameraShake.current.ShakeCamera(0.5f, 0.2f);
+                CameraShake.current.ShakeCamera(0.1f, 0.15f);
             }
         }
         yield return new WaitForSeconds(0.1f);

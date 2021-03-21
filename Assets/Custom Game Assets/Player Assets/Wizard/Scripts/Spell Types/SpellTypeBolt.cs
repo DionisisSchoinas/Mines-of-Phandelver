@@ -48,7 +48,7 @@ public class SpellTypeBolt : Spell
                     if (Random.value <= 0.2f) HealthEventSystem.current.SetCondition(collision.gameObject.name, condition);
                 HealthEventSystem.current.ApplyForce(collision.gameObject.name, gameObject.transform.forward.normalized, 5f);
 
-                CameraShake.current.ShakeCamera(0.1f, 0.2f);
+                CameraShake.current.ShakeCamera(0.1f, 0.1f);
                 Destroy(Instantiate(explosionParticles, transform.position, transform.rotation), 5f);
                 Destroy(gameObject);
             }

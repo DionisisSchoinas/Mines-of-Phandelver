@@ -8,6 +8,8 @@ public class PlayerResourcesController : MonoBehaviour
     public float healthRegenPerSecond;
     public bool respawn;
     public bool invulnerable;
+    [Range(0f,1f)]
+    public float staggerPercentage;
 
     public ResourceBar manaBar;
     public Color manaBarColor;
@@ -22,7 +24,7 @@ public class PlayerResourcesController : MonoBehaviour
         if (healthBar != null)
         {
             healthController = gameObject.AddComponent<HealthController>();
-            healthController.SetValues(maxHealth, healthRegenPerSecond, healthBar, healthBarColor, respawn, invulnerable);
+            healthController.SetValues(maxHealth, healthRegenPerSecond, healthBar, healthBarColor, respawn, invulnerable, staggerPercentage);
         }
 
         if (manaBar != null)

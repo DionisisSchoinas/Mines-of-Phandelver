@@ -82,7 +82,7 @@ public class SphereBurst : SwordEffect
         ParticleSystem parts = Instantiate(particles, controls.transform.position + controls.transform.forward, controls.transform.rotation);
         parts.Play();
         Destroy(parts.gameObject, 4f);
-        CameraShake.current.ShakeCamera(1f, 1f);
+        CameraShake.current.ShakeCamera(0.3f, 1f);
 
         // Find targets
         GameObject[] targets = FindTargets(controls.transform);
