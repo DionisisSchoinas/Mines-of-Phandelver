@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SpellTypeRay : Spell
 {
+    public ElementTypes.Type elementType;
+
     public float damage = 10f;
     public int damageTicksPerSecond = 8;
-    [HideInInspector]
-    public int damageType;
     [HideInInspector]
     public Condition condition;
 
@@ -31,6 +31,41 @@ public class SpellTypeRay : Spell
         base.Awake();
         boxSize = (new Vector3(3f, 5f, 18f)) / 2f;
         InvokeRepeating(nameof(Damage), 0f, 1f / damageTicksPerSecond);
+        SpawnAudio();
+    }
+
+    public void SpawnAudio()
+    {
+        AudioSource audioSource1 = gameObject.AddComponent<AudioSource>();
+        audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Short);
+        audioSource1.loop = true;
+
+        AudioSource audioSource2 = gameObject.AddComponent<AudioSource>();
+        audioSource2 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource2, ResourceManager.Audio.AudioSources.Range.Short);
+        audioSource2.loop = true;
+
+        switch (elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                audioSource1.clip = ResourceManager.Audio.Spells.Earth.Ray;
+                audioSource2.clip = ResourceManager.Audio.SpellSources.Earth;
+                break;
+            case ElementTypes.Type.Cold_Ice:
+                audioSource1.clip = ResourceManager.Audio.Spells.Ice.Ray;
+                audioSource2.clip = ResourceManager.Audio.SpellSources.Ice;
+                break;
+            case ElementTypes.Type.Lightning:
+                audioSource1.clip = ResourceManager.Audio.Spells.Lightning.Ray;
+                audioSource2.clip = ResourceManager.Audio.SpellSources.Lightning;
+                break;
+            default:
+                audioSource1.clip = ResourceManager.Audio.Spells.Fire.Ray;
+                audioSource2.clip = ResourceManager.Audio.SpellSources.Fire;
+                break;
+        }
+
+        audioSource1.Play();
+        audioSource2.Play();
     }
 
     private new void FixedUpdate()
@@ -86,7 +121,7 @@ public class SpellTypeRay : Spell
         {
             if (gm != null)
             {
-                HealthEventSystem.current.TakeDamage(gm.name, damage, damageType);
+                HealthEventSystem.current.TakeDamage(gm.name, damage, elementType);
                 if (condition != null)
                     if (Random.value <= 0.25f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.name, condition);
             }

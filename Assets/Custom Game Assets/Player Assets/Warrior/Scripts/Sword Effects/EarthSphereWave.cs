@@ -6,7 +6,6 @@ public class EarthSphereWave : SphereBurst
 
     void Start()
     {
-        damageType = DamageTypesManager.Physical;
         condition = null;
     }
 

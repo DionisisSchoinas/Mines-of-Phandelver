@@ -8,7 +8,6 @@ public class Firebolt : SpellTypeBolt
 
     private void Start()
     {
-        damageType = DamageTypesManager.Fire;
         condition = ConditionsManager.Burning;
     }
 

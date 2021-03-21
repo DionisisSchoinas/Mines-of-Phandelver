@@ -8,7 +8,6 @@ public class LightningBolt : SpellTypeBolt
 
     private void Start()
     {
-        damageType = DamageTypesManager.Lightning;
         condition = ConditionsManager.Electrified;
         InvokeRepeating(nameof(SpawnArcs), 0f, 0.1f);
     }

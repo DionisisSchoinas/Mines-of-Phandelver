@@ -155,16 +155,24 @@ public class ResourceManager
         public class Footsteps
         {
             private static string folder = Audio.folder + "Footsteps/";
-            public static AudioClip WalkGrass = (AudioClip)Resources.Load(folder + "Footstep Walk Grass", typeof(AudioClip));
+            public static AudioClip WalkForestLight = (AudioClip)Resources.Load(folder + "Light Forest", typeof(AudioClip));
+            public static AudioClip WalkForestHeavy = (AudioClip)Resources.Load(folder + "Heavy Forest", typeof(AudioClip));
+
+            public static AudioClip WalkCaveLight = (AudioClip)Resources.Load(folder + "Light Cave", typeof(AudioClip));
+            public static AudioClip WalkCaveHeavy = (AudioClip)Resources.Load(folder + "Heavy Cave", typeof(AudioClip));
         }
 
         public class Sword
         {
             private static string folder = Audio.folder + "Sword/";
-            public static AudioClip Swing1 = (AudioClip)Resources.Load(folder + "Swing1", typeof(AudioClip));
-            public static AudioClip Swing2 = (AudioClip)Resources.Load(folder + "Swing2", typeof(AudioClip));
+
             public static AudioClip HitFlesh = (AudioClip)Resources.Load(folder + "Hit Flesh", typeof(AudioClip));
             public static AudioClip HitObject = (AudioClip)Resources.Load(folder + "Hit Object", typeof(AudioClip));
+
+            public static AudioClip Swing1 = (AudioClip)Resources.Load(folder + "Swing1", typeof(AudioClip));
+            public static AudioClip Swing2 = (AudioClip)Resources.Load(folder + "Swing2", typeof(AudioClip));
+
+            public static AudioClip[] Swings = new AudioClip[] { Swing1, Swing2 };
         }
 
         public class Bow
@@ -178,6 +186,107 @@ public class ResourceManager
             private static string folder = Audio.folder + "Arrow/";
             public static AudioClip Hit = (AudioClip)Resources.Load(folder + "Arrow Hit", typeof(AudioClip));
             public static AudioClip Fly = (AudioClip)Resources.Load(folder + "Arrow Fly", typeof(AudioClip));
+        }
+
+        public class SpellSources
+        {
+            private static string folder = Audio.folder + "Spell Sources/";
+            public static AudioClip Fire = (AudioClip)Resources.Load(folder + "Fire", typeof(AudioClip));
+            public static AudioClip Ice = (AudioClip)Resources.Load(folder + "Ice", typeof(AudioClip));
+            public static AudioClip Earth = (AudioClip)Resources.Load(folder + "Earth", typeof(AudioClip));
+            public static AudioClip Lightning = (AudioClip)Resources.Load(folder + "Lightning", typeof(AudioClip));
+            public static AudioClip Energy = (AudioClip)Resources.Load(folder + "Energy", typeof(AudioClip));
+        }
+
+        public class Spells
+        {
+            private static string folder = Audio.folder + "Spells/";
+
+            public class Earth
+            {
+                private static string folder = Spells.folder + "Earth/";
+
+                public static AudioClip BallTrail = (AudioClip)Resources.Load(folder + "Earth Ball Trail", typeof(AudioClip));
+
+                public static AudioClip BigExplosion = (AudioClip)Resources.Load(folder + "Earth Big Explosion", typeof(AudioClip));
+                public static AudioClip SmallExplosion = (AudioClip)Resources.Load(folder + "Earth Small Explosion", typeof(AudioClip));
+
+                public static AudioClip Ray = (AudioClip)Resources.Load(folder + "Earth Ray", typeof(AudioClip));
+                public static AudioClip Storm = (AudioClip)Resources.Load(folder + "Earth Storm", typeof(AudioClip));
+                public static AudioClip Wall = (AudioClip)Resources.Load(folder + "Earth Wall", typeof(AudioClip));
+
+                public static AudioClip Swing1 = (AudioClip)Resources.Load(folder + "Earth Woosh 1", typeof(AudioClip));
+                public static AudioClip Swing2 = (AudioClip)Resources.Load(folder + "Earth Woosh 2", typeof(AudioClip));
+
+                public static AudioClip[] Swings = new AudioClip[] { Swing1, Swing2 };
+            }
+
+            public class Energy
+            {
+                private static string folder = Spells.folder + "Energy/";
+
+                public static AudioClip Impact1 = (AudioClip)Resources.Load(folder + "Impact 1", typeof(AudioClip));
+                public static AudioClip Impact2 = (AudioClip)Resources.Load(folder + "Impact 2", typeof(AudioClip));
+                public static AudioClip Impact3 = (AudioClip)Resources.Load(folder + "Impact 3", typeof(AudioClip));
+                public static AudioClip Impact4 = (AudioClip)Resources.Load(folder + "Impact 4", typeof(AudioClip));
+
+                public static AudioClip[] Impacts = new AudioClip[] { Impact1, Impact2, Impact3, Impact4 };
+            }
+
+            public class Fire
+            {
+                private static string folder = Spells.folder + "Fire/";
+
+                public static AudioClip BigExplosion = (AudioClip)Resources.Load(folder + "Fire Big Explosion", typeof(AudioClip));
+                public static AudioClip SmallExplosion = (AudioClip)Resources.Load(folder + "Fire Small Explosion", typeof(AudioClip));
+
+                public static AudioClip Ray = (AudioClip)Resources.Load(folder + "Fire Ray", typeof(AudioClip));
+                public static AudioClip Storm = (AudioClip)Resources.Load(folder + "Fire Storm", typeof(AudioClip));
+                public static AudioClip Wall = (AudioClip)Resources.Load(folder + "Fire Wall", typeof(AudioClip));
+
+                public static AudioClip Swing1 = (AudioClip)Resources.Load(folder + "Fire Woosh 1", typeof(AudioClip));
+                public static AudioClip Swing2 = (AudioClip)Resources.Load(folder + "Fire Woosh 2", typeof(AudioClip));
+                public static AudioClip Swing3 = (AudioClip)Resources.Load(folder + "Fire Woosh 3", typeof(AudioClip));
+
+                public static AudioClip[] Swings = new AudioClip[] { Swing1, Swing2, Swing3 };
+            }
+
+            public class Ice
+            {
+                private static string folder = Spells.folder + "Ice/";
+
+                public static AudioClip BigExplosion = (AudioClip)Resources.Load(folder + "Ice Big Explosion", typeof(AudioClip));
+                public static AudioClip SmallExplosion = (AudioClip)Resources.Load(folder + "Ice Small Explosion", typeof(AudioClip));
+
+                public static AudioClip Ray = (AudioClip)Resources.Load(folder + "Ice Ray", typeof(AudioClip));
+                public static AudioClip Storm = (AudioClip)Resources.Load(folder + "Ice Storm", typeof(AudioClip));
+                public static AudioClip Wall = (AudioClip)Resources.Load(folder + "Ice Wall", typeof(AudioClip));
+
+                public static AudioClip Swing1 = (AudioClip)Resources.Load(folder + "Ice Woosh 1", typeof(AudioClip));
+                public static AudioClip Swing2 = (AudioClip)Resources.Load(folder + "Ice Woosh 2", typeof(AudioClip));
+                public static AudioClip Swing3 = (AudioClip)Resources.Load(folder + "Ice Woosh 3", typeof(AudioClip));
+
+                public static AudioClip[] Swings = new AudioClip[] { Swing1, Swing2, Swing3 };
+            }
+
+            public class Lightning
+            {
+                private static string folder = Spells.folder + "Lightning/";
+
+                public static AudioClip BigExplosion = (AudioClip)Resources.Load(folder + "Lightning Big Explosion", typeof(AudioClip));
+                public static AudioClip SmallExplosion = (AudioClip)Resources.Load(folder + "Lightning Small Explosion", typeof(AudioClip));
+
+                public static AudioClip Ray = (AudioClip)Resources.Load(folder + "Lightning Ray", typeof(AudioClip));
+                public static AudioClip Storm = (AudioClip)Resources.Load(folder + "Lightning Storm", typeof(AudioClip));
+                public static AudioClip Wall = (AudioClip)Resources.Load(folder + "Lightning Wall", typeof(AudioClip));
+
+                public static AudioClip Swing1 = (AudioClip)Resources.Load(folder + "Lightning Woosh 1", typeof(AudioClip));
+                public static AudioClip Swing2 = (AudioClip)Resources.Load(folder + "Lightning Woosh 2", typeof(AudioClip));
+
+                public static AudioClip[] Swings = new AudioClip[] { Swing1, Swing2 };
+
+                public static AudioClip Spark = (AudioClip)Resources.Load(folder + "Lightning Spark", typeof(AudioClip));
+            }
         }
     }
 }

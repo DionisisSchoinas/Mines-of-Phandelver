@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class SpellTypeStorm : Spell
 {
+    public ElementTypes.Type elementType;
+
     public float damage = 5f;
     public int damageTicksPerSecond = 5;
 
-    [HideInInspector]
-    public int damageType;
     [HideInInspector]
     public Condition condition;
 
@@ -34,6 +34,32 @@ public class SpellTypeStorm : Spell
         base.Awake();
         cancelled = false;
         InvokeRepeating(nameof(Damage), 1f, 1f / damageTicksPerSecond);
+        SpawnAudio();
+    }
+
+    public void SpawnAudio()
+    {
+        AudioSource audioSource1 = gameObject.AddComponent<AudioSource>();
+        audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Mid);
+        audioSource1.loop = true;
+
+        switch (elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                audioSource1.clip = ResourceManager.Audio.Spells.Earth.Storm;
+                break;
+            case ElementTypes.Type.Cold_Ice:
+                audioSource1.clip = ResourceManager.Audio.Spells.Ice.Storm;
+                break;
+            case ElementTypes.Type.Lightning:
+                audioSource1.clip = ResourceManager.Audio.Spells.Lightning.Storm;
+                break;
+            default:
+                audioSource1.clip = ResourceManager.Audio.Spells.Fire.Storm;
+                break;
+        }
+
+        audioSource1.Play();
     }
 
     private new void FixedUpdate()
@@ -93,7 +119,7 @@ public class SpellTypeStorm : Spell
         {
             if (gm != null && gm.name != casterName)
             {
-                HealthEventSystem.current.TakeDamage(gm.name, damage, damageType);
+                HealthEventSystem.current.TakeDamage(gm.name, damage, elementType);
                 if (condition != null)
                     if (Random.value <= 0.2f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.name, condition);
             }

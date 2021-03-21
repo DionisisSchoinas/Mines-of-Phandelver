@@ -19121,5 +19121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ceef9a569c2e28b4dbd346bf4565f96f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  uniqueOverlayToWeaponAdapterId: 0
+  onCooldown: 0
+  cooldownPercentage: 0
+  cancelled: 0
+  elementType: 2
+  damage: 5
   damageTicksPerSecond: 8

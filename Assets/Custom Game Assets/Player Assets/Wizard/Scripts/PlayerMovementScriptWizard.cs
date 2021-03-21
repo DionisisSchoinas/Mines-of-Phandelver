@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovementScriptWizard : PlayerMovementScript
 {
     public GameObject dodgeSkill;
-    private WizardDodge dodgeScript;
+    private DodgeSkill dodgeScript;
     public float dodgeDistance = 10f;
     public float stunAfterDodge = 0.05f;
 
@@ -23,10 +23,10 @@ public class PlayerMovementScriptWizard : PlayerMovementScript
         dodge = false;
         dodging = false;
 
-        dodgeParticleSystem = Instantiate(dodgeSkill).GetComponent<ParticleSystem>();
+        dodgeParticleSystem = Instantiate(dodgeSkill, transform).GetComponent<ParticleSystem>();
         dodgeParticleSystem.Stop();
         dodgeParticleSystem.transform.localScale = Vector3.one;
-        dodgeScript = dodgeParticleSystem.gameObject.GetComponent<WizardDodge>();
+        dodgeScript = dodgeParticleSystem.gameObject.GetComponent<DodgeSkill>();
         dodgeScript.onCooldown = false;
 
         cameraShake = FindObjectOfType<CameraShake>();
@@ -65,13 +65,13 @@ public class PlayerMovementScriptWizard : PlayerMovementScript
             dodgeParticleSystem.transform.rotation = Quaternion.LookRotation(dodgeDirection);
 
             HealthEventSystem.current.SetInvunerable(gameObject.name, true);
-            StartCoroutine(DodgeTimer(dodgeScript.duration));
+            StartCoroutine(DodgeTimer());
         }
 
         if (dodging)
         {
             controller.Move(dodgeDirection * (dodgeDistance / dodgeScript.duration) * Time.deltaTime);
-            dodgeParticleSystem.transform.position = controller.transform.position;
+            //dodgeParticleSystem.transform.position = controller.transform.position;
         }
 
 
@@ -168,15 +168,20 @@ public class PlayerMovementScriptWizard : PlayerMovementScript
         }
     }
 
-    IEnumerator DodgeTimer(float seconds)
+    IEnumerator DodgeTimer()
     {
         // Disable controls and enable particles
         DodgeEffect(true);
         canMove = false;
         dodging = true;
         dodge = false;
+
+        // Play audio
+        dodgeScript.PlayAudio();
+
         // Dodge duration
-        yield return new WaitForSeconds(seconds);
+        yield return new WaitForSeconds(dodgeScript.duration);
+
         // Enable controls and disable particles
         DodgeEffect(false);
         dodging = false;

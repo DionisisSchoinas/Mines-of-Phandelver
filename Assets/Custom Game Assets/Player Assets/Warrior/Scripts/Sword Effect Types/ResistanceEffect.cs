@@ -5,8 +5,6 @@ using UnityEngine;
 public class ResistanceEffect : SwordEffect
 {
     [HideInInspector]
-    public int resistance = -1;
-    [HideInInspector]
     public Material resistanceAppearance;
 
     public override string type => "Resistance";
@@ -16,6 +14,32 @@ public class ResistanceEffect : SwordEffect
     public override int comboPhaseMax => 1;
     public override bool instaCast => true;
     public override float manaCost => 20f;
+
+    private new void Awake()
+    {
+        base.Awake();
+
+        SpawnAudio();
+    }
+
+    public void SpawnAudio()
+    {
+        switch (attributes.elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                swingAudioClips = ResourceManager.Audio.Spells.Earth.Swings;
+                break;
+            case ElementTypes.Type.Cold_Ice:
+                swingAudioClips = ResourceManager.Audio.Spells.Ice.Swings;
+                break;
+            case ElementTypes.Type.Lightning:
+                swingAudioClips = ResourceManager.Audio.Spells.Lightning.Swings;
+                break;
+            default:
+                swingAudioClips = ResourceManager.Audio.Spells.Fire.Swings;
+                break;
+        }
+    }
 
     public override void Attack(PlayerMovementScriptWarrior controls, AttackIndicator indicator, List<SkinnedMeshRenderer> playerMesh)
     {
@@ -29,6 +53,8 @@ public class ResistanceEffect : SwordEffect
         else
             yield return new WaitForSeconds(attackDelay);
 
-        HealthEventSystem.current.ApplyResistance(controls.gameObject.name, playerMesh, resistanceAppearance, resistance, duration);
+        PlaySwordSwingAudio();
+
+        HealthEventSystem.current.ApplyResistance(controls.gameObject.name, playerMesh, resistanceAppearance, attributes.elementType, duration);
     }
 }

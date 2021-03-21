@@ -8,7 +8,6 @@ public class StoneBolt : SpellTypeBolt
 
     private void Start()
     {
-        damageType = DamageTypesManager.Physical;
         condition = null;
     }
 

@@ -7,7 +7,6 @@ public class LightningRay : SpellTypeRay
 
     private void Start()
     {
-        damageType = DamageTypesManager.Lightning;
         condition = ConditionsManager.Electrified;
     }
 

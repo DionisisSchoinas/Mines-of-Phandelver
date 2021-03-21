@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovementScriptWarrior : PlayerMovementScript
 {
     public GameObject dodgeSkill;
-    private WarriorDodge dodgeScript;
+    private DodgeSkill dodgeScript;
     public float rollDistance = 10f;
     public float hitBlockAfterDodge = 0.05f;
 
@@ -41,7 +41,7 @@ public class PlayerMovementScriptWarrior : PlayerMovementScript
 
         meleeController = FindObjectOfType<MeleeController>() as MeleeController;
 
-        dodgeScript = dodgeSkill.GetComponent<WarriorDodge>();
+        dodgeScript = Instantiate(dodgeSkill, transform).GetComponent<DodgeSkill>();
         dodgeScript.onCooldown = false;
 
         roll = false;
@@ -126,7 +126,7 @@ public class PlayerMovementScriptWarrior : PlayerMovementScript
         if (roll && !rolling && canMove && !dodgeScript.onCooldown)
         {
             HealthEventSystem.current.SetInvunerable(gameObject.name, true);
-            StartCoroutine(PerformRoll(dodgeScript.duration));
+            StartCoroutine(PerformRoll());
         }
 
         if (rolling|| sliding)
@@ -150,13 +150,20 @@ public class PlayerMovementScriptWarrior : PlayerMovementScript
         controller.Move(velocity * Time.deltaTime);
     }
 
-    private IEnumerator PerformRoll(float second)
+    private IEnumerator PerformRoll()
     {
+        // Disable controls and enable particles
         rolling = true;
         allowHitAfterRoll = false;
-        yield return new WaitForSeconds(second);
-        rolling = false;
 
+        // Play audio
+        dodgeScript.PlayAudio();
+
+        // Dodge duration
+        yield return new WaitForSeconds(dodgeScript.duration);
+
+        // Enable controls and disable particles
+        rolling = false;
         dodgeScript.StartCooldown();
         UIEventSystem.current.Dodged(dodgeScript.cooldown);
         HealthEventSystem.current.SetInvunerable(gameObject.name, false);

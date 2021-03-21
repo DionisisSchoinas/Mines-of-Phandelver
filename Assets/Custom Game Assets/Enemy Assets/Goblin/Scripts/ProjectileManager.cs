@@ -23,7 +23,6 @@ public class ProjectileManager : MonoBehaviour
         col = gameObject.GetComponent<Collider>();
 
         shootAudioSource = gameObject.AddComponent<AudioSource>();
-        shootAudioSource.volume = 0.5f;
         shootAudioSource = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", shootAudioSource, ResourceManager.Audio.AudioSources.Range.Short);
         shootAudioSource.clip = ResourceManager.Audio.Bow.ShootArrow;
 

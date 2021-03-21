@@ -4823,6 +4823,7 @@ GameObject:
   - component: {fileID: 7514893259105985402}
   - component: {fileID: 1459374294364569569}
   - component: {fileID: 8323623895396460652}
+  - component: {fileID: -5391952277311064952}
   m_Layer: 8
   m_Name: Ice Explosion Particles
   m_TagString: Untagged
@@ -9634,3 +9635,19 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-5391952277311064952
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8564859762798733995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 463098b3d3e9f904a855561dcaf55726, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosionSize: 0
+  elementType: 3
+  damage: 0
+  radius: 0
