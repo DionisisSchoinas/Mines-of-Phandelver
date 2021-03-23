@@ -32,7 +32,7 @@ public class Arc : MonoBehaviour
 
         audioSource1 = gameObject.AddComponent<AudioSource>();
         audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Short);
-        audioSource1.clip = ResourceManager.Audio.Spells.Lightning.Spark;
+        audioSource1.clip = ResourceManager.Audio.Spells.Lightning.Arc;
 
         gameObject.SetActive(false);
     }

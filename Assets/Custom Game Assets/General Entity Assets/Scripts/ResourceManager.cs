@@ -286,6 +286,7 @@ public class ResourceManager
                 public static AudioClip[] Swings = new AudioClip[] { Swing1, Swing2 };
 
                 public static AudioClip Spark = (AudioClip)Resources.Load(folder + "Lightning Spark", typeof(AudioClip));
+                public static AudioClip Arc = (AudioClip)Resources.Load(folder + "Lightning Arc", typeof(AudioClip));
             }
         }
     }

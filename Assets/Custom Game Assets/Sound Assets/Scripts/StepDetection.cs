@@ -45,7 +45,7 @@ public class StepDetection : MonoBehaviour
         for (int i=0; i < groundContactPoints.Count; i++)
         {
             audioSources.Add(groundContactPoints[i].gameObject.AddComponent<AudioSource>());
-            audioSources[i] = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSources[i], ResourceManager.Audio.AudioSources.Range.Mid);
+            audioSources[i] = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSources[i], ResourceManager.Audio.AudioSources.Range.Short);
         }
 
         BackgroundMusicController.current.onLocationSet += SetLocation;
