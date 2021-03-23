@@ -40,13 +40,16 @@ public class EngagedBehaviour : StateMachineBehaviour
             if (timer > Random.Range(1f,2f))
             {
                 int behaviourIndex = Random.Range(1, 5);
-                if (behaviourIndex == 1) {
+                if (behaviourIndex < 3) {
                     animator.SetBool("Relocate", true);
                 }
-                else {
+                else
+                {
                     animator.SetBool("GetInRange", true);
 
                 }
+                
+           
 
 
             }

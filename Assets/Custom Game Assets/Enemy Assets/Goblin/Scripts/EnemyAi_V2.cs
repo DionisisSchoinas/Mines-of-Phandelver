@@ -9,6 +9,8 @@ public class EnemyAi_V2 : MonoBehaviour
   
     public float attackRadius = 5f;
 
+    public float rangedAttackRadius = 15f;
+
     [HideInInspector]
     public Transform target;
    

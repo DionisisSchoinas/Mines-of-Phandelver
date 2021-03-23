@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Male_Legs_2_Black
-  m_Shader: {fileID: -6465566751694194690, guid: 549c5cab000e35d448948d63e5a30b18,
+  m_Shader: {fileID: -6465566751694194690, guid: fdeaba25b2b8f934dac41e40b684a3ad,
     type: 3}
   m_ShaderKeywords: _NORMALMAP _SPECULAR_SETUP
   m_LightmapFlags: 4
@@ -102,7 +102,7 @@ Material:
     - Vector1_5EBE93D0: 1
     - Vector1_651F8D06: 0
     - Vector1_8EDD80FB: 0
-    - Vector1_9255E29A: 10
+    - Vector1_9255E29A: 5
     - Vector1_B85E3963: 0
     - Vector1_D79BDF4: 0
     - Vector1_D82CA8DC: 4

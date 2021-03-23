@@ -10,7 +10,16 @@ public class ProjectileScript : MonoBehaviour
 
     private Collider col;
     private Rigidbody rb;
+<<<<<<< Updated upstream
     private bool stuck;
+=======
+    [SerializeField]
+    private float speed = 8f;
+    [SerializeField]
+    Transform centerOfMass;
+
+    public bool stuck;
+>>>>>>> Stashed changes
 
     private AudioSource flyAudioSource;
 
@@ -18,8 +27,10 @@ public class ProjectileScript : MonoBehaviour
 
     private void Awake()
     {
+         
         rb = gameObject.GetComponent<Rigidbody>();
         col = gameObject.GetComponent<Collider>();
+<<<<<<< Updated upstream
         particles = gameObject.GetComponentInChildren<ParticleSystem>();
 
         rb.AddForce(transform.forward * speed, ForceMode.Force);
@@ -27,6 +38,11 @@ public class ProjectileScript : MonoBehaviour
         stuck = false;
 
         //PlayFlySound();
+=======
+        stuck = false;
+        rb.AddForce(transform.forward * speed, ForceMode.Force);
+        rb.centerOfMass=centerOfMass.position;
+>>>>>>> Stashed changes
     }
 
     public void SetCaster(Collider caster)
@@ -45,7 +61,13 @@ public class ProjectileScript : MonoBehaviour
     {
         if (!stuck)
         {
+<<<<<<< Updated upstream
             transform.RotateAround(transform.position, transform.forward, Time.deltaTime * 720f);
+=======
+            //transform.RotateAround(transform.position, transform.right, Time.deltaTime * 180f);
+          
+
+>>>>>>> Stashed changes
         }
     }
 
@@ -59,8 +81,9 @@ public class ProjectileScript : MonoBehaviour
         int layer = collision.gameObject.layer;
         if (layer.Equals(BasicLayerMasks.EnemiesLayer) || layer.Equals(BasicLayerMasks.DamageablesLayer))
         {
-            rb.transform.parent = collision.transform;
+           // rb.transform.parent = collision.transform;
         }
+<<<<<<< Updated upstream
         rb.isKinematic = false;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
@@ -70,6 +93,15 @@ public class ProjectileScript : MonoBehaviour
         particles.Clear();
         // Move a bit forward
         transform.position += transform.forward;
+=======
+        //rb.isKinematic = false;
+        //rb.velocity = Vector3.zero;
+        //rb.angularVelocity = Vector3.zero;
+        //Disable colider
+        //col.enabled = false;
+        //Move a bit forward
+        //transform.position += transform.forward / 3f;
+>>>>>>> Stashed changes
 
         // Damage
         HealthEventSystem.current.TakeDamage(collision.gameObject.name, damage, DamageTypesManager.Physical);
