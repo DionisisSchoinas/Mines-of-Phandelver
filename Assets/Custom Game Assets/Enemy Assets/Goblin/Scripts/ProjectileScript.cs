@@ -9,9 +9,15 @@ public class ProjectileScript : MonoBehaviour
     public float damage = 15f;
     public float despawnAfter = 30f;
 
+    public bool stickToTarget = true;
+
     private Collider col;
     private Rigidbody rb;
-    private bool stuck;
+
+    [SerializeField]
+    Transform centerOfMass;
+
+    public bool stuck;
 
     private AudioSource flyAudioSource;
 
@@ -19,11 +25,13 @@ public class ProjectileScript : MonoBehaviour
 
     private void Awake()
     {
+         
         rb = gameObject.GetComponent<Rigidbody>();
         col = gameObject.GetComponent<Collider>();
         particles = gameObject.GetComponentInChildren<ParticleSystem>();
 
         rb.AddForce(transform.forward * speed, ForceMode.Force);
+        rb.centerOfMass = centerOfMass.position;
 
         stuck = false;
 
@@ -46,7 +54,7 @@ public class ProjectileScript : MonoBehaviour
     {
         if (!stuck)
         {
-            transform.RotateAround(transform.position, transform.forward, Time.deltaTime * 720f);
+            //transform.RotateAround(transform.position, transform.right, Time.deltaTime * 180f);
         }
     }
 
@@ -58,19 +66,23 @@ public class ProjectileScript : MonoBehaviour
         stuck = true;
         // Stick to target
         int layer = collision.gameObject.layer;
-        if (layer.Equals(BasicLayerMasks.EnemiesLayer) || layer.Equals(BasicLayerMasks.DamageablesLayer))
+        if (stickToTarget && (layer.Equals(BasicLayerMasks.EnemiesLayer) || layer.Equals(BasicLayerMasks.DamageablesLayer)) )
         {
             rb.transform.parent = collision.transform;
         }
-        rb.isKinematic = false;
-        rb.velocity = Vector3.zero;
-        rb.angularVelocity = Vector3.zero;
-        // Disable colider
-        col.enabled = false;
-        // Disable particles
-        particles.Clear();
-        // Move a bit forward
-        transform.position += transform.forward;
+
+        if (stickToTarget)
+        {
+            rb.isKinematic = false;
+            rb.velocity = Vector3.zero;
+            rb.angularVelocity = Vector3.zero;
+            // Disable colider
+            col.enabled = false;
+            // Disable particles
+            particles.Clear();
+            // Move a bit forward
+            transform.position += transform.forward;
+        }
 
         // Damage
         HealthEventSystem.current.TakeDamage(collision.gameObject.name, damage, damageType);

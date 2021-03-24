@@ -15,7 +15,8 @@ public class OverlayControls : MonoBehaviour
     public Color buttonColorSelected;
     public Color buttonColorUnselected;
     public CanvasGroup escapeMenu;
-
+    public CanvasGroup objectiveMenu;
+   
     // Quickbar data
     [HideInInspector]
     public Button[] quickbarButtons;
@@ -30,6 +31,7 @@ public class OverlayControls : MonoBehaviour
     private int selectedQuickbarIndex;
     private bool skillListUp;
     private bool escapeMenuUp;
+    private bool objectiveMenuUp;
 
     public static float skillFreezeAfterPicking;
     public static float skillFreezeAfterCasting;
@@ -56,6 +58,7 @@ public class OverlayControls : MonoBehaviour
 
         SetCanvasState(false, spellListDisplay);
         SetCanvasState(false, escapeMenu);
+        SetCanvasState(false, objectiveMenu);
         spellListDisplay.gameObject.AddComponent<ElementHover>();
 
         quickbarButtons = buttonQuickbar.GetComponentsInChildren<Button>();
@@ -103,7 +106,7 @@ public class OverlayControls : MonoBehaviour
 
         skillListUp = false;
         escapeMenuUp = false;
-
+        objectiveMenuUp = false;
         SetSelectedQuickBar(0);
 
         UIEventSystem.current.onDraggingButton += DraggingButton;
@@ -112,6 +115,8 @@ public class OverlayControls : MonoBehaviour
 
         // Requests update for mana values
         ManaEventSystem.current.UseMana(0);
+
+
     }
 
     private void OnDestroy()
@@ -293,6 +298,13 @@ public class OverlayControls : MonoBehaviour
         escapeMenuUp = !escapeMenuUp;
         SetCanvasState(escapeMenuUp, escapeMenu);
         PauseGame(escapeMenuUp);
+    }
+
+    public void ObjectiveMenu()
+    {
+        objectiveMenuUp = !objectiveMenuUp;
+        SetCanvasState(objectiveMenuUp, objectiveMenu);
+        PauseGame(objectiveMenuUp);
     }
 
     private void PauseGame(bool pause)

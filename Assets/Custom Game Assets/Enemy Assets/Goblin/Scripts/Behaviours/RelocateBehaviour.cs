@@ -7,16 +7,20 @@ public class RelocateBehaviour : StateMachineBehaviour
     private GameObject CurrentGameObject;
     private EnemyAi_V2 aiScript;
     private Transform target;
-    public float maxPatrolTimer;
+    private BossFightAi bossFightAi;
+    float maxPatrolTimer;
+   
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         CurrentGameObject = animator.gameObject;
         aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
+        bossFightAi = CurrentGameObject.GetComponent<BossFightAi>();
         target = aiScript.target.transform;
         aiScript.targetReached = false;
         aiScript.hasTarget = false;
         maxPatrolTimer = 0;
+
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -30,9 +34,6 @@ public class RelocateBehaviour : StateMachineBehaviour
             aiScript.Stop();
             animator.SetBool("Relocate", false);
         }
-
-
-        
         if (aiScript.targetReached)
         {
             animator.SetBool("Relocate", false);

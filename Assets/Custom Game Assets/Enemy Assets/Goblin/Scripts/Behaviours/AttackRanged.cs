@@ -7,7 +7,9 @@ public class AttackRanged : StateMachineBehaviour
     private GameObject CurrentGameObject;
     private EnemyAi_V2 aiScript;
     private Transform target;
+    private BossFightAi bossFightAi;
     float timer;
+    public float weaponDisaperDelay;
     //Seconds until the animation locks an no longer folows the target
     public float attackLockDelay;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -15,8 +17,11 @@ public class AttackRanged : StateMachineBehaviour
     {
         CurrentGameObject = animator.gameObject;
         aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
+        bossFightAi = CurrentGameObject.GetComponent<BossFightAi>();
         target = aiScript.target.transform;
         aiScript.AttackRanged();
+        bossFightAi.WeaponVanish(weaponDisaperDelay);
+        animator.SetBool("HasWeapon", false);
         timer = 0;
     }
 
