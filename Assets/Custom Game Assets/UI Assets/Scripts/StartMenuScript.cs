@@ -6,6 +6,7 @@ using UnityEngine.UI;
 public class StartMenuScript : MonoBehaviour
 {
     public CanvasGroup characterSelect;
+    private CharacterSelectMenu characterSelectScript;
 
     private Image backgroundImage;
     private CanvasGroup canvasGroup;
@@ -29,6 +30,8 @@ public class StartMenuScript : MonoBehaviour
         startButton.onClick.AddListener(StartGameClick);
         exitButton.onClick.AddListener(ExitButtonClick);
 
+        characterSelectScript = characterSelect.GetComponent<CharacterSelectMenu>();
+
         mode = -1;
     }
 
@@ -45,6 +48,7 @@ public class StartMenuScript : MonoBehaviour
     private void StartGameClick()
     {
         backgroundImage.enabled = false;
+        OverlayControls.SetCanvasState(true, characterSelectScript.startGamePanel);
         OverlayControls.SetCanvasState(true, characterSelect);
         OverlayControls.SetCanvasState(false, canvasGroup);
     }
