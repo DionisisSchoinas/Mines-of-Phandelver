@@ -7,17 +7,17 @@ using UnityEngine;
 public class ResistanceHandler : MonoBehaviour
 {
     //[HideInInspector]
-    public List<int> damageResistances;
+    public List<ElementTypes.Type> damageResistances;
     //[HideInInspector]
-    public List<int> damageImmunities;
+    public List<ElementTypes.Type> damageImmunities;
 
     private Coroutine resistanceTimer;
     private bool countingResistanceDuration;
 
     private void Awake()
     {
-        damageResistances = new List<int>();
-        damageImmunities = new List<int>();
+        damageResistances = new List<ElementTypes.Type>();
+        damageImmunities = new List<ElementTypes.Type>();
     }
 
     private void Start()
@@ -31,7 +31,7 @@ public class ResistanceHandler : MonoBehaviour
     }
 
     //-------------- Resistance Management --------------
-    public void ApplyResistance(string name, List<SkinnedMeshRenderer> meshes, Material newMaterial, int resistance, float duration)
+    public void ApplyResistance(string name, List<SkinnedMeshRenderer> meshes, Material newMaterial, ElementTypes.Type resistance, float duration)
     {
         if (gameObject.name != name)
             return;
@@ -40,7 +40,7 @@ public class ResistanceHandler : MonoBehaviour
         AddResistance(meshes, newMaterial, resistance, duration);
     }
 
-    private void AddResistance(List<SkinnedMeshRenderer> meshes, Material newMaterial, int resistance, float duration)
+    private void AddResistance(List<SkinnedMeshRenderer> meshes, Material newMaterial, ElementTypes.Type resistance, float duration)
     {
         foreach (SkinnedMeshRenderer mesh in meshes)
         {
@@ -59,7 +59,7 @@ public class ResistanceHandler : MonoBehaviour
 
         damageResistances.Add(resistance); // Add resistance to list
 
-        UIEventSystem.current.ApplyResistance(DamageTypesManager.Types[resistance] + " Resistance", duration);
+        UIEventSystem.current.ApplyResistance(resistance.ToString() + " Resistance", duration);
         HealthEventSystem.current.UpdateResistance(gameObject.name, damageResistances);
 
         resistanceTimer = StartCoroutine(StartDuration(meshes, duration));

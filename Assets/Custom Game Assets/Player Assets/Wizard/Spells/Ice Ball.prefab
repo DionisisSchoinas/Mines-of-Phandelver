@@ -4774,6 +4774,7 @@ GameObject:
   - component: {fileID: 1582604612720675331}
   - component: {fileID: 917151537568240003}
   - component: {fileID: 7826988093119734122}
+  - component: {fileID: -6346558324030079249}
   m_Layer: 8
   m_Name: Ice Ball
   m_TagString: Untagged
@@ -4827,14 +4828,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1d322d0cd6a541f4fb6ac539f66b7d9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueOverlayToWeaponAdapterId: 5
-  onCooldown: 0
-  cooldownPercentage: 0
+  uniqueOverlayToWeaponAdapterId: 6
+  onCooldown: 1
+  cooldownPercentage: 0.87999946
   cancelled: 0
   speed: 10
-  range: 30
   explosion: {fileID: 6955678255316448818, guid: d3056ca5bf153eb48aeb4dd19e635718,
     type: 3}
+--- !u!114 &-6346558324030079249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3197605642827506368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0deb8c8cc236d3499e97ff86131be36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 3
 --- !u!1 &5438082917392208543
 GameObject:
   m_ObjectHideFlags: 0

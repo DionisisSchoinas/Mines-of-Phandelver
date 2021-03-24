@@ -9586,6 +9586,8 @@ GameObject:
   - component: {fileID: 7328016099344201601}
   - component: {fileID: 4794301986404537352}
   - component: {fileID: 3092931381123418967}
+  - component: {fileID: -7638244142437319592}
+  - component: {fileID: -3041315246666976890}
   m_Layer: 0
   m_Name: Lightning Source
   m_TagString: Untagged
@@ -14358,3 +14360,29 @@ ParticleSystemRenderer:
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
   m_MaskInteraction: 0
+--- !u!114 &-7638244142437319592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5531118060093715532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b0deb8c8cc236d3499e97ff86131be36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 2
+--- !u!114 &-3041315246666976890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5531118060093715532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b587f5e0413bb6459ad0db4b365ae5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  elementType: 2

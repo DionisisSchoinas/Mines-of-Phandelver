@@ -21,6 +21,9 @@ public class BackgroundMusicSetter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (currentLocation == location) // Check if the same area background music is already playing
+            return;
+
         if (other.gameObject.CompareTag("Player") && currentLocation != BackgroundMusicController.Location.Combat)
         {
             BackgroundMusicController.current.SetLocation(location);

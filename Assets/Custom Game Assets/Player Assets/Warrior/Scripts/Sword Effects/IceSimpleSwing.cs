@@ -6,7 +6,6 @@ public class IceSimpleSwing : ElementalSlash
 
     void Start()
     {
-        damageType = DamageTypesManager.Cold;
         condition = ConditionsManager.Frozen;
     }
 

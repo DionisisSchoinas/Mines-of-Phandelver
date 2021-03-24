@@ -6,6 +6,8 @@ using UnityEngine;
 [Serializable]
 public struct SwordEffectAttributes
 {
+    public ElementTypes.Type elementType;
+    public float swingSoundDelay;
     public SwingTrailRenderer[] trails;
     public Material swordMaterial;
 }
@@ -18,8 +20,11 @@ public class SwordEffect : BasicSword
     private SwordEffect currentEffect;
     private Transform tipPoint, basePoint;
     private GameObject swordParticles;
+    private Coroutine swingSoundCoroutine;
 
     protected bool instaCasting;
+    private AudioSource swingAudioSource;
+    protected AudioClip[] swingAudioClips;
 
     public override string type => "Sword Effect";
     public override string skillName => "Sword Effect";
@@ -35,6 +40,11 @@ public class SwordEffect : BasicSword
         base.Awake();
         trails = new List<SwingTrailRenderer>();
         instaCasting = false;
+
+        swingAudioSource = gameObject.AddComponent<AudioSource>();
+        swingAudioSource = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", swingAudioSource, ResourceManager.Audio.AudioSources.Range.Short);
+
+        swingAudioClips = ResourceManager.Audio.Sword.Swings;
     }
 
     protected void OnDestroy()
@@ -115,7 +125,7 @@ public class SwordEffect : BasicSword
             
             StartCooldown();
             ManaEventSystem.current.UseMana(manaCost);
-            UIEventSystem.current.FreezeAllSkills(uniqueOverlayToWeaponAdapterId, swingCooldowns[comboPhase] * 0.5f);
+            UIEventSystem.current.FreezeAllSkills(uniqueOverlayToWeaponAdapterId, OverlayControls.skillFreezeAfterCasting);
         }
 
         instaCasting = false;
@@ -128,5 +138,22 @@ public class SwordEffect : BasicSword
     public override GameObject GetSource()
     {
         return null;
+    }
+
+    protected void PlaySwordSwingAudio()
+    {
+        swingAudioSource.Stop();
+        int randomSwing = UnityEngine.Random.Range(0, swingAudioClips.Length);
+        swingAudioSource.clip = swingAudioClips[randomSwing];
+
+        if (swingSoundCoroutine != null)
+            StopCoroutine(swingSoundCoroutine);
+        swingSoundCoroutine = StartCoroutine(PlaySound());
+    }
+
+    IEnumerator PlaySound()
+    {
+        yield return new WaitForSeconds(attributes.swingSoundDelay);
+        swingAudioSource.Play();
     }
 }

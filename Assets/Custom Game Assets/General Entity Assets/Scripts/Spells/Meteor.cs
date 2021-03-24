@@ -39,7 +39,7 @@ public class Meteor : MonoBehaviour
     {
         if (other.CompareTag("Damageable"))
         {
-            HealthEventSystem.current.TakeDamage(other.gameObject.name, meteorHitDamage, DamageTypesManager.Physical);
+            HealthEventSystem.current.TakeDamage(other.gameObject.name, meteorHitDamage, ElementTypes.Type.Physical_Earth);
         }
         Destroy(Instantiate(meteorHitEffect, transform.position, transform.rotation), 1f);
         Destroy(gameObject);

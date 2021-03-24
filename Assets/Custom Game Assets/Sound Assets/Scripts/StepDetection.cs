@@ -15,13 +15,22 @@ public class StepDetection : MonoBehaviour
         Backward,
     }
 
+    public enum Size
+    {
+        Light,
+        Heavy,
+    }
+
     public LayerMask groundLayer;
-    public float distanceFromGround = 0.5f;
-    public Direction jointToGroundDirection;
+    public Size stepWeight;
     public List<Transform> groundContactPoints;
+    public List<Direction> jointToGroundDirection;
+    public List<float> distanceFromGround;
 
     private List<bool> grounded;
     private List<AudioSource> audioSources;
+
+    private BackgroundMusicController.Location location;
 
     private void Start()
     {
@@ -36,25 +45,29 @@ public class StepDetection : MonoBehaviour
         for (int i=0; i < groundContactPoints.Count; i++)
         {
             audioSources.Add(groundContactPoints[i].gameObject.AddComponent<AudioSource>());
-            audioSources[i] = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSources[i], ResourceManager.Audio.AudioSources.Range.Mid);
-            audioSources[i].clip = ResourceManager.Audio.Footsteps.WalkGrass;
+            audioSources[i] = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSources[i], ResourceManager.Audio.AudioSources.Range.Short);
         }
+
+        BackgroundMusicController.current.onLocationSet += SetLocation;
+    }
+
+    private void OnDestroy()
+    {
+        BackgroundMusicController.current.onLocationSet -= SetLocation;
     }
 
     private void FixedUpdate()
     {
         for (int i=0; i<groundContactPoints.Count; i++)
         {
-            //bool touch = Physics.CheckSphere(groundContactPoints[i].position, distanceFromGround, groundLayer);
-
-
             RaycastHit hit1;
             RaycastHit hit2;
-            bool touch1 = Physics.Raycast(groundContactPoints[i].position, Vector3.down, out hit1, distanceFromGround, groundLayer);
-            bool touch2 = Physics.Raycast(groundContactPoints[i].position, FindDirection(groundContactPoints[i]), out hit2, distanceFromGround, groundLayer);
+            bool touch1 = Physics.Raycast(groundContactPoints[i].position, Vector3.down, out hit1, distanceFromGround[i], groundLayer);
+            bool touch2 = Physics.Raycast(groundContactPoints[i].position, FindDirection(i), out hit2, distanceFromGround[i], groundLayer);
 
             if (touch1 && touch2 && !grounded[i]) // Collides with ground and is not already grounded
             {
+                audioSources[i].clip = FindAudioClip();
                 audioSources[i].Play();
                 grounded[i] = true;
             }
@@ -65,22 +78,50 @@ public class StepDetection : MonoBehaviour
         }
     }
 
-    private Vector3 FindDirection(Transform transform)
+    private void SetLocation(BackgroundMusicController.Location location)
     {
-        switch (jointToGroundDirection)
+        this.location = location;
+    }
+
+    private AudioClip FindAudioClip()
+    {
+        switch (stepWeight)
+        {
+            case Size.Heavy:
+                switch (location)
+                {
+                    case BackgroundMusicController.Location.Cave:
+                        return ResourceManager.Audio.Footsteps.WalkCaveHeavy;
+                    default:
+                        return ResourceManager.Audio.Footsteps.WalkForestHeavy;
+                }
+            default:
+                switch (location)
+                {
+                    case BackgroundMusicController.Location.Cave:
+                        return ResourceManager.Audio.Footsteps.WalkCaveLight;
+                    default:
+                        return ResourceManager.Audio.Footsteps.WalkForestLight;
+                }
+        }
+    }
+
+    private Vector3 FindDirection(int index)
+    {
+        switch (jointToGroundDirection[index])
         {
             case Direction.Down:
-                return -transform.up;
+                return -groundContactPoints[index].up;
             case Direction.Right:
-                return transform.right;
+                return groundContactPoints[index].right;
             case Direction.Left:
-                return -transform.right;
+                return -groundContactPoints[index].right;
             case Direction.Forward:
-                return transform.forward;
+                return groundContactPoints[index].forward;
             case Direction.Backward:
-                return -transform.forward;
+                return -groundContactPoints[index].forward;
             default:
-                return transform.up;
+                return groundContactPoints[index].up;
         }
     }
 
@@ -94,10 +135,12 @@ public class StepDetection : MonoBehaviour
             if (groundContactPoints[i] != null)
             {
                 Gizmos.color = Color.red;
-                Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + Vector3.down * distanceFromGround);
+                Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + Vector3.down * distanceFromGround[i]);
+                Gizmos.DrawSphere(groundContactPoints[i].position + Vector3.down * distanceFromGround[i], 0.1f);
 
                 Gizmos.color = Color.blue;
-                Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + (FindDirection(groundContactPoints[i]) * distanceFromGround));
+                Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + (FindDirection(i) * distanceFromGround[i]));
+                Gizmos.DrawSphere(groundContactPoints[i].position + (FindDirection(i) * distanceFromGround[i]), 0.1f);
 
                 try
                 {
@@ -105,7 +148,7 @@ public class StepDetection : MonoBehaviour
                         Gizmos.color = Color.red;
                     else
                         Gizmos.color = Color.white;
-                    Gizmos.DrawSphere(groundContactPoints[i].position + Vector3.up, 0.5f);
+                    Gizmos.DrawSphere(groundContactPoints[i].position + Vector3.up, 0.3f);
                 }
                 catch { }
             }

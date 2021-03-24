@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ProjectileScript : MonoBehaviour
 {
+    public ElementTypes.Type damageType = ElementTypes.Type.Physical_Earth;
     public float speed = 8f;
     public float damage = 15f;
     public float despawnAfter = 30f;
@@ -84,7 +85,7 @@ public class ProjectileScript : MonoBehaviour
         }
 
         // Damage
-        HealthEventSystem.current.TakeDamage(collision.gameObject.name, damage, DamageTypesManager.Physical);
+        HealthEventSystem.current.TakeDamage(collision.gameObject.name, damage, damageType);
 
         Destroy(gameObject, despawnAfter);
     }

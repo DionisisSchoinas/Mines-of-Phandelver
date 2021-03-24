@@ -4,11 +4,10 @@ using UnityEngine;
 
 public class SpellTypeBolt : Spell
 {
+    public ElementTypes.Type elementType;
     public float damage = 15f;
     public float speed = 40f;
     public GameObject explosionParticles;
-    [HideInInspector]
-    public int damageType;
     [HideInInspector]
     public Condition condition;
 
@@ -44,12 +43,12 @@ public class SpellTypeBolt : Spell
             // Ignore collisions with the caster
             if (collision.gameObject.name != casterName)
             {
-                HealthEventSystem.current.TakeDamage(collision.gameObject.name, damage, damageType);
+                HealthEventSystem.current.TakeDamage(collision.gameObject.name, damage, elementType);
                 if (condition != null)
                     if (Random.value <= 0.2f) HealthEventSystem.current.SetCondition(collision.gameObject.name, condition);
                 HealthEventSystem.current.ApplyForce(collision.gameObject.name, gameObject.transform.forward.normalized, 5f);
 
-                CameraShake.current.ShakeCamera(0.1f, 0.2f);
+                CameraShake.current.ShakeCamera(0.1f, 0.1f);
                 Destroy(Instantiate(explosionParticles, transform.position, transform.rotation), 5f);
                 Destroy(gameObject);
             }

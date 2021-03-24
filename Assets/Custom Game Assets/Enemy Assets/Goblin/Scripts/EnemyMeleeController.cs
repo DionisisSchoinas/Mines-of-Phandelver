@@ -11,9 +11,8 @@ public class EnemyMeleeController : MonoBehaviour
     public float swingSoundDelay = 0.5f;
 
     private List<AudioClip> swingSounds;
-    private AudioSource swingAudioSource;
     private Coroutine swingSoundCoroutine;
-
+    private AudioSource swingAudioSource;
     private AudioSource hitAudioSource;
 
     // Start is called before the first frame update
@@ -25,7 +24,6 @@ public class EnemyMeleeController : MonoBehaviour
         swingAudioSource = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", swingAudioSource, ResourceManager.Audio.AudioSources.Range.Short);
 
         hitAudioSource = gameObject.AddComponent<AudioSource>();
-        hitAudioSource.volume = 0.5f;
         hitAudioSource = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", hitAudioSource, ResourceManager.Audio.AudioSources.Range.Short);
 
         swingSounds = new List<AudioClip>();
@@ -59,7 +57,7 @@ public class EnemyMeleeController : MonoBehaviour
             else if (col == 0)
                 col = 2;
 
-            HealthEventSystem.current.TakeDamage(visibleTarget.name, 15f, DamageTypesManager.Physical);
+            HealthEventSystem.current.TakeDamage(visibleTarget.name, 15f, ElementTypes.Type.Physical_Earth);
         }
         
         switch (col)
@@ -80,7 +78,7 @@ public class EnemyMeleeController : MonoBehaviour
     private void PlaySwordSwingAudio()
     {
         swingAudioSource.Stop();
-        int randomSwing = Random.Range(0, swingSounds.Count - 1);
+        int randomSwing = Random.Range(0, swingSounds.Count);
         swingAudioSource.clip = swingSounds[randomSwing];
 
         if (swingSoundCoroutine != null)

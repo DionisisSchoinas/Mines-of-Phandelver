@@ -43,12 +43,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 248b9f6d6aab1ac41844efece3ad43b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uniqueOverlayToWeaponAdapterId: 0
+  uniqueOverlayToWeaponAdapterId: 1
   onCooldown: 0
   cooldownPercentage: 0
   attributes:
+    elementType: 1
+    swingSoundDelay: 0
     trails:
     - {fileID: 8215892400159611791, guid: 73dce3ee91a19f249af5a865c5cda15d, type: 3}
     swordMaterial: {fileID: 2100000, guid: 6d73a9dc708008c4887583475cdd6e45, type: 2}
   force: 5
-  damageType: 0

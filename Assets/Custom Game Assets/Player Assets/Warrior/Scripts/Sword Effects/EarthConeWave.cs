@@ -6,7 +6,6 @@ public class EarthConeWave : ConeBurstSlash
 
     void Start()
     {
-        damageType = DamageTypesManager.Physical;
         condition = null;
     }
 

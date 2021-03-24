@@ -8,7 +8,6 @@ public class Icespike : SpellTypeBolt
 
     private void Start()
     {
-        damageType = DamageTypesManager.Cold;
         condition = ConditionsManager.Frozen;
     }
 

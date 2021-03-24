@@ -17,7 +17,7 @@ public class AttackRanged : StateMachineBehaviour
     {
         CurrentGameObject = animator.gameObject;
         aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
-        bossFightAi= CurrentGameObject.GetComponent<BossFightAi>();
+        bossFightAi = CurrentGameObject.GetComponent<BossFightAi>();
         target = aiScript.target.transform;
         aiScript.AttackRanged();
         bossFightAi.WeaponVanish(weaponDisaperDelay);

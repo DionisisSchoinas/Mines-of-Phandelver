@@ -12,6 +12,8 @@ public class Arc : MonoBehaviour
 
     LineRenderer lineRenderer;
 
+    AudioSource audioSource1;
+
     private void Awake()
     {
         this.secondsAlive = 1f;
@@ -28,6 +30,10 @@ public class Arc : MonoBehaviour
         changePerSecond = -1;
         withFrames = true;
 
+        audioSource1 = gameObject.AddComponent<AudioSource>();
+        audioSource1 = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", audioSource1, ResourceManager.Audio.AudioSources.Range.Short);
+        audioSource1.clip = ResourceManager.Audio.Spells.Lightning.Arc;
+
         gameObject.SetActive(false);
     }
 
@@ -39,6 +45,7 @@ public class Arc : MonoBehaviour
         }
         timeSpawned = Time.time;
         gameObject.SetActive(true);
+        audioSource1.Play();
     }
 
     public Arc To(Vector3 to)
@@ -83,6 +90,14 @@ public class Arc : MonoBehaviour
         Material mat = lineRenderer.material;
         mat.SetVector("_Speed", speed);
         lineRenderer.material = mat;
+        return this;
+    }
+    public Arc HasAudio(bool hasAudio)
+    {
+        if (hasAudio)
+            audioSource1.volume = 1f;
+        else
+            audioSource1.volume = 0f;
         return this;
     }
 

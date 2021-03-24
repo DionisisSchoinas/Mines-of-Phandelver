@@ -6,8 +6,6 @@ public class Firewall : SpellTypeWall
 
     private void Start()
     {
-        doDamage = true;
-        damageType = DamageTypesManager.Fire;
         condition = ConditionsManager.Burning;
     }
 

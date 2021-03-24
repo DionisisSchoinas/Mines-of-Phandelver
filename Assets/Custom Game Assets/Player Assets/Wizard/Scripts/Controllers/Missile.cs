@@ -24,6 +24,7 @@ public class Missile : MonoBehaviour
     private float roamTime;
     private Vector3 startPosition;
 
+    private AudioSource audioSource;
 
     private void Start()
     {
@@ -161,7 +162,7 @@ public class Missile : MonoBehaviour
             if (closest != null)
             {
                 RegisterHit(closest.gameObject);
-                if (Random.value <= 0.3f) CameraShake.current.ShakeCamera(0.01f, 0.2f);
+                if (Random.value <= 0.3f) CameraShake.current.ShakeCamera(0.02f, 0.1f);
                 Destroy(Instantiate(hitEffect, transform.position, transform.rotation), 1f);
                 Destroy(gameObject);
             }

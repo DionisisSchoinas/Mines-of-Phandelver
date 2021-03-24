@@ -5,9 +5,11 @@ using UnityEngine;
 
 public class HealthController : EntityResource
 {
+    [Range(0f, 1f)]
+    public float staggerPercentage = 0.2f;
     public float deathDelay = 30f;
-    public List<int> resistances { get; private set; }
-    public List<int> immunities { get; private set; }
+    public List<ElementTypes.Type> resistances { get; private set; }
+    public List<ElementTypes.Type> immunities { get; private set; }
 
     private Animator animator;
     private Collider col;
@@ -56,12 +58,10 @@ public class HealthController : EntityResource
 
             if (currentValue > 0f)
             {
-                if (animator != null && value < currentValue)
-                { 
+                if (animator != null && ( (staggerPercentage * maxValue) <= (currentValue - value) ) ) // The damage is greater or equal to staggerPercentage of max health
+                {
                     animator.SetTrigger("Hit");
-                    
                 }
-                  
             }
 
             base.currentValue = value;
@@ -86,8 +86,10 @@ public class HealthController : EntityResource
         rb = gameObject.GetComponent<Rigidbody>();
         col = gameObject.GetComponent<Collider>();
 
-        resistances = new List<int>();
-        immunities = new List<int>();
+        if (immunities == null)
+            immunities = new List<ElementTypes.Type>();
+        if (resistances == null)
+            resistances = new List<ElementTypes.Type>();
     }
 
     private new void Start()
@@ -118,7 +120,7 @@ public class HealthController : EntityResource
         HealthEventSystem.current.onResistanceUpdate -= UpdateResistances;
     }
 
-    public void TakeDamage(string name, float damage, int damageType)
+    public void TakeDamage(string name, float damage, ElementTypes.Type damageType)
     {
         // If controller matches
         if (gameObject.name == name)
@@ -127,13 +129,11 @@ public class HealthController : EntityResource
             if (!invulnerable)
             {
                 currentValue = currentValue - CheckDamageTypes(damage, damageType);
-                CameraShake.current.ShakeCamera(0.05f, 0.2f);
-
             }
         }
     }
 
-    private float CheckDamageTypes(float damage, int damageType)
+    private float CheckDamageTypes(float damage, ElementTypes.Type damageType)
     {
         if (immunities.Contains(damageType))
         {
@@ -148,14 +148,15 @@ public class HealthController : EntityResource
         return damage;
     }
 
-    public void SetValues(float maxValue, float regenPerSecond, ResourceBar resourceBar, Color barColor, bool respawn, bool invulnerable)
+    public void SetValues(float maxValue, float regenPerSecond, ResourceBar resourceBar, Color barColor, bool respawn, bool invulnerable, float stagger)
     {
         SetValues(maxValue, regenPerSecond, resourceBar, barColor);
         this.respawn = respawn;
         this.invulnerable = invulnerable;
+        this.staggerPercentage = stagger;
     }
 
-    private void UpdateResistances(string name, List<int> resistances)
+    private void UpdateResistances(string name, List<ElementTypes.Type> resistances)
     {
         if (gameObject.name == name)
         {
@@ -163,7 +164,7 @@ public class HealthController : EntityResource
         }
     }
 
-    private void UpdateImmunities(string name, List<int> immunities)
+    private void UpdateImmunities(string name, List<ElementTypes.Type> immunities)
     {
         if (gameObject.name == name)
         {

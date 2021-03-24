@@ -30,6 +30,66 @@ Transform:
   m_Father: {fileID: 64714289101570454}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &818568179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 818568180}
+  m_Layer: 0
+  m_Name: R_Step
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &818568180
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818568179}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 64598609300553142}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1237363841
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1237363842}
+  m_Layer: 0
+  m_Name: L_Step
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1237363842
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237363841}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 64303742137695264}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1631023105
 GameObject:
   m_ObjectHideFlags: 0
@@ -750,6 +810,7 @@ Transform:
   m_Children:
   - {fileID: 70740329596253820}
   - {fileID: 70508662528991822}
+  - {fileID: 818568180}
   m_Father: {fileID: 64587492162656034}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1772,6 +1833,7 @@ Transform:
   m_Children:
   - {fileID: 70628376193048920}
   - {fileID: 70415612866256390}
+  - {fileID: 1237363842}
   m_Father: {fileID: 70392006028803606}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6039,7 +6101,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2177212894193938704}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.05, z: 0}
+  m_LocalPosition: {x: 0, y: -1.67, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2177212895260857014}
@@ -6251,6 +6313,7 @@ GameObject:
   - component: {fileID: 1118363871920610425}
   - component: {fileID: 3989154091426477131}
   - component: {fileID: 2177212895260857020}
+  - component: {fileID: 1817844480}
   m_Layer: 12
   m_Name: Player (Warrior)
   m_TagString: Player
@@ -6286,13 +6349,13 @@ CharacterController:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Height: 4.77
+  m_Height: 4.47
   m_Radius: 1.45
   m_SlopeLimit: 90
   m_StepOffset: 0.6
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.54, z: 0}
+  m_Center: {x: 0, y: 0.68, z: 0}
 --- !u!114 &2177212895260857017
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6382,7 +6445,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25c91cdb2cbf5a1419a23fdec72826b3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMesh: {fileID: 72294390432926086}
+  playerMeshes:
+  - {fileID: 72294390432926086}
+  - {fileID: 75840352045362960}
   swordObject: {fileID: 67187949584669358}
   swordMotionRoot: {fileID: 64714289101570454}
   tipPoint: {fileID: 1631023106}
@@ -6469,6 +6534,29 @@ MonoBehaviour:
   comboQueue: 
   comboCooldown: 3
   isDuringAttack: 0
+--- !u!114 &1817844480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177212895260857013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: efc95973a5708be4f99ed5f1cb9ac197, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 2048
+  stepWeight: 0
+  groundContactPoints:
+  - {fileID: 1237363842}
+  - {fileID: 818568180}
+  jointToGroundDirection: 0300000003000000
+  distanceFromGround:
+  - 0.5
+  - 0.5
 --- !u!1 &2177212895714952280
 GameObject:
   m_ObjectHideFlags: 0

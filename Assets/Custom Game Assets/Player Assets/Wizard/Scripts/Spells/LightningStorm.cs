@@ -7,7 +7,6 @@ public class LightningStorm : SpellTypeStorm
 
     private void Start()
     {
-        damageType = DamageTypesManager.Lightning;
         condition = ConditionsManager.Electrified;
     }
 

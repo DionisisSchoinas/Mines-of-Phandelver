@@ -8,7 +8,6 @@ public class Fireray : SpellTypeRay
 
     private void Start()
     {
-        damageType = DamageTypesManager.Fire;
         condition = ConditionsManager.Burning;
     }
 
