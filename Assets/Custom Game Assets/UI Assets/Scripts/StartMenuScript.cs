@@ -7,6 +7,7 @@ public class StartMenuScript : MonoBehaviour
 {
     public CanvasGroup characterSelect;
 
+    private Image backgroundImage;
     private CanvasGroup canvasGroup;
     private Button startButton;
     private Button exitButton;
@@ -15,6 +16,9 @@ public class StartMenuScript : MonoBehaviour
 
     private void Awake()
     {
+        backgroundImage = gameObject.GetComponentsInParent<Image>()[1];
+        backgroundImage.enabled = true;
+
         canvasGroup = gameObject.GetComponent<CanvasGroup>();
         OverlayControls.SetCanvasState(true, canvasGroup);
 
@@ -26,7 +30,10 @@ public class StartMenuScript : MonoBehaviour
         exitButton.onClick.AddListener(ExitButtonClick);
 
         mode = -1;
+    }
 
+    private void Start()
+    {
         YesNoDialog.current.onResponded += Response;
     }
 
@@ -37,6 +44,7 @@ public class StartMenuScript : MonoBehaviour
 
     private void StartGameClick()
     {
+        backgroundImage.enabled = false;
         OverlayControls.SetCanvasState(true, characterSelect);
         OverlayControls.SetCanvasState(false, canvasGroup);
     }

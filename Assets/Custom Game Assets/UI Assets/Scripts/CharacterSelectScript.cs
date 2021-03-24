@@ -8,6 +8,7 @@ public class CharacterSelectScript : MonoBehaviour
 {
     public CanvasGroup startMenu;
 
+    private Image backgroundImage;
     private CanvasGroup canvasGroup;
     private Button wizard;
     private Button fighter;
@@ -15,6 +16,8 @@ public class CharacterSelectScript : MonoBehaviour
 
     private void Awake()
     {
+        backgroundImage = gameObject.GetComponentsInParent<Image>()[1];
+
         SelectedCharacterScript[] scripts = FindObjectsOfType<SelectedCharacterScript>();
         foreach (SelectedCharacterScript s in scripts)
             Destroy(s.gameObject);
@@ -55,6 +58,7 @@ public class CharacterSelectScript : MonoBehaviour
 
     private void BackToMenu()
     {
+        backgroundImage.enabled = true;
         OverlayControls.SetCanvasState(true, startMenu);
         OverlayControls.SetCanvasState(false, canvasGroup);
     }
