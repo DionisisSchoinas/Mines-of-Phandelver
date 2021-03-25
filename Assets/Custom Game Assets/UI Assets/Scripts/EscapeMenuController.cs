@@ -68,7 +68,7 @@ public class EscapeMenuController : MonoBehaviour
     {
         Time.timeScale = 1;
         SceneManager.UnloadSceneAsync(SceneManager.GetActiveScene());
-        SceneManager.LoadScene("StartMenuScene");
+        SceneManager.LoadScene("StartGameScene");
     }
 
     private void ExitGame()

@@ -30,11 +30,4 @@ public class CharacterSelectButton : ButtonSoundHover
         foreach (Light light in lights)
             light.enabled = state;
     }
-
-    public new void OnPointerEnter(PointerEventData eventData)
-    {
-        base.OnPointerEnter(eventData);
-
-        // Do sth more here
-    }
 }

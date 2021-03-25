@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 0}
-  m_UseShadowmask: 0
+  m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -89504,7 +89504,7 @@ Transform:
   m_Children:
   - {fileID: 5756755122010053105}
   m_Father: {fileID: 108289919}
-  m_RootOrder: 54
+  m_RootOrder: 66
   m_LocalEulerAnglesHint: {x: 2.365, y: 14.413001, z: 0.56}
 --- !u!1 &5903302978163058668
 GameObject:
@@ -89783,8 +89783,10 @@ MonoBehaviour:
   groundContactPoints:
   - {fileID: 692049354}
   - {fileID: 1978116097}
-  jointToGroundDirection: 
-  distanceFromGround: []
+  jointToGroundDirection: 0300000003000000
+  distanceFromGround:
+  - 0.5
+  - 0.5
 --- !u!4 &5903302978499681124
 Transform:
   m_ObjectHideFlags: 0
