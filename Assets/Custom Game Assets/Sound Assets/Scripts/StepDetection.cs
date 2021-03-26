@@ -32,10 +32,15 @@ public class StepDetection : MonoBehaviour
 
     private BackgroundMusicController.Location location;
 
+    private bool threwError = false;
+
     private void Start()
     {
-        if (groundContactPoints == null || groundContactPoints.Count == 0)
+        if (groundContactPoints == null)
             groundContactPoints = new List<Transform>();
+
+        if (groundContactPoints.Count != jointToGroundDirection.Count || groundContactPoints.Count != distanceFromGround.Count)
+            Debug.LogError("Points, Joint direction and Ground distance lists must have the same length");
 
         grounded = new List<bool>();
         foreach (Transform t in groundContactPoints)
@@ -132,7 +137,7 @@ public class StepDetection : MonoBehaviour
 
         for (int i=0; i < groundContactPoints.Count; i++)
         {
-            if (groundContactPoints[i] != null)
+            try
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + Vector3.down * distanceFromGround[i]);
@@ -142,16 +147,13 @@ public class StepDetection : MonoBehaviour
                 Gizmos.DrawLine(groundContactPoints[i].position, groundContactPoints[i].position + (FindDirection(i) * distanceFromGround[i]));
                 Gizmos.DrawSphere(groundContactPoints[i].position + (FindDirection(i) * distanceFromGround[i]), 0.1f);
 
-                try
-                {
-                    if (grounded[i])
-                        Gizmos.color = Color.red;
-                    else
-                        Gizmos.color = Color.white;
-                    Gizmos.DrawSphere(groundContactPoints[i].position + Vector3.up, 0.3f);
-                }
-                catch { }
+                if (grounded[i])
+                    Gizmos.color = Color.red;
+                else
+                    Gizmos.color = Color.white;
+                Gizmos.DrawSphere(groundContactPoints[i].position + Vector3.up, 0.3f);
             }
+            catch { }
         }
     }
 }

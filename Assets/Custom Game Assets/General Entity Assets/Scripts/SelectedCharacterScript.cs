@@ -7,8 +7,8 @@ public class SelectedCharacterScript : MonoBehaviour
     [HideInInspector]
     public enum Character
     {
-        Wizard,
-        Fighter
+        Fighter,
+        Wizard
     }
 
     [HideInInspector]
