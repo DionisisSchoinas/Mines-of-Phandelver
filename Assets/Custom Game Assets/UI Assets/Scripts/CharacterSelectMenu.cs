@@ -8,6 +8,7 @@ public class CharacterSelectMenu : MonoBehaviour
 {
     public CanvasGroup startMenu;
     public CanvasGroup startGamePanel;
+    public LoadingScreen loadingScreenPanel;
 
     private Image backgroundImage;
     private CanvasGroup canvasGroup;
@@ -16,6 +17,9 @@ public class CharacterSelectMenu : MonoBehaviour
 
     private SelectedCharacterScript.Character selectedCharacter;
     private List<CharacterSelectButton> characterSelectButtons;
+
+    private AsyncOperation loadingOperation;
+    private Coroutine coroutine;
 
     private void Awake()
     {
@@ -26,8 +30,6 @@ public class CharacterSelectMenu : MonoBehaviour
             Destroy(s.gameObject);
 
         canvasGroup = gameObject.GetComponent<CanvasGroup>();
-        OverlayControls.SetCanvasState(false, canvasGroup);
-        OverlayControls.SetCanvasState(false, startGamePanel);
 
         Button[] buttons = gameObject.GetComponentsInChildren<Button>();
         backToMenu = buttons[buttons.Length-1];
@@ -39,6 +41,13 @@ public class CharacterSelectMenu : MonoBehaviour
 
         backToMenu.onClick.AddListener(BackToMenu);
         startGameButton.onClick.AddListener(StartGame);
+    }
+
+    private void Start()
+    {
+        OverlayControls.SetCanvasState(false, canvasGroup);
+        OverlayControls.SetCanvasState(false, startGamePanel);
+        loadingScreenPanel.Hide();
     }
 
     public void PickCharacter(SelectedCharacterScript.Character character)
@@ -71,7 +80,16 @@ public class CharacterSelectMenu : MonoBehaviour
 
     private void ChangeToGameScene()
     {
-        SceneManager.LoadScene("MainGameScene2");
+        HideCharacterSelect();
+        loadingScreenPanel.Show();
+
+        //Application.backgroundLoadingPriority = ThreadPriority.Low;
+
+        loadingOperation = SceneManager.LoadSceneAsync("MainGameScene2");
+
+        if (coroutine != null)
+            StopCoroutine(coroutine);
+        coroutine = StartCoroutine(Loading());
     }
 
     private void BackToMenu()
@@ -80,11 +98,47 @@ public class CharacterSelectMenu : MonoBehaviour
         backgroundImage.enabled = true;
         OverlayControls.SetCanvasState(true, startMenu);
 
+        HideCharacterSelect();
+    }
+
+    private void HideCharacterSelect()
+    {
         // Disable all selections
         OverlayControls.SetCanvasState(false, canvasGroup);
         OverlayControls.SetCanvasState(false, startGamePanel);
         startGameButton.interactable = false;
         foreach (CharacterSelectButton button in characterSelectButtons)
             button.SetLights(false);
+    }
+
+    private IEnumerator Loading()
+    {
+        int state = 0;
+        loadingScreenPanel.loadingCircle.fillClockwise = true;
+
+        while (!loadingOperation.isDone)
+        {
+            if (state == 0 && loadingScreenPanel.loadingCircle.fillAmount < 1)
+            {
+                loadingScreenPanel.loadingCircle.fillAmount += 0.01f;
+            }
+            else if (state == 0)
+            {
+                state = 1;
+                loadingScreenPanel.loadingCircle.fillClockwise = false;
+            }
+
+            if (state == 1 && loadingScreenPanel.loadingCircle.fillAmount > 0)
+            {
+                loadingScreenPanel.loadingCircle.fillAmount -= 0.01f;
+            }
+            else if (state == 1)
+            {
+                state = 0;
+                loadingScreenPanel.loadingCircle.fillClockwise = true;
+            }
+
+            yield return new WaitForSecondsRealtime(loadingScreenPanel.secondsTillFill / 100f);
+        }
     }
 }
