@@ -4845,14 +4845,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2709929806209368013}
-  m_LocalRotation: {x: -0, y: -0.9054207, z: 0, w: -0.4245153}
-  m_LocalPosition: {x: -47.48, y: 3.62, z: -37.55}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4475238785089204584}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -230.24, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2709929806209368050
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4867,6 +4867,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireSoundDelay: 0.15
   fireParticlesDelay: 0.15
+  shoot: 0
+  shootEvery: 0
+  consecutiveShots: 0
+  cooldown: 0
 --- !u!1 &2994642249755057150
 GameObject:
   m_ObjectHideFlags: 0
