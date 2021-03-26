@@ -98,6 +98,8 @@ public class ResourceManager
     {
         private static string folder = "Audio/";
 
+        public static AudioClip CannonFire = (AudioClip)Resources.Load(folder + "Cannon Fire", typeof(AudioClip));
+
         public class AudioSources
         {
             public enum Range
