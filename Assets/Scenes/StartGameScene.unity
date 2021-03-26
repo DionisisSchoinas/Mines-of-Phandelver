@@ -2176,7 +2176,6 @@ GameObject:
   - component: {fileID: 66521132}
   - component: {fileID: 66521131}
   - component: {fileID: 66521130}
-  - component: {fileID: 66521129}
   m_Layer: 5
   m_Name: Loading Circle
   m_TagString: Untagged
@@ -2203,25 +2202,6 @@ RectTransform:
   m_AnchoredPosition: {x: 197.47104, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!95 &66521129
-Animator:
-  serializedVersion: 3
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 66521127}
-  m_Enabled: 0
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9ab3ebfbecefe274cba3d9c71664ca67, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 2
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &66521130
 MonoBehaviour:
   m_ObjectHideFlags: 0
