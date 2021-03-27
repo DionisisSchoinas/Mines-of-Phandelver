@@ -130,6 +130,21 @@ public class SpellTypeRay : Spell
         ManaEventSystem.current.UseMana(manaCost);
     }
 
+    public override Sprite GetIcon()
+    {
+        switch (elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                return ResourceManager.UI.SkillIcons.Ray.Earth;
+            case ElementTypes.Type.Cold_Ice:
+                return ResourceManager.UI.SkillIcons.Ray.Ice;
+            case ElementTypes.Type.Lightning:
+                return ResourceManager.UI.SkillIcons.Ray.Lightning;
+            default:
+                return ResourceManager.UI.SkillIcons.Ray.Fire;
+        }
+    }
+
     //------------------ Irrelevant ------------------
     public override ParticleSystem GetSource()
     {

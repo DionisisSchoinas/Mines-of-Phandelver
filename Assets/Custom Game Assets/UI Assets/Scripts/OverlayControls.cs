@@ -8,7 +8,6 @@ public class OverlayControls : MonoBehaviour
     public GameObject buttonQuickbar;
     public CanvasGroup spellListDisplay;
     public GameObject columnContentHolder;
-    public GameObject dodgeDisplay;
     public GameObject effectsDisplay;
     public float secondsAfterPickingSkill = 0.02f;
     public float secondsAfterCastingSkill = 0.02f;
@@ -67,7 +66,7 @@ public class OverlayControls : MonoBehaviour
         {
             if (quickbarButtons[i] == null)
             {
-                Debug.LogError("Quickbar needs at least 5 buttons");
+                Debug.LogError("Button with index = " + i + " on the quickbar was null");
                 break;
             }
         }
@@ -76,7 +75,7 @@ public class OverlayControls : MonoBehaviour
         quickbarButtonTransforms = new RectTransform[quickbarButtons.Length];
         for (int i=0; i<quickbarButtons.Length; i++)
         {
-            Text butttonText = quickbarButtons[i].GetComponentInChildren<Text>();
+            Image buttonIcon = quickbarButtons[i].GetComponentsInChildren<Image>()[1];
             // Put container script on the quickbar buttons
             quickbarButtonContainers[i] = quickbarButtons[i].gameObject.AddComponent<QuickbarButton>();
             Skill skill;
@@ -85,13 +84,13 @@ public class OverlayControls : MonoBehaviour
                 skill = overlayToWeaponAdapter.GetSkillFromIndex(-1);
                 quickbarButtonContainers[i].swappable = false;
                 // Save values on the buttons script
-                quickbarButtonContainers[i].buttonData = new ButtonData(quickbarButtons[i], skill, i, -1, butttonText);
+                quickbarButtonContainers[i].buttonData = new ButtonData(quickbarButtons[i], skill, i, -1, buttonIcon);
             }
             else
             {
                 skill = overlayToWeaponAdapter.GetSkillFromIndex(i-1);
                 // Save values on the buttons script
-                quickbarButtonContainers[i].buttonData = new ButtonData(quickbarButtons[i], skill, i, i-1, butttonText);
+                quickbarButtonContainers[i].buttonData = new ButtonData(quickbarButtons[i], skill, i, i-1, buttonIcon);
             }
             quickbarButtonContainers[i].overlayControls = this;
             quickbarButtonContainers[i].parent = buttonQuickbar.transform;

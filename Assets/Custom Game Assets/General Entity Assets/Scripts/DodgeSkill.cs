@@ -43,4 +43,9 @@ public class DodgeSkill : Skill
         dodgeAudioSource.Stop();
         dodgeAudioSource.Play();
     }
+
+    public override Sprite GetIcon()
+    {
+        return ResourceManager.UI.SkillIcons.Dodge.Roll;
+    }
 }

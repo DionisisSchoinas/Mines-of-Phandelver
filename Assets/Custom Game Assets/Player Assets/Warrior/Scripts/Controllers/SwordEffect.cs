@@ -156,4 +156,9 @@ public class SwordEffect : BasicSword
         yield return new WaitForSeconds(attributes.swingSoundDelay);
         swingAudioSource.Play();
     }
+
+    public override Sprite GetIcon()
+    {
+        return ResourceManager.UI.SkillIcons.Default.Swing;
+    }
 }

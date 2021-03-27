@@ -5,6 +5,7 @@ using UnityEngine;
 public class SpellTypeBall : Spell
 {
     public float speed = 8f;
+    public ElementTypes.Type elementType;
     public GameObject explosion;
     
     protected Rigidbody rb;
@@ -86,6 +87,21 @@ public class SpellTypeBall : Spell
 
         if (tmpIndicatorHolder != null)
             Destroy(tmpIndicatorHolder.gameObject);
+    }
+
+    public override Sprite GetIcon()
+    {
+        switch (elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                return ResourceManager.UI.SkillIcons.Explosion.Earth;
+            case ElementTypes.Type.Cold_Ice:
+                return ResourceManager.UI.SkillIcons.Explosion.Ice;
+            case ElementTypes.Type.Lightning:
+                return ResourceManager.UI.SkillIcons.Explosion.Lightning;
+            default:
+                return ResourceManager.UI.SkillIcons.Explosion.Fire;
+        }
     }
 
     //------------------ Irrelevant ------------------

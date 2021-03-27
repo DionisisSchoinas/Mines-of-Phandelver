@@ -123,4 +123,18 @@ public class ConeBurstSlash : SwordEffect
         }
         return targets.ToArray();
     }
+    public override Sprite GetIcon()
+    {
+        switch (attributes.elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                return ResourceManager.UI.SkillIcons.Cone.Earth;
+            case ElementTypes.Type.Cold_Ice:
+                return ResourceManager.UI.SkillIcons.Cone.Ice;
+            case ElementTypes.Type.Lightning:
+                return ResourceManager.UI.SkillIcons.Cone.Lightning;
+            default:
+                return ResourceManager.UI.SkillIcons.Cone.Fire;
+        }
+    }
 }

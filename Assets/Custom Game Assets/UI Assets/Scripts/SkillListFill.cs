@@ -75,7 +75,7 @@ public class SkillListFill : MonoBehaviour
                 int index = i;
 
                 GameObject btn = ResourceManager.UI.SkillListButton;
-                btn.GetComponentInChildren<Text>().text = column.skills[index].skillName;
+                btn.GetComponentsInChildren<Image>()[1].sprite = column.skills[index].GetIcon();
 
                 // Instantiate and save in list
                 Button b = Instantiate(btn, col.transform).GetComponent<Button>();

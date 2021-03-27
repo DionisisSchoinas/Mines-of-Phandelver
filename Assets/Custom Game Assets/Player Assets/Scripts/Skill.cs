@@ -21,6 +21,7 @@ public abstract class Skill : MonoBehaviour
     public abstract float manaCost { get; }
 
     public abstract float instaCastDelay { get; }
+
     public abstract bool instaCast { get; }
 
     public void Awake()
@@ -37,4 +38,6 @@ public abstract class Skill : MonoBehaviour
     {
         UIEventSystem.current.StartCooldown(this, delay);
     }
+
+    public abstract Sprite GetIcon();
 }

@@ -4833,6 +4833,7 @@ MonoBehaviour:
   cooldownPercentage: 0.87999946
   cancelled: 0
   speed: 10
+  elementType: 3
   explosion: {fileID: 6955678255316448818, guid: d3056ca5bf153eb48aeb4dd19e635718,
     type: 3}
 --- !u!114 &-6346558324030079249

@@ -57,4 +57,19 @@ public class ResistanceEffect : SwordEffect
 
         HealthEventSystem.current.ApplyResistance(controls.gameObject.name, playerMesh, resistanceAppearance, attributes.elementType, duration);
     }
+
+    public override Sprite GetIcon()
+    {
+        switch (attributes.elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                return ResourceManager.UI.SkillIcons.Resistance.Earth;
+            case ElementTypes.Type.Cold_Ice:
+                return ResourceManager.UI.SkillIcons.Resistance.Ice;
+            case ElementTypes.Type.Lightning:
+                return ResourceManager.UI.SkillIcons.Resistance.Lightning;
+            default:
+                return ResourceManager.UI.SkillIcons.Resistance.Fire;
+        }
+    }
 }

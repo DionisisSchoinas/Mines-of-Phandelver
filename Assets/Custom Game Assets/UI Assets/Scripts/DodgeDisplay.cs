@@ -5,22 +5,41 @@ using UnityEngine.UI;
 
 public class DodgeDisplay : MonoBehaviour
 {
+    private Image buttonicon;
     private Image buttonImageCooldown;
 
     private void Awake()
     {
-        buttonImageCooldown = gameObject.GetComponentsInChildren<Image>()[1];
+        Image[] images = gameObject.GetComponentsInChildren<Image>();
+
+        buttonicon = images[0];
+        buttonImageCooldown = images[1];
         buttonImageCooldown.fillAmount = 0;
     }
 
     private void Start()
     {
+        CharacterLoadScript.current.onCharacterSelected += SetIcon;
         UIEventSystem.current.onDodgeFinish += Cooldown;
     }
 
     private void OnDestroy()
     {
+        CharacterLoadScript.current.onCharacterSelected -= SetIcon;
         UIEventSystem.current.onDodgeFinish -= Cooldown;
+    }
+
+    private void SetIcon(SelectedCharacterScript.Character character)
+    {
+        switch (character)
+        {
+            case SelectedCharacterScript.Character.Fighter:
+                buttonicon.sprite = ResourceManager.UI.SkillIcons.Dodge.Roll;
+                break;
+            default:
+                buttonicon.sprite = ResourceManager.UI.SkillIcons.Dodge.Dash;
+                break;
+        }
     }
 
     private void Cooldown(float cooldown)

@@ -92,6 +92,107 @@ public class ResourceManager
             private static string folder = UI.folder + "Sounds/";
             public static AudioClip ButtonHoverEnter = (AudioClip)Resources.Load(folder + "Button Hover Enter", typeof(AudioClip));
         }
+
+        public class SkillIcons
+        {
+            private static string folder = UI.folder + "Skill Icons/";
+
+            public class Dodge
+            {
+                private static string folder = SkillIcons.folder + "Dodge/";
+
+                public static Sprite Roll = (Sprite)Resources.Load(folder + "Dash", typeof(Sprite));
+                public static Sprite Dash = (Sprite)Resources.Load(folder + "Dash", typeof(Sprite));
+            }
+
+            public class Bolt
+            {
+                private static string folder = SkillIcons.folder + "Bolt/";
+
+                public static Sprite Fire = (Sprite)Resources.Load(folder + "Fire", typeof(Sprite));
+                public static Sprite Ice = (Sprite)Resources.Load(folder + "Ice", typeof(Sprite));
+                public static Sprite Earth = (Sprite)Resources.Load(folder + "Earth", typeof(Sprite));
+                public static Sprite Lightning = (Sprite)Resources.Load(folder + "Lightning", typeof(Sprite));
+            }
+
+            public class Cone
+            {
+                private static string folder = SkillIcons.folder + "Cone/";
+
+                public static Sprite Fire = (Sprite)Resources.Load(folder + "Fire", typeof(Sprite));
+                public static Sprite Ice = (Sprite)Resources.Load(folder + "Ice", typeof(Sprite));
+                public static Sprite Earth = (Sprite)Resources.Load(folder + "Earth", typeof(Sprite));
+                public static Sprite Lightning = (Sprite)Resources.Load(folder + "Lightning", typeof(Sprite));
+            }
+
+            public class Explosion
+            {
+                private static string folder = SkillIcons.folder + "Explosion/";
+
+                public static Sprite Fire = (Sprite)Resources.Load(folder + "Fire", typeof(Sprite));
+                public static Sprite Ice = (Sprite)Resources.Load(folder + "Ice", typeof(Sprite));
+                public static Sprite Earth = (Sprite)Resources.Load(folder + "Earth", typeof(Sprite));
+                public static Sprite Lightning = (Sprite)Resources.Load(folder + "Lightning", typeof(Sprite));
+            }
+
+            public class Ray
+            {
+                private static string folder = SkillIcons.folder + "Ray/";
+
+                public static Sprite Fire = (Sprite)Resources.Load(folder + "Fire", typeof(Sprite));
+                public static Sprite Ice = (Sprite)Resources.Load(folder + "Ice", typeof(Sprite));
+                public static Sprite Earth = (Sprite)Resources.Load(folder + "Earth", typeof(Sprite));
+                public static Sprite Lightning = (Sprite)Resources.Load(folder + "Lightning", typeof(Sprite));
+            }
+
+            public class Resistance
+            {
+                private static string folder = SkillIcons.folder + "Resistance/";
+
+                public static Sprite Fire = (Sprite)Resources.Load(folder + "Fire", typeof(Sprite));
+                public static Sprite Ice = (Sprite)Resources.Load(folder + "Ice", typeof(Sprite));
+                public static Sprite Earth = (Sprite)Resources.Load(folder + "Earth", typeof(Sprite));
+                public static Sprite Lightning = (Sprite)Resources.Load(folder + "Lightning", typeof(Sprite));
+            }
+
+            public class Storm
+            {
+                private static string folder = SkillIcons.folder + "Storm/";
+
+                public static Sprite Fire = (Sprite)Resources.Load(folder + "Fire", typeof(Sprite));
+                public static Sprite Ice = (Sprite)Resources.Load(folder + "Ice", typeof(Sprite));
+                public static Sprite Earth = (Sprite)Resources.Load(folder + "Earth", typeof(Sprite));
+                public static Sprite Lightning = (Sprite)Resources.Load(folder + "Lightning", typeof(Sprite));
+            }
+
+            public class Swing
+            {
+                private static string folder = SkillIcons.folder + "Swing/";
+
+                public static Sprite Fire = (Sprite)Resources.Load(folder + "Fire", typeof(Sprite));
+                public static Sprite Ice = (Sprite)Resources.Load(folder + "Ice", typeof(Sprite));
+                public static Sprite Earth = (Sprite)Resources.Load(folder + "Earth", typeof(Sprite));
+                public static Sprite Lightning = (Sprite)Resources.Load(folder + "Lightning", typeof(Sprite));
+            }
+
+            public class Wall
+            {
+                private static string folder = SkillIcons.folder + "Wall/";
+
+                public static Sprite Fire = (Sprite)Resources.Load(folder + "Fire", typeof(Sprite));
+                public static Sprite Ice = (Sprite)Resources.Load(folder + "Ice", typeof(Sprite));
+                public static Sprite Earth = (Sprite)Resources.Load(folder + "Earth", typeof(Sprite));
+                public static Sprite Lightning = (Sprite)Resources.Load(folder + "Lightning", typeof(Sprite));
+            }
+
+            public class Default
+            {
+                private static string folder = SkillIcons.folder + "Default/";
+
+                public static Sprite Homing = (Sprite)Resources.Load(folder + "Homing", typeof(Sprite));
+                public static Sprite Swing = (Sprite)Resources.Load(folder + "Swing", typeof(Sprite));
+            }
+        }
     }
 
     public class Audio

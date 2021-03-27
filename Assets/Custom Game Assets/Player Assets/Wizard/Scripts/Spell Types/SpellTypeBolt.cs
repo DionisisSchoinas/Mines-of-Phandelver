@@ -96,6 +96,21 @@ public class SpellTypeBolt : Spell
             Destroy(tmpIndicatorHolder.gameObject);
     }
 
+    public override Sprite GetIcon()
+    {
+        switch (elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                return ResourceManager.UI.SkillIcons.Bolt.Earth;
+            case ElementTypes.Type.Cold_Ice:
+                return ResourceManager.UI.SkillIcons.Bolt.Ice;
+            case ElementTypes.Type.Lightning:
+                return ResourceManager.UI.SkillIcons.Bolt.Lightning;
+            default:
+                return ResourceManager.UI.SkillIcons.Bolt.Fire;
+        }
+    }
+
     //------------------ Irrelevant ------------------
     public override ParticleSystem GetSource()
     {

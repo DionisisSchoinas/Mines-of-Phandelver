@@ -7,7 +7,7 @@ public class ButtonData : MonoBehaviour
     public int skillIndexInAdapter;
     public int skillIndexInColumn;
     public int skillColumnIndex;
-    public Text buttonText;
+    public Image buttonImage;
     public Skill skill;
     public Button container;
     public ButtonContainer containerScript;
@@ -17,7 +17,7 @@ public class ButtonData : MonoBehaviour
         this.quickBarIndex = -1;
         this.skillIndexInAdapter = -2;
         this.skillIndexInColumn = -1;
-        this.buttonText = null;
+        this.buttonImage = null;
         this.skill = null;
         this.container = null;
         this.containerScript = null;
@@ -32,7 +32,7 @@ public class ButtonData : MonoBehaviour
         this.quickBarIndex = quickBarIndex;
         this.skillIndexInAdapter = skillIndexInAdapter;
         this.skillColumnIndex = skillColumnIndex;
-        CheckForText();
+        CheckForIcon();
     }
 
     public ButtonData(Button container, Skill skill, int quickBarIndex, int skillIndexInAdapter, int skillIndexInColumn, int skillColumnIndex) : this(container, skill, quickBarIndex, skillIndexInAdapter, skillColumnIndex)
@@ -40,22 +40,22 @@ public class ButtonData : MonoBehaviour
         this.skillIndexInColumn = skillIndexInColumn;
     }
 
-    public ButtonData(Button container, Skill skill, int quickBarIndex, int skillIndexInAdapter, Text buttonText) : this(container, skill, quickBarIndex, skillIndexInAdapter, -1)
+    public ButtonData(Button container, Skill skill, int quickBarIndex, int skillIndexInAdapter, Image buttonImage) : this(container, skill, quickBarIndex, skillIndexInAdapter, -1)
     {
-        this.buttonText = buttonText;
-        this.buttonText.text = skill.skillName;
+        this.buttonImage = buttonImage;
+        this.buttonImage.sprite = skill.GetIcon();
     }
 
-    public ButtonData(Button container, Skill skill, int quickBarIndex, int skillIndexInAdapter, int skillColumnIndex, Text buttonText) : this(container, skill, quickBarIndex, skillIndexInAdapter, skillColumnIndex)
+    public ButtonData(Button container, Skill skill, int quickBarIndex, int skillIndexInAdapter, int skillColumnIndex, Image buttonImage) : this(container, skill, quickBarIndex, skillIndexInAdapter, skillColumnIndex)
     {
-        this.buttonText = buttonText;
-        this.buttonText.text = skill.skillName;
+        this.buttonImage = buttonImage;
+        this.buttonImage.sprite = skill.GetIcon();
     }
 
-    public ButtonData(Button container, Skill skill, int quickBarIndex, int skillIndexInAdapter, int skillIndexInColumn, int skillColumnIndex, Text buttonText) : this(container, skill, quickBarIndex, skillIndexInAdapter, skillIndexInColumn, skillColumnIndex)
+    public ButtonData(Button container, Skill skill, int quickBarIndex, int skillIndexInAdapter, int skillIndexInColumn, int skillColumnIndex, Image buttonImage) : this(container, skill, quickBarIndex, skillIndexInAdapter, skillIndexInColumn, skillColumnIndex)
     {
-        this.buttonText = buttonText;
-        this.buttonText.text = skill.skillName;
+        this.buttonImage = buttonImage;
+        this.buttonImage.sprite = skill.GetIcon();
     }
 
     public void NewData(ButtonContainer container)
@@ -66,8 +66,8 @@ public class ButtonData : MonoBehaviour
         this.skillIndexInColumn = data.skillIndexInColumn;
         this.skillColumnIndex = data.skillColumnIndex;
         this.skill = data.skill;
-        CheckForText();
-        this.buttonText.text = data.skill.skillName;
+        CheckForIcon();
+        this.buttonImage.sprite = data.skill.GetIcon();
 
         this.containerScript.cooldownPercentage = container.cooldownPercentage;
         this.containerScript.CheckCooldown();
@@ -85,23 +85,23 @@ public class ButtonData : MonoBehaviour
         this.skillIndexInColumn = data.skillIndexInColumn;
         this.skillColumnIndex = data.skillColumnIndex;
         this.skill = data.skill;
-        CheckForText();
-        this.buttonText.text = data.skill.skillName;
+        CheckForIcon();
+        this.buttonImage.sprite = data.skill.GetIcon();
 
         this.containerScript.cooldownPercentage = container.cooldownPercentage;
         this.containerScript.CheckCooldown();
     }
 
-    private void CheckForText()
+    private void CheckForIcon()
     {
-        if (buttonText == null)
+        if (buttonImage == null)
         {
-            buttonText = container.gameObject.GetComponentInChildren<Text>();
+            buttonImage = container.gameObject.GetComponentsInChildren<Image>()[1];
         }
     }
 
     public void PrintData()
     {
-        Debug.Log(quickBarIndex + " " + skillIndexInAdapter + " " + skillIndexInColumn + " " + skillColumnIndex + " " + buttonText.text + " " + skill.skillName + " " + container.name);
+        Debug.Log(quickBarIndex + " " + skillIndexInAdapter + " " + skillIndexInColumn + " " + skillColumnIndex + " " + skill.skillName + " " + skill.skillName + " " + container.name);
     }
 }
