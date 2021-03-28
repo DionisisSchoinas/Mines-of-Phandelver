@@ -97,10 +97,16 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
     {
         if (skillListUp && swappable)
         {
+            GameObject gm = new GameObject();
+            AudioSource a = gm.AddComponent<AudioSource>();
+            a.clip = audioSource.clip;
+            a.outputAudioMixerGroup = audioSource.outputAudioMixerGroup;
+            a.Play();
+            Destroy(gm, 2f);
+
             UIEventSystem.current.DraggingButton(this, false);
 
             Destroy(gameObject);
-            
         }
     }
 }

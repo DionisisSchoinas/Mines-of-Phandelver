@@ -26,6 +26,7 @@ public class ButtonContainer : ElementHover, IDragHandler
     protected Image buttonOutOfMana;
     protected Vector2 clickPositionOffset;
     protected bool skillListUp;
+    protected AudioSource audioSource;
 
     public void Awake()
     {
@@ -51,6 +52,12 @@ public class ButtonContainer : ElementHover, IDragHandler
 
         buttonAlreadyDisplayingCooldown = false;
         skillListUp = false;
+
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = ResourceManager.UI.Sounds.ButtonPick;
+        audioSource.loop = false;
+        audioSource.playOnAwake = false;
+        audioSource.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
 
         UIEventSystem.current.onSkillPickedRegistered += SkillPicked;
         UIEventSystem.current.onSkillCast += SkillCast;

@@ -75,6 +75,13 @@ public class SkillListButton : ButtonContainer, IPointerDownHandler, IPointerUpH
         if (!skillListUp)
             return;
 
+        GameObject gm = new GameObject();
+        AudioSource a = gm.AddComponent<AudioSource>();
+        a.clip = audioSource.clip;
+        a.outputAudioMixerGroup = audioSource.outputAudioMixerGroup;
+        a.Play();
+        Destroy(gm, 2f);
+
         // Notify event
         UIEventSystem.current.DraggingButton(this, false);
         // Destroy drag around button

@@ -91,6 +91,7 @@ public class ResourceManager
         {
             private static string folder = UI.folder + "Sounds/";
             public static AudioClip ButtonHoverEnter = (AudioClip)Resources.Load(folder + "Button Hover Enter", typeof(AudioClip));
+            public static AudioClip ButtonPick = (AudioClip)Resources.Load(folder + "Button Pick", typeof(AudioClip));
         }
 
         public class SkillIcons
