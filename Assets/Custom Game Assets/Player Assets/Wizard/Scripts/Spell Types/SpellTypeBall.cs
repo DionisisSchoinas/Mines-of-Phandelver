@@ -6,8 +6,6 @@ public class SpellTypeBall : Spell
 {
     public float speed = 8f;
     public GameObject explosion;
-
-    private Explosion explosionScript;
     
     protected Rigidbody rb;
     private GameObject tmpIndicatorHolder;
@@ -108,6 +106,11 @@ public class SpellTypeBall : Spell
     public override string GetDamageText()
     {
         return explosion.GetComponent<Explosion>().damage + " " + ElementTypes.Name(elementType) + " damage";
+    }
+
+    public override string GetDescription()
+    {
+        return "Fires a ball that on hit causes an explosion dealing " + ElementTypes.Name(elementType) + " damage and applying " + ElementTypes.Condition(elementType) + " condition";
     }
 
     //------------------ Irrelevant ------------------

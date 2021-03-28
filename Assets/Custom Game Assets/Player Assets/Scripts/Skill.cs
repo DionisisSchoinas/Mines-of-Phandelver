@@ -44,4 +44,6 @@ public abstract class Skill : MonoBehaviour
     public abstract string GetDamageText();
 
     public abstract Color GetTextColor();
+
+    public abstract string GetDescription();
 }

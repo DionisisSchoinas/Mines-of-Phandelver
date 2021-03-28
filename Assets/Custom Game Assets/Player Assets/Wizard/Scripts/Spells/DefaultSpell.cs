@@ -90,6 +90,11 @@ public class DefaultSpell : Spell
         return damage + " " + ElementTypes.Name(elementType) + " per bolt";
     }
 
+    public override string GetDescription()
+    {
+        return "Spawnes homing missiles that deal " + ElementTypes.Name(elementType) + " damage and apply " + ElementTypes.Condition(elementType) + " condition";
+    }
+
     public override void WakeUp()
     {
     }

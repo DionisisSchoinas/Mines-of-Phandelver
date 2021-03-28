@@ -171,4 +171,9 @@ public class SwordEffect : BasicSword
     {
         return ElementTypes.Colors(attributes.elementType);
     }
+
+    public override string GetDescription()
+    {
+        return "Sword effect description";
+    }
 }

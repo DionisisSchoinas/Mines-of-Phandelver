@@ -38,5 +38,6 @@ public class SkillToolTipScript : MonoBehaviour
         damage.text = skill.GetDamageText();
         damage.color = skill.GetTextColor();
         mana.text = skill.manaCost + " mana";
+        description.text = skill.GetDescription();
     }
 }

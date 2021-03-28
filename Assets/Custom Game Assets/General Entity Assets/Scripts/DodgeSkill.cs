@@ -57,4 +57,9 @@ public class DodgeSkill : Skill
     {
         return Color.white;
     }
+
+    public override string GetDescription()
+    {
+        return "Dodge";
+    }
 }

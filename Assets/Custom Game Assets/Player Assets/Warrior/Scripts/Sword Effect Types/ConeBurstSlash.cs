@@ -141,4 +141,9 @@ public class ConeBurstSlash : SwordEffect
     {
         return damage + " " + ElementTypes.Name(attributes.elementType) + " damage";
     }
+
+    public override string GetDescription()
+    {
+        return "Fires projectiles on a cone dealing " + ElementTypes.Name(attributes.elementType) + " damage and applying " + ElementTypes.Condition(attributes.elementType) + " condition";
+    }
 }

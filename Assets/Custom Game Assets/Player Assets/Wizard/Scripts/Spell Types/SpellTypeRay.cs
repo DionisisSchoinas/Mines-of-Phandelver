@@ -148,6 +148,11 @@ public class SpellTypeRay : Spell
         return damage + " " + ElementTypes.Name(elementType) + " damage " + damageTicksPerSecond + " times per second";
     }
 
+    public override string GetDescription()
+    {
+        return "Fires a ray dealing " + ElementTypes.Name(elementType) + " damage and applying " + ElementTypes.Condition(elementType) + " condition";
+    }
+
     //------------------ Irrelevant ------------------
     public override ParticleSystem GetSource()
     {

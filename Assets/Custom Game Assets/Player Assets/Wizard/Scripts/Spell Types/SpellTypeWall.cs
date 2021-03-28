@@ -159,6 +159,11 @@ public class SpellTypeWall : Spell
         return damage + " " + ElementTypes.Name(elementType) + " damage " + damageTicksPerSecond + " times per second";
     }
 
+    public override string GetDescription()
+    {
+        return "Summons a wall dealing " + ElementTypes.Name(elementType) + " damage and applying " + ElementTypes.Condition(elementType) + " condition";
+    }
+
     //------------------ Irrelevant ------------------
 
     public override ParticleSystem GetSource()

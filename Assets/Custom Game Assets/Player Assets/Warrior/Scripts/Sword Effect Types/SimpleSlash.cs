@@ -50,4 +50,9 @@ public class SimpleSlash : SwordEffect
     {
         return damage + " " + ElementTypes.Name(attributes.elementType) + " damage";
     }
+
+    public override string GetDescription()
+    {
+        return "Slashes dealing " + ElementTypes.Name(attributes.elementType) + " damage and applying " + ElementTypes.Condition(attributes.elementType) + " condition";
+    }
 }

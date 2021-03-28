@@ -115,6 +115,11 @@ public class SpellTypeBolt : Spell
         return damage + " " + ElementTypes.Name(elementType) + " damage";
     }
 
+    public override string GetDescription()
+    {
+        return "Fires a bolt that on hit does " + ElementTypes.Name(elementType) + " damage and applying " + ElementTypes.Condition(elementType) + " condition";
+    }
+
     //------------------ Irrelevant ------------------
     public override ParticleSystem GetSource()
     {

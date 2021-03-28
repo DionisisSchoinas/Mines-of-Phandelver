@@ -127,4 +127,9 @@ public class SphereBurst : SwordEffect
     {
         return damage + " " + ElementTypes.Name(attributes.elementType) + " damage";
     }
+
+    public override string GetDescription()
+    {
+        return "Fires projectiles on sphere dealing " + ElementTypes.Name(attributes.elementType) + " damage and applying " + ElementTypes.Condition(attributes.elementType) + " condition";
+    }
 }

@@ -165,6 +165,11 @@ public class SpellTypeStorm : Spell
         return damage + " " + ElementTypes.Name(elementType) + " damage " + damageTicksPerSecond + " times per second";
     }
 
+    public override string GetDescription()
+    {
+        return "Summons a storm dealing " + ElementTypes.Name(elementType) + " damage and applying " + ElementTypes.Condition(elementType) + " condition";
+    }
+
     //------------------ Irrelevant ------------------
 
     public override ParticleSystem GetSource()

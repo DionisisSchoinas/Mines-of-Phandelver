@@ -77,4 +77,9 @@ public class ResistanceEffect : SwordEffect
     {
         return "-50% " + ElementTypes.Name(attributes.elementType) + " damage";
     }
+
+    public override string GetDescription()
+    {
+        return "Gives resistance to " + ElementTypes.Name(attributes.elementType) + " damage, which reduces the incoming damage by 50% ";
+    }
 }
