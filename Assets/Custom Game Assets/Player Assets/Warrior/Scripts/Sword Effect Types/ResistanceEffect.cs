@@ -72,4 +72,9 @@ public class ResistanceEffect : SwordEffect
                 return ResourceManager.UI.SkillIcons.Resistance.Fire;
         }
     }
+
+    public override string GetDamageText()
+    {
+        return "-50% " + ElementTypes.Name(attributes.elementType) + " damage";
+    }
 }

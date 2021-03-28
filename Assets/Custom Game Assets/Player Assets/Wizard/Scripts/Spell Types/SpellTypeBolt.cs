@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpellTypeBolt : Spell
 {
-    public ElementTypes.Type elementType;
     public float damage = 15f;
     public float speed = 40f;
     public GameObject explosionParticles;
@@ -109,6 +108,11 @@ public class SpellTypeBolt : Spell
             default:
                 return ResourceManager.UI.SkillIcons.Bolt.Fire;
         }
+    }
+
+    public override string GetDamageText()
+    {
+        return damage + " " + ElementTypes.Name(elementType) + " damage";
     }
 
     //------------------ Irrelevant ------------------

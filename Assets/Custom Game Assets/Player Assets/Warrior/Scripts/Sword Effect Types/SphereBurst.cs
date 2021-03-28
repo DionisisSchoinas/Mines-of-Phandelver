@@ -122,4 +122,9 @@ public class SphereBurst : SwordEffect
                 return ResourceManager.UI.SkillIcons.Explosion.Fire;
         }
     }
+
+    public override string GetDamageText()
+    {
+        return damage + " " + ElementTypes.Name(attributes.elementType) + " damage";
+    }
 }

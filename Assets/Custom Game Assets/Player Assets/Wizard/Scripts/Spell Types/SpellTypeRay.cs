@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpellTypeRay : Spell
 {
-    public ElementTypes.Type elementType;
-
     public float damage = 10f;
     public int damageTicksPerSecond = 8;
     [HideInInspector]
@@ -143,6 +141,11 @@ public class SpellTypeRay : Spell
             default:
                 return ResourceManager.UI.SkillIcons.Ray.Fire;
         }
+    }
+
+    public override string GetDamageText()
+    {
+        return damage + " " + ElementTypes.Name(elementType) + " damage " + damageTicksPerSecond + " times per second";
     }
 
     //------------------ Irrelevant ------------------

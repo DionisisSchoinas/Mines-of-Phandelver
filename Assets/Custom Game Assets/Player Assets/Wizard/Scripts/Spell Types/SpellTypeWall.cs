@@ -2,8 +2,6 @@
 
 public class SpellTypeWall : Spell
 {
-    public ElementTypes.Type elementType;
-
     public float damage = 5f;
     public int damageTicksPerSecond = 5;
     public bool doesDamage = true;
@@ -154,6 +152,11 @@ public class SpellTypeWall : Spell
             default:
                 return ResourceManager.UI.SkillIcons.Wall.Fire;
         }
+    }
+
+    public override string GetDamageText()
+    {
+        return damage + " " + ElementTypes.Name(elementType) + " damage " + damageTicksPerSecond + " times per second";
     }
 
     //------------------ Irrelevant ------------------

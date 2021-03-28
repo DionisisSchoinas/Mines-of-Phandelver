@@ -44,7 +44,7 @@ public class CharacterLoadScript : MonoBehaviour
         }
     }
 
-    public Action<SelectedCharacterScript.Character> onCharacterSelected;
+    public event Action<SelectedCharacterScript.Character> onCharacterSelected;
     public void CharacterSelected(SelectedCharacterScript.Character character)
     {
         if (onCharacterSelected != null)

@@ -2,6 +2,8 @@
 
 public abstract class Spell : Skill
 {
+    public ElementTypes.Type elementType;
+
     [HideInInspector]
     public bool cancelled;
 
@@ -93,5 +95,10 @@ public abstract class Spell : Skill
     public override Sprite GetIcon()
     {
         return ResourceManager.UI.SkillIcons.Default.Homing;
+    }
+
+    public override Color GetTextColor()
+    {
+        return ElementTypes.Colors(elementType);
     }
 }

@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class ButtonContainer : ElementHover, IDragHandler
+public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitHandler, IDragHandler
 {
     [HideInInspector]
     public ButtonData buttonData;
@@ -86,6 +86,27 @@ public class ButtonContainer : ElementHover, IDragHandler
     public void SetSelectionColor(Color color)
     {
         buttonSelection.color = color;
+    }
+
+    //------------ Hover functions ------------
+    public new void OnPointerEnter(PointerEventData eventData)
+    {
+        base.OnPointerEnter(eventData);
+
+        if (!skillListUp)
+            return;
+
+        UIEventSystem.current.ShowSkillToolTip(buttonData.skill);
+    }
+
+    public new void OnPointerExit(PointerEventData eventData)
+    {
+        base.OnPointerExit(eventData);
+
+        if (!skillListUp)
+            return;
+
+        UIEventSystem.current.HideToolTip();
     }
 
     //------------ Reset functions ------------

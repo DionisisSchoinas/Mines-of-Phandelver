@@ -161,4 +161,14 @@ public class SwordEffect : BasicSword
     {
         return ResourceManager.UI.SkillIcons.Default.Swing;
     }
+
+    public override string GetDamageText()
+    {
+        return "Not sure yet";
+    }
+
+    public override Color GetTextColor()
+    {
+        return ElementTypes.Colors(attributes.elementType);
+    }
 }

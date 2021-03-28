@@ -39,7 +39,7 @@ public class BackgroundMusicController : MonoBehaviour
         current.onLocationSet -= LocationChanged;
     }
 
-    public Action<Location> onLocationSet;
+    public event Action<Location> onLocationSet;
     public void SetLocation(Location location)
     {
         if (onLocationSet != null)

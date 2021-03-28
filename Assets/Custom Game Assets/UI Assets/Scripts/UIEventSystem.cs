@@ -19,6 +19,25 @@ public class UIEventSystem : MonoBehaviour
         }
     }
 
+    public event Action<Skill> onShowSkillToolTip;
+    public void ShowSkillToolTip(Skill skill)
+    {
+        if (onShowSkillToolTip != null)
+        {
+            onShowSkillToolTip(skill);
+        }
+    }
+
+    public event Action onHideToolTip;
+
+    public void HideToolTip()
+    {
+        if (onHideToolTip != null)
+        {
+            onHideToolTip();
+        }
+    }
+
     public event Action<ButtonContainer, bool> onDraggingButton;
     public void DraggingButton(ButtonContainer buttonContainer, bool dragging)
     {

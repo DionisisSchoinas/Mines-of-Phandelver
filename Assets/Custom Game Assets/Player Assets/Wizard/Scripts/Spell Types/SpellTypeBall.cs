@@ -5,8 +5,9 @@ using UnityEngine;
 public class SpellTypeBall : Spell
 {
     public float speed = 8f;
-    public ElementTypes.Type elementType;
     public GameObject explosion;
+
+    private Explosion explosionScript;
     
     protected Rigidbody rb;
     private GameObject tmpIndicatorHolder;
@@ -102,6 +103,11 @@ public class SpellTypeBall : Spell
             default:
                 return ResourceManager.UI.SkillIcons.Explosion.Fire;
         }
+    }
+
+    public override string GetDamageText()
+    {
+        return explosion.GetComponent<Explosion>().damage + " " + ElementTypes.Name(elementType) + " damage";
     }
 
     //------------------ Irrelevant ------------------

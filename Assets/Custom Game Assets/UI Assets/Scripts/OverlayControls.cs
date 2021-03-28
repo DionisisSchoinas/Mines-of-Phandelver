@@ -15,6 +15,7 @@ public class OverlayControls : MonoBehaviour
     public Color buttonColorUnselected;
     public CanvasGroup escapeMenu;
     public CanvasGroup objectiveMenu;
+    public CanvasGroup skillToolTip;
    
     // Quickbar data
     [HideInInspector]
@@ -119,6 +120,8 @@ public class OverlayControls : MonoBehaviour
         objectiveMenuUp = false;
         SetSelectedQuickBar(0);
 
+        SetCanvasState(false, skillToolTip);
+
         UIEventSystem.current.onDraggingButton += DraggingButton;
         UIEventSystem.current.onApplyResistance += ApplyResistance;
         ManaEventSystem.current.onManaUpdated += SetCurrentMana;
@@ -126,7 +129,8 @@ public class OverlayControls : MonoBehaviour
         // Requests update for mana values
         ManaEventSystem.current.UseMana(0);
 
-
+        UIEventSystem.current.onShowSkillToolTip += ShowSkillToolTip;
+        UIEventSystem.current.onHideToolTip += HideToolTip;
     }
 
     private void OnDestroy()
@@ -134,6 +138,8 @@ public class OverlayControls : MonoBehaviour
         UIEventSystem.current.onDraggingButton -= DraggingButton;
         UIEventSystem.current.onApplyResistance -= ApplyResistance;
         ManaEventSystem.current.onManaUpdated -= SetCurrentMana;
+        UIEventSystem.current.onShowSkillToolTip -= ShowSkillToolTip;
+        UIEventSystem.current.onHideToolTip -= HideToolTip;
     }
 
     private void Update()
@@ -330,5 +336,15 @@ public class OverlayControls : MonoBehaviour
     private void SetCurrentMana(float mana)
     {
         this.mana = mana;
+    }
+
+    private void ShowSkillToolTip(Skill skill)
+    {
+        skillToolTip.alpha = 1f;
+    }
+
+    private void HideToolTip()
+    {
+        skillToolTip.alpha = 0f;
     }
 }

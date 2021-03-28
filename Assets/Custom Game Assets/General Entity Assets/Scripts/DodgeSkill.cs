@@ -48,4 +48,13 @@ public class DodgeSkill : Skill
     {
         return ResourceManager.UI.SkillIcons.Dodge.Roll;
     }
+
+    public override string GetDamageText()
+    {
+        return "Just a dodge";
+    }
+    public override Color GetTextColor()
+    {
+        return Color.white;
+    }
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpellTypeStorm : Spell
 {
-    public ElementTypes.Type elementType;
-
     public float damage = 5f;
     public int damageTicksPerSecond = 5;
 
@@ -160,6 +158,11 @@ public class SpellTypeStorm : Spell
             default:
                 return ResourceManager.UI.SkillIcons.Storm.Fire;
         }
+    }
+
+    public override string GetDamageText()
+    {
+        return damage + " " + ElementTypes.Name(elementType) + " damage " + damageTicksPerSecond + " times per second";
     }
 
     //------------------ Irrelevant ------------------

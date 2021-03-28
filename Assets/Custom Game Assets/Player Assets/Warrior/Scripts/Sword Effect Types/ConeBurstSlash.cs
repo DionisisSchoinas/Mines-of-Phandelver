@@ -137,4 +137,8 @@ public class ConeBurstSlash : SwordEffect
                 return ResourceManager.UI.SkillIcons.Cone.Fire;
         }
     }
+    public override string GetDamageText()
+    {
+        return damage + " " + ElementTypes.Name(attributes.elementType) + " damage";
+    }
 }

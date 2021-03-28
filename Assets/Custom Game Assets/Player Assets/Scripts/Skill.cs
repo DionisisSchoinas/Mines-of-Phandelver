@@ -40,4 +40,8 @@ public abstract class Skill : MonoBehaviour
     }
 
     public abstract Sprite GetIcon();
+
+    public abstract string GetDamageText();
+
+    public abstract Color GetTextColor();
 }

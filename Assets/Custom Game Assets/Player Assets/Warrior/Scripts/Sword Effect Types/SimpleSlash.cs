@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class SimpleSlash : SwordEffect
 {
+    public float damage = 30f;
     public float force = 5f;
 
     [HideInInspector]
@@ -29,7 +30,7 @@ public class SimpleSlash : SwordEffect
         {
             if (visibleTarget.name != controls.name)
             {
-                HealthEventSystem.current.TakeDamage(visibleTarget.gameObject.name, 30, attributes.elementType);
+                HealthEventSystem.current.TakeDamage(visibleTarget.gameObject.name, damage, attributes.elementType);
                 if (condition != null)
                     if (Random.value <= 0.2f) HealthEventSystem.current.SetCondition(visibleTarget.name, condition);
                 HealthEventSystem.current.ApplyForce(visibleTarget.name, controls.transform.forward, force);
@@ -43,5 +44,10 @@ public class SimpleSlash : SwordEffect
     public override GameObject GetSource()
     {
         return null;
+    }
+
+    public override string GetDamageText()
+    {
+        return damage + " " + ElementTypes.Name(attributes.elementType) + " damage";
     }
 }

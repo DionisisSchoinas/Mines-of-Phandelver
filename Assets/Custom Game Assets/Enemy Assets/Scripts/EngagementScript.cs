@@ -29,7 +29,7 @@ public class EngagementScript : MonoBehaviour
         current.onDisengage -= DisengageUpdate;
     }
 
-    public Action<string> onEngage;
+    public event Action<string> onEngage;
     public void Engage(string name)
     {
         if (onEngage != null)
@@ -38,7 +38,7 @@ public class EngagementScript : MonoBehaviour
         }
     }
 
-    public Action<string> onDisengage;
+    public event Action<string> onDisengage;
     public void Disengage(string name)
     {
         if (onDisengage != null)

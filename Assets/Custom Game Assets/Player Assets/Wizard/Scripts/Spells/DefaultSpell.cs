@@ -42,7 +42,7 @@ public class DefaultSpell : Spell
     {
         foreach (GameObject target in hitTargets)
         {
-            HealthEventSystem.current.TakeDamage(target.name, damage, ElementTypes.Type.Physical_Earth);
+            HealthEventSystem.current.TakeDamage(target.name, damage, elementType);
 
             if (condition != null)
                 if (Random.value <= 0.1f) HealthEventSystem.current.SetCondition(target.name, condition);
@@ -83,6 +83,11 @@ public class DefaultSpell : Spell
     public override ParticleSystem GetSource()
     {
         return ResourceManager.Sources.Spells.Default;
+    }
+
+    public override string GetDamageText()
+    {
+        return damage + " " + ElementTypes.Name(elementType) + " per bolt";
     }
 
     public override void WakeUp()
