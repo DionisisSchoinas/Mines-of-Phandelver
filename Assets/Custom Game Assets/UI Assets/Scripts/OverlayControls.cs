@@ -39,6 +39,17 @@ public class OverlayControls : MonoBehaviour
 
     private float mana;
 
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = ResourceManager.UI.Sounds.ButtonHoverEnter;
+        audioSource.loop = false;
+        audioSource.playOnAwake = false;
+        audioSource.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
+    }
+
     private void Start()
     {
         overlayToWeaponAdapter = FindObjectOfType<OverlayToWeaponAdapter>();
@@ -281,6 +292,8 @@ public class OverlayControls : MonoBehaviour
         {
             if (quickbarButtonContainers[selectedQuickbar].buttonData.skill.manaCost <= mana)
             {
+                audioSource.Play();
+
                 selectedQuickbarIndex = selectedQuickbar;
                 // Update Adapter
                 UIEventSystem.current.SkillPicked(quickbarButtonContainers[selectedQuickbar].buttonData.skillIndexInAdapter);

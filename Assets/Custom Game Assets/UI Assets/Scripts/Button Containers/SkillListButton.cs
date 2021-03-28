@@ -55,6 +55,8 @@ public class SkillListButton : ButtonContainer, IPointerDownHandler, IPointerUpH
         if (!skillListUp)
             return;
 
+        audioSource.Play();
+
         // Set new one to position
         ReInstantiate();
         // Get offset of mouse from position of transform
@@ -77,8 +79,8 @@ public class SkillListButton : ButtonContainer, IPointerDownHandler, IPointerUpH
 
         GameObject gm = new GameObject();
         AudioSource a = gm.AddComponent<AudioSource>();
-        a.clip = audioSource.clip;
-        a.outputAudioMixerGroup = audioSource.outputAudioMixerGroup;
+        a.clip = ResourceManager.UI.Sounds.ButtonPick;
+        a.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
         a.Play();
         Destroy(gm, 2f);
 

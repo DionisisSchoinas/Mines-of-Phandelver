@@ -81,6 +81,8 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
     {
         if (skillListUp && swappable)
         {
+            //audioSource.Play();
+
             ReInstantiate();
 
             clickPositionOffset = eventData.position - new Vector2(transform.position.x, transform.position.y);
@@ -99,8 +101,8 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
         {
             GameObject gm = new GameObject();
             AudioSource a = gm.AddComponent<AudioSource>();
-            a.clip = audioSource.clip;
-            a.outputAudioMixerGroup = audioSource.outputAudioMixerGroup;
+            a.clip = ResourceManager.UI.Sounds.ButtonPick;
+            a.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
             a.Play();
             Destroy(gm, 2f);
 

@@ -54,7 +54,7 @@ public class ButtonContainer : ElementHover, IDragHandler
         skillListUp = false;
 
         audioSource = gameObject.AddComponent<AudioSource>();
-        audioSource.clip = ResourceManager.UI.Sounds.ButtonPick;
+        audioSource.clip = ResourceManager.UI.Sounds.ButtonHoverEnter;
         audioSource.loop = false;
         audioSource.playOnAwake = false;
         audioSource.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
