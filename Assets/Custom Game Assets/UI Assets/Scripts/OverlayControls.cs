@@ -34,6 +34,8 @@ public class OverlayControls : MonoBehaviour
     private bool escapeMenuUp;
     private bool objectiveMenuUp;
 
+    private EscapeMenuController escapeMenuScript;
+
     public static float skillFreezeAfterPicking;
     public static float skillFreezeAfterCasting;
     public static Color selectedButtonColor;
@@ -50,6 +52,8 @@ public class OverlayControls : MonoBehaviour
         audioSource.loop = false;
         audioSource.playOnAwake = false;
         audioSource.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
+
+        escapeMenuScript = escapeMenu.gameObject.GetComponent<EscapeMenuController>();
     }
 
     private void Start()
@@ -178,7 +182,7 @@ public class OverlayControls : MonoBehaviour
             {
                 SetCanvasState(false, settingsMenu);
             }
-            else
+            else if (escapeMenuScript.mode == -1)
             {
                 EscapeMenu();
             }

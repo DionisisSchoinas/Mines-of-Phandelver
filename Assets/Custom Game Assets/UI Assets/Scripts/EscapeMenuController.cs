@@ -13,7 +13,8 @@ public class EscapeMenuController : MonoBehaviour
     private Button exitToMenu;
     private Button exitGame;
 
-    private int mode;
+    [HideInInspector]
+    public int mode;
 
     private void Awake()
     {
@@ -72,6 +73,13 @@ public class EscapeMenuController : MonoBehaviour
             }
         }
         OverlayControls.SetCanvasState(true, canvasGroup);
+        StartCoroutine(LockMode());
+    }
+
+    private IEnumerator LockMode()
+    {
+        yield return new WaitForEndOfFrame();
+        mode = -1;
     }
 
     private void ExitToMenu()

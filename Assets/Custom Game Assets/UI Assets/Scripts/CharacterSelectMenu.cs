@@ -92,7 +92,7 @@ public class CharacterSelectMenu : MonoBehaviour
         coroutine = StartCoroutine(Loading());
     }
 
-    private void BackToMenu()
+    public void BackToMenu()
     {
         // Enable background and menu
         backgroundImage.enabled = true;
