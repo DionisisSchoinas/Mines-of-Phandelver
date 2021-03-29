@@ -11,18 +11,24 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
 
     private Vector2 lastPosition;
 
+    private bool pointerUp;
+
     public new void Awake()
     {
         base.Awake();
+
+        pointerUp = true;
         swappable = true;
 
         UIEventSystem.current.onSkillPickedRegistered += SelectButton;
+        UIEventSystem.current.onSkillListUp += SkillListUp;
     }
 
     public new void OnDestroy()
     {
         base.OnDestroy();
         UIEventSystem.current.onSkillPickedRegistered -= SelectButton;
+        UIEventSystem.current.onSkillListUp -= SkillListUp;
     }
 
     private void SelectButton(int skillIndexInAdapter, bool startCooldown)
@@ -79,6 +85,11 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
+
+        pointerUp = false;
+
         if (skillListUp && swappable)
         {
             //audioSource.Play();
@@ -97,6 +108,11 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
+
+        pointerUp = true;
+
         if (skillListUp && swappable)
         {
             GameObject gm = new GameObject();
@@ -108,6 +124,17 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
 
             UIEventSystem.current.DraggingButton(this, false);
 
+            Destroy(gameObject);
+        }
+    }
+
+    private void SkillListUp(bool skillList)
+    {
+        if (!skillListUp && !pointerUp)
+        {
+            // Notify event
+            UIEventSystem.current.DraggingButton(this, false);
+            // Destroy drag around button
             Destroy(gameObject);
         }
     }

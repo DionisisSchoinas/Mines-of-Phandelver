@@ -145,7 +145,7 @@ public class SpellTypeRay : Spell
 
     public override string GetDamageText()
     {
-        return damage + " " + ElementTypes.Name(elementType) + " damage " + damageTicksPerSecond + " times per second";
+        return damage * damageTicksPerSecond + " " + ElementTypes.Name(elementType) + " damage per second";
     }
 
     public override string GetDescription()

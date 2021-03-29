@@ -224,7 +224,10 @@ public class OverlayControls : MonoBehaviour
         SetCanvasState(skillListUp, spellListDisplay);
 
         if (!skillListUp)
+        {
+            skillToolTip.alpha = 0f;
             SetSelectedQuickBar(selectedQuickbarIndex);
+        }
     }
 
     public static void SetCanvasState(bool show, CanvasGroup canvasGroup)

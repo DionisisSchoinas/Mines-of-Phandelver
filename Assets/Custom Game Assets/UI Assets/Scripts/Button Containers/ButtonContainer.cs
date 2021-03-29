@@ -28,6 +28,8 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
     protected bool skillListUp;
     protected AudioSource audioSource;
 
+    private bool draggingButton;
+
     public void Awake()
     {
         button = gameObject.GetComponent<Button>();
@@ -65,6 +67,7 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
         UIEventSystem.current.onSkillListUp += BlockQuickbarSkillSelection;
         UIEventSystem.current.onCancelSkill += SkillCast;
         ManaEventSystem.current.onManaUpdated += ManaUpdate;
+        UIEventSystem.current.onDraggingButton += Dragging;
     }
 
 
@@ -76,6 +79,7 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
         UIEventSystem.current.onSkillListUp -= BlockQuickbarSkillSelection;
         UIEventSystem.current.onCancelSkill -= SkillCast;
         ManaEventSystem.current.onManaUpdated -= ManaUpdate;
+        UIEventSystem.current.onDraggingButton -= Dragging;
     }
 
     private void BlockQuickbarSkillSelection(bool block)
@@ -93,7 +97,7 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
     {
         base.OnPointerEnter(eventData);
 
-        if (!skillListUp)
+        if (!skillListUp || draggingButton)
             return;
 
         UIEventSystem.current.ShowSkillToolTip(buttonData.skill);
@@ -134,6 +138,11 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
         {
             rect.position = oldPos;
         }
+    }
+
+    private void Dragging(ButtonContainer btn, bool dragging)
+    {
+        draggingButton = dragging;
     }
 
     private bool IsRectTransformInsideSreen()
