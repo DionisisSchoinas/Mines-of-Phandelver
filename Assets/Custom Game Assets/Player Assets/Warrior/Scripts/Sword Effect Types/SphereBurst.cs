@@ -107,4 +107,29 @@ public class SphereBurst : SwordEffect
 
         return notBlocked;
     }
+
+    public override Sprite GetIcon()
+    {
+        switch (attributes.elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                return ResourceManager.UI.SkillIcons.Explosion.Earth;
+            case ElementTypes.Type.Cold_Ice:
+                return ResourceManager.UI.SkillIcons.Explosion.Ice;
+            case ElementTypes.Type.Lightning:
+                return ResourceManager.UI.SkillIcons.Explosion.Lightning;
+            default:
+                return ResourceManager.UI.SkillIcons.Explosion.Fire;
+        }
+    }
+
+    public override string GetDamageText()
+    {
+        return damage + " " + ElementTypes.Name(attributes.elementType) + " damage";
+    }
+
+    public override string GetDescription()
+    {
+        return "Fires projectiles on sphere dealing " + ElementTypes.Name(attributes.elementType) + " damage and applying " + ElementTypes.Condition(attributes.elementType) + " condition";
+    }
 }

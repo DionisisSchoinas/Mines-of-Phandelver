@@ -3,7 +3,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using System.Collections;
 
-public class ButtonContainer : ElementHover, IDragHandler
+public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitHandler, IDragHandler
 {
     [HideInInspector]
     public ButtonData buttonData;
@@ -26,6 +26,9 @@ public class ButtonContainer : ElementHover, IDragHandler
     protected Image buttonOutOfMana;
     protected Vector2 clickPositionOffset;
     protected bool skillListUp;
+    protected AudioSource audioSource;
+
+    private bool draggingButton;
 
     public void Awake()
     {
@@ -52,12 +55,19 @@ public class ButtonContainer : ElementHover, IDragHandler
         buttonAlreadyDisplayingCooldown = false;
         skillListUp = false;
 
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = ResourceManager.UI.Sounds.ButtonHoverEnter;
+        audioSource.loop = false;
+        audioSource.playOnAwake = false;
+        audioSource.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
+
         UIEventSystem.current.onSkillPickedRegistered += SkillPicked;
         UIEventSystem.current.onSkillCast += SkillCast;
         UIEventSystem.current.onFreezeAllSkills += Freeze;
         UIEventSystem.current.onSkillListUp += BlockQuickbarSkillSelection;
         UIEventSystem.current.onCancelSkill += SkillCast;
         ManaEventSystem.current.onManaUpdated += ManaUpdate;
+        UIEventSystem.current.onDraggingButton += Dragging;
     }
 
 
@@ -69,6 +79,7 @@ public class ButtonContainer : ElementHover, IDragHandler
         UIEventSystem.current.onSkillListUp -= BlockQuickbarSkillSelection;
         UIEventSystem.current.onCancelSkill -= SkillCast;
         ManaEventSystem.current.onManaUpdated -= ManaUpdate;
+        UIEventSystem.current.onDraggingButton -= Dragging;
     }
 
     private void BlockQuickbarSkillSelection(bool block)
@@ -79,6 +90,27 @@ public class ButtonContainer : ElementHover, IDragHandler
     public void SetSelectionColor(Color color)
     {
         buttonSelection.color = color;
+    }
+
+    //------------ Hover functions ------------
+    public new void OnPointerEnter(PointerEventData eventData)
+    {
+        base.OnPointerEnter(eventData);
+
+        if (!skillListUp || draggingButton)
+            return;
+
+        UIEventSystem.current.ShowSkillToolTip(buttonData.skill);
+    }
+
+    public new void OnPointerExit(PointerEventData eventData)
+    {
+        base.OnPointerExit(eventData);
+
+        if (!skillListUp)
+            return;
+
+        UIEventSystem.current.HideToolTip();
     }
 
     //------------ Reset functions ------------
@@ -106,6 +138,11 @@ public class ButtonContainer : ElementHover, IDragHandler
         {
             rect.position = oldPos;
         }
+    }
+
+    private void Dragging(ButtonContainer btn, bool dragging)
+    {
+        draggingButton = dragging;
     }
 
     private bool IsRectTransformInsideSreen()

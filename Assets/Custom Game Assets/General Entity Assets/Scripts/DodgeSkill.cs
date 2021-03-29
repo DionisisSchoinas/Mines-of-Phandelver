@@ -43,4 +43,23 @@ public class DodgeSkill : Skill
         dodgeAudioSource.Stop();
         dodgeAudioSource.Play();
     }
+
+    public override Sprite GetIcon()
+    {
+        return ResourceManager.UI.SkillIcons.Dodge.Roll;
+    }
+
+    public override string GetDamageText()
+    {
+        return "Just a dodge";
+    }
+    public override Color GetTextColor()
+    {
+        return Color.white;
+    }
+
+    public override string GetDescription()
+    {
+        return "Dodge";
+    }
 }

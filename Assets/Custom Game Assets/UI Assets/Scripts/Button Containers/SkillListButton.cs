@@ -6,12 +6,17 @@ using UnityEngine.UI;
 
 public class SkillListButton : ButtonContainer, IPointerDownHandler, IPointerUpHandler
 {
+    private bool pointerUp;
+
     public new void Awake()
     {
         base.Awake();
 
+        pointerUp = true;
+
         UIEventSystem.current.onHighlightButtonInSkillList += Highlight;
         UIEventSystem.current.onUnhighlightButtonsInSkillList += UnHighlight;
+        UIEventSystem.current.onSkillListUp += SkillListUp;
     }
 
     public new void OnDestroy()
@@ -19,6 +24,7 @@ public class SkillListButton : ButtonContainer, IPointerDownHandler, IPointerUpH
         base.OnDestroy();
         UIEventSystem.current.onHighlightButtonInSkillList -= Highlight;
         UIEventSystem.current.onUnhighlightButtonsInSkillList -= UnHighlight;
+        UIEventSystem.current.onSkillListUp -= SkillListUp;
     }
 
     private void Highlight(int indexInAdapter)
@@ -51,9 +57,16 @@ public class SkillListButton : ButtonContainer, IPointerDownHandler, IPointerUpH
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
+
+        pointerUp = false;
+
         // If skill list not up
         if (!skillListUp)
             return;
+
+        audioSource.Play();
 
         // Set new one to position
         ReInstantiate();
@@ -71,13 +84,36 @@ public class SkillListButton : ButtonContainer, IPointerDownHandler, IPointerUpH
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
+
+        pointerUp = true;
+
         // If skill list not up
         if (!skillListUp)
             return;
+
+        GameObject gm = new GameObject();
+        AudioSource a = gm.AddComponent<AudioSource>();
+        a.clip = ResourceManager.UI.Sounds.ButtonPick;
+        a.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
+        a.Play();
+        Destroy(gm, 2f);
 
         // Notify event
         UIEventSystem.current.DraggingButton(this, false);
         // Destroy drag around button
         Destroy(gameObject);
+    }
+
+    private void SkillListUp(bool skillList)
+    {
+        if (!skillListUp && !pointerUp)
+        {
+            // Notify event
+            UIEventSystem.current.DraggingButton(this, false);
+            // Destroy drag around button
+            Destroy(gameObject);
+        }
     }
 }

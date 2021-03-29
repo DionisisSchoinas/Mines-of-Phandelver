@@ -2,8 +2,6 @@
 
 public class SpellTypeWall : Spell
 {
-    public ElementTypes.Type elementType;
-
     public float damage = 5f;
     public int damageTicksPerSecond = 5;
     public bool doesDamage = true;
@@ -139,6 +137,31 @@ public class SpellTypeWall : Spell
         if (indicatorController != null)
             indicatorController.DestroyIndicator();
         Destroy(tmpIndicatorHolder.gameObject);
+    }
+
+    public override Sprite GetIcon()
+    {
+        switch (elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                return ResourceManager.UI.SkillIcons.Wall.Earth;
+            case ElementTypes.Type.Cold_Ice:
+                return ResourceManager.UI.SkillIcons.Wall.Ice;
+            case ElementTypes.Type.Lightning:
+                return ResourceManager.UI.SkillIcons.Wall.Lightning;
+            default:
+                return ResourceManager.UI.SkillIcons.Wall.Fire;
+        }
+    }
+
+    public override string GetDamageText()
+    {
+        return damage * damageTicksPerSecond + " " + ElementTypes.Name(elementType) + " damage per second";
+    }
+
+    public override string GetDescription()
+    {
+        return "Summons a wall dealing " + ElementTypes.Name(elementType) + " damage for " + duration + " seconds and applying " + ElementTypes.Condition(elementType) + " condition";
     }
 
     //------------------ Irrelevant ------------------

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class SpellTypeRay : Spell
 {
-    public ElementTypes.Type elementType;
-
     public float damage = 10f;
     public int damageTicksPerSecond = 8;
     [HideInInspector]
@@ -128,6 +126,31 @@ public class SpellTypeRay : Spell
         }
 
         ManaEventSystem.current.UseMana(manaCost);
+    }
+
+    public override Sprite GetIcon()
+    {
+        switch (elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                return ResourceManager.UI.SkillIcons.Ray.Earth;
+            case ElementTypes.Type.Cold_Ice:
+                return ResourceManager.UI.SkillIcons.Ray.Ice;
+            case ElementTypes.Type.Lightning:
+                return ResourceManager.UI.SkillIcons.Ray.Lightning;
+            default:
+                return ResourceManager.UI.SkillIcons.Ray.Fire;
+        }
+    }
+
+    public override string GetDamageText()
+    {
+        return damage * damageTicksPerSecond + " " + ElementTypes.Name(elementType) + " damage per second";
+    }
+
+    public override string GetDescription()
+    {
+        return "Fires a ray dealing " + ElementTypes.Name(elementType) + " damage and applying " + ElementTypes.Condition(elementType) + " condition";
     }
 
     //------------------ Irrelevant ------------------

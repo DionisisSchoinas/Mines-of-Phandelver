@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpellTypeBolt : Spell
 {
-    public ElementTypes.Type elementType;
     public float damage = 15f;
     public float speed = 40f;
     public GameObject explosionParticles;
@@ -94,6 +93,31 @@ public class SpellTypeBolt : Spell
 
         if (tmpIndicatorHolder != null)
             Destroy(tmpIndicatorHolder.gameObject);
+    }
+
+    public override Sprite GetIcon()
+    {
+        switch (elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                return ResourceManager.UI.SkillIcons.Bolt.Earth;
+            case ElementTypes.Type.Cold_Ice:
+                return ResourceManager.UI.SkillIcons.Bolt.Ice;
+            case ElementTypes.Type.Lightning:
+                return ResourceManager.UI.SkillIcons.Bolt.Lightning;
+            default:
+                return ResourceManager.UI.SkillIcons.Bolt.Fire;
+        }
+    }
+
+    public override string GetDamageText()
+    {
+        return damage + " " + ElementTypes.Name(elementType) + " damage";
+    }
+
+    public override string GetDescription()
+    {
+        return "Fires a bolt that on hit does " + ElementTypes.Name(elementType) + " damage and applying " + ElementTypes.Condition(elementType) + " condition";
     }
 
     //------------------ Irrelevant ------------------

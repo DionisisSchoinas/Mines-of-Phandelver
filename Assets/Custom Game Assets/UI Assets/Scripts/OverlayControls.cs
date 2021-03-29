@@ -8,7 +8,6 @@ public class OverlayControls : MonoBehaviour
     public GameObject buttonQuickbar;
     public CanvasGroup spellListDisplay;
     public GameObject columnContentHolder;
-    public GameObject dodgeDisplay;
     public GameObject effectsDisplay;
     public float secondsAfterPickingSkill = 0.02f;
     public float secondsAfterCastingSkill = 0.02f;
@@ -16,6 +15,7 @@ public class OverlayControls : MonoBehaviour
     public Color buttonColorUnselected;
     public CanvasGroup escapeMenu;
     public CanvasGroup objectiveMenu;
+    public CanvasGroup skillToolTip;
    
     // Quickbar data
     [HideInInspector]
@@ -39,6 +39,17 @@ public class OverlayControls : MonoBehaviour
     public static Color unselectedButtonColor;
 
     private float mana;
+
+    private AudioSource audioSource;
+
+    private void Awake()
+    {
+        audioSource = gameObject.AddComponent<AudioSource>();
+        audioSource.clip = ResourceManager.UI.Sounds.ButtonHoverEnter;
+        audioSource.loop = false;
+        audioSource.playOnAwake = false;
+        audioSource.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
+    }
 
     private void Start()
     {
@@ -67,7 +78,7 @@ public class OverlayControls : MonoBehaviour
         {
             if (quickbarButtons[i] == null)
             {
-                Debug.LogError("Quickbar needs at least 5 buttons");
+                Debug.LogError("Button with index = " + i + " on the quickbar was null");
                 break;
             }
         }
@@ -76,7 +87,7 @@ public class OverlayControls : MonoBehaviour
         quickbarButtonTransforms = new RectTransform[quickbarButtons.Length];
         for (int i=0; i<quickbarButtons.Length; i++)
         {
-            Text butttonText = quickbarButtons[i].GetComponentInChildren<Text>();
+            Image buttonIcon = quickbarButtons[i].GetComponentsInChildren<Image>()[1];
             // Put container script on the quickbar buttons
             quickbarButtonContainers[i] = quickbarButtons[i].gameObject.AddComponent<QuickbarButton>();
             Skill skill;
@@ -85,13 +96,13 @@ public class OverlayControls : MonoBehaviour
                 skill = overlayToWeaponAdapter.GetSkillFromIndex(-1);
                 quickbarButtonContainers[i].swappable = false;
                 // Save values on the buttons script
-                quickbarButtonContainers[i].buttonData = new ButtonData(quickbarButtons[i], skill, i, -1, butttonText);
+                quickbarButtonContainers[i].buttonData = new ButtonData(quickbarButtons[i], skill, i, -1, buttonIcon);
             }
             else
             {
                 skill = overlayToWeaponAdapter.GetSkillFromIndex(i-1);
                 // Save values on the buttons script
-                quickbarButtonContainers[i].buttonData = new ButtonData(quickbarButtons[i], skill, i, i-1, butttonText);
+                quickbarButtonContainers[i].buttonData = new ButtonData(quickbarButtons[i], skill, i, i-1, buttonIcon);
             }
             quickbarButtonContainers[i].overlayControls = this;
             quickbarButtonContainers[i].parent = buttonQuickbar.transform;
@@ -109,6 +120,8 @@ public class OverlayControls : MonoBehaviour
         objectiveMenuUp = false;
         SetSelectedQuickBar(0);
 
+        SetCanvasState(false, skillToolTip);
+
         UIEventSystem.current.onDraggingButton += DraggingButton;
         UIEventSystem.current.onApplyResistance += ApplyResistance;
         ManaEventSystem.current.onManaUpdated += SetCurrentMana;
@@ -116,7 +129,8 @@ public class OverlayControls : MonoBehaviour
         // Requests update for mana values
         ManaEventSystem.current.UseMana(0);
 
-
+        UIEventSystem.current.onShowSkillToolTip += ShowSkillToolTip;
+        UIEventSystem.current.onHideToolTip += HideToolTip;
     }
 
     private void OnDestroy()
@@ -124,6 +138,8 @@ public class OverlayControls : MonoBehaviour
         UIEventSystem.current.onDraggingButton -= DraggingButton;
         UIEventSystem.current.onApplyResistance -= ApplyResistance;
         ManaEventSystem.current.onManaUpdated -= SetCurrentMana;
+        UIEventSystem.current.onShowSkillToolTip -= ShowSkillToolTip;
+        UIEventSystem.current.onHideToolTip -= HideToolTip;
     }
 
     private void Update()
@@ -208,7 +224,10 @@ public class OverlayControls : MonoBehaviour
         SetCanvasState(skillListUp, spellListDisplay);
 
         if (!skillListUp)
+        {
+            skillToolTip.alpha = 0f;
             SetSelectedQuickBar(selectedQuickbarIndex);
+        }
     }
 
     public static void SetCanvasState(bool show, CanvasGroup canvasGroup)
@@ -282,6 +301,8 @@ public class OverlayControls : MonoBehaviour
         {
             if (quickbarButtonContainers[selectedQuickbar].buttonData.skill.manaCost <= mana)
             {
+                audioSource.Play();
+
                 selectedQuickbarIndex = selectedQuickbar;
                 // Update Adapter
                 UIEventSystem.current.SkillPicked(quickbarButtonContainers[selectedQuickbar].buttonData.skillIndexInAdapter);
@@ -318,5 +339,15 @@ public class OverlayControls : MonoBehaviour
     private void SetCurrentMana(float mana)
     {
         this.mana = mana;
+    }
+
+    private void ShowSkillToolTip(Skill skill)
+    {
+        skillToolTip.alpha = 1f;
+    }
+
+    private void HideToolTip()
+    {
+        skillToolTip.alpha = 0f;
     }
 }

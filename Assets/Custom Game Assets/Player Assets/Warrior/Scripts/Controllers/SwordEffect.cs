@@ -156,4 +156,24 @@ public class SwordEffect : BasicSword
         yield return new WaitForSeconds(attributes.swingSoundDelay);
         swingAudioSource.Play();
     }
+
+    public override Sprite GetIcon()
+    {
+        return ResourceManager.UI.SkillIcons.Default.Swing;
+    }
+
+    public override string GetDamageText()
+    {
+        return "Not sure yet";
+    }
+
+    public override Color GetTextColor()
+    {
+        return ElementTypes.Colors(attributes.elementType);
+    }
+
+    public override string GetDescription()
+    {
+        return "Sword effect description";
+    }
 }

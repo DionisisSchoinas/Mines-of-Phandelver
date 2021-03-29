@@ -2,6 +2,8 @@
 
 public abstract class Spell : Skill
 {
+    public ElementTypes.Type elementType;
+
     [HideInInspector]
     public bool cancelled;
 
@@ -76,14 +78,27 @@ public abstract class Spell : Skill
         Vector3 currentPosition = transform.position;
         foreach (Collider potentialTarget in enemies)
         {
-            Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
-            float dSqrToTarget = directionToTarget.sqrMagnitude;
-            if (dSqrToTarget < closestDistanceSqr)
+            if (potentialTarget != null)
             {
-                closestDistanceSqr = dSqrToTarget;
-                bestTarget = potentialTarget;
+                Vector3 directionToTarget = potentialTarget.transform.position - currentPosition;
+                float dSqrToTarget = directionToTarget.sqrMagnitude;
+                if (dSqrToTarget < closestDistanceSqr)
+                {
+                    closestDistanceSqr = dSqrToTarget;
+                    bestTarget = potentialTarget;
+                }
             }
         }
         return bestTarget;
+    }
+
+    public override Sprite GetIcon()
+    {
+        return ResourceManager.UI.SkillIcons.Default.Homing;
+    }
+
+    public override Color GetTextColor()
+    {
+        return ElementTypes.Colors(elementType);
     }
 }

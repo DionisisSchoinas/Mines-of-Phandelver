@@ -11,18 +11,24 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
 
     private Vector2 lastPosition;
 
+    private bool pointerUp;
+
     public new void Awake()
     {
         base.Awake();
+
+        pointerUp = true;
         swappable = true;
 
         UIEventSystem.current.onSkillPickedRegistered += SelectButton;
+        UIEventSystem.current.onSkillListUp += SkillListUp;
     }
 
     public new void OnDestroy()
     {
         base.OnDestroy();
         UIEventSystem.current.onSkillPickedRegistered -= SelectButton;
+        UIEventSystem.current.onSkillListUp -= SkillListUp;
     }
 
     private void SelectButton(int skillIndexInAdapter, bool startCooldown)
@@ -79,8 +85,15 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
+
+        pointerUp = false;
+
         if (skillListUp && swappable)
         {
+            //audioSource.Play();
+
             ReInstantiate();
 
             clickPositionOffset = eventData.position - new Vector2(transform.position.x, transform.position.y);
@@ -95,12 +108,34 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
 
     public void OnPointerUp(PointerEventData eventData)
     {
+        if (eventData.button != PointerEventData.InputButton.Left)
+            return;
+
+        pointerUp = true;
+
         if (skillListUp && swappable)
         {
+            GameObject gm = new GameObject();
+            AudioSource a = gm.AddComponent<AudioSource>();
+            a.clip = ResourceManager.UI.Sounds.ButtonPick;
+            a.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
+            a.Play();
+            Destroy(gm, 2f);
+
             UIEventSystem.current.DraggingButton(this, false);
 
             Destroy(gameObject);
-            
+        }
+    }
+
+    private void SkillListUp(bool skillList)
+    {
+        if (!skillListUp && !pointerUp)
+        {
+            // Notify event
+            UIEventSystem.current.DraggingButton(this, false);
+            // Destroy drag around button
+            Destroy(gameObject);
         }
     }
 }

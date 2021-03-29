@@ -88,6 +88,31 @@ public class SpellTypeBall : Spell
             Destroy(tmpIndicatorHolder.gameObject);
     }
 
+    public override Sprite GetIcon()
+    {
+        switch (elementType)
+        {
+            case ElementTypes.Type.Physical_Earth:
+                return ResourceManager.UI.SkillIcons.Explosion.Earth;
+            case ElementTypes.Type.Cold_Ice:
+                return ResourceManager.UI.SkillIcons.Explosion.Ice;
+            case ElementTypes.Type.Lightning:
+                return ResourceManager.UI.SkillIcons.Explosion.Lightning;
+            default:
+                return ResourceManager.UI.SkillIcons.Explosion.Fire;
+        }
+    }
+
+    public override string GetDamageText()
+    {
+        return explosion.GetComponent<Explosion>().damage + " " + ElementTypes.Name(elementType) + " damage";
+    }
+
+    public override string GetDescription()
+    {
+        return "Fires a ball that on hit causes an explosion dealing " + ElementTypes.Name(elementType) + " damage and applying " + ElementTypes.Condition(elementType) + " condition";
+    }
+
     //------------------ Irrelevant ------------------
 
     public override void WakeUp()

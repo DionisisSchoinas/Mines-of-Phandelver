@@ -1,11 +1,16 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class CharacterLoadScript : MonoBehaviour
 {
+    public static CharacterLoadScript current;
+
     private void Awake()
     {
+        current = this;
+
         SelectedCharacterScript selectedCharacter = FindObjectOfType<SelectedCharacterScript>();
         if (selectedCharacter != null)
         {
@@ -34,6 +39,24 @@ public class CharacterLoadScript : MonoBehaviour
                     gm.SetActive(false);
                 }
             }
+
+            StartCoroutine(SetCharacter(selectedCharacter.character));
         }
+    }
+
+    public event Action<SelectedCharacterScript.Character> onCharacterSelected;
+    public void CharacterSelected(SelectedCharacterScript.Character character)
+    {
+        if (onCharacterSelected != null)
+        {
+            onCharacterSelected(character);
+        }
+    }
+
+    private IEnumerator SetCharacter(SelectedCharacterScript.Character character)
+    {
+        yield return new WaitForSeconds(2f);
+        CharacterSelected(character);
+
     }
 }
