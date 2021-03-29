@@ -16,6 +16,7 @@ public class OverlayControls : MonoBehaviour
     public CanvasGroup escapeMenu;
     public CanvasGroup objectiveMenu;
     public CanvasGroup skillToolTip;
+    public CanvasGroup settingsMenu;
    
     // Quickbar data
     [HideInInspector]
