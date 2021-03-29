@@ -6,20 +6,26 @@ using UnityEngine.UI;
 
 public class EscapeMenuController : MonoBehaviour
 {
+    public CanvasGroup settingsMenu;
+
     private CanvasGroup canvasGroup;
+    private Button settings;
     private Button exitToMenu;
     private Button exitGame;
 
-    private int mode;
+    [HideInInspector]
+    public int mode;
 
     private void Awake()
     {
         canvasGroup = gameObject.GetComponent<CanvasGroup>();
 
         Button[] buttons = gameObject.GetComponentsInChildren<Button>();
-        exitToMenu = buttons[0];
-        exitGame = buttons[1];
+        settings = buttons[0];
+        exitToMenu = buttons[1];
+        exitGame = buttons[2];
 
+        settings.onClick.AddListener(SettingsClick);
         exitToMenu.onClick.AddListener(ExitToMenuClick);
         exitGame.onClick.AddListener(ExitGameClick);
 
@@ -31,6 +37,11 @@ public class EscapeMenuController : MonoBehaviour
     private void OnDestroy()
     {
         YesNoDialog.current.onResponded -= Response;
+    }
+
+    private void SettingsClick()
+    {
+        OverlayControls.SetCanvasState(true, settingsMenu);
     }
 
     private void ExitToMenuClick()
@@ -62,6 +73,13 @@ public class EscapeMenuController : MonoBehaviour
             }
         }
         OverlayControls.SetCanvasState(true, canvasGroup);
+        StartCoroutine(LockMode());
+    }
+
+    private IEnumerator LockMode()
+    {
+        yield return new WaitForEndOfFrame();
+        mode = -1;
     }
 
     private void ExitToMenu()

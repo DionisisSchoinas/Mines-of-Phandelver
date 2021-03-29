@@ -31,6 +31,17 @@ public class YesNoDialog : MonoBehaviour
         current = this;
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (canvasGroup.alpha == 1f)
+            {
+                NoClicked();
+            }
+        }
+    }
+
     public event Action<bool> onResponded;
     public void SetResponse(bool response)
     {

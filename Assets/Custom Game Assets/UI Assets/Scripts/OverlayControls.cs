@@ -16,6 +16,7 @@ public class OverlayControls : MonoBehaviour
     public CanvasGroup escapeMenu;
     public CanvasGroup objectiveMenu;
     public CanvasGroup skillToolTip;
+    public CanvasGroup settingsMenu;
    
     // Quickbar data
     [HideInInspector]
@@ -33,6 +34,8 @@ public class OverlayControls : MonoBehaviour
     private bool escapeMenuUp;
     private bool objectiveMenuUp;
 
+    private EscapeMenuController escapeMenuScript;
+
     public static float skillFreezeAfterPicking;
     public static float skillFreezeAfterCasting;
     public static Color selectedButtonColor;
@@ -49,6 +52,8 @@ public class OverlayControls : MonoBehaviour
         audioSource.loop = false;
         audioSource.playOnAwake = false;
         audioSource.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
+
+        escapeMenuScript = escapeMenu.gameObject.GetComponent<EscapeMenuController>();
     }
 
     private void Start()
@@ -173,7 +178,11 @@ public class OverlayControls : MonoBehaviour
             {
                 ChangeSkillListState();
             }
-            else
+            else if (settingsMenu.alpha == 1f)
+            {
+                SetCanvasState(false, settingsMenu);
+            }
+            else if (escapeMenuScript.mode == -1)
             {
                 EscapeMenu();
             }
