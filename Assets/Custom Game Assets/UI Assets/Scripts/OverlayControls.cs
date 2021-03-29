@@ -174,6 +174,10 @@ public class OverlayControls : MonoBehaviour
             {
                 ChangeSkillListState();
             }
+            else if (settingsMenu.alpha == 1f)
+            {
+                SetCanvasState(false, settingsMenu);
+            }
             else
             {
                 EscapeMenu();

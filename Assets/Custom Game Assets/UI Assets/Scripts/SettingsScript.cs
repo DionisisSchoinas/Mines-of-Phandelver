@@ -32,16 +32,20 @@ public class SettingsScript : MonoBehaviour
         }
     }
 
-
     public float volumeDbMin = -80f;
     public float volumeDbMax = 20f;
 
+    private CanvasGroup canvasGroup;
     private Scrollbar master;
     private Scrollbar music;
     private Scrollbar effects;
+    private Button closeButton;
 
     private void Awake()
     {
+        canvasGroup = gameObject.GetComponent<CanvasGroup>();
+        OverlayControls.SetCanvasState(false, canvasGroup);
+
         // Make sure range is smaller ot equal to [-80, 20]
         volumeDbMin = Mathf.Max(-80f, volumeDbMin);
         volumeDbMax = Mathf.Min(20f, volumeDbMax);
@@ -54,6 +58,9 @@ public class SettingsScript : MonoBehaviour
         master.onValueChanged.AddListener(ChangeMaster);
         music.onValueChanged.AddListener(ChangeMusic);
         effects.onValueChanged.AddListener(ChangeEffects);
+
+        closeButton = gameObject.GetComponentInChildren<Button>();
+        closeButton.onClick.AddListener(CloseButtonClick);
     }
 
     private void Start()
@@ -63,6 +70,11 @@ public class SettingsScript : MonoBehaviour
         master.value = GetVolume("MasterVolume");
         music.value = GetVolume("MusicVolume");
         effects.value = GetVolume("EffectsVolume");
+    }
+
+    private void OnApplicationQuit()
+    {
+        SaveVolumeSettings();
     }
 
     private float GetVolume(string param)
@@ -129,5 +141,10 @@ public class SettingsScript : MonoBehaviour
         }
 
         Debug.Log("Loaded from : " + Application.persistentDataPath);
+    }
+
+    private void CloseButtonClick()
+    {
+        OverlayControls.SetCanvasState(false, canvasGroup);
     }
 }
