@@ -218,7 +218,7 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
         while (buttonData.skill.cooldownPercentage < 1)
         {
             buttonImageCooldown.fillAmount = buttonData.skill.cooldownPercentage;
-            yield return new WaitForSeconds(delayForEachStep / 2f);
+            yield return new WaitForSeconds(delayForEachStep /2f);
         }
         buttonImageCooldown.fillAmount = 0f;
         buttonAlreadyDisplayingCooldown = false;

@@ -8,19 +8,15 @@ public class ProjectileScript : MonoBehaviour
     public float speed = 8f;
     public float damage = 15f;
     public float despawnAfter = 30f;
-
     public bool stickToTarget = true;
+    [SerializeField]
+    private Transform centerOfMass;
+    public bool stuck;
 
     private Collider col;
     private Rigidbody rb;
 
-    [SerializeField]
-    Transform centerOfMass;
-
-    public bool stuck;
-
     private AudioSource flyAudioSource;
-
     private ParticleSystem particles;
 
     private void Awake()
@@ -38,6 +34,11 @@ public class ProjectileScript : MonoBehaviour
         //PlayFlySound();
     }
 
+    public void AddForce()
+    {
+        rb.AddForce(transform.forward * speed, ForceMode.Force);
+    }
+
     public void SetCaster(Collider caster)
     {
         Physics.IgnoreCollision(col, caster);
@@ -48,14 +49,6 @@ public class ProjectileScript : MonoBehaviour
         ProjectileScript scr = Instantiate(gameObject, firePoint.position + firePoint.forward * 0.5f, firePoint.rotation).GetComponent<ProjectileScript>();
         scr.SetCaster(caster);
         Destroy(scr.gameObject, 5f);
-    }
-
-    void FixedUpdate()
-    {
-        if (!stuck)
-        {
-            //transform.RotateAround(transform.position, transform.right, Time.deltaTime * 180f);
-        }
     }
 
     private void OnCollisionEnter(Collision collision)

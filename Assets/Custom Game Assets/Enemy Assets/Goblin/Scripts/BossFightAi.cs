@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossFightAi : MonoBehaviour
 {
     public GameObject Weapon;
-    public GameObject weaponApearParticles;
+    public GameObject weaponAppearParticles;
     public Transform firepoint;
     // Start is called before the first frame update
     void Start()
@@ -35,7 +35,7 @@ public class BossFightAi : MonoBehaviour
     IEnumerator WeaponApearEnumerator(float delayTimer)
     {
         yield return new WaitForSeconds(delayTimer);
-        Destroy(Instantiate(weaponApearParticles, firepoint),5f);
+        Destroy(Instantiate(weaponAppearParticles, firepoint),5f);
         Weapon.SetActive(true);
 
     }
