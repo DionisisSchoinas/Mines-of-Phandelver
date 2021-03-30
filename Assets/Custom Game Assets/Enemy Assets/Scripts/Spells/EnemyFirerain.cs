@@ -69,8 +69,8 @@ public class EnemyFirerain : EnemySpell
         {
             if (gm != null)
             {
-                HealthEventSystem.current.TakeDamage(gm.name, damage, ElementTypes.Type.Fire);
-                if (Random.value <= 0.2f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.name, ConditionsManager.Burning);
+                HealthEventSystem.current.TakeDamage(gm.GetInstanceID(), damage, ElementTypes.Type.Fire);
+                if (Random.value <= 0.2f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.GetInstanceID(), ConditionsManager.Burning);
             }
         }
     }

@@ -78,7 +78,7 @@ public class ProjectileScript : MonoBehaviour
         }
 
         // Damage
-        HealthEventSystem.current.TakeDamage(collision.gameObject.name, damage, damageType);
+        HealthEventSystem.current.TakeDamage(collision.gameObject.GetInstanceID(), damage, damageType);
 
         Destroy(gameObject, despawnAfter);
     }

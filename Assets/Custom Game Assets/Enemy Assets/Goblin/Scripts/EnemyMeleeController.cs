@@ -57,7 +57,7 @@ public class EnemyMeleeController : MonoBehaviour
             else if (col == 0)
                 col = 2;
 
-            HealthEventSystem.current.TakeDamage(visibleTarget.name, 15f, ElementTypes.Type.Physical_Earth);
+            HealthEventSystem.current.TakeDamage(visibleTarget.GetInstanceID(), 15f, ElementTypes.Type.Physical_Earth);
         }
         
         switch (col)

@@ -12,67 +12,67 @@ public class HealthEventSystem : MonoBehaviour
     }
 
     // Deals damage
-    public event Action<string, float, ElementTypes.Type> onTakeDamage;
-    public void TakeDamage(string name, float damage, ElementTypes.Type damageType)
+    public event Action<int, float, ElementTypes.Type> onTakeDamage;
+    public void TakeDamage(int id, float damage, ElementTypes.Type damageType)
     {
         if (onTakeDamage != null)
         {
-            onTakeDamage(name, damage, damageType);
+            onTakeDamage(id, damage, damageType);
         }
     }
     // Triggers on death
-    public event Action<string> onDeath;
-    public void Die(string name)
+    public event Action<int> onDeath;
+    public void Die(int id)
     {
         if (onDeath != null)
         {
-            onDeath(name);
+            onDeath(id);
         }
     }
 
     // Sets the invunarablility state
-    public event Action<string, bool> onChangeInvunerability;
-    public void SetInvunerable(string name, bool state)
+    public event Action<int, bool> onChangeInvunerability;
+    public void SetInvunerable(int id, bool state)
     {
         if (onChangeInvunerability != null)
         {
-            onChangeInvunerability(name, state);
+            onChangeInvunerability(id, state);
         }
     }
     // Applies a condition
-    public event Action<string, Condition> onConditionHit;
-    public void SetCondition(string name, Condition condition)
+    public event Action<int, Condition> onConditionHit;
+    public void SetCondition(int id, Condition condition)
     {
         if (onConditionHit != null)
         {
-            onConditionHit(name, condition);
+            onConditionHit(id, condition);
         }
     }
     // Applies force
-    public event Action<string, Vector3, float> onForceApply;
-    public void ApplyForce(string name, Vector3 direction, float magnitude)
+    public event Action<int, Vector3, float> onForceApply;
+    public void ApplyForce(int id, Vector3 direction, float magnitude)
     {
         if (onForceApply != null)
         {
-            onForceApply(name, direction.normalized, magnitude);
+            onForceApply(id, direction.normalized, magnitude);
         }
     }
     // Applies resistance
-    public event Action<string, List<SkinnedMeshRenderer>, Material, ElementTypes.Type, float> onResistanceApply;
-    public void ApplyResistance(string name, List<SkinnedMeshRenderer> mesh, Material newMaterial, ElementTypes.Type resistance, float duration)
+    public event Action<int, List<SkinnedMeshRenderer>, Material, ElementTypes.Type, float> onResistanceApply;
+    public void ApplyResistance(int id, List<SkinnedMeshRenderer> mesh, Material newMaterial, ElementTypes.Type resistance, float duration)
     {
         if (onResistanceApply != null)
         {
-            onResistanceApply(name, mesh, newMaterial, resistance, duration);
+            onResistanceApply(id, mesh, newMaterial, resistance, duration);
         }
     }
     // Sends out current resistances
-    public event Action<string, List<ElementTypes.Type>> onResistanceUpdate;
-    public void UpdateResistance(string name, List<ElementTypes.Type> resistances)
+    public event Action<int, List<ElementTypes.Type>> onResistanceUpdate;
+    public void UpdateResistance(int id, List<ElementTypes.Type> resistances)
     {
         if (onResistanceUpdate != null)
         {
-            onResistanceUpdate(name, resistances);
+            onResistanceUpdate(id, resistances);
         }
     }
 }

@@ -55,7 +55,7 @@ public class ResistanceEffect : SwordEffect
 
         PlaySwordSwingAudio();
 
-        HealthEventSystem.current.ApplyResistance(controls.gameObject.name, playerMesh, resistanceAppearance, attributes.elementType, duration);
+        HealthEventSystem.current.ApplyResistance(controls.gameObject.GetInstanceID(), playerMesh, resistanceAppearance, attributes.elementType, duration);
     }
 
     public override Sprite GetIcon()

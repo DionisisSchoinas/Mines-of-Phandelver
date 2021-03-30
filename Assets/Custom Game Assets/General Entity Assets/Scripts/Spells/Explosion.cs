@@ -93,7 +93,7 @@ public class Explosion : MonoBehaviour
     {
         if (gm == null || gm.name == casterName)  return;
 
-        HealthEventSystem.current.TakeDamage(gm.name, damage, elementType);
-        if (condition != null && Random.value <= 0.5f) HealthEventSystem.current.SetCondition(gm.name, condition);
+        HealthEventSystem.current.TakeDamage(gm.GetInstanceID(), damage, elementType);
+        if (condition != null && Random.value <= 0.5f) HealthEventSystem.current.SetCondition(gm.GetInstanceID(), condition);
     }
 }

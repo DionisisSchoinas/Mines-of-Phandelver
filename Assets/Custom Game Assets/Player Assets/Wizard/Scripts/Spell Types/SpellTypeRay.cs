@@ -119,9 +119,9 @@ public class SpellTypeRay : Spell
         {
             if (gm != null)
             {
-                HealthEventSystem.current.TakeDamage(gm.name, damage, elementType);
+                HealthEventSystem.current.TakeDamage(gm.GetInstanceID(), damage, elementType);
                 if (condition != null)
-                    if (Random.value <= 0.25f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.name, condition);
+                    if (Random.value <= 0.25f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.GetInstanceID(), condition);
             }
         }
 

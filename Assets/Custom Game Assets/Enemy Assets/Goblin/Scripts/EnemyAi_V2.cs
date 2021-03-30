@@ -54,9 +54,9 @@ public class EnemyAi_V2 : MonoBehaviour
         HealthEventSystem.current.onDeath -= Dead;
     }
 
-    private void Dead(string name)
+    private void Dead(int id)
     {
-        if (gameObject.name == name)
+        if (gameObject.GetInstanceID() == id)
         {
             agent.enabled = false;
             EngagementScript.current.Disengage(gameObject.name);

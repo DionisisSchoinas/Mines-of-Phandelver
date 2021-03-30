@@ -64,7 +64,7 @@ public class PlayerMovementScriptWizard : PlayerMovementScript
             dodgeParticleSystem.transform.position = controller.transform.position;
             dodgeParticleSystem.transform.rotation = Quaternion.LookRotation(dodgeDirection);
 
-            HealthEventSystem.current.SetInvunerable(gameObject.name, true);
+            HealthEventSystem.current.SetInvunerable(gameObject.GetInstanceID(), true);
             StartCoroutine(DodgeTimer());
         }
 
@@ -189,7 +189,7 @@ public class PlayerMovementScriptWizard : PlayerMovementScript
 
         dodgeScript.StartCooldown();
         UIEventSystem.current.Dodged(dodgeScript.cooldown);
-        HealthEventSystem.current.SetInvunerable(gameObject.name, false);
+        HealthEventSystem.current.SetInvunerable(gameObject.GetInstanceID(), false);
 
         StartCoroutine(Stun(stunAfterDodge));
     }

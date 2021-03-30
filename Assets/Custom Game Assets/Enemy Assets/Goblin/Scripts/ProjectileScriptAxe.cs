@@ -58,7 +58,7 @@ public class ProjectileScriptAxe : MonoBehaviour
         transform.position += transform.forward / 3f;
 
         // Damage
-        HealthEventSystem.current.TakeDamage(collision.gameObject.name, 15f, ElementTypes.Type.Physical_Earth);
+        HealthEventSystem.current.TakeDamage(collision.gameObject.GetInstanceID(), 15f, ElementTypes.Type.Physical_Earth);
 
         Destroy(gameObject, 15f);
     }
