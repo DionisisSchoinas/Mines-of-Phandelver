@@ -6314,6 +6314,7 @@ GameObject:
   - component: {fileID: 3989154091426477131}
   - component: {fileID: 2177212895260857020}
   - component: {fileID: 1817844480}
+  - component: {fileID: 1647898538197830613}
   m_Layer: 12
   m_Name: Player (Warrior)
   m_TagString: Player
@@ -6506,6 +6507,7 @@ MonoBehaviour:
   healthRegenPerSecond: 10
   respawn: 1
   invulnerable: 0
+  staggerPercentage: 0
   manaBar: {fileID: 0}
   manaBarColor: {r: 0, g: 0.59463525, b: 1, a: 1}
   maxMana: 100
@@ -6557,6 +6559,14 @@ MonoBehaviour:
   distanceFromGround:
   - 0.5
   - 0.5
+--- !u!81 &1647898538197830613
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177212895260857013}
+  m_Enabled: 1
 --- !u!1 &2177212895714952280
 GameObject:
   m_ObjectHideFlags: 0

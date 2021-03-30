@@ -1672,6 +1672,7 @@ GameObject:
   - component: {fileID: 1217898842}
   - component: {fileID: 1217898848}
   - component: {fileID: 1154435553}
+  - component: {fileID: 8238697150751500090}
   m_Layer: 14
   m_Name: 'Goblin Enemy Sword And Shield '
   m_TagString: Untagged
@@ -1815,6 +1816,7 @@ MonoBehaviour:
   maxValue: 100
   resourceBar: {fileID: 7268632834780639686}
   regenPerSecond: 0
+  staggerPercentage: 0.2
   deathDelay: 30
   _invulnerable: 0
   _respawn: 0
@@ -1841,6 +1843,18 @@ MonoBehaviour:
   distanceFromGround:
   - 0.4
   - 0.4
+--- !u!114 &8238697150751500090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5678388687431777488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a6377afd2f4956a41901f32c55756976, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5678388689331297564
 GameObject:
   m_ObjectHideFlags: 0
@@ -2056,11 +2070,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: HealthBarCanvas
-      objectReference: {fileID: 0}
-    - target: {fileID: 2370444074593593758, guid: e554486e94ddf2441a22c07f0c836276,
-        type: 3}
-      propertyPath: m_Layer
-      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 2370444074593593758, guid: e554486e94ddf2441a22c07f0c836276,
         type: 3}
