@@ -59,7 +59,24 @@ public class ResistanceHandler : MonoBehaviour
 
         damageResistances.Add(resistance); // Add resistance to list
 
-        UIEventSystem.current.ApplyResistance(resistance.ToString() + " Resistance", duration);
+        Sprite icon;
+        switch (resistance)
+        {
+            case ElementTypes.Type.Cold_Ice:
+                icon = ResourceManager.UI.SkillIcons.Resistance.Ice;
+                break;
+            case ElementTypes.Type.Physical_Earth:
+                icon = ResourceManager.UI.SkillIcons.Resistance.Earth;
+                break;
+            case ElementTypes.Type.Lightning:
+                icon = ResourceManager.UI.SkillIcons.Resistance.Lightning;
+                break;
+            default:
+                icon = ResourceManager.UI.SkillIcons.Resistance.Fire;
+                break;
+        }
+
+        UIEventSystem.current.ApplyResistance(icon, duration);
         HealthEventSystem.current.UpdateResistance(gameObject.name, damageResistances);
 
         resistanceTimer = StartCoroutine(StartDuration(meshes, duration));

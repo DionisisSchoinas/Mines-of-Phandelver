@@ -203,10 +203,10 @@ public class OverlayControls : MonoBehaviour
         }
     }
 
-    private void ApplyResistance(string resistanceName, float duration)
+    private void ApplyResistance(Sprite resistanceIcon, float duration)
     {
         EffectDisplayContainer resistanceEffect = Instantiate(ResourceManager.UI.EffectDisplay, effectsDisplay.transform).AddComponent<EffectDisplayContainer>();
-        resistanceEffect.SetResistanceText(resistanceName);
+        resistanceEffect.SetResistance(resistanceIcon);
         resistanceEffect.StartCountdown(duration);
     }
 
