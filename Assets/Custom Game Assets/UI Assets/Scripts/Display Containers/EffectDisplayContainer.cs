@@ -6,23 +6,22 @@ using UnityEngine.UI;
 public class EffectDisplayContainer : MonoBehaviour
 {
     private Image cooldownDisplay;
-    private Text textDisplay;
+    private Image iconDisplay;
     private Coroutine coroutine;
     private float cooldownPercentage;
     private bool resistance;
-    private bool damage;
 
     private void Awake()
     {
-        textDisplay = gameObject.GetComponentInChildren<Text>();
+        Image[] images = gameObject.GetComponentsInChildren<Image>();
+        iconDisplay = images[0];
+        cooldownDisplay = images[1];
 
-        cooldownDisplay = gameObject.GetComponentsInChildren<Image>()[1];
         cooldownDisplay.fillAmount = 1f;
         cooldownPercentage = 1f;
 
         coroutine = null;
         resistance = false;
-        damage = false;
 
         UIEventSystem.current.onRemoveResistance += RemoveResistance;
     }
@@ -32,18 +31,10 @@ public class EffectDisplayContainer : MonoBehaviour
         UIEventSystem.current.onRemoveResistance -= RemoveResistance;
     }
 
-    public void SetResistanceText(string text)
+    public void SetResistance(Sprite icon)
     {
-        textDisplay.text = text;
+        iconDisplay.sprite = icon;
         resistance = true;
-        damage = false;
-    }
-
-    public void SetDamageTypeText(string text)
-    {
-        textDisplay.text = text;
-        damage = true;
-        resistance = false;
     }
 
     public void StartCountdown(float duration)

@@ -42,10 +42,10 @@ public class SpellTypeBolt : Spell
             // Ignore collisions with the caster
             if (collision.gameObject.name != casterName)
             {
-                HealthEventSystem.current.TakeDamage(collision.gameObject.name, damage, elementType);
+                HealthEventSystem.current.TakeDamage(collision.gameObject.GetInstanceID(), damage, elementType);
                 if (condition != null)
-                    if (Random.value <= 0.2f) HealthEventSystem.current.SetCondition(collision.gameObject.name, condition);
-                HealthEventSystem.current.ApplyForce(collision.gameObject.name, gameObject.transform.forward.normalized, 5f);
+                    if (Random.value <= 0.2f) HealthEventSystem.current.SetCondition(collision.gameObject.GetInstanceID(), condition);
+                HealthEventSystem.current.ApplyForce(collision.gameObject.GetInstanceID(), gameObject.transform.forward.normalized, 5f);
 
                 CameraShake.current.ShakeCamera(0.1f, 0.1f);
                 Destroy(Instantiate(explosionParticles, transform.position, transform.rotation), 5f);

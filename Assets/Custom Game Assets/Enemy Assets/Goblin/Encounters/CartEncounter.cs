@@ -5,46 +5,69 @@ using UnityEngine;
 public class CartEncounter : MonoBehaviour
 {
     public GameObject horde;
-    public GameObject arrow;
+    public ProjectileScript arrow;
     public GameObject player;
     public GameObject cutscenePlayer;
-    bool firstTime = true;
-    public Camera mainCamera;
     public Camera cutsceneCamera;
     public PlayerMovementScript PlayerMovementScript;
     public Animator animator;
-    DialogBoxManager dialogBoxManager;
+    public GameObject questMarker;
+    public GameObject interactPopup;
+
+    private Camera mainCamera;
+    private Collider col;
+    private DialogBoxManager dialogBoxManager;
+
     private void Start()
     {
+        mainCamera = Camera.main;
+
         cutsceneCamera.enabled = false;
+        arrow.gameObject.SetActive(false);
         horde.SetActive(false);
+        interactPopup.SetActive(false);
+        cutscenePlayer.SetActive(false);
+
+        col = gameObject.GetComponent<Collider>();
         dialogBoxManager = FindObjectOfType<DialogBoxManager>();
     }
-    private void OnTriggerEnter(Collider other)
+
+    private void Update()
     {
-        if (firstTime)
+        if (interactPopup.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
         {
-          //  dialogBoxManager.StartDialog();
             mainCamera.enabled = false;
             cutsceneCamera.enabled = true;
             player.SetActive(false);
             cutscenePlayer.SetActive(true);
             StartCoroutine(PlayCutscene());
-            firstTime = false;
-           
+            
+            interactPopup.SetActive(false);
+            questMarker.SetActive(false);
 
-
+            col.enabled = false;
         }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        interactPopup.SetActive(true);
+        questMarker.SetActive(false);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        interactPopup.SetActive(false);
+        questMarker.SetActive(true);
     }
 
     IEnumerator PlayCutscene() 
     {
         PlayerMovementScript.canMove = false;
         
-       
-        
         yield return new WaitForSeconds(3f);
-        arrow.SetActive(true);
+        arrow.gameObject.SetActive(true);
+        arrow.AddForce();
         horde.SetActive(true);
         yield return new WaitForSeconds(3f);
 
@@ -54,8 +77,7 @@ public class CartEncounter : MonoBehaviour
         mainCamera.enabled = true;
         cutsceneCamera.enabled = false;
         animator.SetLayerWeight(2, 0f);
+
         PlayerMovementScript.canMove = true;
-
     }
-
 }

@@ -125,7 +125,7 @@ public class PlayerMovementScriptWarrior : PlayerMovementScript
         //Move player towords direction
         if (roll && !rolling && canMove && !dodgeScript.onCooldown)
         {
-            HealthEventSystem.current.SetInvunerable(gameObject.name, true);
+            HealthEventSystem.current.SetInvunerable(gameObject.GetInstanceID(), true);
             StartCoroutine(PerformRoll());
         }
 
@@ -166,7 +166,7 @@ public class PlayerMovementScriptWarrior : PlayerMovementScript
         rolling = false;
         dodgeScript.StartCooldown();
         UIEventSystem.current.Dodged(dodgeScript.cooldown);
-        HealthEventSystem.current.SetInvunerable(gameObject.name, false);
+        HealthEventSystem.current.SetInvunerable(gameObject.GetInstanceID(), false);
 
         yield return new WaitForSeconds(hitBlockAfterDodge);
         allowHitAfterRoll = true;

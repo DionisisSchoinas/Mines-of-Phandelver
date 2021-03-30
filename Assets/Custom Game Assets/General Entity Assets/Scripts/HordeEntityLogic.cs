@@ -15,9 +15,9 @@ public class HordeEntityLogic : MonoBehaviour
     }
 
    
-    public void KillEntity(string name)
+    public void KillEntity(int id)
     {
-        if (name == gameObject.name)
+        if (id == gameObject.GetInstanceID())
         {
             hordeLogic.enemies.Remove(gameObject);
         }

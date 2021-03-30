@@ -49,7 +49,7 @@ public class HealthController : EntityResource
                     if (animator != null)
                         animator.SetTrigger("Die");
 
-                    HealthEventSystem.current.Die(gameObject.name);
+                    HealthEventSystem.current.Die(gameObject.GetInstanceID());
                     col.enabled = false;
                     Destroy(gameObject, deathDelay);
                     return;
@@ -120,10 +120,10 @@ public class HealthController : EntityResource
         HealthEventSystem.current.onResistanceUpdate -= UpdateResistances;
     }
 
-    public void TakeDamage(string name, float damage, ElementTypes.Type damageType)
+    public void TakeDamage(int id, float damage, ElementTypes.Type damageType)
     {
         // If controller matches
-        if (gameObject.name == name)
+        if (gameObject.GetInstanceID() == id)
         {
             // If controller not invulnerable
             if (!invulnerable)
@@ -156,33 +156,33 @@ public class HealthController : EntityResource
         this.staggerPercentage = stagger;
     }
 
-    private void UpdateResistances(string name, List<ElementTypes.Type> resistances)
+    private void UpdateResistances(int id, List<ElementTypes.Type> resistances)
     {
-        if (gameObject.name == name)
+        if (gameObject.GetInstanceID() == id)
         {
             this.resistances = resistances;
         }
     }
 
-    private void UpdateImmunities(string name, List<ElementTypes.Type> immunities)
+    private void UpdateImmunities(int id, List<ElementTypes.Type> immunities)
     {
-        if (gameObject.name == name)
+        if (gameObject.GetInstanceID() == id)
         {
             this.immunities = immunities;
         }
     }
 
-    public void SetInvunerability(string name, bool state)
+    public void SetInvunerability(int id, bool state)
     {
-        if (gameObject.name == name)
+        if (gameObject.GetInstanceID() == id)
         {
             invulnerable = state;
         }
     }
 
-    public void SetCondition(string name, Condition condition)
+    public void SetCondition(int id, Condition condition)
     {
-        if (gameObject.name == name)
+        if (gameObject.GetInstanceID() == id)
         {
             if (invulnerable)
                 return;
@@ -191,9 +191,9 @@ public class HealthController : EntityResource
         }
     }
 
-    public void ApplyForce(string name, Vector3 direction, float magnitude)
+    public void ApplyForce(int id, Vector3 direction, float magnitude)
     {
-        if (gameObject.name == name)
+        if (gameObject.GetInstanceID() == id)
         {
             if (invulnerable)
                 return;

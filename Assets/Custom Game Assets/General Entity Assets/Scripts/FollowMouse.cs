@@ -14,6 +14,9 @@ public class FollowMouse : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (Camera.main == null)
+            return;
+
         Ray mouseRay = Camera.main.ScreenPointToRay(Input.mousePosition);
         Plane p = new Plane(Vector3.up, player.position);
         if (p.Raycast(mouseRay, out float hitDist))

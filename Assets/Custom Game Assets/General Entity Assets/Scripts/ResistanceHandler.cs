@@ -31,9 +31,9 @@ public class ResistanceHandler : MonoBehaviour
     }
 
     //-------------- Resistance Management --------------
-    public void ApplyResistance(string name, List<SkinnedMeshRenderer> meshes, Material newMaterial, ElementTypes.Type resistance, float duration)
+    public void ApplyResistance(int id, List<SkinnedMeshRenderer> meshes, Material newMaterial, ElementTypes.Type resistance, float duration)
     {
-        if (gameObject.name != name)
+        if (gameObject.GetInstanceID() != id)
             return;
 
         RemoveResistance(meshes);
@@ -59,8 +59,25 @@ public class ResistanceHandler : MonoBehaviour
 
         damageResistances.Add(resistance); // Add resistance to list
 
-        UIEventSystem.current.ApplyResistance(resistance.ToString() + " Resistance", duration);
-        HealthEventSystem.current.UpdateResistance(gameObject.name, damageResistances);
+        Sprite icon;
+        switch (resistance)
+        {
+            case ElementTypes.Type.Cold_Ice:
+                icon = ResourceManager.UI.SkillIcons.Resistance.Ice;
+                break;
+            case ElementTypes.Type.Physical_Earth:
+                icon = ResourceManager.UI.SkillIcons.Resistance.Earth;
+                break;
+            case ElementTypes.Type.Lightning:
+                icon = ResourceManager.UI.SkillIcons.Resistance.Lightning;
+                break;
+            default:
+                icon = ResourceManager.UI.SkillIcons.Resistance.Fire;
+                break;
+        }
+
+        UIEventSystem.current.ApplyResistance(icon, duration);
+        HealthEventSystem.current.UpdateResistance(gameObject.GetInstanceID(), damageResistances);
 
         resistanceTimer = StartCoroutine(StartDuration(meshes, duration));
     }
@@ -88,7 +105,7 @@ public class ResistanceHandler : MonoBehaviour
         damageResistances.Clear(); // Empty resistance list ( works since we only have 1 way to add resistances )
 
         UIEventSystem.current.RemoveResistance();
-        HealthEventSystem.current.UpdateResistance(gameObject.name, damageResistances);
+        HealthEventSystem.current.UpdateResistance(gameObject.GetInstanceID(), damageResistances);
     }
 
     private IEnumerator StartDuration(List<SkinnedMeshRenderer> meshes, float duration)

@@ -30,10 +30,10 @@ public class SimpleSlash : SwordEffect
         {
             if (visibleTarget.name != controls.name)
             {
-                HealthEventSystem.current.TakeDamage(visibleTarget.gameObject.name, damage, attributes.elementType);
+                HealthEventSystem.current.TakeDamage(visibleTarget.gameObject.GetInstanceID(), damage, attributes.elementType);
                 if (condition != null)
-                    if (Random.value <= 0.2f) HealthEventSystem.current.SetCondition(visibleTarget.name, condition);
-                HealthEventSystem.current.ApplyForce(visibleTarget.name, controls.transform.forward, force);
+                    if (Random.value <= 0.2f) HealthEventSystem.current.SetCondition(visibleTarget.GetInstanceID(), condition);
+                HealthEventSystem.current.ApplyForce(visibleTarget.GetInstanceID(), controls.transform.forward, force);
                 CameraShake.current.ShakeCamera(0.1f, 0.15f);
             }
         }

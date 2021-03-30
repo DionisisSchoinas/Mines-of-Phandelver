@@ -138,12 +138,12 @@ public class UIEventSystem : MonoBehaviour
         }
     }
 
-    public event Action<string, float> onApplyResistance;
-    public void ApplyResistance(string resistanceName, float duration)
+    public event Action<Sprite, float> onApplyResistance;
+    public void ApplyResistance(Sprite resistanceIcon, float duration)
     {
         if (onApplyResistance != null)
         {
-            onApplyResistance(resistanceName, duration);
+            onApplyResistance(resistanceIcon, duration);
         }
     }
 

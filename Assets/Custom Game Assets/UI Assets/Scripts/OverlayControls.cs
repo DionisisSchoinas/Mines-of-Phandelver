@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Linq;
+using System.Collections;
 
 public class OverlayControls : MonoBehaviour
 {
@@ -123,7 +124,6 @@ public class OverlayControls : MonoBehaviour
         skillListUp = false;
         escapeMenuUp = false;
         objectiveMenuUp = false;
-        SetSelectedQuickBar(0);
 
         SetCanvasState(false, skillToolTip);
 
@@ -136,6 +136,14 @@ public class OverlayControls : MonoBehaviour
 
         UIEventSystem.current.onShowSkillToolTip += ShowSkillToolTip;
         UIEventSystem.current.onHideToolTip += HideToolTip;
+
+        StartCoroutine(SetFirstSelection());
+    }
+
+    private IEnumerator SetFirstSelection()
+    {
+        yield return new WaitForEndOfFrame();
+        SetSelectedQuickBar(0);
     }
 
     private void OnDestroy()
@@ -195,10 +203,10 @@ public class OverlayControls : MonoBehaviour
         }
     }
 
-    private void ApplyResistance(string resistanceName, float duration)
+    private void ApplyResistance(Sprite resistanceIcon, float duration)
     {
         EffectDisplayContainer resistanceEffect = Instantiate(ResourceManager.UI.EffectDisplay, effectsDisplay.transform).AddComponent<EffectDisplayContainer>();
-        resistanceEffect.SetResistanceText(resistanceName);
+        resistanceEffect.SetResistance(resistanceIcon);
         resistanceEffect.StartCountdown(duration);
     }
 

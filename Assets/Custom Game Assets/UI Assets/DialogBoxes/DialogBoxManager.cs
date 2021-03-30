@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 public class DialogBoxManager : MonoBehaviour
 {
     public bool active;
@@ -11,10 +12,12 @@ public class DialogBoxManager : MonoBehaviour
     public Text blinkingPrompt;
     public List<DialogBox> dialogBoxes;
     private int counter = 0;
+
     // Start is called before the first frame update
     void Awake()
     {
-        SetCanvasState(false, dialogBox);
+        if (dialogBox != null)
+            SetCanvasState(false, dialogBox);
     }
 
     // Update is called once per frame
