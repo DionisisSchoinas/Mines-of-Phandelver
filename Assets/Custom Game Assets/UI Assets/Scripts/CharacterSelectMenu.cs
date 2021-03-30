@@ -83,9 +83,7 @@ public class CharacterSelectMenu : MonoBehaviour
         HideCharacterSelect();
         loadingScreenPanel.Show();
 
-        //Application.backgroundLoadingPriority = ThreadPriority.Low;
-
-        loadingOperation = SceneManager.LoadSceneAsync("MainGameScene2");
+        loadingOperation = SceneManager.LoadSceneAsync("MainGameScene");
 
         if (coroutine != null)
             StopCoroutine(coroutine);

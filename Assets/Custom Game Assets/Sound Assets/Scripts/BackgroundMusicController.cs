@@ -32,6 +32,8 @@ public class BackgroundMusicController : MonoBehaviour
         current.audioSource.playOnAwake = true;
 
         current.onLocationSet += LocationChanged;
+
+        SetLocation(Location.Forest);
     }
 
     private void OnDestroy()

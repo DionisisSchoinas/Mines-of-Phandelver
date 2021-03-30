@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class HordeEntityLogic : MonoBehaviour 
 {
-    public float currentValue;
     HordeLogic hordeLogic;
     // Start is called before the first frame update
     void Start()
     {
-        hordeLogic=FindObjectOfType<HordeLogic>();
+        hordeLogic=GetComponentInParent< HordeLogic >();
         hordeLogic.enemies.Add(gameObject);
         HealthEventSystem.current.onDeath += KillEntity;
      
