@@ -7,10 +7,10 @@ public class AfterGateEncounter : MonoBehaviour
     public Camera cutsceneCamera;
     public GameObject cutsceneBossMonster;
 
-    public GameObject player;
     public PlayerMovementScript playerMovementScript;
 
     public OpenDoorScript areaEntranceGate;
+    public SmashObstaclesScript gatesToSmash;
     public HordeLogic hordeToKill;
     public HealthController bossMonster;
     public Cannon cannon;
@@ -34,7 +34,7 @@ public class AfterGateEncounter : MonoBehaviour
         col = gameObject.GetComponent<Collider>();
 
         cutsceneCamera.enabled = false;
-        cutsceneBossMonster.SetActive(false);
+        cutsceneBossMonster.SetActive(true);
         hordeToKill.gameObject.SetActive(false);
         cannon.gameObject.SetActive(false);
 
@@ -75,7 +75,6 @@ public class AfterGateEncounter : MonoBehaviour
     {
         encounterRunning = true;
 
-
         StartCoroutine(PlayCutscene());
     }
 
@@ -94,7 +93,6 @@ public class AfterGateEncounter : MonoBehaviour
     {
         for (int i=0; i<shots; i++)
         {
-
             Vector2 randompoint = Random.insideUnitCircle * cannonRadius;
             Vector3 firePoint = new Vector3(randompoint.x, 0, randompoint.y);
 
@@ -106,6 +104,7 @@ public class AfterGateEncounter : MonoBehaviour
         if (explodeAfter)
         {
             cannon.Explode();
+            gatesToSmash.Smash(cannon.gameObject.transform.position);
         }
     }
 
@@ -129,7 +128,7 @@ public class AfterGateEncounter : MonoBehaviour
 
         foreach (Transform transform_child in hordeToKill.transform)
         {
-            transform_child.gameObject.GetComponent<EnemyAi_V2>().target = player.transform;
+            transform_child.gameObject.GetComponent<EnemyAi_V2>().target = playerMovementScript.gameObject.transform;
             transform_child.gameObject.GetComponent<Animator>().SetBool("Chase", true);
         }
 

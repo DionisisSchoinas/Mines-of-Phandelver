@@ -81,8 +81,18 @@ public class CartEncounter : MonoBehaviour
         yield return new WaitForSeconds(3f);
         arrow.gameObject.SetActive(true);
         arrow.AddForce();
+
+        yield return new WaitForSeconds(2f);
+
         hordeToKill.gameObject.SetActive(true);
-        yield return new WaitForSeconds(3f);
+
+        yield return new WaitForSeconds(1f);
+
+        foreach (Transform transform_child in hordeToKill.transform)
+        {
+            transform_child.gameObject.GetComponent<EnemyAi_V2>().target = playerMovementScript.gameObject.transform;
+            transform_child.gameObject.GetComponent<Animator>().SetBool("Chase", true);
+        }
 
         cutscenePlayer.SetActive(false);
 

@@ -15,8 +15,6 @@ public class OpenDoorEncounterScript : MonoBehaviour
         mainCamera = Camera.main;
 
         cutsceneCamera.enabled = false;
-
-       // StartCoroutine(PlayCutscene(null));
     }
 
     public IEnumerator PlayCutscene(PlayerMovementScript movementScript)
