@@ -9,7 +9,7 @@ public class SpellTypeWall : Spell
     [HideInInspector]
     public Condition condition;
 
-    private GameObject[] collisions;
+    private Collider[] collisions;
     private Vector3 boxSize;
 
     private GameObject currentWall;
@@ -64,8 +64,8 @@ public class SpellTypeWall : Spell
     {
         if (doesDamage)
         {
-            Collider[] colliders = Physics.OverlapBox(transform.position + Vector3.up * 4f, boxSize, transform.rotation, BasicLayerMasks.DamageableEntities);
-            collisions = OverlapDetection.NoObstaclesVertical(colliders, transform.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
+            collisions = Physics.OverlapBox(transform.position + Vector3.up * 4f, boxSize, transform.rotation, BasicLayerMasks.DamageableEntities);
+            //collisions = OverlapDetection.NoObstaclesVertical(colliders, transform.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
         }
     }
 
@@ -115,13 +115,13 @@ public class SpellTypeWall : Spell
     {
         if (collisions == null || !doesDamage) return;
 
-        foreach (GameObject gm in collisions)
+        foreach (Collider col in collisions)
         {
-            if (gm != null && gm.name != casterName)
+            if (col != null && col.gameObject.name != casterName)
             {
-                HealthEventSystem.current.TakeDamage(gm.GetInstanceID(), damage, elementType);
+                HealthEventSystem.current.TakeDamage(col.gameObject.GetInstanceID(), damage, elementType);
                 if (condition != null)
-                    if (Random.value <= 0.25f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.GetInstanceID(), condition);
+                    if (Random.value <= 0.25f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(col.gameObject.GetInstanceID(), condition);
             }
         }
     }

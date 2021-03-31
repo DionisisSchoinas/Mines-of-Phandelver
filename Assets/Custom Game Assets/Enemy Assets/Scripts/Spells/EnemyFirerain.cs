@@ -13,7 +13,7 @@ public class EnemyFirerain : EnemySpell
     private Vector3 spawningLocation;
     private bool pickedSpot;
 
-    private GameObject[] collisions;
+    private Collider[] collisions;
     private Vector3 capsuleTop;
 
     private ParticleSystem tmpSource;
@@ -27,8 +27,8 @@ public class EnemyFirerain : EnemySpell
 
     private void FixedUpdate()
     {
-        Collider[] colliders = Physics.OverlapCapsule(capsuleTop, capsuleTop + Vector3.down * 60f, 14f, BasicLayerMasks.DamageableEntities);
-        collisions = OverlapDetection.NoObstaclesVertical(colliders, capsuleTop, BasicLayerMasks.IgnoreOnDamageRaycasts);
+        collisions = Physics.OverlapCapsule(capsuleTop, capsuleTop + Vector3.down * 60f, 14f, BasicLayerMasks.DamageableEntities);
+        //collisions = OverlapDetection.NoObstaclesVertical(colliders, capsuleTop, BasicLayerMasks.IgnoreOnDamageRaycasts);
     }
 
     public override void FireSimple(Transform firePoint)
@@ -65,12 +65,12 @@ public class EnemyFirerain : EnemySpell
     {
         if (collisions == null) return;
 
-        foreach (GameObject gm in collisions)
+        foreach (Collider col in collisions)
         {
-            if (gm != null)
+            if (col != null)
             {
-                HealthEventSystem.current.TakeDamage(gm.GetInstanceID(), damage, ElementTypes.Type.Fire);
-                if (Random.value <= 0.2f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.GetInstanceID(), ConditionsManager.Burning);
+                HealthEventSystem.current.TakeDamage(col.gameObject.GetInstanceID(), damage, ElementTypes.Type.Fire);
+                if (Random.value <= 0.2f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(col.gameObject.GetInstanceID(), ConditionsManager.Burning);
             }
         }
     }

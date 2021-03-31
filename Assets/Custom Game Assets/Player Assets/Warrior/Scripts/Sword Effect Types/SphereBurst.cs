@@ -85,9 +85,9 @@ public class SphereBurst : SwordEffect
         CameraShake.current.ShakeCamera(0.3f, 1f);
 
         // Find targets
-        GameObject[] targets = FindTargets(controls.transform);
+        Collider[] targets = FindTargets(controls.transform);
 
-        foreach (GameObject visibleTarget in targets)
+        foreach (Collider visibleTarget in targets)
         {
             if (visibleTarget.name != controls.name)
             {
@@ -100,12 +100,12 @@ public class SphereBurst : SwordEffect
         yield return new WaitForSeconds(0.1f);
     }
 
-    private GameObject[] FindTargets(Transform sphereCenter)
+    private Collider[] FindTargets(Transform sphereCenter)
     {
         Collider[] sphereCollisions = Physics.OverlapSphere(sphereCenter.position, sphereRadius, BasicLayerMasks.DamageableEntities);
-        GameObject[] notBlocked = OverlapDetection.NoObstaclesLine(sphereCollisions, sphereCenter.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
+        //GameObject[] notBlocked = OverlapDetection.NoObstaclesLine(sphereCollisions, sphereCenter.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
 
-        return notBlocked;
+        return sphereCollisions;
     }
 
     public override Sprite GetIcon()

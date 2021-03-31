@@ -88,11 +88,11 @@ public class ConeBurstSlash : SwordEffect
         Destroy(parts.gameObject, 4f);
 
         // Find targets
-        GameObject[] targets = FindTargets(controls.transform);
+        Collider[] targets = FindTargets(controls.transform);
 
-        foreach (GameObject visibleTarget in targets)
+        foreach (Collider visibleTarget in targets)
         {
-            if (visibleTarget.name != controls.name)
+            if (visibleTarget.gameObject.name != controls.name)
             {
                 HealthEventSystem.current.TakeDamage(visibleTarget.gameObject.GetInstanceID(), damage, attributes.elementType);
                 if (condition != null)
@@ -105,15 +105,15 @@ public class ConeBurstSlash : SwordEffect
         controls.sliding = false;
     }
 
-    private GameObject[] FindTargets(Transform startingConePosition)
+    private Collider[] FindTargets(Transform startingConePosition)
     {
         Vector3 boxCenter = startingConePosition.position + startingConePosition.forward * coneLength / 2f;
         Vector3 boxSize = new Vector3(coneLength, 5f, coneWidth);
 
         Collider[] boxCollisions = Physics.OverlapBox(boxCenter, boxSize / 2f, startingConePosition.rotation, BasicLayerMasks.DamageableEntities);
-        GameObject[] notBlocked = OverlapDetection.NoObstaclesLine(boxCollisions, startingConePosition.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
-        List<GameObject> targets = new List<GameObject>();
-        foreach (GameObject target in notBlocked)
+        //GameObject[] notBlocked = OverlapDetection.NoObstaclesLine(boxCollisions, startingConePosition.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
+        List<Collider> targets = new List<Collider>();
+        foreach (Collider target in boxCollisions)
         {
             Vector3 dirToTarget = (target.transform.position - startingConePosition.position);
             if (Vector3.Angle(startingConePosition.forward, dirToTarget) < attackAngle / 2)
@@ -123,6 +123,7 @@ public class ConeBurstSlash : SwordEffect
         }
         return targets.ToArray();
     }
+
     public override Sprite GetIcon()
     {
         switch (attributes.elementType)
