@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CartEncounter : MonoBehaviour
 {
+    public int dialogIndex;
+
     public HordeLogic hordeToKill;
     public ProjectileScript arrow;
     public GameObject player;
@@ -17,7 +19,6 @@ public class CartEncounter : MonoBehaviour
 
     private Camera mainCamera;
     private Collider col;
-    private DialogBoxManager dialogBoxManager;
 
     private bool doorlocked;
 
@@ -32,16 +33,22 @@ public class CartEncounter : MonoBehaviour
         cutscenePlayer.SetActive(false);
 
         col = gameObject.GetComponent<Collider>();
-        dialogBoxManager = FindObjectOfType<DialogBoxManager>();
 
         doorlocked = true;
+
+        UIEventSystem.current.onFinishedDialog += FinishedDialog;
+    }
+
+    private void OnDestroy()
+    {
+        UIEventSystem.current.onFinishedDialog -= FinishedDialog;
     }
 
     private void Update()
     {
         if (interactPopup.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
         {
-            StartCoroutine(PlayCutscene());
+            StartCoroutine(PlaySearchCutscene());
             
             interactPopup.SetActive(false);
             questMarker.SetActive(false);
@@ -68,7 +75,7 @@ public class CartEncounter : MonoBehaviour
         questMarker.SetActive(true);
     }
 
-    IEnumerator PlayCutscene() 
+    private IEnumerator PlaySearchCutscene()
     {
         yield return new WaitForSeconds(0.2f);
 
@@ -78,11 +85,29 @@ public class CartEncounter : MonoBehaviour
         mainCamera.enabled = false;
         cutsceneCamera.enabled = true;
 
-        yield return new WaitForSeconds(3f);
+        UIEventSystem.current.ShowDialog(dialogIndex);
+    }
+
+    private void FinishedDialog(int index)
+    {
+        if (dialogIndex == index)
+        {
+            StartCoroutine(PlayCombatStartCutscene());
+        }
+    }
+
+    private IEnumerator PlayCombatStartCutscene()
+    {
+        yield return new WaitForSeconds(1f);
+
         arrow.gameObject.SetActive(true);
         arrow.AddForce();
 
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
+
+        cutscenePlayer.GetComponent<Animator>().SetTrigger("LookAround");
+
+        yield return new WaitForSeconds(1.5f);
 
         hordeToKill.gameObject.SetActive(true);
 
