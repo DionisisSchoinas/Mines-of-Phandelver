@@ -46,7 +46,7 @@ public class CartEncounter : MonoBehaviour
 
     private void Update()
     {
-        if (interactPopup.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
+        if (interactPopup.activeInHierarchy && !playerMovementScript.playerLocked && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(PlaySearchCutscene());
             

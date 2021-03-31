@@ -18,6 +18,7 @@ public class OverlayControls : MonoBehaviour
     public CanvasGroup objectiveMenu;
     public CanvasGroup skillToolTip;
     public CanvasGroup settingsMenu;
+    public CanvasGroup dialogBox;
    
     // Quickbar data
     [HideInInspector]
@@ -157,6 +158,9 @@ public class OverlayControls : MonoBehaviour
 
     private void Update()
     {
+        if (dialogBox.alpha == 1)
+            return;
+
         // Quick bar inptus
         if (Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Keypad1))
         {

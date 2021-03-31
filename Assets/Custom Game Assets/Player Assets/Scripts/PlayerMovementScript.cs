@@ -42,7 +42,7 @@ public class PlayerMovementScript : MonoBehaviour
     // ---------------
     public bool lockMouseInputs;
 
-    private bool lockedMovement;
+    public bool playerLocked;
 
     public void Start()
     {
@@ -54,12 +54,19 @@ public class PlayerMovementScript : MonoBehaviour
         mouse_2 = false;
         mousePressed_1 = false;
         lockMouseInputs = false;
-        lockedMovement = false;
+        playerLocked = false;
 
         horizontal = 0f;
         vertical = 0f;
         running = false;
         jump = false;
+
+        UIEventSystem.current.onSkillListUp += PlayerLock;
+    }
+
+    private void OnDestroy()
+    {
+        UIEventSystem.current.onSkillListUp -= PlayerLock;
     }
 
     public void PlayerLock(bool stop)
@@ -68,13 +75,13 @@ public class PlayerMovementScript : MonoBehaviour
         {
             canMove = false;
             lockMouseInputs = true;
-            lockedMovement = true;
+            playerLocked = true;
         }
         else
         {
             canMove = true;
             lockMouseInputs = false;
-            lockedMovement = false;
+            playerLocked = false;
         }
     }
 
@@ -145,7 +152,7 @@ public class PlayerMovementScript : MonoBehaviour
         canMove = false;
         yield return new WaitForSeconds(second);
 
-        if (!lockedMovement)
+        if (!playerLocked)
             canMove = true;
     }
 }
