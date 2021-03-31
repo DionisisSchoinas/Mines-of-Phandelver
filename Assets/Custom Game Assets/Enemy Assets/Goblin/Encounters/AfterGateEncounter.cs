@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AfterGateEncounter : MonoBehaviour
 {
+    public int dialogIndex;
+
     public Camera cutsceneCamera;
     public GameObject cutsceneBossMonster;
 
@@ -45,6 +47,16 @@ public class AfterGateEncounter : MonoBehaviour
         maxCannonIntervals = Mathf.Max(minCannonIntervals + 0.5f, maxCannonIntervals);
     }
 
+    private void Start()
+    {
+        UIEventSystem.current.onFinishedDialog += FinishedDialog;
+    }
+
+    private void OnDestroy()
+    {
+        UIEventSystem.current.onFinishedDialog -= FinishedDialog;
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         TriggerEncounter();
@@ -75,7 +87,7 @@ public class AfterGateEncounter : MonoBehaviour
     {
         encounterRunning = true;
 
-        StartCoroutine(PlayCutscene());
+        StartCoroutine(PlayDialogCutscene());
     }
 
     private void EndEncounter()
@@ -108,8 +120,10 @@ public class AfterGateEncounter : MonoBehaviour
         }
     }
 
-    private IEnumerator PlayCutscene()
+    private IEnumerator PlayDialogCutscene()
     {
+        yield return new WaitForSeconds(0.1f);
+
         areaEntranceGate.Close();
 
         playerMovementScript.PlayerLock(true);
@@ -118,7 +132,20 @@ public class AfterGateEncounter : MonoBehaviour
         mainCamera.enabled = false;
         cutsceneCamera.enabled = true;
 
-        yield return new WaitForSeconds(5f);
+        UIEventSystem.current.ShowDialog(dialogIndex);
+    }
+
+    private void FinishedDialog(int index)
+    {
+        if (dialogIndex == index)
+        {
+            StartCoroutine(StartCombat());
+        }
+    }
+
+    private IEnumerator StartCombat()
+    {
+        yield return new WaitForSeconds(1f);
 
         cutsceneCamera.enabled = false;
         mainCamera.enabled = true;

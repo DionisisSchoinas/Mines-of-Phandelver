@@ -1448,6 +1448,7 @@ MonoBehaviour:
   objectiveMenu: {fileID: 4160349151156447801}
   skillToolTip: {fileID: 4160349150959099610}
   settingsMenu: {fileID: 4160349152218420067}
+  dialogBox: {fileID: 8473921543685930648}
   quickbarButtons:
   - {fileID: 0}
   - {fileID: 0}
@@ -6820,16 +6821,16 @@ MonoBehaviour:
     - speaker: Player
       dialog: This cart looks familiar ...
     - speaker: Player
-      dialog: Is this Gandern's cart ???
+      dialog: Is this Gandern's cart ?
     - speaker: Player
-      dialog: Something very bad must have happened
+      dialog: Something very bad must have happened ...
   - dialogBoxes:
     - speaker: Kirv, The Big
       dialog: You dare kill my friends ?
     - speaker: Kirv, The Big
-      dialog: I will crush you
+      dialog: I will crush you !!!
     - speaker: Kirv, The Big
-      dialog: Let's get him boys
+      dialog: Get him boys
 --- !u!1 &7339385437146917266
 GameObject:
   m_ObjectHideFlags: 0

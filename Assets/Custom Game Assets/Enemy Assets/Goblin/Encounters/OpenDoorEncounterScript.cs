@@ -19,7 +19,7 @@ public class OpenDoorEncounterScript : MonoBehaviour
 
     public IEnumerator PlayCutscene(PlayerMovementScript movementScript)
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(0.5f);
 
         if (movementScript != null)
             movementScript.PlayerLock(true);
@@ -31,7 +31,7 @@ public class OpenDoorEncounterScript : MonoBehaviour
 
         script.Open();
 
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3.5f);
 
         cutsceneCamera.enabled = false;
         mainCamera.enabled = true;
