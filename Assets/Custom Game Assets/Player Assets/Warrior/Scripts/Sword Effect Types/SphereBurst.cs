@@ -93,8 +93,8 @@ public class SphereBurst : SwordEffect
             {
                 HealthEventSystem.current.TakeDamage(visibleTarget.gameObject.GetInstanceID(), damage, attributes.elementType);
                 if (condition != null)
-                    if (Random.value <= 0.5f) HealthEventSystem.current.SetCondition(visibleTarget.GetInstanceID(), condition);
-                HealthEventSystem.current.ApplyForce(visibleTarget.GetInstanceID(), visibleTarget.transform.position - controls.transform.position, force);
+                    if (Random.value <= 0.5f) HealthEventSystem.current.SetCondition(visibleTarget.gameObject.GetInstanceID(), condition);
+                HealthEventSystem.current.ApplyForce(visibleTarget.gameObject.GetInstanceID(), visibleTarget.transform.position - controls.transform.position, force);
             }
         }
         yield return new WaitForSeconds(0.1f);

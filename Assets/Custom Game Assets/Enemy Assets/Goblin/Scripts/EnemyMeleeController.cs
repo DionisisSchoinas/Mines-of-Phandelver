@@ -52,12 +52,12 @@ public class EnemyMeleeController : MonoBehaviour
 
         foreach (Transform visibleTarget in indicator.visibleTargets)
         {
-            if ((visibleTarget.gameObject.layer.Equals(BasicLayerMasks.Enemies) || visibleTarget.gameObject.layer.Equals(BasicLayerMasks.DamageablesLayer)) && col == 0)
+            if ((visibleTarget.gameObject.layer.Equals(BasicLayerMasks.EnemiesLayer) || visibleTarget.gameObject.layer.Equals(BasicLayerMasks.DamageablesLayer)))
                 col = 1;
             else if (col == 0)
                 col = 2;
 
-            HealthEventSystem.current.TakeDamage(visibleTarget.GetInstanceID(), 15f, ElementTypes.Type.Physical_Earth);
+            HealthEventSystem.current.TakeDamage(visibleTarget.gameObject.GetInstanceID(), 15f, ElementTypes.Type.Physical_Earth);
         }
         
         switch (col)

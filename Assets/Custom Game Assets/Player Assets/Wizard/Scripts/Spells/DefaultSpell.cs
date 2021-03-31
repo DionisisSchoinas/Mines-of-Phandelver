@@ -42,10 +42,10 @@ public class DefaultSpell : Spell
     {
         foreach (GameObject target in hitTargets)
         {
-            HealthEventSystem.current.TakeDamage(target.GetInstanceID(), damage, elementType);
+            HealthEventSystem.current.TakeDamage(target.gameObject.GetInstanceID(), damage, elementType);
 
             if (condition != null)
-                if (Random.value <= 0.1f) HealthEventSystem.current.SetCondition(target.GetInstanceID(), condition);
+                if (Random.value <= 0.1f) HealthEventSystem.current.SetCondition(target.gameObject.GetInstanceID(), condition);
         }
         hitTargets.Clear();
     }
