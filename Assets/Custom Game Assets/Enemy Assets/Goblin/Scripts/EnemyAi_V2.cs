@@ -67,9 +67,10 @@ public class EnemyAi_V2 : MonoBehaviour
     public void Patrol()
     {
         float distance = Vector3.Distance(walkpoint, transform.position);
-
+        Debug.Log(distance);
         if (distance < agent.stoppingDistance)
         {
+    
            Stop();
         }
     }
@@ -90,7 +91,7 @@ public class EnemyAi_V2 : MonoBehaviour
         float randomZ = Random.Range(-lookRadius, lookRadius);
         float randomX = Random.Range(-lookRadius, lookRadius);
 
-        walkpoint = new Vector3(spawnpoint.x + randomX, 2, spawnpoint.z + randomZ);
+        walkpoint = new Vector3(spawnpoint.x + randomX, spawnpoint.y, spawnpoint.z + randomZ);
 
         findPoint(walkpoint);
     }
@@ -111,7 +112,7 @@ public class EnemyAi_V2 : MonoBehaviour
         if (randomX > 0) randomX += lookRadius / 2;
         else randomX -= lookRadius / 2;
 
-        walkpoint = new Vector3(target.transform.position.x + randomX, 2, target.transform.position.z + randomZ);
+        walkpoint = new Vector3(target.transform.position.x + randomX, transform.position.y , target.transform.position.z + randomZ);
 
         findPoint(walkpoint);
     }
@@ -119,9 +120,9 @@ public class EnemyAi_V2 : MonoBehaviour
     private NavMeshHit findPoint(Vector3 walkpoint)
     {
         NavMeshHit hit;
-        if (NavMesh.SamplePosition(walkpoint, out hit, 1.0f, NavMesh.AllAreas))
+        if (NavMesh.SamplePosition(walkpoint, out hit, transform.position.y + 2, NavMesh.AllAreas))
         {
-            //Destroy(Instantiate(destinationIndicator, hit.position + new Vector3(0, 0.6f, 0), destinationIndicator.transform.rotation), 2f);
+            Destroy(Instantiate(destinationIndicator, hit.position + new Vector3(0, 0.6f, 0), destinationIndicator.transform.rotation), 2f);
             agent.SetDestination(hit.position);
             hasTarget = true;
         }
