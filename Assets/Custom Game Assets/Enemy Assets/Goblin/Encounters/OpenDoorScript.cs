@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class OpenDoorScript : MonoBehaviour
 {
+    public Collider doorCollider;
     public bool opening = false;
     public bool closing = false;
     public float speed = 20f;
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
@@ -22,12 +18,13 @@ public class OpenDoorScript : MonoBehaviour
             if (transform.rotation.z <= 0)
             {
                 opening = false;
+                doorCollider.enabled = false;
             }
         }
-        else if (closing)
+        
+        if (closing)
         {
             transform.Rotate(Vector3.forward * Time.deltaTime * speed, Space.World);
-            Debug.Log(transform.rotation.z);
             if (transform.rotation.z >= 0.7)
             {
                 closing = false;
@@ -38,10 +35,11 @@ public class OpenDoorScript : MonoBehaviour
     public void Open()
     {
         opening = true;
-        Debug.Log(1);
     }
+
     public void Close()
     {
-        opening = false;
+        closing = true;
+        doorCollider.enabled = true;
     }
 }

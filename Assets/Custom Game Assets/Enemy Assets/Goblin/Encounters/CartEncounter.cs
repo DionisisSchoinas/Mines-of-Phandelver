@@ -4,19 +4,23 @@ using UnityEngine;
 
 public class CartEncounter : MonoBehaviour
 {
-    public GameObject horde;
+    public int dialogIndex;
+
+    public HordeLogic hordeToKill;
     public ProjectileScript arrow;
     public GameObject player;
     public GameObject cutscenePlayer;
     public Camera cutsceneCamera;
-    public PlayerMovementScript PlayerMovementScript;
+    public PlayerMovementScript playerMovementScript;
     public Animator animator;
     public GameObject questMarker;
     public GameObject interactPopup;
+    public OpenDoorEncounterScript gateAfterFinishing;
 
     private Camera mainCamera;
     private Collider col;
-    private DialogBoxManager dialogBoxManager;
+
+    private bool doorlocked;
 
     private void Start()
     {
@@ -24,28 +28,38 @@ public class CartEncounter : MonoBehaviour
 
         cutsceneCamera.enabled = false;
         arrow.gameObject.SetActive(false);
-        horde.SetActive(false);
+        hordeToKill.gameObject.SetActive(false);
         interactPopup.SetActive(false);
         cutscenePlayer.SetActive(false);
 
         col = gameObject.GetComponent<Collider>();
-        dialogBoxManager = FindObjectOfType<DialogBoxManager>();
+
+        doorlocked = true;
+
+        UIEventSystem.current.onFinishedDialog += FinishedDialog;
+    }
+
+    private void OnDestroy()
+    {
+        UIEventSystem.current.onFinishedDialog -= FinishedDialog;
     }
 
     private void Update()
     {
-        if (interactPopup.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
+        if (interactPopup.activeInHierarchy && !playerMovementScript.playerLocked && Input.GetKeyDown(KeyCode.E))
         {
-            mainCamera.enabled = false;
-            cutsceneCamera.enabled = true;
-            player.SetActive(false);
-            cutscenePlayer.SetActive(true);
-            StartCoroutine(PlayCutscene());
+            StartCoroutine(PlaySearchCutscene());
             
             interactPopup.SetActive(false);
             questMarker.SetActive(false);
 
             col.enabled = false;
+        }
+
+        if (hordeToKill.enemies.Count == 0 && hordeToKill.transform.gameObject.activeInHierarchy && doorlocked)
+        {
+            doorlocked = false;
+            StartCoroutine(gateAfterFinishing.PlayCutscene(playerMovementScript));
         }
     }
 
@@ -61,23 +75,57 @@ public class CartEncounter : MonoBehaviour
         questMarker.SetActive(true);
     }
 
-    IEnumerator PlayCutscene() 
+    private IEnumerator PlaySearchCutscene()
     {
-        PlayerMovementScript.canMove = false;
-        
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(0.2f);
+
+        playerMovementScript.PlayerLock(true);
+        playerMovementScript.gameObject.SetActive(false);
+        cutscenePlayer.SetActive(true);
+        mainCamera.enabled = false;
+        cutsceneCamera.enabled = true;
+
+        UIEventSystem.current.ShowDialog(dialogIndex);
+    }
+
+    private void FinishedDialog(int index)
+    {
+        if (dialogIndex == index)
+        {
+            StartCoroutine(PlayCombatStartCutscene());
+        }
+    }
+
+    private IEnumerator PlayCombatStartCutscene()
+    {
+        yield return new WaitForSeconds(1f);
+
         arrow.gameObject.SetActive(true);
         arrow.AddForce();
-        horde.SetActive(true);
-        yield return new WaitForSeconds(3f);
 
-        player.SetActive(true);
+        yield return new WaitForSeconds(0.5f);
+
+        cutscenePlayer.GetComponent<Animator>().SetTrigger("LookAround");
+
+        yield return new WaitForSeconds(1.5f);
+
+        hordeToKill.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(1f);
+
+        foreach (Transform transform_child in hordeToKill.transform)
+        {
+            transform_child.gameObject.GetComponent<EnemyAi_V2>().target = playerMovementScript.gameObject.transform;
+            transform_child.gameObject.GetComponent<Animator>().SetBool("Chase", true);
+        }
+
         cutscenePlayer.SetActive(false);
 
         mainCamera.enabled = true;
         cutsceneCamera.enabled = false;
         animator.SetLayerWeight(2, 0f);
 
-        PlayerMovementScript.canMove = true;
+        playerMovementScript.gameObject.SetActive(true);
+        playerMovementScript.PlayerLock(false);
     }
 }

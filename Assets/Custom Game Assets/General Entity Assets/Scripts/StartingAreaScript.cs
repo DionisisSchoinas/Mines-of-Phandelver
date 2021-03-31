@@ -8,8 +8,10 @@ public class StartingAreaScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        /*
         dialogBoxManager = FindObjectOfType<DialogBoxManager>();
         dialogBoxManager.StartDialog();
+        */
     }
 
     
