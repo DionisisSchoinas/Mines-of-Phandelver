@@ -42,6 +42,8 @@ public class PlayerMovementScript : MonoBehaviour
     // ---------------
     public bool lockMouseInputs;
 
+    private bool lockedMovement;
+
     public void Start()
     {
         canMove = true;
@@ -52,6 +54,7 @@ public class PlayerMovementScript : MonoBehaviour
         mouse_2 = false;
         mousePressed_1 = false;
         lockMouseInputs = false;
+        lockedMovement = false;
 
         horizontal = 0f;
         vertical = 0f;
@@ -59,11 +62,35 @@ public class PlayerMovementScript : MonoBehaviour
         jump = false;
     }
 
+    public void PlayerLock(bool stop)
+    {
+        if (stop)
+        {
+            canMove = false;
+            lockMouseInputs = true;
+            lockedMovement = true;
+        }
+        else
+        {
+            canMove = true;
+            lockMouseInputs = false;
+            lockedMovement = false;
+        }
+    }
+
     public void Update()
     {
         //get horizontal and vertical axes
-        horizontal = Input.GetAxisRaw("Horizontal");
-        vertical = Input.GetAxisRaw("Vertical");
+        if (canMove)
+        {
+            horizontal = Input.GetAxisRaw("Horizontal");
+            vertical = Input.GetAxisRaw("Vertical");
+        }
+        else
+        {
+            horizontal = 0f;
+            vertical = 0f;
+        }
 
         // Controlled inputs which lock other if one is pressed
         if (Input.GetMouseButtonDown(0) && !mousedown_2 && !lockMouseInputs)
@@ -117,6 +144,8 @@ public class PlayerMovementScript : MonoBehaviour
     {
         canMove = false;
         yield return new WaitForSeconds(second);
-        canMove = true;
+
+        if (!lockedMovement)
+            canMove = true;
     }
 }

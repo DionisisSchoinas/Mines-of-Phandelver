@@ -82,6 +82,9 @@ public class SpellIndicatorController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        if (Camera.main == null)
+            return;
+
         if (picking)
         {
             // Swap faces

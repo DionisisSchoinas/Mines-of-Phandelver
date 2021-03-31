@@ -5,40 +5,40 @@ using UnityEngine;
 public class OpenDoorEncounterScript : MonoBehaviour
 {
     public HordeLogic hordeToKill;
-    public GameObject hordeToSpawn;
     public OpenDoorScript script;
-    bool doorLock=true;
-    public Camera mainCamera;
     public Camera cutsceneCamera;
-    void Start()
+
+    private Camera mainCamera;
+
+    private void Start()
     {
-        hordeToSpawn.SetActive(false); 
+        mainCamera = Camera.main;
+
         cutsceneCamera.enabled = false;
+
+       // StartCoroutine(PlayCutscene(null));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-        if (hordeToKill.enemies.Count == 0 && hordeToKill.transform.gameObject.activeInHierarchy && doorLock) { 
-            doorLock = false;
-            StartCoroutine(PlayCutscene());
-        }
-    }
-    IEnumerator PlayCutscene()
+    public IEnumerator PlayCutscene(PlayerMovementScript movementScript)
     {
         yield return new WaitForSeconds(2f);
+
+        if (movementScript != null)
+            movementScript.PlayerLock(true);
+
         cutsceneCamera.enabled = true;
         mainCamera.enabled = false;
+
+        yield return new WaitForSeconds(2f);
+
         script.Open();
-        yield return new WaitForSeconds(3f);
-        hordeToSpawn.SetActive(true);
-        foreach(Transform transform_child in hordeToSpawn.transform)
-        {
-            transform_child.gameObject.GetComponent<Animator>().SetBool("Chase",true);
-        }
-        yield return new WaitForSeconds(3f);
+
+        yield return new WaitForSeconds(4f);
+
         cutsceneCamera.enabled = false;
         mainCamera.enabled = true;
+
+        if (movementScript != null)
+            movementScript.PlayerLock(false);
     }
 }

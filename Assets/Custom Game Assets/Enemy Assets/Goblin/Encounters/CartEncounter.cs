@@ -4,19 +4,22 @@ using UnityEngine;
 
 public class CartEncounter : MonoBehaviour
 {
-    public GameObject horde;
+    public HordeLogic hordeToKill;
     public ProjectileScript arrow;
     public GameObject player;
     public GameObject cutscenePlayer;
     public Camera cutsceneCamera;
-    public PlayerMovementScript PlayerMovementScript;
+    public PlayerMovementScript playerMovementScript;
     public Animator animator;
     public GameObject questMarker;
     public GameObject interactPopup;
+    public OpenDoorEncounterScript gateAfterFinishing;
 
     private Camera mainCamera;
     private Collider col;
     private DialogBoxManager dialogBoxManager;
+
+    private bool doorlocked;
 
     private void Start()
     {
@@ -24,28 +27,32 @@ public class CartEncounter : MonoBehaviour
 
         cutsceneCamera.enabled = false;
         arrow.gameObject.SetActive(false);
-        horde.SetActive(false);
+        hordeToKill.gameObject.SetActive(false);
         interactPopup.SetActive(false);
         cutscenePlayer.SetActive(false);
 
         col = gameObject.GetComponent<Collider>();
         dialogBoxManager = FindObjectOfType<DialogBoxManager>();
+
+        doorlocked = true;
     }
 
     private void Update()
     {
         if (interactPopup.activeInHierarchy && Input.GetKeyDown(KeyCode.E))
         {
-            mainCamera.enabled = false;
-            cutsceneCamera.enabled = true;
-            player.SetActive(false);
-            cutscenePlayer.SetActive(true);
             StartCoroutine(PlayCutscene());
             
             interactPopup.SetActive(false);
             questMarker.SetActive(false);
 
             col.enabled = false;
+        }
+
+        if (hordeToKill.enemies.Count == 0 && hordeToKill.transform.gameObject.activeInHierarchy && doorlocked)
+        {
+            doorlocked = false;
+            StartCoroutine(gateAfterFinishing.PlayCutscene(playerMovementScript));
         }
     }
 
@@ -63,21 +70,27 @@ public class CartEncounter : MonoBehaviour
 
     IEnumerator PlayCutscene() 
     {
-        PlayerMovementScript.canMove = false;
-        
+        yield return new WaitForSeconds(0.2f);
+
+        playerMovementScript.PlayerLock(true);
+        playerMovementScript.gameObject.SetActive(false);
+        cutscenePlayer.SetActive(true);
+        mainCamera.enabled = false;
+        cutsceneCamera.enabled = true;
+
         yield return new WaitForSeconds(3f);
         arrow.gameObject.SetActive(true);
         arrow.AddForce();
-        horde.SetActive(true);
+        hordeToKill.gameObject.SetActive(true);
         yield return new WaitForSeconds(3f);
 
-        player.SetActive(true);
         cutscenePlayer.SetActive(false);
 
         mainCamera.enabled = true;
         cutsceneCamera.enabled = false;
         animator.SetLayerWeight(2, 0f);
 
-        PlayerMovementScript.canMove = true;
+        playerMovementScript.gameObject.SetActive(true);
+        playerMovementScript.PlayerLock(false);
     }
 }

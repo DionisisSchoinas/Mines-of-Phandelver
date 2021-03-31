@@ -7,6 +7,8 @@ public class Cannon : MonoBehaviour
     public float fireSoundDelay = 0.1f;
     public float fireParticlesDelay = 0.1f;
 
+    public GameObject incomingProjectile;
+
     public bool shoot;
     public float shootEvery;
     public int consecutiveShots;
@@ -31,11 +33,28 @@ public class Cannon : MonoBehaviour
             Destroy(audioSource);
     }
 
-    public void Fire()
+    public void Fire(Vector3 fireAtPoint)
     {
         animator.SetTrigger("Fire");
         SpawnAudio();
         SpawnParticles();
+        StartCoroutine(SpawnIncoming(fireAtPoint));
+    }
+
+    public void Explode()
+    {
+        Debug.Log("boom");
+    }
+
+    private IEnumerator SpawnIncoming(Vector3 position)
+    {
+        yield return new WaitForSeconds(0.5f);
+        SpawnIncomingProjectile(position);
+    }
+
+    private void SpawnIncomingProjectile(Vector3 position)
+    {
+        Destroy(Instantiate(incomingProjectile, position, Quaternion.identity), 2f);
     }
 
     private void SpawnAudio()
@@ -52,6 +71,7 @@ public class Cannon : MonoBehaviour
         StartCoroutine(ParticleDelay());
     }
 
+
     private IEnumerator ParticleDelay()
     {
         yield return new WaitForSeconds(fireParticlesDelay);
@@ -65,7 +85,7 @@ public class Cannon : MonoBehaviour
             for (int i = 0; i < consecutiveShots; i++)
             {
                 if (shoot)
-                    Fire();
+                    Fire(gameObject.transform.position);
                 yield return new WaitForSeconds(Mathf.Max(shootEvery, 0.1f));
             }
             yield return new WaitForSeconds(Mathf.Max(cooldown, 2f));
