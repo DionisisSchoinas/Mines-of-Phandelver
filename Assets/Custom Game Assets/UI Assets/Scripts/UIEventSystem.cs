@@ -173,4 +173,13 @@ public class UIEventSystem : MonoBehaviour
             onFinishedDialog(dialogindex);
         }
     }
+
+    public event Action<bool> onPlayerLocked;
+    public void PlayerLock(bool lockPlayer)
+    {
+        if (onPlayerLocked != null)
+        {
+            onPlayerLocked(lockPlayer);
+        }
+    }
 }

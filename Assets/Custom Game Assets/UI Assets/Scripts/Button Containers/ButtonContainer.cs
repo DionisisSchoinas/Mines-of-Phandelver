@@ -14,8 +14,6 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
     [HideInInspector]
     public Transform parent;
     [HideInInspector]
-    public bool buttonAlreadyDisplayingCooldown;
-    [HideInInspector]
     public float cooldownPercentage;
 
     protected RectTransform rect;
@@ -52,7 +50,6 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
         buttonOutOfMana = images[3];
         buttonOutOfMana.fillAmount = 0;
 
-        buttonAlreadyDisplayingCooldown = false;
         skillListUp = false;
 
         audioSource = gameObject.AddComponent<AudioSource>();
@@ -118,7 +115,7 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
     {
         if (buttonData.skill.cooldownPercentage != 0)
         {
-            StartCoroutine(StartCooldown(buttonData.skill.cooldown));
+            StartCoroutine(StartCooldownDisplay(buttonData.skill.cooldown));
         }
     }
 
@@ -167,34 +164,34 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
         if (buttonData.skillIndexInAdapter == skillIndexInAdapter && !startCooldown)
             return;
 
-        if (!buttonAlreadyDisplayingCooldown && isActiveAndEnabled)
+        if (isActiveAndEnabled)
         {
             if (!buttonData.skill.onCooldown)
                 buttonData.skill.StartCooldownWithoutEvent(OverlayControls.skillFreezeAfterPicking);
 
-            StartCoroutine(StartCooldown(OverlayControls.skillFreezeAfterPicking));
+            StartCoroutine(StartCooldownDisplay(OverlayControls.skillFreezeAfterPicking));
         }
     }
 
     private void SkillCast(int uniqueAdapterId, float cooldown)
     {
-        if (!buttonAlreadyDisplayingCooldown && buttonData.skill.uniqueOverlayToWeaponAdapterId == uniqueAdapterId && isActiveAndEnabled)
+        if (buttonData.skill.uniqueOverlayToWeaponAdapterId == uniqueAdapterId && isActiveAndEnabled)
         {
             if (!buttonData.skill.onCooldown)
                 buttonData.skill.StartCooldownWithoutEvent(cooldown);
 
-            StartCoroutine(StartCooldown(cooldown));
+            StartCoroutine(StartCooldownDisplay(cooldown));
         }
     }
 
     private void Freeze(int uniqueAdapterId, float delay)
     {
-        if (!buttonAlreadyDisplayingCooldown && isActiveAndEnabled && buttonData.skill.uniqueOverlayToWeaponAdapterId != uniqueAdapterId)
+        if (isActiveAndEnabled && buttonData.skill.uniqueOverlayToWeaponAdapterId != uniqueAdapterId)
         {
             if (!buttonData.skill.onCooldown)
                 buttonData.skill.StartCooldownWithoutEvent(delay);
 
-            StartCoroutine(StartCooldown(delay));
+            StartCoroutine(StartCooldownDisplay(delay));
         }
     }
 
@@ -210,9 +207,8 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
         }
     }
 
-    private IEnumerator StartCooldown(float cooldown)
+    private IEnumerator StartCooldownDisplay(float cooldown)
     {
-        buttonAlreadyDisplayingCooldown = true;
         float delayForEachStep = cooldown / 100f;
 
         while (buttonData.skill.cooldownPercentage < 1)
@@ -221,7 +217,6 @@ public class ButtonContainer : ElementHover, IPointerEnterHandler, IPointerExitH
             yield return new WaitForSeconds(delayForEachStep /2f);
         }
         buttonImageCooldown.fillAmount = 0f;
-        buttonAlreadyDisplayingCooldown = false;
 
         yield return null;
     }

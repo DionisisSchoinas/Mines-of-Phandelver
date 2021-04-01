@@ -35,6 +35,7 @@ public class OverlayControls : MonoBehaviour
     private bool skillListUp;
     private bool escapeMenuUp;
     private bool objectiveMenuUp;
+    private bool playerLocked;
 
     private EscapeMenuController escapeMenuScript;
 
@@ -125,6 +126,7 @@ public class OverlayControls : MonoBehaviour
         skillListUp = false;
         escapeMenuUp = false;
         objectiveMenuUp = false;
+        playerLocked = false;
 
         SetCanvasState(false, skillToolTip);
 
@@ -132,11 +134,9 @@ public class OverlayControls : MonoBehaviour
         UIEventSystem.current.onApplyResistance += ApplyResistance;
         ManaEventSystem.current.onManaUpdated += SetCurrentMana;
 
-        // Requests update for mana values
-        ManaEventSystem.current.UseMana(0);
-
         UIEventSystem.current.onShowSkillToolTip += ShowSkillToolTip;
         UIEventSystem.current.onHideToolTip += HideToolTip;
+        UIEventSystem.current.onPlayerLocked += PlayerLock;
 
         StartCoroutine(SetFirstSelection());
     }
@@ -145,6 +145,8 @@ public class OverlayControls : MonoBehaviour
     {
         yield return new WaitForEndOfFrame();
         SetSelectedQuickBar(0);
+        // Requests update for mana values
+        ManaEventSystem.current.UseMana(0);
     }
 
     private void OnDestroy()
@@ -154,11 +156,12 @@ public class OverlayControls : MonoBehaviour
         ManaEventSystem.current.onManaUpdated -= SetCurrentMana;
         UIEventSystem.current.onShowSkillToolTip -= ShowSkillToolTip;
         UIEventSystem.current.onHideToolTip -= HideToolTip;
+        UIEventSystem.current.onPlayerLocked -= PlayerLock;
     }
 
     private void Update()
     {
-        if (dialogBox.alpha == 1)
+        if (playerLocked)
             return;
 
         // Quick bar inptus
@@ -205,6 +208,11 @@ public class OverlayControls : MonoBehaviour
         {
             ChangeSkillListState();
         }
+    }
+
+    private void PlayerLock(bool lockPlayer)
+    {
+        playerLocked = lockPlayer;
     }
 
     private void ApplyResistance(Sprite resistanceIcon, float duration)

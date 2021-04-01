@@ -71,18 +71,10 @@ public class PlayerMovementScript : MonoBehaviour
 
     public void PlayerLock(bool stop)
     {
-        if (stop)
-        {
-            canMove = false;
-            lockMouseInputs = true;
-            playerLocked = true;
-        }
-        else
-        {
-            canMove = true;
-            lockMouseInputs = false;
-            playerLocked = false;
-        }
+        canMove = !stop;
+        lockMouseInputs = stop;
+        playerLocked = stop;
+        UIEventSystem.current.PlayerLock(stop);
     }
 
     public void Update()
