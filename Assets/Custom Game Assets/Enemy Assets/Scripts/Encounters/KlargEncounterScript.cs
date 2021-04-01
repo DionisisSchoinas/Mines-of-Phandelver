@@ -11,12 +11,11 @@ public class KlargEncounterScript : MonoBehaviour
     public Camera cutsceneCamera;
     public GameObject cutsceneBossMonster;
 
-    public PlayerMovementScript playerMovementScript;
-
     public HordeLogic hordeToKill;
     public GameObject bridgeToCollapse;
     public Collider blockEntrance;
 
+    private PlayerMovementScript playerMovementScript;
     private Camera mainCamera;
     private bool encounterRunning;
 
@@ -36,11 +35,18 @@ public class KlargEncounterScript : MonoBehaviour
     private void Start()
     {
         UIEventSystem.current.onFinishedDialog += FinishedDialog;
+        CharacterLoadScript.current.onCharacterSelected += SetCharacter;
     }
 
     private void OnDestroy()
     {
         UIEventSystem.current.onFinishedDialog -= FinishedDialog;
+        CharacterLoadScript.current.onCharacterSelected -= SetCharacter;
+    }
+
+    private void SetCharacter(SelectedCharacterScript.Character character, PlayerMovementScript playerMovementScript)
+    {
+        this.playerMovementScript = playerMovementScript;
     }
 
     private void Update()

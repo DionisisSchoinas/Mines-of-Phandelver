@@ -6,8 +6,8 @@ public class WellEncounterScript : MonoBehaviour
 {
     public GameObject hordeToDespawn;
     public GameObject hordeToSpawn;
-    public PlayerMovementScript playerMovementScript;
 
+    private PlayerMovementScript playerMovementScript;
     private Collider col;
 
     // Start is called before the first frame update
@@ -16,6 +16,18 @@ public class WellEncounterScript : MonoBehaviour
         hordeToSpawn.SetActive(false);
 
         col = gameObject.GetComponent<Collider>();
+
+        CharacterLoadScript.current.onCharacterSelected += SetCharacter;
+    }
+
+    private void OnDestroy()
+    {
+        CharacterLoadScript.current.onCharacterSelected -= SetCharacter;
+    }
+
+    private void SetCharacter(SelectedCharacterScript.Character character, PlayerMovementScript playerMovementScript)
+    {
+        this.playerMovementScript = playerMovementScript;
     }
 
     private void OnTriggerEnter(Collider other)

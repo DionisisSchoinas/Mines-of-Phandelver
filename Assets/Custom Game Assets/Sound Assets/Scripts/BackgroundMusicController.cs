@@ -74,7 +74,5 @@ public class BackgroundMusicController : MonoBehaviour
                 break;
         }
         current.audioSource.Play();
-
-        Debug.Log(location.ToString());
     }
 }

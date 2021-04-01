@@ -9,8 +9,6 @@ public class AfterGateEncounter : MonoBehaviour
     public Camera cutsceneCamera;
     public GameObject cutsceneBossMonster;
 
-    public PlayerMovementScript playerMovementScript;
-
     public OpenDoorScript areaEntranceGate;
     public SmashObstaclesScript gatesToSmash;
     public HordeLogic hordeToKill;
@@ -23,6 +21,7 @@ public class AfterGateEncounter : MonoBehaviour
     public float maxCannonIntervals;
     private int fightStage;
 
+    private PlayerMovementScript playerMovementScript;
     private Camera mainCamera;
     private Collider col;
     private Coroutine cannonCoroutine;
@@ -50,11 +49,18 @@ public class AfterGateEncounter : MonoBehaviour
     private void Start()
     {
         UIEventSystem.current.onFinishedDialog += FinishedDialog;
+        CharacterLoadScript.current.onCharacterSelected += SetCharacter;
     }
 
     private void OnDestroy()
     {
         UIEventSystem.current.onFinishedDialog -= FinishedDialog;
+        CharacterLoadScript.current.onCharacterSelected -= SetCharacter;
+    }
+
+    private void SetCharacter(SelectedCharacterScript.Character character, PlayerMovementScript playerMovementScript)
+    {
+        this.playerMovementScript = playerMovementScript;
     }
 
     private void OnTriggerEnter(Collider other)

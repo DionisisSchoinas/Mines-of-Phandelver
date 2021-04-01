@@ -29,7 +29,7 @@ public class DodgeDisplay : MonoBehaviour
         UIEventSystem.current.onDodgeFinish -= Cooldown;
     }
 
-    private void SetIcon(SelectedCharacterScript.Character character)
+    private void SetIcon(SelectedCharacterScript.Character character, PlayerMovementScript script)
     {
         switch (character)
         {

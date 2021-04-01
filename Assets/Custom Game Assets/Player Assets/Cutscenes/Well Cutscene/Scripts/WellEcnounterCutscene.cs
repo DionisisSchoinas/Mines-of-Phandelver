@@ -5,8 +5,8 @@ using UnityEngine;
 public class WellEcnounterCutscene : MonoBehaviour
 {
     public Camera cameraCutscene;
-    public PlayerMovementScript player;
 
+    private PlayerMovementScript playerMovementScript;
     private Camera cameraMain;
     private Collider col;
 
@@ -17,6 +17,18 @@ public class WellEcnounterCutscene : MonoBehaviour
         cameraCutscene.enabled = false;
 
         col = gameObject.GetComponent<Collider>();
+
+        CharacterLoadScript.current.onCharacterSelected += SetCharacter;
+    }
+
+    private void OnDestroy()
+    {
+        CharacterLoadScript.current.onCharacterSelected -= SetCharacter;
+    }
+
+    private void SetCharacter(SelectedCharacterScript.Character character, PlayerMovementScript playerMovementScript)
+    {
+        this.playerMovementScript = playerMovementScript;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,7 +40,7 @@ public class WellEcnounterCutscene : MonoBehaviour
 
     IEnumerator Cutscene()
     {
-        player.PlayerLock(true);
+        playerMovementScript.PlayerLock(true);
         cameraMain.enabled = false;
         cameraCutscene.enabled = true;
 
@@ -36,6 +48,6 @@ public class WellEcnounterCutscene : MonoBehaviour
 
         cameraMain.enabled = true;
         cameraCutscene.enabled = false;
-        player.PlayerLock(false);
+        playerMovementScript.PlayerLock(false);
     }
 }

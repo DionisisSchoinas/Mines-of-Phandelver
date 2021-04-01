@@ -56,7 +56,7 @@ public class PlayerMovementScriptWizard : PlayerMovementScript
             velocity.y = -2f;
         }
         //=================== Dodge =================== 
-        if (dodge && !dodgeScript.onCooldown)
+        if (!playerLocked && dodge && !dodgeScript.onCooldown)
         {
             dodgeDirection = Quaternion.Euler(0, 45, 0) * new Vector3(horizontal, 0f, vertical).normalized;
             if (dodgeDirection == Vector3.zero)

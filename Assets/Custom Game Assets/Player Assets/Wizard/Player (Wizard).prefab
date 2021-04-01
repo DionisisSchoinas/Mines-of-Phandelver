@@ -128,6 +128,8 @@ GameObject:
   - component: {fileID: 7517870793374723853}
   - component: {fileID: 7517870793883074969}
   - component: {fileID: 3220581253499018771}
+  - component: {fileID: 1748192220}
+  - component: {fileID: 2848621936174582769}
   m_Layer: 12
   m_Name: Player (Wizard)
   m_TagString: Player
@@ -207,6 +209,7 @@ MonoBehaviour:
   mouse_2: 0
   mousePressed_1: 0
   lockMouseInputs: 0
+  playerLocked: 0
   dodgeSkill: {fileID: 7295584108599523629, guid: 39f85179482979b4c81090711a26cda4,
     type: 3}
   dodgeDistance: 10
@@ -321,7 +324,7 @@ MonoBehaviour:
   healthBarColor: {r: 1, g: 0, b: 0, a: 1}
   maxHealth: 100
   healthRegenPerSecond: 10
-  respawn: 1
+  respawn: 0
   invulnerable: 0
   staggerPercentage: 0
   manaBar: {fileID: 0}
@@ -351,6 +354,27 @@ MonoBehaviour:
   distanceFromGround:
   - 0.5
   - 0.5
+--- !u!81 &1748192220
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220581253499018990}
+  m_Enabled: 1
+--- !u!114 &2848621936174582769
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3220581253499018990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d33ac3febc664b48b61a5098d1a47cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  character: 1
 --- !u!1 &3220581253644861916
 GameObject:
   m_ObjectHideFlags: 0

@@ -8,19 +8,30 @@ public class CartEncounter : MonoBehaviour
 
     public HordeLogic hordeToKill;
     public ProjectileScript arrow;
-    public GameObject player;
-    public GameObject cutscenePlayer;
+
     public Camera cutsceneCamera;
-    public PlayerMovementScript playerMovementScript;
-    public Animator animator;
+
     public GameObject questMarker;
     public GameObject interactPopup;
     public OpenDoorEncounterScript gateAfterFinishing;
+
+    public List<PlayerIdentityScript> charactersForCutscene;
+    private Animator animator;
+    private GameObject cutscenePlayer;
+    private PlayerMovementScript playerMovementScript;
 
     private Camera mainCamera;
     private Collider col;
 
     private bool doorlocked;
+
+    private void Awake()
+    {
+        foreach (PlayerIdentityScript script in charactersForCutscene)
+        {
+            script.gameObject.SetActive(false);
+        }
+    }
 
     private void Start()
     {
@@ -30,18 +41,19 @@ public class CartEncounter : MonoBehaviour
         arrow.gameObject.SetActive(false);
         hordeToKill.gameObject.SetActive(false);
         interactPopup.SetActive(false);
-        cutscenePlayer.SetActive(false);
 
         col = gameObject.GetComponent<Collider>();
 
         doorlocked = true;
 
         UIEventSystem.current.onFinishedDialog += FinishedDialog;
+        CharacterLoadScript.current.onCharacterSelected += SetCharacter;
     }
 
     private void OnDestroy()
     {
         UIEventSystem.current.onFinishedDialog -= FinishedDialog;
+        CharacterLoadScript.current.onCharacterSelected -= SetCharacter;
     }
 
     private void Update()
@@ -73,6 +85,21 @@ public class CartEncounter : MonoBehaviour
     {
         interactPopup.SetActive(false);
         questMarker.SetActive(true);
+    }
+
+    private void SetCharacter(SelectedCharacterScript.Character character, PlayerMovementScript playerMovementScript)
+    {
+        foreach (PlayerIdentityScript script in charactersForCutscene)
+        {
+            if (script.character == character)
+            {
+                cutscenePlayer = script.gameObject;
+                animator = script.gameObject.GetComponent<Animator>();
+                break;
+            }
+        }
+
+        this.playerMovementScript = playerMovementScript;
     }
 
     private IEnumerator PlaySearchCutscene()

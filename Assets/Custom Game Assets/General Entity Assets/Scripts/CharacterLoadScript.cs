@@ -7,56 +7,56 @@ public class CharacterLoadScript : MonoBehaviour
 {
     public static CharacterLoadScript current;
 
+    private GameObject characterGm;
+
     private void Awake()
     {
         current = this;
 
         SelectedCharacterScript selectedCharacter = FindObjectOfType<SelectedCharacterScript>();
-        if (selectedCharacter != null)
+        if (selectedCharacter != null)  // On correct load of game
         {
-            GameObject[] characters = GameObject.FindGameObjectsWithTag("Player");
+            PlayerIdentityScript[] characters = FindObjectsOfType<PlayerIdentityScript>();
 
-            string character_name = "";
-
-            switch (selectedCharacter.character)
+            foreach (PlayerIdentityScript script in characters)
             {
-                case SelectedCharacterScript.Character.Fighter:
-                    character_name = "Player (Warrior)";
-                    break;
-                default:
-                    character_name = "Player (Wizard)";
-                    break;
-            }
-
-            foreach (GameObject gm in characters)
-            {
-                if (gm.name.Equals(character_name))
+                if (script.thisIsTheCharacter && script.character == selectedCharacter.character)
                 {
-                    gm.SetActive(true);
+                    script.gameObject.SetActive(true);
+                    characterGm = script.gameObject;
                 }
                 else
                 {
-                    gm.SetActive(false);
+                    script.gameObject.SetActive(false);
                 }
             }
 
-            StartCoroutine(SetCharacter(selectedCharacter.character));
+            StartCoroutine(SetCharacter(selectedCharacter.character, characterGm));
         }
+        else    // On singel scene load
+        {
+            PlayerIdentityScript character = FindObjectOfType<PlayerIdentityScript>();
+            StartCoroutine(SetCharacter(character.character, character.gameObject));
+        }
+        
     }
 
-    public event Action<SelectedCharacterScript.Character> onCharacterSelected;
-    public void CharacterSelected(SelectedCharacterScript.Character character)
+    public event Action<SelectedCharacterScript.Character, PlayerMovementScript> onCharacterSelected;
+    public void CharacterSelected(SelectedCharacterScript.Character character, PlayerMovementScript playerMovementScript)
     {
         if (onCharacterSelected != null)
         {
-            onCharacterSelected(character);
+            onCharacterSelected(character, playerMovementScript);
         }
     }
 
-    private IEnumerator SetCharacter(SelectedCharacterScript.Character character)
+    private IEnumerator SetCharacter(SelectedCharacterScript.Character character, GameObject player)
     {
+        yield return new WaitForSeconds(1f);
+        PlayerMovementScript playerMovementScript = player.GetComponent<PlayerMovementScript>();
+        playerMovementScript.PlayerLock(true);
         yield return new WaitForSeconds(2f);
-        CharacterSelected(character);
-
+        CharacterSelected(character, playerMovementScript);
+        playerMovementScript.PlayerLock(false);
     }
 }
