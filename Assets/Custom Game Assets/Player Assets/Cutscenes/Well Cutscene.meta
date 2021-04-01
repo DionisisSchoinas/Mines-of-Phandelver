@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Custom Game Assets/Player Assets/Cutscenes/Well Cutscene.meta
 guid: c675f65d54890ac4693a703c25921e65
+=======
+guid: 0f9984aec053b6e4eb75ddc5ad9b0ee0
+>>>>>>> main:Assets/Custom Game Assets/UI Assets/Buttons/Space.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
