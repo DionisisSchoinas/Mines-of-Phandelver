@@ -12,6 +12,7 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
     private Vector2 lastPosition;
 
     private bool pointerUp;
+    private bool lockedPlayer;
 
     public new void Awake()
     {
@@ -19,9 +20,11 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
 
         pointerUp = true;
         swappable = true;
+        lockedPlayer = false;
 
         UIEventSystem.current.onSkillPickedRegistered += SelectButton;
         UIEventSystem.current.onSkillListUp += SkillListUp;
+        UIEventSystem.current.onPlayerLocked += LockedPlayer;
     }
 
     public new void OnDestroy()
@@ -29,6 +32,7 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
         base.OnDestroy();
         UIEventSystem.current.onSkillPickedRegistered -= SelectButton;
         UIEventSystem.current.onSkillListUp -= SkillListUp;
+        UIEventSystem.current.onPlayerLocked -= LockedPlayer;
     }
 
     private void SelectButton(int skillIndexInAdapter, bool startCooldown)
@@ -43,10 +47,14 @@ public class QuickbarButton : ButtonContainer, IPointerClickHandler, IPointerDow
         }
     }
 
+    private void LockedPlayer(bool lockedPlayer)
+    {
+        this.lockedPlayer = lockedPlayer;
+    }
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        if (!skillListUp)
+        if (!skillListUp && !lockedPlayer)
             overlayControls.SetSelectedQuickBar(buttonData.quickBarIndex);
     }
     

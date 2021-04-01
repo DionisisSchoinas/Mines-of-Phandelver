@@ -16,7 +16,7 @@ public class SpellTypeStorm : Spell
     protected GameObject tmpIndicatorHolder;
 
     [HideInInspector]
-    public GameObject[] collisions;
+    public Collider[] collisions;
 
     public override string type => "Storm";
     public override string skillName => "Storm";
@@ -63,8 +63,8 @@ public class SpellTypeStorm : Spell
     private new void FixedUpdate()
     {
         Vector3 capsuleTop = transform.position + Vector3.up * 8f;
-        Collider[] colliders = Physics.OverlapCapsule(capsuleTop, capsuleTop + Vector3.down * 60f, 14f, BasicLayerMasks.DamageableEntities);
-        collisions = OverlapDetection.NoObstaclesVertical(colliders, capsuleTop, BasicLayerMasks.IgnoreOnDamageRaycasts);
+        collisions = Physics.OverlapCapsule(capsuleTop, capsuleTop + Vector3.down * 60f, 14f, BasicLayerMasks.DamageableEntities);
+        //collisions = OverlapDetection.NoObstaclesVertical(colliders, capsuleTop, BasicLayerMasks.IgnoreOnDamageRaycasts);
     }
 
     public override void CastSpell(Transform firePoint, bool holding)
@@ -113,13 +113,13 @@ public class SpellTypeStorm : Spell
     {
         if (collisions == null) return;
 
-        foreach (GameObject gm in collisions)
+        foreach (Collider col in collisions)
         {
-            if (gm != null && gm.name != casterName)
+            if (col != null && col.gameObject.name != casterName)
             {
-                HealthEventSystem.current.TakeDamage(gm.GetInstanceID(), damage, elementType);
+                HealthEventSystem.current.TakeDamage(col.gameObject.GetInstanceID(), damage, elementType);
                 if (condition != null)
-                    if (Random.value <= 0.2f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.GetInstanceID(), condition);
+                    if (Random.value <= 0.2f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(col.gameObject.GetInstanceID(), condition);
             }
         }
     }

@@ -16,7 +16,6 @@ public class IdleBehaviour : StateMachineBehaviour
         aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
         target = aiScript.target.transform;
         timer = 0;
-       
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

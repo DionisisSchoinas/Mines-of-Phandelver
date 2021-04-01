@@ -9,7 +9,7 @@ public class SpellTypeRay : Spell
     [HideInInspector]
     public Condition condition;
 
-    private GameObject[] collisions;
+    private Collider[] collisions;
     private Vector3 boxSize;
     private GameObject tmpRay;
     private SpellIndicatorController indicatorController;
@@ -68,8 +68,8 @@ public class SpellTypeRay : Spell
 
     private new void FixedUpdate()
     {
-        Collider[] colliders = Physics.OverlapBox(transform.position + Vector3.down + transform.forward * 9f, boxSize, transform.rotation, BasicLayerMasks.DamageableEntities);
-        collisions = OverlapDetection.NoObstaclesLine(colliders, transform.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
+        collisions = Physics.OverlapBox(transform.position + Vector3.down + transform.forward * 9f, boxSize, transform.rotation, BasicLayerMasks.DamageableEntities);
+        //collisions = OverlapDetection.NoObstaclesLine(colliders, transform.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
     }
 
     public new void StartCooldown()
@@ -115,13 +115,13 @@ public class SpellTypeRay : Spell
     {
         if (collisions == null) return;
 
-        foreach (GameObject gm in collisions)
+        foreach (Collider col in collisions)
         {
-            if (gm != null)
+            if (col != null)
             {
-                HealthEventSystem.current.TakeDamage(gm.GetInstanceID(), damage, elementType);
+                HealthEventSystem.current.TakeDamage(col.gameObject.GetInstanceID(), damage, elementType);
                 if (condition != null)
-                    if (Random.value <= 0.25f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.GetInstanceID(), condition);
+                    if (Random.value <= 0.25f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(col.gameObject.GetInstanceID(), condition);
             }
         }
 

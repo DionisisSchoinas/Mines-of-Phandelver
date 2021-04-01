@@ -4,26 +4,25 @@ using UnityEngine;
 
 public class HordeEntityLogic : MonoBehaviour 
 {
-    HordeLogic hordeLogic;
-    // Start is called before the first frame update
+    private HordeLogic hordeLogic;
+
     void Start()
     {
-        hordeLogic=GetComponentInParent< HordeLogic >();
+        hordeLogic = GetComponentInParent<HordeLogic>();
         hordeLogic.enemies.Add(gameObject);
         HealthEventSystem.current.onDeath += KillEntity;
-     
+    }   
+
+    public void OnDestroy()
+    {
+        HealthEventSystem.current.onDeath -= KillEntity;
     }
 
-   
     public void KillEntity(int id)
     {
         if (id == gameObject.GetInstanceID())
         {
             hordeLogic.enemies.Remove(gameObject);
         }
-    }
-    public void OnDestroy()
-    {
-        HealthEventSystem.current.onDeath -= KillEntity;
     }
 }

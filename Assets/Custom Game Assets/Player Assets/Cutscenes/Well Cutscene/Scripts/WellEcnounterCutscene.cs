@@ -4,32 +4,38 @@ using UnityEngine;
 
 public class WellEcnounterCutscene : MonoBehaviour
 {
-    bool firstTime=true;
-    public Camera cameraMain;
     public Camera cameraCutscene;
-    public GameObject player;
+    public PlayerMovementScript player;
+
+    private Camera cameraMain;
+    private Collider col;
+
     // Start is called before the first frame update
     private void Start()
     {
+        cameraMain = Camera.main;
         cameraCutscene.enabled = false;
+
+        col = gameObject.GetComponent<Collider>();
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (firstTime)
-        {
-            StartCoroutine(Cutscene());
-            firstTime = false;
-        }
+        col.enabled = false;
+
+        StartCoroutine(Cutscene());
     }
+
     IEnumerator Cutscene()
     {
-        player.SetActive(false);
+        player.PlayerLock(true);
         cameraMain.enabled = false;
         cameraCutscene.enabled = true;
+
         yield return new WaitForSeconds(5f);
+
         cameraMain.enabled = true;
         cameraCutscene.enabled = false;
-        player.SetActive(true);
+        player.PlayerLock(false);
     }
 }

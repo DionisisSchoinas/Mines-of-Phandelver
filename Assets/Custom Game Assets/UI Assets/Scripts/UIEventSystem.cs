@@ -155,4 +155,31 @@ public class UIEventSystem : MonoBehaviour
             onRemoveResistance();
         }
     }
+
+    public event Action<int> onShowDialog;
+    public void ShowDialog(int dialogindex)
+    {
+        if (onShowDialog != null)
+        {
+            onShowDialog(dialogindex);
+        }
+    }
+
+    public event Action<int> onFinishedDialog;
+    public void FinishedDialog(int dialogindex)
+    {
+        if (onFinishedDialog != null)
+        {
+            onFinishedDialog(dialogindex);
+        }
+    }
+
+    public event Action<bool> onPlayerLocked;
+    public void PlayerLock(bool lockPlayer)
+    {
+        if (onPlayerLocked != null)
+        {
+            onPlayerLocked(lockPlayer);
+        }
+    }
 }

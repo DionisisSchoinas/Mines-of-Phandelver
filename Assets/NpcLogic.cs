@@ -14,19 +14,10 @@ public class NpcLogic : MonoBehaviour
         if (transforms.Length != 0)
             target = transforms[0].transform;
         questionMark.SetActive(false);
-
-
     }
 
-    // Update is called once per frame
-    void Update()
+    public void RotateTowardsPlayer()
     {
-
-    }
-    public void rotateTowardsPlayer()
-    {
-
-        Debug.Log("D1");
         Vector3 lookPos = target.position - transform.position;
         lookPos.y = 0;
         Quaternion rotation = Quaternion.LookRotation(lookPos);

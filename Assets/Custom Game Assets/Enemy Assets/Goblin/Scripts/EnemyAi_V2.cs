@@ -67,7 +67,6 @@ public class EnemyAi_V2 : MonoBehaviour
     public void Patrol()
     {
         float distance = Vector3.Distance(walkpoint, transform.position);
-        Debug.Log(distance);
         if (distance < agent.stoppingDistance)
         {
     
@@ -122,7 +121,7 @@ public class EnemyAi_V2 : MonoBehaviour
         NavMeshHit hit;
         if (NavMesh.SamplePosition(walkpoint, out hit, transform.position.y + 2, NavMesh.AllAreas))
         {
-            Destroy(Instantiate(destinationIndicator, hit.position + new Vector3(0, 0.6f, 0), destinationIndicator.transform.rotation), 2f);
+            //Destroy(Instantiate(destinationIndicator, hit.position + new Vector3(0, 0.6f, 0), destinationIndicator.transform.rotation), 2f);
             agent.SetDestination(hit.position);
             hasTarget = true;
         }
