@@ -73,7 +73,6 @@ public class PlayerMovementScript : MonoBehaviour
     {
         canMove = !stop;
         lockMouseInputs = stop;
-
         playerLocked = stop;
         UIEventSystem.current.PlayerLock(stop);
     }
