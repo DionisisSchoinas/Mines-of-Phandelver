@@ -9,7 +9,7 @@ public class EnemyFireray : EnemySpell
     [SerializeField]
     private int damageTicksPerSecond = 5;
 
-    private GameObject[] collisions;
+    private Collider[] collisions;
     private Vector3 boxSize;
 
     private GameObject tmpLaser;
@@ -22,8 +22,8 @@ public class EnemyFireray : EnemySpell
 
     private void FixedUpdate()
     {
-        Collider[] colliders = Physics.OverlapBox(transform.position + Vector3.down + transform.forward * 9f, boxSize, transform.rotation, BasicLayerMasks.DamageableEntities);
-        collisions = OverlapDetection.NoObstaclesLine(colliders, transform.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
+        collisions = Physics.OverlapBox(transform.position + Vector3.down + transform.forward * 9f, boxSize, transform.rotation, BasicLayerMasks.DamageableEntities);
+        //collisions = OverlapDetection.NoObstaclesLine(colliders, transform.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
     }
 
     public override void FireHold(bool holding, Transform firePoint)
@@ -43,12 +43,12 @@ public class EnemyFireray : EnemySpell
     {
         if (collisions == null) return;
 
-        foreach (GameObject gm in collisions)
+        foreach (Collider col in collisions)
         {
-            if (gm != null)
+            if (col != null)
             {
-                HealthEventSystem.current.TakeDamage(gm.GetInstanceID(), damage, ElementTypes.Type.Fire);
-                if (Random.value <= 0.25f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(gm.GetInstanceID(), ConditionsManager.Burning);
+                HealthEventSystem.current.TakeDamage(col.gameObject.GetInstanceID(), damage, ElementTypes.Type.Fire);
+                if (Random.value <= 0.25f / damageTicksPerSecond) HealthEventSystem.current.SetCondition(col.gameObject.GetInstanceID(), ConditionsManager.Burning);
             }
         }
     }

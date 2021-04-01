@@ -77,10 +77,10 @@ public class Explosion : MonoBehaviour
     protected void Start()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, radius, BasicLayerMasks.DamageableEntities);
-        GameObject[] hitObjects = OverlapDetection.NoObstaclesLine(colliders, transform.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
-        foreach (GameObject gm in hitObjects)
+        //GameObject[] hitObjects = OverlapDetection.NoObstaclesLine(colliders, transform.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
+        foreach (Collider col in colliders)
         {
-            Damage(gm);
+            Damage(col);
         }
     }
 
@@ -89,11 +89,12 @@ public class Explosion : MonoBehaviour
         this.casterName = casterName;
     }
 
-    private void Damage(GameObject gm)
+    private void Damage(Collider col)
     {
-        if (gm == null || gm.name == casterName)  return;
+        if (col == null || col.gameObject.name == casterName)  
+            return;
 
-        HealthEventSystem.current.TakeDamage(gm.GetInstanceID(), damage, elementType);
-        if (condition != null && Random.value <= 0.5f) HealthEventSystem.current.SetCondition(gm.GetInstanceID(), condition);
+        HealthEventSystem.current.TakeDamage(col.gameObject.GetInstanceID(), damage, elementType);
+        if (condition != null && Random.value <= 0.5f) HealthEventSystem.current.SetCondition(col.gameObject.GetInstanceID(), condition);
     }
 }

@@ -85,27 +85,27 @@ public class SphereBurst : SwordEffect
         CameraShake.current.ShakeCamera(0.3f, 1f);
 
         // Find targets
-        GameObject[] targets = FindTargets(controls.transform);
+        Collider[] targets = FindTargets(controls.transform);
 
-        foreach (GameObject visibleTarget in targets)
+        foreach (Collider visibleTarget in targets)
         {
             if (visibleTarget.name != controls.name)
             {
                 HealthEventSystem.current.TakeDamage(visibleTarget.gameObject.GetInstanceID(), damage, attributes.elementType);
                 if (condition != null)
-                    if (Random.value <= 0.5f) HealthEventSystem.current.SetCondition(visibleTarget.GetInstanceID(), condition);
-                HealthEventSystem.current.ApplyForce(visibleTarget.GetInstanceID(), visibleTarget.transform.position - controls.transform.position, force);
+                    if (Random.value <= 0.5f) HealthEventSystem.current.SetCondition(visibleTarget.gameObject.GetInstanceID(), condition);
+                HealthEventSystem.current.ApplyForce(visibleTarget.gameObject.GetInstanceID(), visibleTarget.transform.position - controls.transform.position, force);
             }
         }
         yield return new WaitForSeconds(0.1f);
     }
 
-    private GameObject[] FindTargets(Transform sphereCenter)
+    private Collider[] FindTargets(Transform sphereCenter)
     {
         Collider[] sphereCollisions = Physics.OverlapSphere(sphereCenter.position, sphereRadius, BasicLayerMasks.DamageableEntities);
-        GameObject[] notBlocked = OverlapDetection.NoObstaclesLine(sphereCollisions, sphereCenter.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
+        //GameObject[] notBlocked = OverlapDetection.NoObstaclesLine(sphereCollisions, sphereCenter.position, BasicLayerMasks.IgnoreOnDamageRaycasts);
 
-        return notBlocked;
+        return sphereCollisions;
     }
 
     public override Sprite GetIcon()
