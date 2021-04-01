@@ -62,11 +62,20 @@ public class PlayerMovementScript : MonoBehaviour
         jump = false;
 
         UIEventSystem.current.onSkillListUp += PlayerLock;
+        UIEventSystem.current.onPlayerDied += LockPlayer;
+        UIEventSystem.current.onGameEnded += LockPlayer;
     }
 
     private void OnDestroy()
     {
         UIEventSystem.current.onSkillListUp -= PlayerLock;
+        UIEventSystem.current.onPlayerDied -= LockPlayer;
+        UIEventSystem.current.onGameEnded -= LockPlayer;
+    }
+
+    private void LockPlayer()
+    {
+        PlayerLock(true);
     }
 
     public void PlayerLock(bool stop)

@@ -33,4 +33,20 @@ public class PlayerResourcesController : MonoBehaviour
             manaController.SetValues(maxMana, manaRegenPerSecond, manaBar, manaBarColor);
         }
     }
+
+    private void Start()
+    {
+        HealthEventSystem.current.onDeath += PlayerDeath;
+    }
+
+    private void OnDestroy()
+    {
+        HealthEventSystem.current.onDeath -= PlayerDeath;
+    }
+
+    private void PlayerDeath(int id)
+    {
+        if (gameObject.GetInstanceID() == id)
+            UIEventSystem.current.PlayerDied();
+    }
 }

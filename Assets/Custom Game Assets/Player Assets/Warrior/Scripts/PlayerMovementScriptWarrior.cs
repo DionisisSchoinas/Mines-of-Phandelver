@@ -177,7 +177,8 @@ public class PlayerMovementScriptWarrior : PlayerMovementScript
         yield return new WaitForSeconds(second/4);
         canMove = false;
         yield return new WaitForSeconds(3*second / 4);
-        canMove = true;
+        if (!playerLocked)
+            canMove = true;
     }
     
     public void LockPlayer(float second) 

@@ -185,7 +185,8 @@ public class PlayerMovementScriptWizard : PlayerMovementScript
         // Enable controls and disable particles
         DodgeEffect(false);
         dodging = false;
-        canMove = true;
+        if (!playerLocked)
+            canMove = true;
 
         dodgeScript.StartCooldown();
         UIEventSystem.current.Dodged(dodgeScript.cooldown);

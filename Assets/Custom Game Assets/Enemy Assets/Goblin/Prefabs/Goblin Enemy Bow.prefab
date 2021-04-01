@@ -233,8 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4875c9028e5b33b4cb5ef3c0f4d4850c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookRadius: 30
-  attackRadius: 20
+  lookRadius: 11.9
+  attackRadius: 19.73
   rangedAttackRadius: 15
   target: {fileID: 0}
   hasTarget: 0

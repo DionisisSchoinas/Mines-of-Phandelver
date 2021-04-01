@@ -154,6 +154,8 @@ public class HealthController : EntityResource
         this.respawn = respawn;
         this.invulnerable = invulnerable;
         this.staggerPercentage = stagger;
+
+        this.deathDelay = 100f;
     }
 
     private void UpdateResistances(int id, List<ElementTypes.Type> resistances)

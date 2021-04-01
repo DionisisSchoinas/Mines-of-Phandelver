@@ -201,6 +201,7 @@ public class ResourceManager
         private static string folder = "Audio/";
 
         public static AudioClip CannonFire = (AudioClip)Resources.Load(folder + "Cannon Fire", typeof(AudioClip));
+        public static AudioClip BridgeBreak = (AudioClip)Resources.Load(folder + "Bridge Break", typeof(AudioClip));
 
         public class AudioSources
         {

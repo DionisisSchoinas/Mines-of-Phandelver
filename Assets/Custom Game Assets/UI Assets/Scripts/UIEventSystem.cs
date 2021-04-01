@@ -182,4 +182,22 @@ public class UIEventSystem : MonoBehaviour
             onPlayerLocked(lockPlayer);
         }
     }
+
+    public event Action onPlayerDied;
+    public void PlayerDied()
+    {
+        if (onPlayerDied != null)
+        {
+            onPlayerDied();
+        }
+    }
+
+    public event Action onGameEnded;
+    public void GameEnded()
+    {
+        if (onGameEnded != null)
+        {
+            onGameEnded();
+        }
+    }
 }

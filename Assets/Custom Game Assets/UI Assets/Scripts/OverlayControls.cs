@@ -19,6 +19,7 @@ public class OverlayControls : MonoBehaviour
     public CanvasGroup skillToolTip;
     public CanvasGroup settingsMenu;
     public CanvasGroup dialogBox;
+    public CanvasGroup gameEndScreen;
    
     // Quickbar data
     [HideInInspector]
@@ -161,7 +162,7 @@ public class OverlayControls : MonoBehaviour
 
     private void Update()
     {
-        if (playerLocked)
+        if ((!skillListUp && playerLocked) || gameEndScreen.alpha == 1f)
             return;
 
         // Quick bar inptus
