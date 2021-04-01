@@ -33,6 +33,12 @@ public class BackgroundMusicController : MonoBehaviour
 
         current.onLocationSet += LocationChanged;
 
+        StartCoroutine(SetArea());
+    }
+
+    private IEnumerator SetArea()
+    {
+        yield return new WaitForEndOfFrame();
         SetLocation(Location.Forest);
     }
 
@@ -68,5 +74,7 @@ public class BackgroundMusicController : MonoBehaviour
                 break;
         }
         current.audioSource.Play();
+
+        Debug.Log(location.ToString());
     }
 }

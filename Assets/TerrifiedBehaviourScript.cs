@@ -6,11 +6,12 @@ public class TerrifiedBehaviourScript : StateMachineBehaviour
 {
     NpcLogic npcLogic;
     HordeLogic horde;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        
-        npcLogic = FindObjectOfType<NpcLogic>();
+
+        npcLogic = animator.gameObject.GetComponent<NpcLogic>();
         horde = npcLogic.hordeLogic; 
     }
 
@@ -20,6 +21,7 @@ public class TerrifiedBehaviourScript : StateMachineBehaviour
         if (horde.enemies.Count == 0 && horde.transform.gameObject.activeInHierarchy)
         {
             animator.SetTrigger("Waving");
+            npcLogic.EncounterEnded();
         }
     }
 

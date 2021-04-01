@@ -5,11 +5,11 @@ using UnityEngine;
 public class WavingBehaviour : StateMachineBehaviour
 {
     NpcLogic npcLogic;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        npcLogic = FindObjectOfType<NpcLogic>();
-        npcLogic.questionMark.SetActive(true);
+        npcLogic = animator.gameObject.GetComponent<NpcLogic>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
