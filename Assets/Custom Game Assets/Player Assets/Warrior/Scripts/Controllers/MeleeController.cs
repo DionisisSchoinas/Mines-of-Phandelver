@@ -42,13 +42,7 @@ public class MeleeController : MonoBehaviour
 
     private float lastCooldownDisplayMessage;
     private float lastManaDisplayMessage;
-    /*
-    public float swingSoundDelay = 0.5f;
-    private List<AudioClip> swingSounds;
-    private Coroutine swingSoundCoroutine;
-    private AudioSource swingAudioSource;
-    private AudioSource hitAudioSource;
-    */
+
     void Start()
     {
         canHit = true;
@@ -69,16 +63,7 @@ public class MeleeController : MonoBehaviour
 
         isOnCooldown = false;
         hasEnoughMana = true;
-        /*
-        swingAudioSource = gameObject.AddComponent<AudioSource>();
-        swingAudioSource = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", swingAudioSource, ResourceManager.Audio.AudioSources.Range.Short);
-        hitAudioSource = gameObject.AddComponent<AudioSource>();
-        hitAudioSource = ResourceManager.Audio.AudioSources.LoadAudioSource("Sound Effects", hitAudioSource, ResourceManager.Audio.AudioSources.Range.Short);
 
-        swingSounds = new List<AudioClip>();
-        swingSounds.Add(ResourceManager.Audio.Sword.Swing1);
-        swingSounds.Add(ResourceManager.Audio.Sword.Swing2);
-        */
         UIEventSystem.current.onSkillListUp += SkillListUp;
         ManaEventSystem.current.onManaUpdated += ManaUpdate;
 
@@ -163,13 +148,13 @@ public class MeleeController : MonoBehaviour
             comboCurrent = 0f;
         }
 
-        if (comboQueue.Count == 0 && isDuringAttack)
+        if ((comboQueue.Count == 0 && isDuringAttack) || !hasEnoughMana)
         {
             sword.GetSelectedEffect().StartCooldown();
             isDuringAttack = false;
             animations.ResetAttack();
         }
-        else if (comboQueue.Count == 3)
+        else if (comboQueue.Count == 3 || !hasEnoughMana)
         {
             StartCoroutine(ComboCooldown(comboCooldown));
         }
@@ -198,20 +183,9 @@ public class MeleeController : MonoBehaviour
 
     IEnumerator PerformAttack(float attackDelay)
     {
-        //PlaySwordSwingAudio();
-
         animations.Attack();
 
         yield return new WaitForSeconds(attackDelay);
-        /*
-           foreach (Transform visibleTarget in indicator.visibleTargets)
-           {
-               Debug.Log(visibleTarget.name);
-               HealthEventSystem.current.TakeDamage(visibleTarget.name, 30, 0);
-               HealthEventSystem.current.ApplyForce(visibleTarget.name, transform.forward, 5f);
-           }
-        */
-        yield return new WaitForSeconds(0.1f);
 
         controls.sliding = false;
     }
