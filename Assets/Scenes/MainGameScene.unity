@@ -20524,26 +20524,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1042480554}
   m_Mesh: {fileID: 4300054, guid: 21906786a6f8aff45b0b7234dff38a3e, type: 3}
---- !u!1 &1044481670 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2177212895260857013, guid: 617c89358b04efd499155edb484ebe5b,
-    type: 3}
-  m_PrefabInstance: {fileID: 2177212895708492720}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1044481673
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1044481670}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d33ac3febc664b48b61a5098d1a47cb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  thisIsTheCharacter: 1
-  character: 0
 --- !u!1 &1045829975
 GameObject:
   m_ObjectHideFlags: 0
@@ -29630,11 +29610,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2848621936174582769, guid: bbdf2f0f859680c448dbd66b93f6f062,
-        type: 3}
-      propertyPath: thisIsTheCharacter
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 3220581253499018988, guid: bbdf2f0f859680c448dbd66b93f6f062,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -29694,6 +29669,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Player (Wizard)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3220581253499018990, guid: bbdf2f0f859680c448dbd66b93f6f062,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7517870793374723853, guid: bbdf2f0f859680c448dbd66b93f6f062,
         type: 3}
@@ -42208,16 +42188,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player (Warrior)
       objectReference: {fileID: 0}
-    - target: {fileID: 2177212895260857013, guid: 617c89358b04efd499155edb484ebe5b,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2177212895260857014, guid: 617c89358b04efd499155edb484ebe5b,
-        type: 3}
-      propertyPath: m_RootOrder
-      value: 7
-      objectReference: {fileID: 0}
     - target: {fileID: 2177212895260857014, guid: 617c89358b04efd499155edb484ebe5b,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -42232,11 +42202,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.z
       value: -33.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2177212895260857014, guid: 617c89358b04efd499155edb484ebe5b,
-        type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2177212895260857014, guid: 617c89358b04efd499155edb484ebe5b,
         type: 3}
@@ -42255,6 +42220,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2177212895260857014, guid: 617c89358b04efd499155edb484ebe5b,
         type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177212895260857014, guid: 617c89358b04efd499155edb484ebe5b,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 2177212895260857014, guid: 617c89358b04efd499155edb484ebe5b,
+        type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
@@ -42270,24 +42245,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3989154091426477131, guid: 617c89358b04efd499155edb484ebe5b,
         type: 3}
-      propertyPath: manaBar
-      value: 
-      objectReference: {fileID: 8828333903808110921}
-    - target: {fileID: 3989154091426477131, guid: 617c89358b04efd499155edb484ebe5b,
-        type: 3}
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 2801996810665130022}
     - target: {fileID: 3989154091426477131, guid: 617c89358b04efd499155edb484ebe5b,
         type: 3}
-      propertyPath: staggerPercentage
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3989154091426477131, guid: 617c89358b04efd499155edb484ebe5b,
-        type: 3}
-      propertyPath: respawn
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: manaBar
+      value: 
+      objectReference: {fileID: 8828333903808110921}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 617c89358b04efd499155edb484ebe5b, type: 3}
 --- !u!1001 &2260304271680735429

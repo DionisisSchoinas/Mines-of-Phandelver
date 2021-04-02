@@ -6315,6 +6315,7 @@ GameObject:
   - component: {fileID: 2177212895260857020}
   - component: {fileID: 1817844480}
   - component: {fileID: 1647898538197830613}
+  - component: {fileID: 1044481673}
   m_Layer: 12
   m_Name: Player (Warrior)
   m_TagString: Player
@@ -6392,6 +6393,7 @@ MonoBehaviour:
   mouse_2: 0
   mousePressed_1: 0
   lockMouseInputs: 0
+  playerLocked: 0
   dodgeSkill: {fileID: 7171224450421549850, guid: 2f10e608275c6c44897188cda51bc20a,
     type: 3}
   rollDistance: 12
@@ -6505,9 +6507,9 @@ MonoBehaviour:
   healthBarColor: {r: 1, g: 0, b: 0, a: 1}
   maxHealth: 100
   healthRegenPerSecond: 10
-  respawn: 1
+  respawn: 0
   invulnerable: 0
-  staggerPercentage: 0.2
+  staggerPercentage: 0
   manaBar: {fileID: 0}
   manaBarColor: {r: 0, g: 0.59463525, b: 1, a: 1}
   maxMana: 100
@@ -6567,6 +6569,20 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2177212895260857013}
   m_Enabled: 1
+--- !u!114 &1044481673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2177212895260857013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d33ac3febc664b48b61a5098d1a47cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thisIsTheCharacter: 1
+  character: 0
 --- !u!1 &2177212895714952280
 GameObject:
   m_ObjectHideFlags: 0
