@@ -200,4 +200,13 @@ public class UIEventSystem : MonoBehaviour
             onGameEnded();
         }
     }
+
+    public event Action onHideLoadingScreen;
+    public void HideLoadingScreen()
+    {
+        if (onHideLoadingScreen != null)
+        {
+            onHideLoadingScreen();
+        }
+    }
 }

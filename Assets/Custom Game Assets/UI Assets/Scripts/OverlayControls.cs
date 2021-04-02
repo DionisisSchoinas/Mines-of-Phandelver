@@ -20,6 +20,7 @@ public class OverlayControls : MonoBehaviour
     public CanvasGroup settingsMenu;
     public CanvasGroup dialogBox;
     public CanvasGroup gameEndScreen;
+    public CanvasGroup loadingScreen;
    
     // Quickbar data
     [HideInInspector]
@@ -58,6 +59,8 @@ public class OverlayControls : MonoBehaviour
         audioSource.outputAudioMixerGroup = ResourceManager.Audio.AudioMixers.MainMixer.FindMatchingGroups("Sound Effects")[0];
 
         escapeMenuScript = escapeMenu.gameObject.GetComponent<EscapeMenuController>();
+
+        SetCanvasState(true, loadingScreen);
     }
 
     private void Start()
@@ -162,7 +165,7 @@ public class OverlayControls : MonoBehaviour
 
     private void Update()
     {
-        if ((!skillListUp && playerLocked) || gameEndScreen.alpha == 1f)
+        if ((!skillListUp && playerLocked) || gameEndScreen.alpha == 1f || loadingScreen.alpha == 1f)
             return;
 
         // Quick bar inptus

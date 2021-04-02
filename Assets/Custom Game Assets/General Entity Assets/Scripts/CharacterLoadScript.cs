@@ -61,7 +61,8 @@ public class CharacterLoadScript : MonoBehaviour
     {
         PlayerMovementScript playerMovementScript = player.GetComponent<PlayerMovementScript>();
         playerMovementScript.PlayerLock(true);
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(3f);
+        UIEventSystem.current.HideLoadingScreen();
         CharacterSelected(character, playerMovementScript);
         playerMovementScript.PlayerLock(false);
     }

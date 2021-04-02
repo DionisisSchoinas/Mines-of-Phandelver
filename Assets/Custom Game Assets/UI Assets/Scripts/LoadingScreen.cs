@@ -15,6 +15,20 @@ public class LoadingScreen : MonoBehaviour
         canvasGroup = gameObject.GetComponent<CanvasGroup>();
     }
 
+    private void Start()
+    {
+        // Check required since the same script is used on the StartGameScene where UIEventSystem is not used
+        if (UIEventSystem.current != null)
+            UIEventSystem.current.onHideLoadingScreen += Hide;
+    }
+
+    private void OnDestroy()
+    {
+        // Check required since the same script is used on the StartGameScene where UIEventSystem is not used
+        if (UIEventSystem.current != null)
+            UIEventSystem.current.onHideLoadingScreen -= Hide;
+    }
+
     public void Show()
     {
         OverlayControls.SetCanvasState(true, canvasGroup);
