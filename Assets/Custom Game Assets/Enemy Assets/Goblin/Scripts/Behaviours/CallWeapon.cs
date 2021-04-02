@@ -15,9 +15,9 @@ public class CallWeapon : StateMachineBehaviour
     {
         CurrentGameObject = animator.gameObject;
         aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
-        bossFightAi = CurrentGameObject.GetComponent<BossFightAi>();
+        //bossFightAi = CurrentGameObject.GetComponent<BossFightAi>();
         target = aiScript.target.transform;
-        bossFightAi.WeaponApear(apearDelayTimer);
+        //bossFightAi.WeaponApear(apearDelayTimer);
         animator.SetBool("HasWeapon", true);
     }
 
