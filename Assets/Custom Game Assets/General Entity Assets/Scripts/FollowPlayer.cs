@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class FollowPlayer : MonoBehaviour
 {
@@ -9,7 +10,7 @@ public class FollowPlayer : MonoBehaviour
 
     private void Start()
     {
-        playerPosition = FindObjectOfType<PlayerMovementScript>().transform;
+        playerPosition = FindObjectOfType<PlayerMovementScript>().gameObject.transform;
     }
 
     void FixedUpdate()
@@ -17,9 +18,10 @@ public class FollowPlayer : MonoBehaviour
         if (playerPosition == null)
             return;
 
-        Vector3 targerPosition = playerPosition.position + offset; ;
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, targerPosition, smoothSpeed * Time.deltaTime);
+        Vector3 targetPosition = playerPosition.position + offset;
+        Vector3 smoothedPosition = Vector3.Lerp(transform.position, targetPosition, smoothSpeed * Time.deltaTime);
         transform.position = smoothedPosition;
+
         transform.LookAt(playerPosition);
     }
 }

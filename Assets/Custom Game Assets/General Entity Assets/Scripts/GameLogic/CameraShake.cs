@@ -6,18 +6,17 @@ public class CameraShake : MonoBehaviour
 {
 	public static CameraShake current;
 
-	// How long the object should shake for.
-	public float shakeDuration = 0f;
-
-	// Amplitude of the shake. A larger value shakes the camera harder.
-	public float shakeAmount = 0.7f;
 	public float decreaseFactor = 1.0f;
 
-	Transform camTransform;
-	Vector3 originalPos;
+	private Transform camTransform;
+	private Vector3 originalPos;
 
-	HitStop hitStop;
+	private HitStop hitStop;
 
+	// Amplitude of the shake. A larger value shakes the camera harder.
+	private float shakeAmount;
+	// How long the object should shake for.
+	private float shakeDuration;
 	private bool shaking;
 
 	void Awake()
@@ -27,6 +26,7 @@ public class CameraShake : MonoBehaviour
 		hitStop = gameObject.AddComponent<HitStop>();
 
 		shaking = false;
+		shakeDuration = 0f;
 
 		current = this;
 		current.onCameraShake += Shake;
