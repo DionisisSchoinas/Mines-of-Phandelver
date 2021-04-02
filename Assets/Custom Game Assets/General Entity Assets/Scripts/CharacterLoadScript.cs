@@ -33,12 +33,19 @@ public class CharacterLoadScript : MonoBehaviour
 
             StartCoroutine(SetCharacter(selectedCharacter.character, characterGm));
         }
-        else    // On singel scene load
+        else // On singel scene load
         {
-            PlayerIdentityScript character = FindObjectOfType<PlayerIdentityScript>();
-            StartCoroutine(SetCharacter(character.character, character.gameObject));
+            PlayerIdentityScript[] characters = FindObjectsOfType<PlayerIdentityScript>();
+
+            foreach (PlayerIdentityScript character in characters)
+            {
+                if (character.thisIsTheCharacter)
+                {
+                    StartCoroutine(SetCharacter(character.character, character.gameObject));
+                    break;
+                }
+            }
         }
-        
     }
 
     public event Action<SelectedCharacterScript.Character, PlayerMovementScript> onCharacterSelected;
@@ -52,7 +59,6 @@ public class CharacterLoadScript : MonoBehaviour
 
     private IEnumerator SetCharacter(SelectedCharacterScript.Character character, GameObject player)
     {
-        yield return new WaitForSeconds(1f);
         PlayerMovementScript playerMovementScript = player.GetComponent<PlayerMovementScript>();
         playerMovementScript.PlayerLock(true);
         yield return new WaitForSeconds(2f);

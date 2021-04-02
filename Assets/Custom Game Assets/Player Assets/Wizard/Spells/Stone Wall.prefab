@@ -68,8 +68,8 @@ MonoBehaviour:
   uniqueOverlayToWeaponAdapterId: 20
   onCooldown: 1
   cooldownPercentage: 0.4899998
-  cancelled: 0
   elementType: 0
+  cancelled: 0
   damage: 5
   damageTicksPerSecond: 5
   doesDamage: 0
@@ -80,11 +80,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -93,12 +88,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -142,23 +137,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (6)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -175,11 +160,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -188,12 +168,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -237,23 +217,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (10)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -270,11 +240,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -283,12 +248,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -330,20 +295,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -360,11 +315,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -373,12 +323,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -422,23 +372,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (11)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -455,11 +395,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -468,12 +403,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -517,23 +452,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (19)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -550,11 +475,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -563,12 +483,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -612,23 +532,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (16)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -645,11 +555,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -658,12 +563,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -707,23 +612,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (9)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -740,11 +635,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -753,12 +643,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -802,23 +692,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (7)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -835,11 +715,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -848,12 +723,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -897,23 +772,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (13)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -930,11 +795,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -943,12 +803,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -992,23 +852,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (14)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -1025,11 +875,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1038,12 +883,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -1087,23 +932,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (21)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -1120,11 +955,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1133,12 +963,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -1182,23 +1012,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (5)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -1215,11 +1035,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1228,12 +1043,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -1277,23 +1092,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (4)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -1310,11 +1115,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1323,12 +1123,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -1372,23 +1172,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -1405,11 +1195,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1418,12 +1203,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -1467,23 +1252,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (12)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -1500,11 +1275,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1513,12 +1283,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -1562,23 +1332,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (20)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -1595,11 +1355,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1608,12 +1363,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -1657,23 +1412,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -1690,11 +1435,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1703,12 +1443,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -1752,23 +1492,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (17)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -1785,11 +1515,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1798,12 +1523,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -1847,23 +1572,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (15)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -1880,11 +1595,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1893,12 +1603,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -1942,23 +1652,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (8)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -1975,11 +1675,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1988,12 +1683,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -2037,23 +1732,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (18)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}
@@ -2070,11 +1755,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2818920419133848455}
     m_Modifications:
-    - target: {fileID: 2224582058800991134, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2083,12 +1763,12 @@ PrefabInstance:
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
@@ -2132,23 +1812,13 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002608, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3797942389186002609, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
+      propertyPath: m_LocalScale.y
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 3797942389186002621, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
         type: 3}
       propertyPath: m_Name
       value: Sand Wall Part (2)
-      objectReference: {fileID: 0}
-    - target: {fileID: 6802299502058153031, guid: 6a1d8748141aa5e4fb009b3bf0b61516,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6a1d8748141aa5e4fb009b3bf0b61516, type: 3}

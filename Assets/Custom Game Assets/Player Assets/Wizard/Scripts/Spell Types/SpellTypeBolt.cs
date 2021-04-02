@@ -39,8 +39,13 @@ public class SpellTypeBolt : Spell
         if (colliders.Length != 0)
         {
             Collider collision = GetClosestCollider(colliders);
-            // Ignore collisions with the caster
-            if (collision.gameObject.name != casterName)
+            if (collision == null)
+            {
+                CameraShake.current.ShakeCamera(0.1f, 0.1f);
+                Destroy(Instantiate(explosionParticles, transform.position, transform.rotation), 5f);
+                Destroy(gameObject);
+            }
+            else if (collision.gameObject.name != casterName) // Ignore collisions with the caster
             {
                 HealthEventSystem.current.TakeDamage(collision.gameObject.GetInstanceID(), damage, elementType);
                 if (condition != null)
