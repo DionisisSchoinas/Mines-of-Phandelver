@@ -45,6 +45,7 @@ public class PlayerMovementScript : MonoBehaviour
     public bool playerLocked;
 
     private SkinnedMeshRenderer[] skinnedMeshRenderers;
+    private MeshRenderer[] meshRenderers;
 
     public void Start()
     {
@@ -64,6 +65,7 @@ public class PlayerMovementScript : MonoBehaviour
         jump = false;
 
         skinnedMeshRenderers = gameObject.GetComponentsInChildren<SkinnedMeshRenderer>();
+        meshRenderers = gameObject.GetComponentsInChildren<MeshRenderer>();
 
         UIEventSystem.current.onSkillListUp += PlayerLock;
         UIEventSystem.current.onPlayerDied += LockPlayer;
@@ -86,6 +88,9 @@ public class PlayerMovementScript : MonoBehaviour
     {
         foreach (SkinnedMeshRenderer skinnedMeshRenderer in skinnedMeshRenderers)
             skinnedMeshRenderer.enabled = !hide;
+
+        foreach (MeshRenderer meshRenderer in meshRenderers)
+            meshRenderer.enabled = !hide;
     }
 
     public void PlayerLock(bool stop)
