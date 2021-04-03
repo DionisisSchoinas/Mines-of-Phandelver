@@ -107,7 +107,7 @@ public class CartEncounter : MonoBehaviour
         yield return new WaitForSeconds(0.2f);
 
         playerMovementScript.PlayerLock(true);
-        playerMovementScript.gameObject.SetActive(false);
+        playerMovementScript.HidePlayer(true);
         cutscenePlayer.SetActive(true);
         mainCamera.enabled = false;
         cutsceneCamera.enabled = true;
@@ -152,7 +152,7 @@ public class CartEncounter : MonoBehaviour
         cutsceneCamera.enabled = false;
         animator.SetLayerWeight(2, 0f);
 
-        playerMovementScript.gameObject.SetActive(true);
+        playerMovementScript.HidePlayer(false);
         playerMovementScript.PlayerLock(false);
     }
 }
