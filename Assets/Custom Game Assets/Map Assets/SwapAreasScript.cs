@@ -32,7 +32,7 @@ public class SwapAreasScript : MonoBehaviour
             return;
 
         areaSettings.mainLight.enabled = true;
-        areaSettings.backlight.enabled = false;
+        areaSettings.backlight.enabled = true;
 
         if (currentArea.mainLight != null)
             currentArea.mainLight.enabled = false;
