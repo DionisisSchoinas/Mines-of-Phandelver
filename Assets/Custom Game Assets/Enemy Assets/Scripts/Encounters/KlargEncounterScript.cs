@@ -7,11 +7,13 @@ public class KlargEncounterScript : MonoBehaviour
     private Collider col;
 
     public int dialogIndex;
-
+    public GameObject axe;
+    public Animator bossAnimator;
     public Camera cutsceneCamera;
     public GameObject cutsceneBossMonster;
 
     public HordeLogic hordeToKill;
+    public GameObject hordeCutscene;
     public GameObject bridgeToCollapse;
     public Collider blockEntrance;
 
@@ -85,8 +87,12 @@ public class KlargEncounterScript : MonoBehaviour
 
     private IEnumerator StartCombat()
     {
-        yield return new WaitForSeconds(1f);
-
+   
+        bossAnimator.SetTrigger("CutceneEnd");
+        axe.SetActive(true);   
+     
+        yield return new WaitForSeconds(3f);
+        hordeCutscene.SetActive(false);
         blockEntrance.enabled = true;
         CollapseBridge();
 

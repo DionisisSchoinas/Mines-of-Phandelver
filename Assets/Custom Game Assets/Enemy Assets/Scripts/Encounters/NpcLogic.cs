@@ -62,6 +62,15 @@ public class NpcLogic : MonoBehaviour
         questionMark.SetActive(false);
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (questionMark.activeSelf)
+            questionMark.SetActive(false);
+
+        if (interactPopup.activeSelf)
+            interactPopup.SetActive(true);
+    }
+
     private void OnTriggerExit(Collider other)
     {
         interactPopup.SetActive(false);
