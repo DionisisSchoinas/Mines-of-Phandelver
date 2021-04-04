@@ -30,7 +30,10 @@ public class EscapeMenuController : MonoBehaviour
         exitGame.onClick.AddListener(ExitGameClick);
 
         mode = -1;
+    }
 
+    private void Start()
+    {
         YesNoDialog.current.onResponded += Response;
     }
 

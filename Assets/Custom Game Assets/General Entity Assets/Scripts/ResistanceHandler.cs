@@ -47,9 +47,10 @@ public class ResistanceHandler : MonoBehaviour
             Material[] mats = mesh.materials;
 
             Material newMat = newMaterial;
-
+            /*
             newMat.SetTexture("_MainTexture", mats[0].GetTexture("_MainTexture"));
             newMat.SetTexture("_NormalMap", mats[0].GetTexture("_NormalMap"));
+            */
             newMat.SetInt("_HasExtra", 1);
 
             mats[0] = newMat;
