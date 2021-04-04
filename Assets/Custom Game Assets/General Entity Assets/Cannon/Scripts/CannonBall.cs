@@ -30,9 +30,9 @@ public class CannonBall : MonoBehaviour
         explosionRadius.gameObject.GetComponent<MeshRenderer>().enabled = false;
     }
 
-    private void CloseCollider()
+    private void AbleRbGravity()
     {
-        col.enabled = false;
+        rb.useGravity = true;
     }
 
     private void OnTriggerEnter()
@@ -50,6 +50,7 @@ public class CannonBall : MonoBehaviour
         }
 
         Collider[] colliders = Physics.OverlapSphere(explosionRadius.position, radius);
+
         foreach (Collider col in colliders)
         {
             if (col != null)
@@ -62,8 +63,11 @@ public class CannonBall : MonoBehaviour
         Destroy(gameObject, 3f);
 
         rb.velocity = Vector3.zero;
-        transform.position += Vector3.down;
-        Invoke(nameof(CloseCollider), 0.5f);
+        rb.useGravity = false;
+        transform.position += Vector3.down * 0.5f;
+        col.enabled = false;
+
+        Invoke(nameof(AbleRbGravity), 0.5f);
     }
 
     private void OnDrawGizmos()

@@ -46,6 +46,7 @@ public class PlayerMovementScript : MonoBehaviour
 
     private SkinnedMeshRenderer[] skinnedMeshRenderers;
     private MeshRenderer[] meshRenderers;
+    private ParticleSystem[] particleSystems;
 
     public void Start()
     {
@@ -91,6 +92,22 @@ public class PlayerMovementScript : MonoBehaviour
 
         foreach (MeshRenderer meshRenderer in meshRenderers)
             meshRenderer.enabled = !hide;
+
+        particleSystems = gameObject.GetComponentsInChildren<ParticleSystem>();
+        foreach (ParticleSystem particleSystem in particleSystems)
+        {
+            if (hide)
+            {
+                particleSystem.enableEmission = false;
+                particleSystem.Clear(true);
+            }
+            else
+            {
+                particleSystem.enableEmission = true;
+                particleSystem.Play(true);
+            }
+
+        }
     }
 
     public void PlayerLock(bool stop)

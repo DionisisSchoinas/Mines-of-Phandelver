@@ -14,6 +14,8 @@ public class HealthController : EntityResource
     private Animator animator;
     private Collider col;
 
+    private bool isPlayer;
+
     [SerializeField]
     private bool _invulnerable;
     public bool invulnerable
@@ -65,6 +67,9 @@ public class HealthController : EntityResource
             }
 
             base.currentValue = value;
+
+            if (isPlayer)
+                UIEventSystem.current.GetDamageFade();
         }
     }
 
@@ -90,6 +95,9 @@ public class HealthController : EntityResource
             immunities = new List<ElementTypes.Type>();
         if (resistances == null)
             resistances = new List<ElementTypes.Type>();
+
+        PlayerIdentityScript sc = gameObject.GetComponent<PlayerIdentityScript>();
+        isPlayer = sc != null;
     }
 
     private new void Start()

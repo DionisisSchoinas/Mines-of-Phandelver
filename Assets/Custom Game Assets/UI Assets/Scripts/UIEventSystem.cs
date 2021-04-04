@@ -209,4 +209,13 @@ public class UIEventSystem : MonoBehaviour
             onHideLoadingScreen();
         }
     }
+
+    public event Action onDamageFadeGet;
+    public void GetDamageFade()
+    {
+        if (onDamageFadeGet != null)
+        {
+            onDamageFadeGet();
+        }
+    }
 }
