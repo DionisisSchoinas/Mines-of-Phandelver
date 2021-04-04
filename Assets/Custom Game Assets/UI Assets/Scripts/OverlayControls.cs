@@ -10,8 +10,6 @@ public class OverlayControls : MonoBehaviour
     public CanvasGroup spellListDisplay;
     public GameObject columnContentHolder;
     public GameObject effectsDisplay;
-    public float secondsAfterPickingSkill = 0.02f;
-    public float secondsAfterCastingSkill = 0.02f;
     public Color buttonColorSelected;
     public Color buttonColorUnselected;
     public CanvasGroup escapeMenu;
@@ -41,8 +39,8 @@ public class OverlayControls : MonoBehaviour
 
     private EscapeMenuController escapeMenuScript;
 
-    public static float skillFreezeAfterPicking;
-    public static float skillFreezeAfterCasting;
+    public static float skillFreezeAfterPicking = 0.1f;
+    public static float skillFreezeAfterCasting = 0.2f;
     public static Color selectedButtonColor;
     public static Color unselectedButtonColor;
 
@@ -67,8 +65,6 @@ public class OverlayControls : MonoBehaviour
     {
         overlayToWeaponAdapter = FindObjectOfType<OverlayToWeaponAdapter>();
 
-        skillFreezeAfterPicking = secondsAfterPickingSkill;
-        skillFreezeAfterCasting = secondsAfterCastingSkill;
         selectedButtonColor = buttonColorSelected;
         unselectedButtonColor = buttonColorUnselected;
 

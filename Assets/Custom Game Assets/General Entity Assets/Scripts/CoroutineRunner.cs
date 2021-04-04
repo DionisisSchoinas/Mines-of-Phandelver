@@ -25,10 +25,20 @@ public class CoroutineRunner : MonoBehaviour
         skill.onCooldown = true;
         skill.cooldownPercentage = 0f;
 
-        float delayForEachStep = delay / 100f;
+        float step = 0f;
+        if (delay <= 1f)
+        {
+            step = 0.04f;
+        }
+        else
+        {
+            step = 0.01f;
+        }
+
+        float delayForEachStep = delay * step;
         while (skill.cooldownPercentage < 1)
         {
-            skill.cooldownPercentage += 0.01f;
+            skill.cooldownPercentage += step;
             yield return new WaitForSeconds(delayForEachStep);
         }
 
