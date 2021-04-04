@@ -154,7 +154,6 @@ public class AfterGateEncounter : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         cutsceneCamera.enabled = false;
-        mainCamera.enabled = true;
 
         hordeToKill.gameObject.SetActive(true);
         cannon.gameObject.SetActive(true);
@@ -166,6 +165,8 @@ public class AfterGateEncounter : MonoBehaviour
         }
 
         cutsceneBossMonster.gameObject.SetActive(false);
+
+        mainCamera.enabled = true;
 
         playerMovementScript.PlayerLock(false);
 

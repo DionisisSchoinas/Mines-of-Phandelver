@@ -1668,8 +1668,6 @@ MonoBehaviour:
   spellListDisplay: {fileID: 4160349150419638138}
   columnContentHolder: {fileID: 4160349150645999295}
   effectsDisplay: {fileID: 4160349152364315308}
-  secondsAfterPickingSkill: 0.1
-  secondsAfterCastingSkill: 0.1
   buttonColorSelected: {r: 0.9427507, g: 1, b: 0, a: 1}
   buttonColorUnselected: {r: 1, g: 1, b: 1, a: 0}
   escapeMenu: {fileID: 4160349151152749332}
@@ -7807,7 +7805,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 229.35847, y: 0}
+  m_AnchoredPosition: {x: 232.30113, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8727889762107271684

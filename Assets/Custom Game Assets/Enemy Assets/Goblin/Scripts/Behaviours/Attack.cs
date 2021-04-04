@@ -25,7 +25,7 @@ public class Attack : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer < attackLockDelay)
         {
-            aiScript.rotateTowards(aiScript.target.position);
+            aiScript.RotateTowards(aiScript.target.position);
         }
     }
 

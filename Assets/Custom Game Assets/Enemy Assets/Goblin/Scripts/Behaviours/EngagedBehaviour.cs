@@ -19,7 +19,7 @@ public class EngagedBehaviour : StateMachineBehaviour
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        aiScript.rotateTowards(aiScript.target.position);
+        aiScript.RotateTowards(aiScript.target.position);
         timer += Time.deltaTime;
         if (Vector3.Distance(aiScript.target.transform.position, animator.transform.position) > aiScript.attackRadius + 3)//+1 is to offset the rapid Changes
         {

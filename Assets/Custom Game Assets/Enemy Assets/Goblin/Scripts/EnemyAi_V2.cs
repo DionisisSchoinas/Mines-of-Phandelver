@@ -19,19 +19,21 @@ public class EnemyAi_V2 : MonoBehaviour
     //Scripts And GameObjects
     [SerializeField]
     public GameObject destinationIndicator;
+
     private EnemyMeleeController meleeController;
     private ProjectileManager rangedController;
-    Vector3 walkpoint;
-    NavMeshAgent agent;
+    private Vector3 walkpoint;
+    private NavMeshAgent agent;
    
     private Vector3 spawnpoint;
    
     //State Machine Variables
     public bool targetReached;
 
-    void Start()
+    private void Start()
     {
-        target = new GameObject().transform;
+        if (target == null)
+            target = new GameObject().transform;
 
         agent = GetComponent<NavMeshAgent>();
         
@@ -158,6 +160,9 @@ public class EnemyAi_V2 : MonoBehaviour
 
     void OnDrawGizmosSelected()
     {
+        if (agent == null)
+            return;
+
         agent = GetComponent<NavMeshAgent>();
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, lookRadius);
@@ -165,7 +170,7 @@ public class EnemyAi_V2 : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, agent.stoppingDistance);
     }
 
-    public void rotateTowards(Vector3 destination)
+    public void RotateTowards(Vector3 destination)
     {
         Vector3 lookPos = destination - transform.position;
         lookPos.y = 0;
