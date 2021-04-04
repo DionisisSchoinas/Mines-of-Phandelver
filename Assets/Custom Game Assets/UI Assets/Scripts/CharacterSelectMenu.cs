@@ -19,7 +19,6 @@ public class CharacterSelectMenu : MonoBehaviour
     private List<CharacterSelectButton> characterSelectButtons;
 
     private AsyncOperation loadingOperation;
-    private Coroutine coroutine;
 
     private void Awake()
     {
@@ -80,14 +79,10 @@ public class CharacterSelectMenu : MonoBehaviour
 
     private void ChangeToGameScene()
     {
-        HideCharacterSelect();
-        loadingScreenPanel.Show();
-
         loadingOperation = SceneManager.LoadSceneAsync("MainGameScene");
 
-        if (coroutine != null)
-            StopCoroutine(coroutine);
-        coroutine = StartCoroutine(Loading());
+        HideCharacterSelect();
+        loadingScreenPanel.Show(loadingOperation);
     }
 
     public void BackToMenu()
@@ -107,36 +102,5 @@ public class CharacterSelectMenu : MonoBehaviour
         startGameButton.interactable = false;
         foreach (CharacterSelectButton button in characterSelectButtons)
             button.SetLights(false);
-    }
-
-    private IEnumerator Loading()
-    {
-        int state = 0;
-        loadingScreenPanel.loadingCircle.fillClockwise = true;
-
-        while (!loadingOperation.isDone)
-        {
-            if (state == 0 && loadingScreenPanel.loadingCircle.fillAmount < 1)
-            {
-                loadingScreenPanel.loadingCircle.fillAmount += 0.01f;
-            }
-            else if (state == 0)
-            {
-                state = 1;
-                loadingScreenPanel.loadingCircle.fillClockwise = false;
-            }
-
-            if (state == 1 && loadingScreenPanel.loadingCircle.fillAmount > 0)
-            {
-                loadingScreenPanel.loadingCircle.fillAmount -= 0.01f;
-            }
-            else if (state == 1)
-            {
-                state = 0;
-                loadingScreenPanel.loadingCircle.fillClockwise = true;
-            }
-
-            yield return new WaitForSecondsRealtime(loadingScreenPanel.secondsTillFill / 100f);
-        }
     }
 }

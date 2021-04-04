@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8667421275382607244}
   - component: {fileID: 4651308641021974041}
   m_Layer: 8
-  m_Name: Particle System
+  m_Name: Bolts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4802,8 +4802,8 @@ MonoBehaviour:
   uniqueOverlayToWeaponAdapterId: 15
   onCooldown: 1
   cooldownPercentage: 0.4899998
-  cancelled: 0
   elementType: 2
+  cancelled: 0
   damage: 5
   damageTicksPerSecond: 5
   doesDamage: 1

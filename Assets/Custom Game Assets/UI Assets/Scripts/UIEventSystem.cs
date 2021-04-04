@@ -201,6 +201,15 @@ public class UIEventSystem : MonoBehaviour
         }
     }
 
+    public event Action onShowLoadingScreen;
+    public void ShowLoadingScreen()
+    {
+        if (onShowLoadingScreen != null)
+        {
+            onShowLoadingScreen();
+        }
+    }
+
     public event Action onHideLoadingScreen;
     public void HideLoadingScreen()
     {

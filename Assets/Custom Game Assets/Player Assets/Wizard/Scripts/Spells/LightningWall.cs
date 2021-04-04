@@ -20,6 +20,7 @@ public class LightningWall : SpellTypeWall
     {
         return ResourceManager.Sources.Spells.Lightning;
     }
+
     private void SpawnArcs()
     {
         Vector3 p1 = pillars[0].gameObject.transform.position;
