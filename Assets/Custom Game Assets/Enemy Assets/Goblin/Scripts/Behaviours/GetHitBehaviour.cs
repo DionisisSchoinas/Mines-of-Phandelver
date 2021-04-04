@@ -4,19 +4,14 @@ using UnityEngine;
 
 public class GetHitBehaviour : StateMachineBehaviour
 {
-
-    private GameObject CurrentGameObject;
     private EnemyAi_V2 aiScript;
-    private Transform target;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        CurrentGameObject = animator.gameObject;
-        aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
-        target = aiScript.target.transform;
-        
-
+        aiScript = animator.gameObject.GetComponent<EnemyAi_V2>();
     }
+
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {

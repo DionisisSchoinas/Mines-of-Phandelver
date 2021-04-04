@@ -6,8 +6,6 @@ public class RelocateBehaviour : StateMachineBehaviour
 {
     private GameObject CurrentGameObject;
     private EnemyAi_V2 aiScript;
-    private Transform target;
-    private BossFightAi bossFightAi;
     float maxPatrolTimer;
    
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -15,12 +13,9 @@ public class RelocateBehaviour : StateMachineBehaviour
     {
         CurrentGameObject = animator.gameObject;
         aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
-        bossFightAi = CurrentGameObject.GetComponent<BossFightAi>();
-        target = aiScript.target.transform;
         aiScript.targetReached = false;
         aiScript.hasTarget = false;
         maxPatrolTimer = 0;
-
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

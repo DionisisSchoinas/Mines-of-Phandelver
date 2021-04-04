@@ -6,34 +6,24 @@ using UnityEngine;
 
 public class EngagedBehaviour : StateMachineBehaviour
 {
-    private GameObject CurrentGameObject;
     private EnemyAi_V2 aiScript;
-    private Transform target;
   
     float timer;
-
  
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-    
-        CurrentGameObject = animator.gameObject;
-        aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
-        target = aiScript.target.transform;
+        aiScript = animator.gameObject.GetComponent<EnemyAi_V2>();
         timer = 0;
-
-
-
     }
 
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        aiScript.rotateTowards(target.position);
+        aiScript.rotateTowards(aiScript.target.position);
         timer += Time.deltaTime;
-        if (Vector3.Distance(target.transform.position, animator.transform.position) > aiScript.attackRadius + 3)//+1 is to offset the rapid Changes
+        if (Vector3.Distance(aiScript.target.transform.position, animator.transform.position) > aiScript.attackRadius + 3)//+1 is to offset the rapid Changes
         {
             animator.SetBool("Engage", false);
-
         }
         else
         {
@@ -46,16 +36,9 @@ public class EngagedBehaviour : StateMachineBehaviour
                 else
                 {
                     animator.SetBool("GetInRange", true);
-
                 }
-                
-           
-
-
-            }
-           
-        }
-     
+            }           
+        }     
         // aiScript.Relocate();
     }
    

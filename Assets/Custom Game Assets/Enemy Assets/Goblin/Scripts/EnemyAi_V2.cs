@@ -28,12 +28,10 @@ public class EnemyAi_V2 : MonoBehaviour
    
     //State Machine Variables
     public bool targetReached;
-  
+
     void Start()
     {
-        GameObject[] transforms = GameObject.FindGameObjectsWithTag("Player");
-        if (transforms.Length != 0)
-            target = transforms[0].transform;
+        target = new GameObject().transform;
 
         agent = GetComponent<NavMeshAgent>();
         
@@ -47,11 +45,13 @@ public class EnemyAi_V2 : MonoBehaviour
         rangedController = GetComponent<ProjectileManager>();
 
         HealthEventSystem.current.onDeath += Dead;
+        CharacterLoadScript.current.onCharacterSelected += CharacterSelected;
     }
 
     private void OnDestroy()
     {
         HealthEventSystem.current.onDeath -= Dead;
+        CharacterLoadScript.current.onCharacterSelected -= CharacterSelected;
     }
 
     private void Dead(int id)
@@ -97,7 +97,7 @@ public class EnemyAi_V2 : MonoBehaviour
 
     public void SearchForTargetNearPlayer()
     {
-        if (!agent.enabled)
+        if (!agent.enabled || target == null)
             return;
 
         //square around player
@@ -130,7 +130,7 @@ public class EnemyAi_V2 : MonoBehaviour
 
     public void Chase()
     {
-        if (!agent.enabled)
+        if (!agent.enabled || target == null)
             return;
 
         agent.SetDestination(target.position);
@@ -187,5 +187,13 @@ public class EnemyAi_V2 : MonoBehaviour
             return;
 
         rangedController.canAttack = true;
+    }
+
+    private void CharacterSelected(SelectedCharacterScript.Character character, PlayerMovementScript playerMovementScript)
+    {
+        if (target != null)
+            Destroy(target.gameObject, 0.5f);
+
+        target = playerMovementScript.gameObject.transform;
     }
 }

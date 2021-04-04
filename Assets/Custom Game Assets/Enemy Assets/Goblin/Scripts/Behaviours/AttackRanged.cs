@@ -4,23 +4,18 @@ using UnityEngine;
 
 public class AttackRanged : StateMachineBehaviour
 {
-    private GameObject CurrentGameObject;
     private EnemyAi_V2 aiScript;
-    private Transform target;
-    private BossFightAi bossFightAi;
+
     float timer;
     public float weaponDissapearDelay;
     //Seconds until the animation locks an no longer folows the target
     public float attackLockDelay;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        CurrentGameObject = animator.gameObject;
-        aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
-        //bossFightAi = CurrentGameObject.GetComponent<BossFightAi>();
-        target = aiScript.target.transform;
+        aiScript = animator.gameObject.GetComponent<EnemyAi_V2>();
         aiScript.AttackRanged();
-        //bossFightAi.WeaponVanish(weaponDissapearDelay);
         animator.SetBool("HasWeapon", false);
         timer = 0;
     }
@@ -31,7 +26,7 @@ public class AttackRanged : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer < attackLockDelay)
         {
-            aiScript.rotateTowards(target.position);
+            aiScript.rotateTowards(aiScript.target.position);
         }
     }
 

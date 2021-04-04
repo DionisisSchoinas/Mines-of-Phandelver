@@ -4,18 +4,16 @@ using UnityEngine;
 
 public class Attack : StateMachineBehaviour
 {
-    private GameObject CurrentGameObject;
     private EnemyAi_V2 aiScript;
-    private Transform target;
+
     float timer;
     //Seconds until the animation locks an no longer folows the target
     public float attackLockDelay;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        CurrentGameObject = animator.gameObject;
-        aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
-        target = aiScript.target.transform;
+        aiScript = animator.gameObject.GetComponent<EnemyAi_V2>();
         aiScript.Attack();
         timer = 0;
     }
@@ -27,7 +25,7 @@ public class Attack : StateMachineBehaviour
         timer += Time.deltaTime;
         if (timer < attackLockDelay)
         {
-            aiScript.rotateTowards(target.position);
+            aiScript.rotateTowards(aiScript.target.position);
         }
     }
 

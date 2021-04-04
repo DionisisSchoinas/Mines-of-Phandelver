@@ -6,14 +6,12 @@ public class PatrolBehaviour : StateMachineBehaviour
 {
     private GameObject CurrentGameObject;
     private EnemyAi_V2 aiScript;
-    private Transform target;
     public float maxPatrolTimer;
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         CurrentGameObject = animator.gameObject;
         aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
-        target = aiScript.target.transform;
         maxPatrolTimer = 0;
     }
 
@@ -29,8 +27,7 @@ public class PatrolBehaviour : StateMachineBehaviour
             animator.SetBool("Patrolling", false);
         }
         
-        
-        if (Vector3.Distance(target.transform.position, animator.transform.position) <= aiScript.lookRadius)
+        if (Vector3.Distance(aiScript.target.transform.position, animator.transform.position) <= aiScript.lookRadius)
         {
             animator.SetBool("Chase", true);
         }
@@ -39,7 +36,6 @@ public class PatrolBehaviour : StateMachineBehaviour
             
             animator.SetBool("Patrolling", false);
         }
-    
     }
 
      

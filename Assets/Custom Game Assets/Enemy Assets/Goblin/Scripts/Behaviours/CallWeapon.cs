@@ -4,27 +4,21 @@ using UnityEngine;
 
 public class CallWeapon : StateMachineBehaviour
 {
-
-    private GameObject CurrentGameObject;
     private EnemyAi_V2 aiScript;
-    private Transform target;
-    private BossFightAi bossFightAi;
+
     public float apearDelayTimer;
+
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        CurrentGameObject = animator.gameObject;
-        aiScript = CurrentGameObject.GetComponent<EnemyAi_V2>();
-        //bossFightAi = CurrentGameObject.GetComponent<BossFightAi>();
-        target = aiScript.target.transform;
-        //bossFightAi.WeaponApear(apearDelayTimer);
+        aiScript = animator.gameObject.GetComponent<EnemyAi_V2>();
         animator.SetBool("HasWeapon", true);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        aiScript.rotateTowards(target.position);
+        aiScript.rotateTowards(aiScript.target.position);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
