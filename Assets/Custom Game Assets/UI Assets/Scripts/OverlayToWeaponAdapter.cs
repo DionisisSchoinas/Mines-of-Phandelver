@@ -90,7 +90,7 @@ public class OverlayToWeaponAdapter : MonoBehaviour
         // Check if skill is on cooldown
         if (GetSkillFromIndex(skillIndexInAdapter).onCooldown)
         {
-            Debug.Log("On Colldown");
+            Debug.Log("On Cooldown");
             return;
         }
 
