@@ -13,19 +13,12 @@ public class NpcLogic : MonoBehaviour
 
     private Animator animator;
     private Camera mainCamera;
-    private Transform target;
     private Collider col;
     private PlayerMovementScript player;
+    private Transform target;
 
     private void Start()
     {
-        GameObject[] transforms = GameObject.FindGameObjectsWithTag("Player");
-
-        if (transforms.Length != 0)
-        {
-            player = transforms[0].GetComponent<PlayerMovementScript>();
-            target = transforms[0].transform;
-        }
         questionMark.SetActive(false);
         interactPopup.SetActive(false);
 
@@ -36,16 +29,20 @@ public class NpcLogic : MonoBehaviour
         animator = gameObject.GetComponent<Animator>();
 
         UIEventSystem.current.onFinishedDialog += FinishedDialog;
+        CharacterLoadScript.current.onCharacterSelected += CharacterSelected;
     }
 
     private void OnDestroy()
     {
         UIEventSystem.current.onFinishedDialog -= FinishedDialog;
+        CharacterLoadScript.current.onCharacterSelected -= CharacterSelected;
     }
 
     private void Update()
     {
-        Debug.Log("Npc : " + (interactPopup.activeInHierarchy && !player.playerLocked && Input.GetKeyDown(KeyCode.E)));
+        if (player == null)
+            return;
+
         if (interactPopup.activeInHierarchy && !player.playerLocked && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(PlayDialogCutscene());
@@ -86,13 +83,12 @@ public class NpcLogic : MonoBehaviour
 
     private IEnumerator PlayDialogCutscene()
     {
-        Debug.Log("Open dialog");
-
         yield return new WaitForSeconds(0.2f);
 
         animator.SetTrigger("Idle");
         player.PlayerLock(true);
         mainCamera.enabled = false;
+        RotateTowardsNpc();
         interactionCamera.enabled = true;
 
         UIEventSystem.current.ShowDialog(dialogIndex);
@@ -117,9 +113,26 @@ public class NpcLogic : MonoBehaviour
 
     public void RotateTowardsPlayer()
     {
+        if (target == null)
+            return;
+
         Vector3 lookPos = target.position - transform.position;
         lookPos.y = 0;
         Quaternion rotation = Quaternion.LookRotation(lookPos);
         transform.eulerAngles = rotation.eulerAngles;
+    }
+
+    public void RotateTowardsNpc()
+    {
+        Vector3 lookPos = transform.position - player.gameObject.transform.position;
+        lookPos.y = 0;
+        Quaternion rotation = Quaternion.LookRotation(lookPos);
+        player.gameObject.transform.eulerAngles = rotation.eulerAngles;
+    }
+
+    private void CharacterSelected(SelectedCharacterScript.Character character, PlayerMovementScript playerMovementScript)
+    {
+        player = playerMovementScript;
+        target = playerMovementScript.gameObject.transform;
     }
 }
