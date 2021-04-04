@@ -96,6 +96,12 @@ public class PlayerMovementScript : MonoBehaviour
         particleSystems = gameObject.GetComponentsInChildren<ParticleSystem>();
         foreach (ParticleSystem particleSystem in particleSystems)
         {
+            if (particleSystem.gameObject.GetComponentInParent<DodgeSkill>() != null)
+            {
+                Debug.Log("Dodge Skill");
+                continue;
+            }
+
             if (hide)
             {
                 particleSystem.enableEmission = false;
