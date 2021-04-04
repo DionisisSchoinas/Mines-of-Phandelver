@@ -97,10 +97,7 @@ public class PlayerMovementScript : MonoBehaviour
         foreach (ParticleSystem particleSystem in particleSystems)
         {
             if (particleSystem.gameObject.GetComponentInParent<DodgeSkill>() != null)
-            {
-                Debug.Log("Dodge Skill");
                 continue;
-            }
 
             if (hide)
             {

@@ -45,6 +45,7 @@ public class NpcLogic : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log("Npc : " + (interactPopup.activeInHierarchy && !player.playerLocked && Input.GetKeyDown(KeyCode.E)));
         if (interactPopup.activeInHierarchy && !player.playerLocked && Input.GetKeyDown(KeyCode.E))
         {
             StartCoroutine(PlayDialogCutscene());
@@ -85,6 +86,8 @@ public class NpcLogic : MonoBehaviour
 
     private IEnumerator PlayDialogCutscene()
     {
+        Debug.Log("Open dialog");
+
         yield return new WaitForSeconds(0.2f);
 
         animator.SetTrigger("Idle");
